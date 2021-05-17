@@ -5,7 +5,13 @@
  */
 package GUI;
 
+import BUS.AccountBUS;
+import BUS.NhaXuatBanBUS;
+import BUS.TacGiaBUS;
 import BUS.TheLoaiBUS;
+import DTO.AccountDTO;
+import DTO.NhaXuatBanDTO;
+import DTO.TacGiaDTO;
 import DTO.TheLoaiDTO;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,9 +36,11 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
     private String position;
-    
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
-
+    private TacGiaBUS tacgiabus=new TacGiaBUS();
+    private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
+    private AccountBUS accountbus=new AccountBUS();
+    
     /**
      * Creates new form DanhMuc
      */
@@ -214,6 +222,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemTL.setText("Thêm");
         btThemTL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemTL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemTLActionPerformed(evt);
+            }
+        });
 
         btSuaTL.setBackground(new java.awt.Color(27, 26, 67));
         btSuaTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1345,6 +1358,12 @@ public class DanhMuc extends javax.swing.JFrame {
             txMaTL.setText("");
         txTenTL.setText("");
     }//GEN-LAST:event_btClearTLActionPerformed
+
+    private void btThemTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTLActionPerformed
+        // TODO add your handling code here:
+        position="theloai";
+        validateBtThem();
+    }//GEN-LAST:event_btThemTLActionPerformed
     
     private boolean validateBtThem(){
         switch(position){
@@ -1356,6 +1375,12 @@ public class DanhMuc extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
+                for(TheLoaiDTO theloai: theloaibus.getList()){
+                    if(MaTL.equals(theloai.getMaTheLoai())){
+                        JOptionPane.showMessageDialog(null, "Mã thể loại đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                }
                 break;
             case "tacgia":
                 String MaTG, TenTG;
@@ -1364,6 +1389,12 @@ public class DanhMuc extends javax.swing.JFrame {
                 if(MaTG.equals("") || TenTG.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
+                }
+                for(TacGiaDTO tacgia: tacgiabus.getList()){
+                    if(MaTG.equals(tacgia.getMaTacGia())){
+                        JOptionPane.showMessageDialog(null, "Mã tác giả đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
                 }
                 break;
             case "nhaxuatban":
@@ -1374,6 +1405,12 @@ public class DanhMuc extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
+                for(NhaXuatBanDTO nxb: nxbbus.getList()){
+                    if(MaNXB.equals(nxb.getMaNXB())){
+                        JOptionPane.showMessageDialog(null, "Mã nhà xuất bản đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                }
                 break;
             case "taikhoan":
                 String username, password;
@@ -1382,6 +1419,12 @@ public class DanhMuc extends javax.swing.JFrame {
                 if(username.equals("") || password.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
+                }
+                for(AccountDTO account: accountbus.getList()){
+                    if(username.equals(account.getUsername())){
+                        JOptionPane.showMessageDialog(null, "Tên đăng nhậpgit c đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
                 }
                 break;
             case "nhacungcap":
