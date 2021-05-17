@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -79,6 +80,11 @@ public class Login extends javax.swing.JFrame {
                 txUsernameActionPerformed(evt);
             }
         });
+        txUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txUsernameKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,6 +92,11 @@ public class Login extends javax.swing.JFrame {
 
         txPassword.setBackground(new java.awt.Color(27, 26, 67));
         txPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txPasswordKeyPressed(evt);
+            }
+        });
 
         btDangNhap.setBackground(new java.awt.Color(68, 187, 236));
         btDangNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -196,6 +207,18 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         menu.setVisible(true);
     }//GEN-LAST:event_btDangNhapActionPerformed
+
+    private void txUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txUsernameKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            txPassword.requestFocus();
+    }//GEN-LAST:event_txUsernameKeyPressed
+
+    private void txPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txPasswordKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            btDangNhap.doClick();
+    }//GEN-LAST:event_txPasswordKeyPressed
 
     /**
      * @param args the command line arguments

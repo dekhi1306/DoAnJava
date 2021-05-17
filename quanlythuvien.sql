@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 03, 2021 at 03:15 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 17, 2021 lúc 07:31 AM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlythuvien`
+-- Cơ sở dữ liệu: `quanlythuvien`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Cấu trúc bảng cho bảng `account`
 --
 
 CREATE TABLE `account` (
@@ -33,7 +33,7 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `account`
+-- Đang đổ dữ liệu cho bảng `account`
 --
 
 INSERT INTO `account` (`username`, `password`) VALUES
@@ -43,7 +43,33 @@ INSERT INTO `account` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhaxuatban`
+-- Cấu trúc bảng cho bảng `chitietphieumuon`
+--
+
+CREATE TABLE `chitietphieumuon` (
+  `MaPhieuMuon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `MaSach` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `SoLuong` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietphieumuon`
+--
+
+INSERT INTO `chitietphieumuon` (`MaPhieuMuon`, `MaSach`, `SoLuong`) VALUES
+('PM1', 'MS-2', 1),
+('PM1', 'MS-3', 2),
+('PM2', '2', 1),
+('PM3', '1', 1),
+('PM4', '3', 1),
+('PM5', '2', 1),
+('PM2', 'MS-2', 1),
+('PM2', 'MS-3', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nhaxuatban`
 --
 
 CREATE TABLE `nhaxuatban` (
@@ -52,7 +78,7 @@ CREATE TABLE `nhaxuatban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nhaxuatban`
+-- Đang đổ dữ liệu cho bảng `nhaxuatban`
 --
 
 INSERT INTO `nhaxuatban` (`MaNXB`, `TenNXB`) VALUES
@@ -63,7 +89,32 @@ INSERT INTO `nhaxuatban` (`MaNXB`, `TenNXB`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sach`
+-- Cấu trúc bảng cho bảng `phieumuon`
+--
+
+CREATE TABLE `phieumuon` (
+  `MaPhieuMuon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `MaDocGia` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `MaNhanVien` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `NgayMuon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `NgayHenTra` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phieumuon`
+--
+
+INSERT INTO `phieumuon` (`MaPhieuMuon`, `MaDocGia`, `MaNhanVien`, `NgayMuon`, `NgayHenTra`) VALUES
+('PM1', 'DG1', 'NV1', '24/04/2021', '01/05/2021'),
+('PM2', 'DG2', 'NV2', '01/04/2021', '12/04/2021'),
+('PM3', 'DG4', 'NV2', '30/04/2021', '04/05/2021'),
+('PM4', 'DG6', 'NV3', '25/03/2021', '01/04/2001'),
+('PM5', 'DG20', 'NV2', '05/05/2021', '11/05/2021');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sach`
 --
 
 CREATE TABLE `sach` (
@@ -78,7 +129,7 @@ CREATE TABLE `sach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `sach`
+-- Đang đổ dữ liệu cho bảng `sach`
 --
 
 INSERT INTO `sach` (`MaSach`, `TenSach`, `MaTL`, `MaTG`, `MaNXB`, `NamXuatBan`, `SoLuong`, `DonGia`) VALUES
@@ -91,7 +142,7 @@ INSERT INTO `sach` (`MaSach`, `TenSach`, `MaTL`, `MaTG`, `MaNXB`, `NamXuatBan`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tacgia`
+-- Cấu trúc bảng cho bảng `tacgia`
 --
 
 CREATE TABLE `tacgia` (
@@ -100,7 +151,7 @@ CREATE TABLE `tacgia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tacgia`
+-- Đang đổ dữ liệu cho bảng `tacgia`
 --
 
 INSERT INTO `tacgia` (`MaTG`, `TenTG`) VALUES
@@ -111,7 +162,7 @@ INSERT INTO `tacgia` (`MaTG`, `TenTG`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `theloai`
+-- Cấu trúc bảng cho bảng `theloai`
 --
 
 CREATE TABLE `theloai` (
@@ -120,7 +171,7 @@ CREATE TABLE `theloai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `theloai`
+-- Đang đổ dữ liệu cho bảng `theloai`
 --
 
 INSERT INTO `theloai` (`MaTL`, `TenTL`) VALUES
@@ -129,23 +180,23 @@ INSERT INTO `theloai` (`MaTL`, `TenTL`) VALUES
 ('TL-3', 'Tiểu thuyết');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `account`
+-- Chỉ mục cho bảng `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `nhaxuatban`
+-- Chỉ mục cho bảng `nhaxuatban`
 --
 ALTER TABLE `nhaxuatban`
   ADD PRIMARY KEY (`MaNXB`);
 
 --
--- Indexes for table `sach`
+-- Chỉ mục cho bảng `sach`
 --
 ALTER TABLE `sach`
   ADD PRIMARY KEY (`MaSach`),
@@ -154,23 +205,23 @@ ALTER TABLE `sach`
   ADD KEY `MaNXB` (`MaNXB`);
 
 --
--- Indexes for table `tacgia`
+-- Chỉ mục cho bảng `tacgia`
 --
 ALTER TABLE `tacgia`
   ADD PRIMARY KEY (`MaTG`);
 
 --
--- Indexes for table `theloai`
+-- Chỉ mục cho bảng `theloai`
 --
 ALTER TABLE `theloai`
   ADD PRIMARY KEY (`MaTL`);
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `sach`
+-- Các ràng buộc cho bảng `sach`
 --
 ALTER TABLE `sach`
   ADD CONSTRAINT `sach_ibfk_1` FOREIGN KEY (`MaTG`) REFERENCES `tacgia` (`MaTG`) ON DELETE CASCADE ON UPDATE CASCADE,
