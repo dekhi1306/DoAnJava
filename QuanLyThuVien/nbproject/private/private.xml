@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/ASUS/Desktop/JAVA/DoAnJava/QuanLyThuVien/src/GUI/QuanLyDocGia.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/JAVA/DoAnJava/QuanLyThuVien/src/GUI/MainMenu.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/JAVA/DoAnJava/QuanLyThuVien/src/DTO/DocGiaDTO.java</file>
-=======
+            <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/QuanLyThuVien/src/GUI/QuanLySach.java</file>
+            <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/QuanLyThuVien/src/DAO/MyConnectUnit.java</file>
+            <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/QuanLyThuVien/src/BUS/TheLoaiBUS.java</file>
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/QuanLyThuVien/src/GUI/DanhMuc.java</file>
->>>>>>> 1f218a6791c505dedadd4774c31f72aa5bc4d529
         </group>
     </open-files>
 </project-private>

@@ -45,7 +45,7 @@ public class TheLoaiDAO {
         HashMap<String, Object> map=new HashMap<String, Object>();
         map.put("MaTL", theloai.getMaTheLoai());
         map.put("TenTL", theloai.getTenTheLoai());
-        this.connect.Insert("sach", map);
+        this.connect.Insert("theloai", map);
     }
     
     public void Update(TheLoaiDTO theloai) throws Exception{

@@ -19,6 +19,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -175,6 +176,11 @@ public class DanhMuc extends javax.swing.JFrame {
 
         txMaTL.setBackground(new java.awt.Color(27, 26, 67));
         txMaTL.setForeground(new java.awt.Color(255, 255, 255));
+        txMaTL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txMaTLKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,6 +241,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaTL.setText("Sửa");
         btSuaTL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaTL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaTLActionPerformed(evt);
+            }
+        });
 
         btXoaTL.setBackground(new java.awt.Color(27, 26, 67));
         btXoaTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -243,6 +254,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaTL.setText("Xoá");
         btXoaTL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaTL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaTLActionPerformed(evt);
+            }
+        });
 
         btTimTL.setBackground(new java.awt.Color(27, 26, 67));
         btTimTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -251,6 +267,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimTL.setText("Tìm");
         btTimTL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimTL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimTLActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -284,16 +305,31 @@ public class DanhMuc extends javax.swing.JFrame {
         btAllTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllTL.setForeground(new java.awt.Color(255, 255, 255));
         btAllTL.setText("Tất cả");
+        btAllTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllTLActionPerformed(evt);
+            }
+        });
 
         btConfirmTL.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmTL.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmTL.setText("Xác nhận");
+        btConfirmTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmTLActionPerformed(evt);
+            }
+        });
 
         btCancelTL.setBackground(new java.awt.Color(206, 81, 80));
         btCancelTL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelTL.setForeground(new java.awt.Color(255, 255, 255));
         btCancelTL.setText("Huỷ");
+        btCancelTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelTLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formTheLoaiLayout = new javax.swing.GroupLayout(formTheLoai);
         formTheLoai.setLayout(formTheLoaiLayout);
@@ -1362,8 +1398,149 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btThemTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTLActionPerformed
         // TODO add your handling code here:
         position="theloai";
-        validateBtThem();
+        if(!validateBtThem())
+            return;
+        
+        TheLoaiDTO theloai=new TheLoaiDTO();
+        
+        theloai.setMaTheLoai(txMaTL.getText());
+        theloai.setTenTheLoai(txTenTL.getText());
+        
+        try {
+            theloaibus.Add(theloai);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Vector row=new Vector();
+        row.add(theloai.getMaTheLoai());
+        row.add(theloai.getTenTheLoai());
+        
+        modelTheLoai.addRow(row);
+        
+        tbTheLoai.setModel(modelTheLoai);
     }//GEN-LAST:event_btThemTLActionPerformed
+
+    private void btXoaTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaTLActionPerformed
+        // TODO add your handling code here:
+        int i = tbTheLoai.getSelectedRow();
+        if(theloaibus.getList().size()>0){
+            try {
+                theloaibus.Remove(theloaibus.getList().get(i).getMaTheLoai());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelTheLoai.removeRow(i);
+            tbTheLoai.setModel(modelTheLoai);
+            
+            txMaTL.setText("");
+            txTenTL.setText("");
+        
+        }
+    }//GEN-LAST:event_btXoaTLActionPerformed
+
+    private void btSuaTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaTLActionPerformed
+        // TODO add your handling code here:
+        int i=tbTheLoai.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn thể loại cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaTL.setEditable(false);
+        btConfirmTL.setVisible(true);
+        btCancelTL.setVisible(true);
+        btThemTL.setEnabled(false);
+        btXoaTL.setEnabled(false);
+        btTimTL.setEnabled(false);
+        btAllTL.setEnabled(false);
+        tbTheLoai.setEnabled(false);
+    }//GEN-LAST:event_btSuaTLActionPerformed
+
+    private void btCancelTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTLActionPerformed
+        // TODO add your handling code here:
+        txMaTL.setEditable(true);
+        btConfirmTL.setVisible(false);
+        btCancelTL.setVisible(false);
+        btThemTL.setEnabled(true);
+        btXoaTL.setEnabled(true);
+        btTimTL.setEnabled(true);
+        btAllTL.setEnabled(true);
+        tbTheLoai.setEnabled(true);
+    }//GEN-LAST:event_btCancelTLActionPerformed
+
+    private void txMaTLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txMaTLKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            txTenTL.requestFocus();
+    }//GEN-LAST:event_txMaTLKeyPressed
+
+    private void btConfirmTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTLActionPerformed
+        // TODO add your handling code here:
+        int i=tbTheLoai.getSelectedRow();
+        if(theloaibus.getList().size()>0){
+            TheLoaiDTO theloai=new TheLoaiDTO();
+
+            theloai.setMaTheLoai(txMaTL.getText());
+            theloai.setTenTheLoai(txTenTL.getText());
+            
+
+            try {
+                theloaibus.Edit(theloai);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelTheLoai.setValueAt(theloai.getMaTheLoai(), i, 0);
+            modelTheLoai.setValueAt(theloai.getTenTheLoai(), i, 1);
+            
+
+            tbTheLoai.setModel(modelTheLoai);
+        }
+  
+    }//GEN-LAST:event_btConfirmTLActionPerformed
+
+    private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
+        // TODO add your handling code here:
+        if (theloaibus.getList().size()>0)
+            tbTheLoai.setModel(modelTheLoai);
+    }//GEN-LAST:event_btAllTLActionPerformed
+
+    private void btTimTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTLActionPerformed
+        // TODO add your handling code here:
+        if(theloaibus.getList().isEmpty()){
+            return;
+        }
+
+        String MaTL, TenTL;
+
+
+        MaTL=txMaTL.getText();
+        TenTL=txTenTL.getText();
+        
+        ArrayList<TheLoaiDTO> res=new ArrayList<TheLoaiDTO>();
+        try {
+            res=theloaibus.Search(MaTL, TenTL);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã thể loại");
+            header.add("Tên thể loại");
+            
+            searchTheLoai = new DefaultTableModel(header, 0);
+            for(TheLoaiDTO tl: res){
+                Vector row=new Vector();
+                row.add(tl.getMaTheLoai());
+                row.add(tl.getTenTheLoai());
+                searchTheLoai.addRow(row);
+            }
+            tbTheLoai.setModel(searchTheLoai);
+        }
+    }//GEN-LAST:event_btTimTLActionPerformed
     
     private boolean validateBtThem(){
         switch(position){
@@ -1422,7 +1599,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 }
                 for(AccountDTO account: accountbus.getList()){
                     if(username.equals(account.getUsername())){
-                        JOptionPane.showMessageDialog(null, "Tên đăng nhậpgit c đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Tên đăng nhập đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                         return false;
                     }
                 }
