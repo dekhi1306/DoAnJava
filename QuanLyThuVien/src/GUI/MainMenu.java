@@ -369,6 +369,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btQLDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLDocGiaActionPerformed
         // TODO add your handling code here:
+        QuanLyDocGia QLDG = new QuanLyDocGia();
+                try {
+                    QLDG.List();
+                } catch (Exception ex) {
+                    Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                QLDG.setVisible(true);
     }//GEN-LAST:event_btQLDocGiaActionPerformed
 
     private void btQLMuonTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLMuonTraActionPerformed
