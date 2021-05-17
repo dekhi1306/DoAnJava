@@ -373,6 +373,14 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btQLMuonTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLMuonTraActionPerformed
         // TODO add your handling code here:
+        QuanLyMuonTra QLMT = new QuanLyMuonTra();
+                try {
+                    QLMT.ListPhieuMuon();
+                    QLMT.ListChiTiet();
+                } catch (Exception ex) {
+                    Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                QLMT.setVisible(true);
     }//GEN-LAST:event_btQLMuonTraActionPerformed
 
     private void btQLNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLNhapHangActionPerformed

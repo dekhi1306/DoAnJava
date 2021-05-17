@@ -145,8 +145,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btTaoMoi = new javax.swing.JButton();
         btXacNhan = new javax.swing.JButton();
         btHuy = new javax.swing.JButton();
-        btThemPhieuPhat = new javax.swing.JButton();
-        btTTPhieuPhat = new javax.swing.JButton();
+        btDong = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbPhieuMuon = new javax.swing.JTable();
@@ -370,24 +369,16 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
 
-        btThemPhieuPhat.setBackground(new java.awt.Color(27, 26, 67));
-        btThemPhieuPhat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btThemPhieuPhat.setForeground(new java.awt.Color(255, 255, 255));
-        btThemPhieuPhat.setText("Thêm Phiếu Phạt");
-        btThemPhieuPhat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btThemPhieuPhat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btThemPhieuPhat.addActionListener(new java.awt.event.ActionListener() {
+        btDong.setBackground(new java.awt.Color(206, 81, 80));
+        btDong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDong.setForeground(new java.awt.Color(255, 255, 255));
+        btDong.setText("Đóng");
+        btDong.setToolTipText("");
+        btDong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btThemPhieuPhatActionPerformed(evt);
+                btDongActionPerformed(evt);
             }
         });
-
-        btTTPhieuPhat.setBackground(new java.awt.Color(27, 26, 67));
-        btTTPhieuPhat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btTTPhieuPhat.setForeground(new java.awt.Color(255, 255, 255));
-        btTTPhieuPhat.setText("TT Phiếu Phạt");
-        btTTPhieuPhat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btTTPhieuPhat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -422,10 +413,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     .addComponent(btXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btTim, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(btTatCa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btThemPhieuPhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btTTPhieuPhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -460,11 +450,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(btThemPhieuPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btTTPhieuPhat))
+                                        .addComponent(jLabel6))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGap(30, 30, 30)
                                         .addComponent(tfNgayHenTra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,7 +464,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(btTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1107,10 +1095,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         tfSoLuong.setText("");
     }//GEN-LAST:event_btTaoMoi1ActionPerformed
 
-    private void btThemPhieuPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemPhieuPhatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btThemPhieuPhatActionPerformed
-
     private void btTimCtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimCtActionPerformed
          Searchct();
     }//GEN-LAST:event_btTimCtActionPerformed
@@ -1120,6 +1104,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
          if (chitietbus.getList().size()>0)
             tbChitiet.setModel(modelChitiet);
     }//GEN-LAST:event_btAllActionPerformed
+
+    private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btDongActionPerformed
 
     public void ListPhieuMuon() throws Exception{
         if(phieumuonbus.getList()==null)
@@ -1382,19 +1371,18 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAll;
+    private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
     private javax.swing.JButton btMaDocGia;
     private javax.swing.JButton btMaNhanVien;
     private javax.swing.JButton btMaSach;
     private javax.swing.JButton btSua;
     private javax.swing.JButton btSua1;
-    private javax.swing.JButton btTTPhieuPhat;
     private javax.swing.JButton btTaoMoi;
     private javax.swing.JButton btTaoMoi1;
     private javax.swing.JButton btTatCa;
     private javax.swing.JButton btThem;
     private javax.swing.JButton btThem1;
-    private javax.swing.JButton btThemPhieuPhat;
     private javax.swing.JButton btTim;
     private javax.swing.JButton btTimCt;
     private javax.swing.JButton btXacNhan;
