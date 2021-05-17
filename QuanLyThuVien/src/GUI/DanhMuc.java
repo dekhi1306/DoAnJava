@@ -5,9 +5,11 @@
  */
 package GUI;
 
+import BUS.AccountBUS;
 import BUS.NhaXuatBanBUS;
 import BUS.TacGiaBUS;
 import BUS.TheLoaiBUS;
+import DTO.AccountDTO;
 import DTO.NhaXuatBanDTO;
 import DTO.TacGiaDTO;
 import DTO.TheLoaiDTO;
@@ -37,7 +39,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
-
+    private AccountBUS accountbus=new AccountBUS();
+    
     /**
      * Creates new form DanhMuc
      */
@@ -1416,6 +1419,12 @@ public class DanhMuc extends javax.swing.JFrame {
                 if(username.equals("") || password.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
+                }
+                for(AccountDTO account: accountbus.getList()){
+                    if(username.equals(account.getUsername())){
+                        JOptionPane.showMessageDialog(null, "Tên đăng nhập đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
                 }
                 break;
             case "nhacungcap":
