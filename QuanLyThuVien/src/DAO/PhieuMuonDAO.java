@@ -57,25 +57,22 @@ public class PhieuMuonDAO {
         this.connect.Insert("phieumuon"+ "", map);
     }
     
-    public void Update(PhieuMuonDTO sach) throws Exception{
-        /*HashMap<String, Object> map=new HashMap<String, Object>();
+    public void Update(PhieuMuonDTO phieumuon) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
         
-        map.put("MaSach", sach.getMaSach());
-        map.put("TenSach", sach.getTenSach());
-        theloai=theloaidao.getByName(sach.getTheLoai());
-        map.put("MaTL", theloai.getMaTheLoai());
-        tacgia=tacgiadao.getByName(sach.getTacGia());
-        map.put("MaTG", tacgia.getMaTacGia());
-        nhaxuatban=nxbdao.getByName(sach.getNhaXuatBan());
-        map.put("MaNXB", nhaxuatban.getMaNXB());
-        map.put("NamXuatBan", sach.getNamXuatBan());
-        map.put("SoLuong", sach.getSoLuong());
-        map.put("DonGia", sach.getDonGia());
+        map.put("MaPhieuMuon", phieumuon.getMaPhieuMuon());
+        map.put("MaDocGia", phieumuon.getMaDocGia());
+        //theloai=theloaidao.getByName(phieumuon.getTheLoai());
+        map.put("MaNhanVien", phieumuon.getMaNhanVien());
+        //tacgia=tacgiadao.getByName(phieumuon.getTacGia());
+        map.put("NgayMuon", phieumuon.getNgayMuon());
+        //nhaxuatban=nxbdao.getByName(phieumuon.getNhaXuatBan());
+        map.put("NgayHenTra", phieumuon.getNgayHenTra());
  
-        this.connect.Update("sach", map, "MaSach = '" + sach.getMaSach() + "'");*/
+        this.connect.Update("phieumuon", map, "MaPhieuMuon = '" + phieumuon.getMaPhieuMuon() + "'");
     }
     
-    public void Delete(String MaSach) throws Exception{
-        //this.connect.Delete("sach", "MaSach = '" + MaSach + "'" );    
+    public void Delete(String MaPhieuMuon) throws Exception{
+        this.connect.Delete("phieumuon", "MaPhieuMuon = '" + MaPhieuMuon+ "'" );    
     }
 }
