@@ -5,28 +5,27 @@ import DTO.DocGiaDTO;
 import java.util.ArrayList;
 
 public class DocGiaBUS {
-    private ArrayList<DocGiaDTO> listDocGia;
+    private ArrayList<DocGiaDTO>ListDocGia;
     
     public DocGiaBUS(){
         
     }
-    
-    public void listDocGia() throws Exception {
-        DocGiaDAO docgiadao=new DocGiaDAO();
-        listDocGia=new ArrayList<DocGiaDTO>();
-        listDocGia=docgiadao.list();   
+    public void listDocGia() throws Exception{
+        DocGiaDAO dgdao=new DocGiaDAO();
+        ListDocGia = new ArrayList<DocGiaDTO>();
+        ListDocGia=dgdao.list();
     }
     
     public void Add(DocGiaDTO docgia) throws Exception {
-        listDocGia.add(docgia);
+        ListDocGia.add(docgia);
         DocGiaDAO docgiadao=new DocGiaDAO();
         docgiadao.Insert(docgia);
     }
     
     public void Edit(DocGiaDTO docgia) throws Exception {
-        for(int i=0;i<listDocGia.size();i++) {
-            if(listDocGia.get(i).getMaDocGia().equals(docgia.getMaDocGia())) {
-                listDocGia.set(i, docgia);
+        for(int i=0;i<ListDocGia.size();i++) {
+            if(ListDocGia.get(i).getMaDocGia().equals(docgia.getMaDocGia())) {
+                ListDocGia.set(i, docgia);
                 DocGiaDAO docgiadao = new DocGiaDAO();
                 docgiadao.Update(docgia);
                 return;
@@ -35,9 +34,9 @@ public class DocGiaBUS {
     }
     
     public void Remove(String MaDocGia) throws Exception {
-        for(DocGiaDTO docgia: listDocGia) {
+        for(DocGiaDTO docgia: ListDocGia) {
             if(docgia.getMaDocGia().equals(MaDocGia)) {
-                listDocGia.remove(docgia);
+                ListDocGia.remove(docgia);
                 DocGiaDAO docgiadao = new DocGiaDAO();
                 docgiadao.Delete(MaDocGia);
                 return;
@@ -45,49 +44,56 @@ public class DocGiaBUS {
         }
     }
     
-    public ArrayList<DocGiaDTO> Search(String MaDocGia, String HoDocGia,String TenDocGia, String Ngaysinh, String Diachi, String Dienthoai, String Nghenghiep, String Trinhdo) {
+   public ArrayList<DocGiaDTO> Search(String MaDG, String HoLot, String Ten, String NgaySinh,int GioiTinh,String DienThoai, String DiaChi,String NgheNghiep, String TrinhDo){
         ArrayList<DocGiaDTO> res=new ArrayList<DocGiaDTO>();
-        boolean madocgia=false, hodocgia=false, tendocgia=false, ngaysinh=false, diachi=false, dienthoai=false, nghenghiep=false, trinhdo=false;
-        if(MaDocGia.equals(""))
-            madocgia=true;
-        if(HoDocGia.equals(""))
-            hodocgia=true;
-        if(TenDocGia.equals(""))
-            tendocgia=true;
-        if(Ngaysinh.equals(""))
+        boolean madg=false, holot=false,ten=false,ngaysinh=false,dienthoai=false,
+                gioitinh=false,dc=false,nghenghiep=false,trinhdo=false;
+        String gt;
+        if(MaDG.equals(""))
+            madg=true;
+        if(HoLot.equals(""))
+            holot=true;
+        if(Ten.equals(""))
+            ten=true;
+        if(NgaySinh.equals(""))
             ngaysinh=true;
-        if(Diachi.equals(""))
-            diachi=true;
-        if(Dienthoai.equals(""))
+        if(DienThoai.equals(""))
             dienthoai=true;
-        if(Nghenghiep.equals(""))
+        if(GioiTinh==-1)
+            gioitinh=true;
+        if(DiaChi.equals(""))
+            dc=true;
+        if(NgheNghiep.equals(""))
             nghenghiep=true;
-        if(Trinhdo.equals(""))
+        if(TrinhDo.equals(""))
             trinhdo=true;
-        for(DocGiaDTO docgia: listDocGia){
-            if(!MaDocGia.equals(""))
-                madocgia=(docgia.getMaDocGia().contains(MaDocGia)) ? true : false;
-            if(!HoDocGia.equals(""))
-                hodocgia=(docgia.getHoDocGia().contains(HoDocGia)) ? true : false;
-            if(!TenDocGia.equals(""))
-                tendocgia=(docgia.getTenDocGia().contains(TenDocGia)) ? true : false;
-            if(!Ngaysinh.equals(""))
-                ngaysinh=(docgia.getNgaysinh().contains(Ngaysinh)) ? true : false;
-            if(!Diachi.equals(""))
-                diachi=(docgia.getDiachi().contains(Diachi)) ? true : false;
-            if(!Dienthoai.equals(""))
-                dienthoai=(docgia.getDienthoai().contains(Dienthoai)) ? true : false;      
-            if(!Nghenghiep.equals(""))
-                nghenghiep=(docgia.getNghenghiep().contains(Nghenghiep)) ? true : false;
-            if(!Trinhdo.equals(""))
-                trinhdo=(docgia.getTrinhdo().contains(Trinhdo)) ? true : false;
-            if(madocgia && hodocgia && tendocgia && ngaysinh && diachi && dienthoai && nghenghiep && trinhdo)
-                res.add(docgia);
+        for(DocGiaDTO ms: ListDocGia){
+            if(!MaDG.equals(""))
+                madg=(ms.getMaDocGia().contains(MaDG)) ? true : false;
+            if(!HoLot.equals(""))
+                holot=(ms.getHoDocGia().contains(HoLot)) ? true : false;
+            if(!Ten.equals(""))
+                ten=(ms.getTenDocGia().contains(Ten)) ? true : false;
+            if(!NgaySinh.equals(""))
+                ngaysinh=(ms.getNgaysinh().contains(NgaySinh)) ? true : false;
+            if(!DienThoai.equals(""))
+                dienthoai=(ms.getDienthoai().contains(DienThoai)) ? true : false;
+            if(!DiaChi.equals(""))
+                dc=(ms.getDiachi().contains(DiaChi)) ? true : false;
+            if(!NgheNghiep.equals(""))
+                nghenghiep=(ms.getNghenghiep().contains(NgheNghiep)) ? true : false;
+            if(!TrinhDo.equals(""))
+                trinhdo=(ms.getTrinhdo().contains(TrinhDo)) ? true : false;
+            if(GioiTinh!=-1)
+                gioitinh=(ms.getGioiTinh()==GioiTinh) ? true : false;
+            
+            if(madg&& holot && ten && ngaysinh && gioitinh && dienthoai  && dc && nghenghiep && trinhdo)
+                res.add(ms);
         }
         return res;
     }
     
     public ArrayList<DocGiaDTO> getList(){
-        return listDocGia;
+        return ListDocGia;
     }
 }
