@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,8 +29,7 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
-    private int modeTL;
-    
+    private String position;
     
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
 
@@ -1345,6 +1345,66 @@ public class DanhMuc extends javax.swing.JFrame {
             txMaTL.setText("");
         txTenTL.setText("");
     }//GEN-LAST:event_btClearTLActionPerformed
+    
+    private boolean validateBtThem(){
+        switch(position){
+            case "theloai":
+                String MaTL, TenTL;
+                MaTL=txMaTL.getText();
+                TenTL=txTenTL.getText();
+                if(MaTL.equals("") || TenTL.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            case "tacgia":
+                String MaTG, TenTG;
+                MaTG=txMaTG.getText();
+                TenTG=txTenTG.getText();
+                if(MaTG.equals("") || TenTG.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            case "nhaxuatban":
+                String MaNXB, TenNXB;
+                MaNXB=txMaNXB.getText();
+                TenNXB=txTenNXB.getText();
+                if(MaNXB.equals("") || TenNXB.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            case "taikhoan":
+                String username, password;
+                username=txUsername.getText();
+                password=txPassword.getText();
+                if(username.equals("") || password.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            case "nhacungcap":
+                String MaNCC, TenNCC;
+                MaNCC=txMaNCC.getText();
+                TenNCC=txTenNCC.getText();
+                if(MaNCC.equals("") || TenNCC.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            case "loiphat":
+                String MaLP, TenLP;
+                MaLP=txMaLP.getText();
+                TenLP=txTenLP.getText();
+                if(MaLP.equals("") || TenLP.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+        }
+        return true;
+    }
     
     public void ListTheLoai() throws Exception{
         if(theloaibus.getList()==null)
