@@ -1422,7 +1422,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 }
                 for(AccountDTO account: accountbus.getList()){
                     if(username.equals(account.getUsername())){
-                        JOptionPane.showMessageDialog(null, "Tên đăng nhập đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Tên đăng nhậpgit c đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                         return false;
                     }
                 }
