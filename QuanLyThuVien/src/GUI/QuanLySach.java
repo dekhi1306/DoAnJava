@@ -1124,16 +1124,6 @@ public class QuanLySach extends javax.swing.JFrame {
 
             tbSach.setModel(modelSach);
         }
-        txMaSach.setEditable(true);
-        tbSach.setEnabled(true);
-        btThem.setEnabled(true);
-        btXoa.setEnabled(true);
-        btTim.setEnabled(true);
-        btTatCa.setEnabled(true);
-        btNhapEx.setEnabled(true);
-        btXuatEx.setEnabled(true);
-        btXacNhan.setVisible(false);
-        btHuy.setVisible(false);
     }
     
     private void Search(){
