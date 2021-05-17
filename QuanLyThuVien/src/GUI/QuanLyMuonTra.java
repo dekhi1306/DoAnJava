@@ -92,7 +92,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             @Override
             public void mousePressed(MouseEvent me) {
-                Onclick();
+                Onclickct();
             }
 
             @Override
@@ -163,7 +163,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXoa1 = new javax.swing.JButton();
         btSua1 = new javax.swing.JButton();
         btTaoMoi1 = new javax.swing.JButton();
-        btMaPhieuMuon = new javax.swing.JButton();
+        btTimCt = new javax.swing.JButton();
+        btAll = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbChitiet = new javax.swing.JTable();
@@ -536,7 +537,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -656,13 +657,23 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
 
-        btMaPhieuMuon.setBackground(new java.awt.Color(27, 26, 67));
-        btMaPhieuMuon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btMaPhieuMuon.setForeground(new java.awt.Color(255, 255, 255));
-        btMaPhieuMuon.setText("...");
-        btMaPhieuMuon.addActionListener(new java.awt.event.ActionListener() {
+        btTimCt.setBackground(new java.awt.Color(27, 26, 67));
+        btTimCt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btTimCt.setForeground(new java.awt.Color(255, 255, 255));
+        btTimCt.setText("Tìm");
+        btTimCt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMaPhieuMuonActionPerformed(evt);
+                btTimCtActionPerformed(evt);
+            }
+        });
+
+        btAll.setBackground(new java.awt.Color(27, 26, 67));
+        btAll.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btAll.setForeground(new java.awt.Color(255, 255, 255));
+        btAll.setText("All");
+        btAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllActionPerformed(evt);
             }
         });
 
@@ -691,12 +702,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(tfMaPmChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btMaPhieuMuon))
-                            .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btTaoMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(btThem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(btTimCt))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btAll)))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btThem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btTaoMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -707,7 +721,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMaPmChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btMaPhieuMuon))
+                    .addComponent(btTimCt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -719,7 +733,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAll)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(btXoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -770,7 +786,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -785,8 +801,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -901,7 +917,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             try {
                 phieumuonbus.Remove(phieumuonbus.getList().get(i).getMaPhieuMuon());
             } catch (Exception ex) {
-                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
             }
             modelPhieuMuon.removeRow(i);
             tbPhieuMuon.setModel(modelPhieuMuon);
@@ -1037,10 +1053,31 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void btXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoa1ActionPerformed
         // TODO add your handling code here:
+        int i = tbChitiet.getSelectedRow();
+        if(chitietbus.getList().size()>0){
+            try {
+                chitietbus.Remove(chitietbus.getList().get(i).getMaPhieuMuon(), 
+                                                    chitietbus.getList().get(i).getMaSach(), 
+                                                    chitietbus.getList().get(i).getSoLuong());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelChitiet.removeRow(i);
+            tbChitiet.setModel(modelChitiet);
+            
+            tfMaPmChiTiet.setText("");
+            tfMaSach.setText("");
+            tfSoLuong.setText("");
+        }
     }//GEN-LAST:event_btXoa1ActionPerformed
 
     private void btSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSua1ActionPerformed
         // TODO add your handling code here:
+        int i = tbChitiet.getSelectedRow();
+        if (i < 0) {
+            JOptionPane.showMessageDialog(null, "Chọn chi tiết phiếu mượn cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else EditCt();
     }//GEN-LAST:event_btSua1ActionPerformed
 
     private void btTaoMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTaoMoi1ActionPerformed
@@ -1060,16 +1097,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btThemPhieuPhatActionPerformed
 
-    private void btMaPhieuMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaPhieuMuonActionPerformed
+    private void btTimCtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimCtActionPerformed
+         Searchct();
+    }//GEN-LAST:event_btTimCtActionPerformed
+
+    private void btAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllActionPerformed
         // TODO add your handling code here:
-        TheLoaiSelector TheLoaiSel=new TheLoaiSelector();
-        try {
-            TheLoaiSel.List();
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        TheLoaiSel.setVisible(true);
-    }//GEN-LAST:event_btMaPhieuMuonActionPerformed
+         if (chitietbus.getList().size()>0)
+            tbChitiet.setModel(modelChitiet);
+    }//GEN-LAST:event_btAllActionPerformed
 
     public void ListPhieuMuon() throws Exception{
         if(phieumuonbus.getList()==null)
@@ -1083,13 +1119,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         header.add("Ngày Hẹn Trả");
         if(modelPhieuMuon.getRowCount() == 0)
                 modelPhieuMuon = new DefaultTableModel(header, 0);
-        for(PhieuMuonDTO phieumuon: listPhieuMuon) {
+        for(PhieuMuonDTO ctphieumuon: listPhieuMuon) {
             Vector row=new Vector();
-            row.add(phieumuon.getMaPhieuMuon());
-            row.add(phieumuon.getMaDocGia());
-            row.add(phieumuon.getMaNhanVien());
-            row.add(phieumuon.getNgayMuon());
-            row.add(phieumuon.getNgayHenTra());
+            row.add(ctphieumuon.getMaPhieuMuon());
+            row.add(ctphieumuon.getMaDocGia());
+            row.add(ctphieumuon.getMaNhanVien());
+            row.add(ctphieumuon.getNgayMuon());
+            row.add(ctphieumuon.getNgayHenTra());
             modelPhieuMuon.addRow(row);
         }
         tbPhieuMuon.setModel(modelPhieuMuon);
@@ -1115,18 +1151,21 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     }
     private void Onclick() {
         int i = tbPhieuMuon.getSelectedRow();
-        int ict = tbChitiet.getSelectedRow();
         if (phieumuonbus.getList().size() > 0) {
-            PhieuMuonDTO phieumuon = new PhieuMuonDTO();
-            phieumuon = phieumuonbus.getList().get(i);
+            PhieuMuonDTO ctphieumuon = new PhieuMuonDTO();
+            ctphieumuon = phieumuonbus.getList().get(i);
             
-           tfMaPhieuMuon.setText(phieumuon.getMaPhieuMuon());
-           tfMaNhanVien.setText(phieumuon.getMaNhanVien());
-           tfMaDocGia.setText(phieumuon.getMaDocGia());
-           tfNgayMuon.setText(phieumuon.getNgayMuon());
-           tfNgayHenTra.setText(phieumuon.getNgayHenTra());
+           tfMaPhieuMuon.setText(ctphieumuon.getMaPhieuMuon());
+           tfMaNhanVien.setText(ctphieumuon.getMaNhanVien());
+           tfMaDocGia.setText(ctphieumuon.getMaDocGia());
+           tfNgayMuon.setText(ctphieumuon.getNgayMuon());
+           tfNgayHenTra.setText(ctphieumuon.getNgayHenTra());
+           tfMaPmChiTiet.setText(ctphieumuon.getMaPhieuMuon());
         }
-        else if(chitietbus.getList().size()>0){
+    }
+    private void Onclickct() {
+        int ict = tbChitiet.getSelectedRow();
+        if(chitietbus.getList().size()>0){
             ChiTietPhieuMuonDTO chitiet =new ChiTietPhieuMuonDTO();
             chitiet = chitietbus.getList().get(ict);
             
@@ -1171,6 +1210,29 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXacNhan.setVisible(false);
         btHuy.setVisible(false);
     }
+    private void EditCt(){
+        int i=tbChitiet.getSelectedRow();
+        if(chitietbus.getList().size()>0){
+           ChiTietPhieuMuonDTO ctphieumuon=new ChiTietPhieuMuonDTO();
+
+            ctphieumuon.setMaPhieuMuon(tfMaPmChiTiet.getText());
+            ctphieumuon.setMaSach(tfMaSach.getText());
+            ctphieumuon.setSoLuong(Integer.parseInt(tfSoLuong.getText()));
+            
+            try {
+                chitietbus.Edit(ctphieumuon);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelChitiet.setValueAt(ctphieumuon.getMaPhieuMuon(), i, 0);
+            modelChitiet.setValueAt(ctphieumuon.getMaSach(), i, 1);
+            modelChitiet.setValueAt(ctphieumuon.getSoLuong(), i, 2);
+
+            tbChitiet.setModel(modelChitiet);
+        }
+    }
+    
     private void Search(){
         if(phieumuonbus.getList().isEmpty()){
             return;
@@ -1211,6 +1273,46 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 resOfSearch.addRow(row);
             }
             tbPhieuMuon.setModel(resOfSearch);
+        }
+    }
+    private void Searchct(){
+        if(chitietbus.getList().isEmpty()){
+            return;
+        }
+
+        String MaPhieuMuon, MaSach;
+        int SoLuong;
+
+        MaPhieuMuon=tfMaPmChiTiet.getText();
+        MaSach=tfMaSach.getText();
+        if(tfSoLuong.getText().equals(""))
+            SoLuong=-1;
+        else
+            SoLuong=Integer.parseInt(tfSoLuong.getText());
+
+        ArrayList<ChiTietPhieuMuonDTO> res=new ArrayList<ChiTietPhieuMuonDTO>();
+        try {
+            res=chitietbus.Search(MaPhieuMuon, MaSach, SoLuong);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã Phiếu Mượn");
+            header.add("Mã Sách");
+            header.add("Số Lượng");
+            resOfSearch = new DefaultTableModel(header, 0);
+            for(ChiTietPhieuMuonDTO s: res){
+                Vector row=new Vector();
+                row.add(s.getMaPhieuMuon());
+                row.add(s.getMaSach());
+                row.add(s.getSoLuong());
+                resOfSearch.addRow(row);
+            }
+            tbChitiet.setModel(resOfSearch);
         }
     }
       public static  void setMaSach(String MaSach){
@@ -1259,10 +1361,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAll;
     private javax.swing.JButton btHuy;
     private javax.swing.JButton btMaDocGia;
     private javax.swing.JButton btMaNhanVien;
-    private javax.swing.JButton btMaPhieuMuon;
     private javax.swing.JButton btMaSach;
     private javax.swing.JButton btSua;
     private javax.swing.JButton btSua1;
@@ -1274,6 +1376,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JButton btThem1;
     private javax.swing.JButton btThemPhieuPhat;
     private javax.swing.JButton btTim;
+    private javax.swing.JButton btTimCt;
     private javax.swing.JButton btXacNhan;
     private javax.swing.JButton btXoa;
     private javax.swing.JButton btXoa1;
