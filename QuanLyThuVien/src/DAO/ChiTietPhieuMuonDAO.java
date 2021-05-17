@@ -24,15 +24,15 @@ public class ChiTietPhieuMuonDAO {
 
     public ArrayList<ChiTietPhieuMuonDTO> list(String condition, String OderBy) throws Exception {
         ResultSet result = this.connect.Select("chitietphieumuon", condition, OderBy);
-        ArrayList<ChiTietPhieuMuonDTO> listchitietphieumuon = new ArrayList<ChiTietPhieuMuonDTO>();
+        ArrayList<ChiTietPhieuMuonDTO> listchitietctphieumuon = new ArrayList<ChiTietPhieuMuonDTO>();
         while (result.next()) {
                ChiTietPhieuMuonDTO chitiet=new ChiTietPhieuMuonDTO();
                chitiet.setMaPhieuMuon(result.getString("MaPhieuMuon"));
                chitiet.setMaSach(result.getString("MaSach"));
                chitiet.setSoLuong(result.getInt("SoLuong"));
-               listchitietphieumuon.add(chitiet);
+               listchitietctphieumuon.add(chitiet);
         }
-        return listchitietphieumuon;
+        return listchitietctphieumuon;
                 
     }
     public ArrayList<ChiTietPhieuMuonDTO> list(String condition) throws Exception{
@@ -55,5 +55,22 @@ public class ChiTietPhieuMuonDAO {
         map.put("SoLuong", chitietphieumuon.getSoLuong());
  
         this.connect.Insert("chitietphieumuon"+ "", map);
+    }
+     public void Update(ChiTietPhieuMuonDTO ctphieumuon) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        
+        map.put("MaPhieuMuon", ctphieumuon.getMaPhieuMuon());
+        map.put("MaSach", ctphieumuon.getMaSach());
+        //theloai=theloaidao.getByName(ctphieumuon.getTheLoai());
+        map.put("SoLuong", ctphieumuon.getSoLuong());
+        //tacgia=tacgiadao.getByName(ctphieumuon.getTacGia());
+ 
+        this.connect.Update("chitietphieumuon", map, "MaPhieuMuon = '" + ctphieumuon.getMaPhieuMuon() + "'");
+    }
+    
+    public void Delete(String MaPhieuMuon,String MaSach, int SoLuong) throws Exception{
+        this.connect.Delete("chitietphieumuon", "MaPhieuMuon = '" + MaPhieuMuon+
+                                                                                        "'AND MaSach = '" + MaSach+ 
+                                                                                        "' AND SoLuong = '" + SoLuong+ "'" );    
     }
 }
