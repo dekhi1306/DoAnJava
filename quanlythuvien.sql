@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 17, 2021 lúc 07:31 AM
+-- Thời gian đã tạo: Th5 17, 2021 lúc 02:15 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.1
 
@@ -47,8 +47,8 @@ INSERT INTO `account` (`username`, `password`) VALUES
 --
 
 CREATE TABLE `chitietphieumuon` (
-  `MaPhieuMuon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `MaSach` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `MaPhieuMuon` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaSach` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `SoLuong` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_nopad_ci;
 
@@ -57,14 +57,91 @@ CREATE TABLE `chitietphieumuon` (
 --
 
 INSERT INTO `chitietphieumuon` (`MaPhieuMuon`, `MaSach`, `SoLuong`) VALUES
-('PM1', 'MS-2', 1),
-('PM1', 'MS-3', 2),
-('PM2', '2', 1),
-('PM3', '1', 1),
-('PM4', '3', 1),
-('PM5', '2', 1),
-('PM2', 'MS-2', 1),
-('PM2', 'MS-3', 5);
+('PM1', 'MS-3', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chitietphieuphat`
+--
+
+CREATE TABLE `chitietphieuphat` (
+  `MaPhieuPhat` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MaSach` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MaLoiPhat` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ctphieunhap`
+--
+
+CREATE TABLE `ctphieunhap` (
+  `MaPN` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaSach` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `DonGia` int(11) NOT NULL,
+  `ThanhTien` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `docgia`
+--
+
+CREATE TABLE `docgia` (
+  `MaDG` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `HoLot` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Ten` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `NgaySinh` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `GioiTinh` tinyint(1) NOT NULL,
+  `DienThoai` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `DiaChi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `NgheNghiep` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `TrinhDo` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `loiphat`
+--
+
+CREATE TABLE `loiphat` (
+  `MaLoiPhat` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TenLoiPhat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TienPhat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nhacungcap`
+--
+
+CREATE TABLE `nhacungcap` (
+  `MaNCC` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TenNCC` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `dcNCC` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `sdtNCC` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nhanvien`
+--
+
+CREATE TABLE `nhanvien` (
+  `MaNV` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `HoLot` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `NgaySinh` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DienThoai` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `GioiTinh` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -93,11 +170,11 @@ INSERT INTO `nhaxuatban` (`MaNXB`, `TenNXB`) VALUES
 --
 
 CREATE TABLE `phieumuon` (
-  `MaPhieuMuon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `MaDocGia` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `MaNhanVien` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `NgayMuon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
-  `NgayHenTra` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_nopad_ci NOT NULL
+  `MaPhieuMuon` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaDocGia` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaNhanVien` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `NgayMuon` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `NgayHenTra` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_nopad_ci;
 
 --
@@ -110,6 +187,32 @@ INSERT INTO `phieumuon` (`MaPhieuMuon`, `MaDocGia`, `MaNhanVien`, `NgayMuon`, `N
 ('PM3', 'DG4', 'NV2', '30/04/2021', '04/05/2021'),
 ('PM4', 'DG6', 'NV3', '25/03/2021', '01/04/2001'),
 ('PM5', 'DG20', 'NV2', '05/05/2021', '11/05/2021');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `phieunhaphang`
+--
+
+CREATE TABLE `phieunhaphang` (
+  `MaPN` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaNV` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `MaNCC` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `NgayNhapHang` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TongTien` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `phieuphat`
+--
+
+CREATE TABLE `phieuphat` (
+  `MaPhieuPhat` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MaPhieuMuon` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TongTienPhat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -190,10 +293,77 @@ ALTER TABLE `account`
   ADD PRIMARY KEY (`username`);
 
 --
+-- Chỉ mục cho bảng `chitietphieumuon`
+--
+ALTER TABLE `chitietphieumuon`
+  ADD KEY `MaPhieuMuon` (`MaPhieuMuon`),
+  ADD KEY `MaSach` (`MaSach`);
+
+--
+-- Chỉ mục cho bảng `chitietphieuphat`
+--
+ALTER TABLE `chitietphieuphat`
+  ADD KEY `MaPhieuPhat` (`MaPhieuPhat`),
+  ADD KEY `MaLoiPhat` (`MaLoiPhat`),
+  ADD KEY `MaSach` (`MaSach`);
+
+--
+-- Chỉ mục cho bảng `ctphieunhap`
+--
+ALTER TABLE `ctphieunhap`
+  ADD KEY `ctpn_ibfk_1` (`MaPN`),
+  ADD KEY `ctpn_ibfk_2` (`MaSach`);
+
+--
+-- Chỉ mục cho bảng `docgia`
+--
+ALTER TABLE `docgia`
+  ADD PRIMARY KEY (`MaDG`);
+
+--
+-- Chỉ mục cho bảng `loiphat`
+--
+ALTER TABLE `loiphat`
+  ADD PRIMARY KEY (`MaLoiPhat`);
+
+--
+-- Chỉ mục cho bảng `nhacungcap`
+--
+ALTER TABLE `nhacungcap`
+  ADD PRIMARY KEY (`MaNCC`);
+
+--
+-- Chỉ mục cho bảng `nhanvien`
+--
+ALTER TABLE `nhanvien`
+  ADD PRIMARY KEY (`MaNV`);
+
+--
 -- Chỉ mục cho bảng `nhaxuatban`
 --
 ALTER TABLE `nhaxuatban`
   ADD PRIMARY KEY (`MaNXB`);
+
+--
+-- Chỉ mục cho bảng `phieumuon`
+--
+ALTER TABLE `phieumuon`
+  ADD PRIMARY KEY (`MaPhieuMuon`);
+
+--
+-- Chỉ mục cho bảng `phieunhaphang`
+--
+ALTER TABLE `phieunhaphang`
+  ADD PRIMARY KEY (`MaPN`),
+  ADD KEY `nhanvien_ibfk_1` (`MaNV`),
+  ADD KEY `nhanvien_ibfk_2` (`MaNCC`);
+
+--
+-- Chỉ mục cho bảng `phieuphat`
+--
+ALTER TABLE `phieuphat`
+  ADD PRIMARY KEY (`MaPhieuPhat`),
+  ADD KEY `MaPhieuMuon` (`MaPhieuMuon`);
 
 --
 -- Chỉ mục cho bảng `sach`
@@ -219,6 +389,41 @@ ALTER TABLE `theloai`
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `chitietphieumuon`
+--
+ALTER TABLE `chitietphieumuon`
+  ADD CONSTRAINT `ctpm_ibfk_1` FOREIGN KEY (`MaPhieuMuon`) REFERENCES `phieumuon` (`MaPhieuMuon`),
+  ADD CONSTRAINT `ctpm_ibfk_2` FOREIGN KEY (`MaSach`) REFERENCES `sach` (`MaSach`);
+
+--
+-- Các ràng buộc cho bảng `chitietphieuphat`
+--
+ALTER TABLE `chitietphieuphat`
+  ADD CONSTRAINT `ctpp_ibfk_1` FOREIGN KEY (`MaPhieuPhat`) REFERENCES `phieuphat` (`MaPhieuPhat`),
+  ADD CONSTRAINT `ctpp_ibfk_2` FOREIGN KEY (`MaSach`) REFERENCES `sach` (`MaSach`),
+  ADD CONSTRAINT `ctpp_ibfk_3` FOREIGN KEY (`MaLoiPhat`) REFERENCES `loiphat` (`MaLoiPhat`);
+
+--
+-- Các ràng buộc cho bảng `ctphieunhap`
+--
+ALTER TABLE `ctphieunhap`
+  ADD CONSTRAINT `ctpn_ibfk_1` FOREIGN KEY (`MaPN`) REFERENCES `phieunhaphang` (`MaPN`),
+  ADD CONSTRAINT `ctpn_ibfk_2` FOREIGN KEY (`MaSach`) REFERENCES `sach` (`MaSach`);
+
+--
+-- Các ràng buộc cho bảng `phieunhaphang`
+--
+ALTER TABLE `phieunhaphang`
+  ADD CONSTRAINT `phieunhap_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`),
+  ADD CONSTRAINT `phieunhap_ibfk_2` FOREIGN KEY (`MaNCC`) REFERENCES `nhacungcap` (`MaNCC`);
+
+--
+-- Các ràng buộc cho bảng `phieuphat`
+--
+ALTER TABLE `phieuphat`
+  ADD CONSTRAINT `phieuphat_ibfk_1` FOREIGN KEY (`MaPhieuMuon`) REFERENCES `phieumuon` (`MaPhieuMuon`);
 
 --
 -- Các ràng buộc cho bảng `sach`
