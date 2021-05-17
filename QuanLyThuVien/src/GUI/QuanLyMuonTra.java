@@ -874,10 +874,24 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void btMaDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaDocGiaActionPerformed
         // TODO add your handling code here:
+        MaDocGiaSelector MaDGSel=new  MaDocGiaSelector();
+        try {
+            MaDGSel.List();
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MaDGSel.setVisible(true);
     }//GEN-LAST:event_btMaDocGiaActionPerformed
 
     private void btMaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaNhanVienActionPerformed
         // TODO add your handling code here:
+        MaNhanVienSelector MaNVSel=new  MaNhanVienSelector();
+        try {
+            MaNVSel.List();
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MaNVSel.setVisible(true);
     }//GEN-LAST:event_btMaNhanVienActionPerformed
 
     private void btThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemActionPerformed
@@ -1318,6 +1332,12 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
       public static  void setMaSach(String MaSach){
                 tfMaSach.setText(MaSach);
     }
+      public static  void setMaNV(String MaNV){
+                tfMaNhanVien.setText(MaNV);
+    }
+      public static  void setMaDG(String MaDG){
+                tfMaDocGia.setText(MaDG);
+    }
     /**
      * @param args the command line arguments
      */
@@ -1401,8 +1421,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbChitiet;
     private javax.swing.JTable tbPhieuMuon;
-    private javax.swing.JTextField tfMaDocGia;
-    private javax.swing.JTextField tfMaNhanVien;
+    private static javax.swing.JTextField tfMaDocGia;
+    private static javax.swing.JTextField tfMaNhanVien;
     private javax.swing.JTextField tfMaPhieuMuon;
     private static javax.swing.JTextField tfMaPmChiTiet;
     private static javax.swing.JTextField tfMaSach;

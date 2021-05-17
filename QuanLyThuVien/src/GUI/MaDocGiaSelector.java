@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import BUS.MaNhanVienBUS;
-import DTO.MaNhanVienDTO;
+import BUS.MaDocGiaBUS;
+import DTO.MaDocGiaDTO;
 import GUI.MainMenu.RoundedPanel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -29,15 +29,15 @@ import java.awt.event.MouseListener;
  *
  * @author 01042001
  */
-public class MaNhanVienSelector extends javax.swing.JFrame {
+public class MaDocGiaSelector extends javax.swing.JFrame {
 
     /**
      * Creates new form MaSachSelector
      */
     private DefaultTableModel model = new DefaultTableModel();
     private DefaultTableModel resOfSearch;
-    private MaNhanVienBUS manvbus=new  MaNhanVienBUS();
-    public MaNhanVienSelector() {
+    private MaDocGiaBUS madgbus=new  MaDocGiaBUS();
+    public MaDocGiaSelector() {
         initComponents();
         table.addMouseListener(new MouseListener() {
             @Override
@@ -123,7 +123,7 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Mã nhân viên:");
+        jLabel2.setText("Mã đọc giả:");
 
         txTen.setBackground(new java.awt.Color(27, 26, 67));
         txTen.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,7 +140,7 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Danh Sách Mã Nhân Viên");
+        jLabel1.setText("Danh Sách Mã Đọc Giả");
         jLabel1.setMaximumSize(new java.awt.Dimension(199, 22));
         jLabel1.setMinimumSize(new java.awt.Dimension(199, 22));
         jLabel1.setPreferredSize(new java.awt.Dimension(199, 22));
@@ -381,13 +381,13 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
 
     private void btTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCaActionPerformed
         // TODO add your handling code here:
-         if(manvbus.getList().size()>0)
+         if(madgbus.getList().size()>0)
             table.setModel(model);
     }//GEN-LAST:event_btTatCaActionPerformed
 
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
         // TODO add your handling code here:
-        if(manvbus.getList().isEmpty())
+        if(madgbus.getList().isEmpty())
             return;
         
         String MaNV, HoLot, Ten;
@@ -395,22 +395,22 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
         HoLot=txHoLot.getText();
         Ten=txTen.getText();
         
-        ArrayList<MaNhanVienDTO> res=new ArrayList<MaNhanVienDTO>();
-        res=manvbus.Search(MaNV, HoLot,Ten);
+        ArrayList<MaDocGiaDTO> res=new ArrayList<MaDocGiaDTO>();
+        res=madgbus.Search(MaNV, HoLot,Ten);
         
         if (res.size()==0)
             JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         else{
             Vector header = new Vector();
-            header.add("Mã nhân viên");
+            header.add("Mã đọc giả");
             header.add("Họ lót");
             header.add("Tên");
             resOfSearch = new DefaultTableModel(header, 0);
-            for(MaNhanVienDTO nv: res){
+            for(MaDocGiaDTO dg: res){
                 Vector row=new Vector();
-                row.add(nv.getMaNV());
-                row.add(nv.getHoLot());
-                row.add(nv.getTen());
+                row.add(dg.getHoLot());
+                row.add(dg.getHoLot());
+                row.add(dg.getTen());
                 resOfSearch.addRow(row);
             }
             table.setModel(resOfSearch);
@@ -426,7 +426,7 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
             return;
         }   
         try{
-            QuanLyMuonTra.setMaNV(manvbus.getList().get(i).getMaNV());
+            QuanLyMuonTra.setMaDG(madgbus.getList().get(i).getMaDG());
         }
         catch (Exception ex){
             System.out.println(ex);
@@ -452,30 +452,30 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
 
     private void Onclick() {
         int i = table.getSelectedRow();
-        if (manvbus.getList().size() > 0) {
-            MaNhanVienDTO manv = new MaNhanVienDTO();
-            manv= manvbus.getList().get(i);
+        if (madgbus.getList().size() > 0) {
+            MaDocGiaDTO madg = new MaDocGiaDTO();
+            madg= madgbus.getList().get(i);
             
-           txMa.setText(manv.getMaNV());
-           txHoLot.setText(manv.getHoLot());
-           txTen.setText(manv.getTen());
+           txMa.setText(madg.getMaDG());
+           txHoLot.setText(madg.getHoLot());
+           txTen.setText(madg.getTen());
         }
     }
     public void List() throws Exception{
-        if(manvbus.getList()==null)
-            manvbus.listMaNV();
-        ArrayList<MaNhanVienDTO> listMS= manvbus.getList();
+        if(madgbus.getList()==null)
+            madgbus.listMaDG();
+        ArrayList<MaDocGiaDTO> listMS= madgbus.getList();
         Vector header=new Vector();
-        header.add("Mã Nhân Viên");
+        header.add("Mã Đọc Giả");
          header.add("Họ Lót");
         header.add("Tên");
         if (model.getRowCount() == 0) 
                 model = new DefaultTableModel(header, 0);
-        for(MaNhanVienDTO nv: listMS) {
+        for(MaDocGiaDTO dg: listMS) {
             Vector row=new Vector();
-            row.add(nv.getMaNV());
-            row.add(nv.getHoLot());
-            row.add(nv.getTen());
+            row.add(dg.getMaDG());
+            row.add(dg.getHoLot());
+            row.add(dg.getTen());
             model.addRow(row);
         }
         table.setModel(model);
@@ -497,27 +497,29 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MaNhanVienSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaDocGiaSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MaNhanVienSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaDocGiaSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MaNhanVienSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaDocGiaSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MaNhanVienSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaDocGiaSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               MaNhanVienSelector MaNVSel=new MaNhanVienSelector();
+               MaDocGiaSelector MaDGSel=new MaDocGiaSelector();
                 try {
-                    MaNVSel.List();
+                    MaDGSel.List();
                 } catch (Exception ex) {
-                    Logger.getLogger(MaNhanVienSelector.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MaDocGiaSelector.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                MaNVSel.setVisible(true);
+                MaDGSel.setVisible(true);
             }
         });
     }
