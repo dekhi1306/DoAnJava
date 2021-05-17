@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 17, 2021 lúc 02:15 PM
+-- Thời gian đã tạo: Th5 17, 2021 lúc 02:39 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.1
 
@@ -123,9 +123,7 @@ CREATE TABLE `loiphat` (
 
 CREATE TABLE `nhacungcap` (
   `MaNCC` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `TenNCC` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `dcNCC` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `sdtNCC` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `TenNCC` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
