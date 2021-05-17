@@ -25,6 +25,9 @@ public class MaNhanVienDAO {
             manv.setMaNV(result.getString("MaNV"));
             manv.setHoLot(result.getString("HoLot"));
             manv.setTen(result.getString("Ten"));
+            manv.setNgaySinh(result.getString("NgaySinh"));
+            manv.setDienThoai(result.getString("DienThoai"));
+            manv.setGioiTinh(result.getString("GioiTinh"));
             listMaNhanVien.add(manv);
         }
         return listMaNhanVien;

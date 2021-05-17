@@ -10,16 +10,45 @@ package DTO;
  * @author 01042001
  */
 public class MaNhanVienDTO {
-    private String MaNV,HoLot,Ten;
+    private String MaNV,HoLot,Ten,NgaySinh,DienThoai, GioiTinh;
     public MaNhanVienDTO(){
         
     }
 
-    public MaNhanVienDTO(String MaNV, String HoLot, String Ten) {
+    public MaNhanVienDTO(String MaNV, String HoLot, String Ten, String NgaySinh, String DienThoai, String GioiTinh) {
         this.MaNV = MaNV;
         this.HoLot = HoLot;
         this.Ten = Ten;
+        this.NgaySinh = NgaySinh;
+        this.DienThoai = DienThoai;
+        this.GioiTinh = GioiTinh;
     }
+
+    public String getNgaySinh() {
+        return NgaySinh;
+    }
+
+    public void setNgaySinh(String NgaySinh) {
+        this.NgaySinh = NgaySinh;
+    }
+
+    public String getDienThoai() {
+        return DienThoai;
+    }
+
+    public void setDienThoai(String DienThoai) {
+        this.DienThoai = DienThoai;
+    }
+
+    public String getGioiTinh() {
+        return GioiTinh;
+    }
+
+    public void setGioiTinh(String GioiTinh) {
+        this.GioiTinh = GioiTinh;
+    }
+
+    
     
 
     public String getMaNV() {

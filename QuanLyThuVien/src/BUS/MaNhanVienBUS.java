@@ -23,15 +23,22 @@ public class MaNhanVienBUS {
         ListMaNhanVien = new ArrayList<MaNhanVienDTO>();
         ListMaNhanVien=mnvdao.list();
     }
-   public ArrayList<MaNhanVienDTO> Search(String MaNV, String HoLot, String Ten){
+   public ArrayList<MaNhanVienDTO> Search(String MaNV, String HoLot, String Ten, String NgaySinh, String DienThoai, String GioiTinh){
         ArrayList<MaNhanVienDTO> res=new ArrayList<MaNhanVienDTO>();
-        boolean manv=false, holot=false,ten=false;
+        boolean manv=false, holot=false,ten=false,ngaysinh=false,dienthoai=false,gioitinh=false;
+        String gt;
         if(MaNV.equals(""))
             manv=true;
         if(HoLot.equals(""))
             holot=true;
         if(Ten.equals(""))
             ten=true;
+        if(NgaySinh.equals(""))
+            ngaysinh=true;
+        if(DienThoai.equals(""))
+            dienthoai=true;
+        if(GioiTinh.equals(""))
+            gioitinh=true;
         for(MaNhanVienDTO ms: ListMaNhanVien){
             if(!MaNV.equals(""))
                 manv=(ms.getMaNV().contains(MaNV)) ? true : false;
@@ -39,7 +46,17 @@ public class MaNhanVienBUS {
                 holot=(ms.getHoLot().contains(HoLot)) ? true : false;
             if(!Ten.equals(""))
                 ten=(ms.getTen().contains(Ten)) ? true : false;
-            if(manv && holot && ten)
+            if(!NgaySinh.equals(""))
+                ngaysinh=(ms.getNgaySinh().contains(NgaySinh)) ? true : false;
+            if(!DienThoai.equals(""))
+                dienthoai=(ms.getDienThoai().contains(DienThoai)) ? true : false;
+            if(!GioiTinh.equals("")){
+                if(Integer.parseInt(ms.getGioiTinh())==1){
+                    gt="Nam";
+                }else gt="Nữ";
+                gioitinh=(gt.contains(GioiTinh)) ? true : false;}
+            
+            if(manv && holot && ten && ngaysinh && dienthoai && gioitinh)
                 res.add(ms);
         }
         return res;
