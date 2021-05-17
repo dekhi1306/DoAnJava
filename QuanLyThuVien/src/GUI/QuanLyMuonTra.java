@@ -283,7 +283,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btThem.setBackground(new java.awt.Color(27, 26, 67));
         btThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btThem.setForeground(new java.awt.Color(255, 255, 255));
-        btThem.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-add-32.png")); // NOI18N
         btThem.setText("Thêm");
         btThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -296,7 +295,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXoa.setBackground(new java.awt.Color(27, 26, 67));
         btXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btXoa.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-minus-32.png")); // NOI18N
         btXoa.setText("Xoá");
         btXoa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -309,7 +307,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btSua.setBackground(new java.awt.Color(27, 26, 67));
         btSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btSua.setForeground(new java.awt.Color(255, 255, 255));
-        btSua.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-edit-32.png")); // NOI18N
         btSua.setText("Sửa");
         btSua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -322,7 +319,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btTim.setBackground(new java.awt.Color(27, 26, 67));
         btTim.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btTim.setForeground(new java.awt.Color(255, 255, 255));
-        btTim.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-search-32.png")); // NOI18N
         btTim.setText("Tìm kiếm");
         btTim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTim.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -532,6 +528,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         tbPhieuMuon.setGridColor(new java.awt.Color(255, 255, 255));
         tbPhieuMuon.setMaximumSize(new java.awt.Dimension(2147483647, 250));
         tbPhieuMuon.setRowHeight(30);
+        tbPhieuMuon.setShowGrid(false);
         jScrollPane3.setViewportView(tbPhieuMuon);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -614,7 +611,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btThem1.setBackground(new java.awt.Color(27, 26, 67));
         btThem1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btThem1.setForeground(new java.awt.Color(255, 255, 255));
-        btThem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-add-32.png")); // NOI18N
         btThem1.setText("Thêm");
         btThem1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThem1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -627,7 +623,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXoa1.setBackground(new java.awt.Color(27, 26, 67));
         btXoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXoa1.setForeground(new java.awt.Color(255, 255, 255));
-        btXoa1.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-minus-32.png")); // NOI18N
         btXoa1.setText("Xoá");
         btXoa1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoa1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -640,7 +635,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btSua1.setBackground(new java.awt.Color(27, 26, 67));
         btSua1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btSua1.setForeground(new java.awt.Color(255, 255, 255));
-        btSua1.setIcon(new javax.swing.ImageIcon("C:\\Users\\01042001\\Documents\\NetBeansProjects\\QuanLyThuVien\\iconImages\\QuanLy\\icons8-edit-32.png")); // NOI18N
         btSua1.setText("Sửa");
         btSua1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSua1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);

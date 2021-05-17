@@ -19,6 +19,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -37,7 +38,7 @@ public class QuanLySach extends javax.swing.JFrame {
     
     private DefaultTableModel modelSach = new DefaultTableModel();
     private DefaultTableModel resOfSearch;
-    private int EditOrSearch;
+    private int EditOrSearch=1;
     private SachBUS sachbus=new SachBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
@@ -142,6 +143,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 txMaSachActionPerformed(evt);
             }
         });
+        txMaSach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txMaSachKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,12 +176,22 @@ public class QuanLySach extends javax.swing.JFrame {
                 txDonGiaActionPerformed(evt);
             }
         });
+        txDonGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txDonGiaKeyPressed(evt);
+            }
+        });
 
         txNamXuatBan.setBackground(new java.awt.Color(27, 26, 67));
         txNamXuatBan.setForeground(new java.awt.Color(255, 255, 255));
         txNamXuatBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txNamXuatBanActionPerformed(evt);
+            }
+        });
+        txNamXuatBan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txNamXuatBanKeyPressed(evt);
             }
         });
 
@@ -192,6 +208,11 @@ public class QuanLySach extends javax.swing.JFrame {
         txSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txSoLuongActionPerformed(evt);
+            }
+        });
+        txSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txSoLuongKeyPressed(evt);
             }
         });
 
@@ -265,6 +286,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 txTenSachActionPerformed(evt);
             }
         });
+        txTenSach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txTenSachKeyPressed(evt);
+            }
+        });
 
         btTatCa.setBackground(new java.awt.Color(165, 201, 63));
         btTatCa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -326,6 +352,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 btTLSelActionPerformed(evt);
             }
         });
+        btTLSel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btTLSelKeyPressed(evt);
+            }
+        });
 
         txTacGia.setEditable(false);
         txTacGia.setBackground(new java.awt.Color(27, 26, 67));
@@ -344,6 +375,11 @@ public class QuanLySach extends javax.swing.JFrame {
         btTGSel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btTGSelActionPerformed(evt);
+            }
+        });
+        btTGSel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btTGSelKeyPressed(evt);
             }
         });
 
@@ -366,6 +402,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 btNXBSelActionPerformed(evt);
             }
         });
+        btNXBSel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btNXBSelKeyPressed(evt);
+            }
+        });
 
         lbDash1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbDash1.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,6 +420,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 txNamXuatBanMaxActionPerformed(evt);
             }
         });
+        txNamXuatBanMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txNamXuatBanMaxKeyPressed(evt);
+            }
+        });
 
         lbDash2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbDash2.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,6 +436,11 @@ public class QuanLySach extends javax.swing.JFrame {
         txSoLuongMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txSoLuongMaxActionPerformed(evt);
+            }
+        });
+        txSoLuongMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txSoLuongMaxKeyPressed(evt);
             }
         });
 
@@ -605,11 +656,13 @@ public class QuanLySach extends javax.swing.JFrame {
         btNhapEx.setBackground(new java.awt.Color(27, 26, 67));
         btNhapEx.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btNhapEx.setForeground(new java.awt.Color(255, 255, 255));
+        btNhapEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/import.png"))); // NOI18N
         btNhapEx.setText("Nhập Excel");
 
         btXuatEx.setBackground(new java.awt.Color(27, 26, 67));
         btXuatEx.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXuatEx.setForeground(new java.awt.Color(255, 255, 255));
+        btXuatEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
         btXuatEx.setText("Xuất Excel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -625,7 +678,7 @@ public class QuanLySach extends javax.swing.JFrame {
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
+                        .addGap(323, 323, 323)
                         .addComponent(btNhapEx)
                         .addGap(18, 18, 18)
                         .addComponent(btXuatEx)))
@@ -640,11 +693,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNhapEx)
                     .addComponent(btXuatEx))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -931,6 +984,84 @@ public class QuanLySach extends javax.swing.JFrame {
     private void txDonGiaMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDonGiaMaxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txDonGiaMaxActionPerformed
+
+    private void txMaSachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txMaSachKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btTLSel.requestFocus();
+            btTLSel.doClick();
+        }
+    }//GEN-LAST:event_txMaSachKeyPressed
+
+    private void txTenSachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txTenSachKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            txNamXuatBan.requestFocus();
+    }//GEN-LAST:event_txTenSachKeyPressed
+
+    private void txNamXuatBanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNamXuatBanKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(EditOrSearch!=0)
+                txSoLuong.requestFocus();
+            else
+                txNamXuatBanMax.requestFocus();
+        }
+    }//GEN-LAST:event_txNamXuatBanKeyPressed
+
+    private void txSoLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txSoLuongKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(EditOrSearch!=0)
+                txDonGia.requestFocus();
+            else
+                txSoLuongMax.requestFocus();
+        }
+    }//GEN-LAST:event_txSoLuongKeyPressed
+
+    private void btTLSelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btTLSelKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btTGSel.requestFocus();
+            btTGSel.doClick();
+        }
+    }//GEN-LAST:event_btTLSelKeyPressed
+
+    private void btTGSelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btTGSelKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btNXBSel.requestFocus();
+            btNXBSel.doClick();
+        }
+    }//GEN-LAST:event_btTGSelKeyPressed
+
+    private void btNXBSelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btNXBSelKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txTenSach.requestFocus();
+        }
+    }//GEN-LAST:event_btNXBSelKeyPressed
+
+    private void txNamXuatBanMaxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNamXuatBanMaxKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txSoLuong.requestFocus();
+        }
+    }//GEN-LAST:event_txNamXuatBanMaxKeyPressed
+
+    private void txSoLuongMaxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txSoLuongMaxKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txDonGia.requestFocus();
+        }
+    }//GEN-LAST:event_txSoLuongMaxKeyPressed
+
+    private void txDonGiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txDonGiaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER && EditOrSearch==0){
+            txDonGiaMax.requestFocus();
+        }
+    }//GEN-LAST:event_txDonGiaKeyPressed
 
     public void List() throws Exception{
         if(sachbus.getList()==null)
