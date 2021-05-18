@@ -6,13 +6,9 @@
 package GUI;
 
 import BUS.SachBUS;
-import BUS.TheLoaiBUS;
 import BUS.TacGiaBUS;
 import BUS.NhaXuatBanBUS;
-import DAO.DAO;
-import DTO.NhaXuatBanDTO;
 import DTO.SachDTO;
-import DTO.TacGiaDTO;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,15 +16,38 @@ import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import static java.lang.String.valueOf;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.file;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -658,12 +677,22 @@ public class QuanLySach extends javax.swing.JFrame {
         btNhapEx.setForeground(new java.awt.Color(255, 255, 255));
         btNhapEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/import.png"))); // NOI18N
         btNhapEx.setText("Nhập Excel");
+        btNhapEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNhapExActionPerformed(evt);
+            }
+        });
 
         btXuatEx.setBackground(new java.awt.Color(27, 26, 67));
         btXuatEx.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXuatEx.setForeground(new java.awt.Color(255, 255, 255));
         btXuatEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
         btXuatEx.setText("Xuất Excel");
+        btXuatEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXuatExActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1063,6 +1092,203 @@ public class QuanLySach extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txDonGiaKeyPressed
 
+    private void btXuatExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXuatExActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        int j = chooser.showSaveDialog(chooser);
+        if (JFileChooser.APPROVE_OPTION == j) {
+            File file = chooser.getSelectedFile();
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet();
+
+            XSSFFont font = workbook.createFont();
+            font.setFontHeightInPoints((short) 12);
+            font.setBold(true);
+
+            font.setColor(IndexedColors.BLUE.getIndex());
+
+            // Create a CellStyle with the font
+            XSSFCellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(font);
+
+            // Create a Row
+            XSSFRow headerRow = sheet.createRow(0);
+            String[] columns = {
+                    "Mã sách",
+                    "Tên sách",
+                    "Thể loại",
+                    "Tác giả",
+                    "Nhà xuất bản",
+                    "Năm xuất bản",
+                    "Số lượng",
+                    "Đơn giá"
+            };
+
+            // Create cells
+            for (int i = 0; i < columns.length; i++) {
+                Cell cell = headerRow.createCell(i);
+                cell.setCellValue(columns[i]);
+                cell.setCellStyle(headerCellStyle);
+            }
+
+            // Create Other rows and cells with employees data
+            int rowNum = 1;
+            list();
+            List<SachDTO> listSach = sachbus.getList();
+            for (SachDTO sach : listSach) {
+                XSSFRow row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(sach.getMaSach());
+                row.createCell(1).setCellValue(sach.getTenSach());
+                row.createCell(2).setCellValue(sach.getTheLoai());
+                row.createCell(3).setCellValue(sach.getTacGia());
+                row.createCell(4).setCellValue(sach.getNhaXuatBan());
+                row.createCell(5).setCellValue(sach.getNamXuatBan());
+                row.createCell(6).setCellValue(sach.getSoLuong());
+                row.createCell(7).setCellValue(sach.getDonGia());
+            }
+
+            for (int i = 0; i < columns.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            try{
+                OutputStream os = new FileOutputStream(file + ".xlsx");
+                workbook.write(os);
+                JOptionPane.showMessageDialog(null, "Lưu file thành công!");
+                // Closing stream
+                workbook.close();
+                os.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Lỗi khi lưu file!");
+            }
+        }
+    }//GEN-LAST:event_btXuatExActionPerformed
+
+    private void btNhapExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNhapExActionPerformed
+        // TODO add your handling code here:
+        File excelFile;
+        FileInputStream excelFIS = null;
+        BufferedInputStream excelBIS = null;
+        XSSFWorkbook excelImportToJTable = null;
+        JFileChooser excelFileChooser = new JFileChooser();
+        excelFileChooser.setDialogTitle("Select Excel File");
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
+        excelFileChooser.setFileFilter(fnef);
+        int excelChooser = excelFileChooser.showOpenDialog(null);
+        if (excelChooser == JFileChooser.APPROVE_OPTION) {
+            try {
+                excelFile = excelFileChooser.getSelectedFile();
+                excelFIS = new FileInputStream(excelFile);
+                excelBIS = new BufferedInputStream(excelFIS);
+                excelImportToJTable = new XSSFWorkbook(excelBIS);
+                XSSFSheet excelSheet = excelImportToJTable.getSheetAt(0);
+
+                for (int row = 1; row <= excelSheet.getLastRowNum(); row++) {
+                    XSSFRow excelRow = excelSheet.getRow(row);
+                    String MaSach = excelRow.getCell(0).toString();
+                    String TenSach = excelRow.getCell(1).toString();
+                    String TheLoai = excelRow.getCell(2).toString();
+                    String TacGia = excelRow.getCell(3).toString();
+                    String NhaXuatBan = excelRow.getCell(4).toString();
+                    Cell cell = excelRow.getCell(5);
+                    Object cellValue = getCellValue(cell);
+                    int NamXuatBan = new BigDecimal((double) cellValue).intValue();
+                    cell = excelRow.getCell(6);
+                    cellValue = getCellValue(cell);
+                    int SoLuong = new BigDecimal((double) cellValue).intValue();
+                    cell = excelRow.getCell(7);
+                    cellValue = getCellValue(cell);
+                    int DonGia = new BigDecimal((double) cellValue).intValue();
+
+                    SachDTO sach = new SachDTO();
+                    sach.setMaSach(MaSach);
+                    sach.setTenSach(TenSach);
+                    sach.setTheLoai(TheLoai);
+                    sach.setTacGia(TacGia);
+                    sach.setNhaXuatBan(NhaXuatBan);
+                    sach.setNamXuatBan(NamXuatBan);
+                    sach.setSoLuong(SoLuong);
+                    sach.setDonGia(DonGia);
+                    
+                    sachbus.Add(sach);
+                }
+                JOptionPane.showMessageDialog(null, "Nhập file thành công!");
+            } catch (IOException iOException) {
+                JOptionPane.showMessageDialog(null, iOException.getMessage());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    if (excelFIS != null) {
+                        excelFIS.close();
+                    }
+                    if (excelBIS != null) {
+                        excelBIS.close();
+                    }
+                    if (excelImportToJTable != null) {
+                        excelImportToJTable.close();
+                    }
+                } catch (IOException iOException) {
+                    JOptionPane.showMessageDialog(null, iOException.getMessage());
+                }
+            }
+        }
+        //Dua bang ve trang thai ban dau
+        ArrayList<SachDTO> listSach = sachbus.getList();
+        Vector header=new Vector();
+        header.add("Mã sách");
+        header.add("Tên sách");
+        header.add("Thể loại");
+        header.add("Tác giả");
+        header.add("Nhà xuất bản");
+        header.add("Năm xuất bản");
+        header.add("Số lượng");
+        header.add("Đơn giá");
+        modelSach = new DefaultTableModel(header, 0);
+        for(SachDTO sach: listSach) {
+            Vector row=new Vector();
+            row.add(sach.getMaSach());
+            row.add(sach.getTenSach());
+            row.add(sach.getTheLoai());
+            row.add(sach.getTacGia());
+            row.add(sach.getNhaXuatBan());
+            row.add(sach.getNamXuatBan());
+            row.add(sach.getSoLuong());
+            row.add(sach.getDonGia());
+            modelSach.addRow(row);
+        }
+        tbSach.setModel(modelSach);
+        
+    }//GEN-LAST:event_btNhapExActionPerformed
+    
+    private static Object getCellValue(Cell cell) {
+        CellType cellType = cell.getCellTypeEnum();
+        Object cellValue = null;
+        switch (cellType) {
+        case BOOLEAN:
+            cellValue = cell.getBooleanCellValue();
+            break;
+        case FORMULA:
+            Workbook workbook = cell.getSheet().getWorkbook();
+            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+            cellValue = evaluator.evaluate(cell).getNumberValue();
+            break;
+        case NUMERIC:
+            cellValue = cell.getNumericCellValue();
+            break;
+        case STRING:
+            cellValue = cell.getStringCellValue();
+            break;
+        case _NONE:
+        case BLANK:
+        case ERROR:
+            break;
+        default:
+            break;
+        }
+        return cellValue;
+    }
+    
     public void List() throws Exception{
         if(sachbus.getList()==null)
             sachbus.listSach();

@@ -77,14 +77,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         tbDocGia = new javax.swing.JTable();
         btXacNhan = new javax.swing.JButton();
         btHuy = new javax.swing.JButton();
-<<<<<<< HEAD
         cbTDDG = new javax.swing.JComboBox<>();
         rdNam = new javax.swing.JRadioButton();
         rdNu = new javax.swing.JRadioButton();
-        btNhapEx = new javax.swing.JButton();
-        btXuatEx = new javax.swing.JButton();
-=======
->>>>>>> 539deb5b6a29feb0310d4bdea3f025d6a42a2297
 
         btXoa.setBackground(new java.awt.Color(27, 26, 67));
         btXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -563,205 +558,21 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txMaDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txMaDGActionPerformed
-
-    private void txTenDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTenDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txTenDGActionPerformed
-
-    private void txNSDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNSDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txNSDGActionPerformed
-
-    private void txDCDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDCDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txDCDGActionPerformed
-
-    private void txDTDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDTDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txDTDGActionPerformed
-
-    private void txNNDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNNDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txNNDGActionPerformed
-
-    private void btThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemActionPerformed
-       if(!ValidateThemDocGia())
-            return;
-       
-        DocGiaDTO docgia=new DocGiaDTO();
-        docgia.setMaDocGia(txMaDG.getText());
-        docgia.setHoDocGia(txHoDG.getText());
-        docgia.setTenDocGia(txTenDG.getText());
-        docgia.setNgaysinh(dateFormat.parse(txNSDG.getText()));
-        boolean gioitinh = false;
-        if(rdNam.isSelected()){
-            gioitinh = true;
-        }
-        docgia.setGioiTinh(gioitinh);
-        docgia.setDienthoai(txDTDG.getText());
-        docgia.setDiachi(txDCDG.getText());
-        docgia.setNghenghiep(txNNDG.getText());
-        docgia.setTrinhdo(cbTDDG.getSelectedItem().toString());
-
-        try {
-            docgiabus.Add(docgia);
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        Vector row=new Vector();
-        row.add(docgia.getMaDocGia());
-        row.add(docgia.getHoDocGia());
-        row.add(docgia.getTenDocGia());
-        row.add(docgia.getNgaysinh());
-//        if(docgia.getGioiTinh()==1){
-//               row.add("Nam");
-//            } else row.add("Nữ");
-//        boolean gioitinh = false;
-        if(rdNam.isSelected()){
-            gioitinh = true;
-        }
-        row.add(docgia.getDienthoai());
-        row.add(docgia.getDiachi());
-        row.add(docgia.getNghenghiep());
-        row.add(docgia.getTrinhdo());
-        
-        modelDocGia.addRow(row);
-        
-        tbDocGia.setModel(modelDocGia);
-        
-    }//GEN-LAST:event_btThemActionPerformed
-
     private void btXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaActionPerformed
       
     }//GEN-LAST:event_btXoaActionPerformed
-
-    private void btXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoa1ActionPerformed
-         int i = tbDocGia.getSelectedRow();
-        if(docgiabus.getList().size()>0){
-            try {
-                docgiabus.Remove(docgiabus .getList().get(i).getMaDocGia());
-            } catch (Exception ex) {
-                Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            modelDocGia.removeRow(i);
-            tbDocGia.setModel(modelDocGia);
-            
-            txMaDG.setText("");
-            txHoDG.setText("");
-            txTenDG.setText("");
-            txNSDG.setText("");
-            boolean gioitinh = false;
-            if(rdNam.isSelected()){
-                gioitinh = true;
-            }
-            txDTDG.setText("");
-            txDCDG.setText("");
-            txNNDG.setText("");
-            cbTDDG.setSelectedIndex(0);
-        }
-    }//GEN-LAST:event_btXoa1ActionPerformed
 
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
        
     }//GEN-LAST:event_btTimActionPerformed
 
-    private void btTim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTim1ActionPerformed
-        // TODO add your handling code here:
-        Search();
-    }//GEN-LAST:event_btTim1ActionPerformed
-
     private void btTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCaActionPerformed
      
     }//GEN-LAST:event_btTatCaActionPerformed
 
-    private void btTatCa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCa1ActionPerformed
-        // TODO add your handling code here:
-        if (docgiabus.getList().size()>0)
-        tbDocGia.setModel(modelDocGia);
-    }//GEN-LAST:event_btTatCa1ActionPerformed
-
     private void btTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTaoMoiActionPerformed
        
     }//GEN-LAST:event_btTaoMoiActionPerformed
-
-    private void btTaoMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTaoMoi1ActionPerformed
-        // TODO add your handling code here:
-        if(tbDocGia.isEnabled())
-        txMaDG.setText("");
-        txHoDG.setText("");
-        txTenDG.setText("");
-        txNSDG.setText("");
-        txDCDG.setText("");
-        txDTDG.setText("");
-        txNNDG.setText("");
-        cbTDDG.setSelectedIndex(0);
-        boolean gioitinh = false;
-        if(rdNam.isSelected()){
-            gioitinh = true;
-        }
-    }//GEN-LAST:event_btTaoMoi1ActionPerformed
-
-    private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btDongActionPerformed
-
-    private void txHoDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txHoDGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txHoDGActionPerformed
-
-    private void tbDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDocGiaMouseClicked
-        int i = tbDocGia.getSelectedRow();
-        if (docgiabus.getList().size() > 0) {
-            DocGiaDTO docgia = new DocGiaDTO();
-            docgia = docgiabus.getList().get(i);  
-            txMaDG.setText(docgia.getMaDocGia());
-            txHoDG.setText(docgia.getHoDocGia());
-            txTenDG.setText(docgia.getTenDocGia());
-            txNSDG.setText(docgia.getNgaysinh());
-//            if(docgia.getGioiTinh()==1){
-//               txGioiTinh.setText("Nam");
-//           } else txGioiTinh.setText("Nữ");
-            boolean gioitinh = false;
-            if(rdNam.isSelected()){
-                gioitinh = true;
-            }
-            txDCDG.setText(docgia.getDiachi());
-            txDTDG.setText(docgia.getDienthoai());
-            txNNDG.setText(docgia.getNghenghiep());
-            for(int j=0;j<cbTDDG.getItemCount();j++)
-            if(cbTDDG.getItemAt(j).equals(docgia.getTrinhdo()))
-                    cbTDDG.setSelectedIndex(j);
-        }
-    }//GEN-LAST:event_tbDocGiaMouseClicked
-
-    private void btSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSua1ActionPerformed
-        int i=tbDocGia.getSelectedRow();
-        if(i<0){
-            JOptionPane.showMessageDialog(null, "Chọn độc giả cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        EditOrSearch=1;
-        txMaDG.setEditable(false);
-        tbDocGia.setEnabled(false);
-        btThem.setEnabled(false);
-        btXoa1.setEnabled(false);
-        btTim1.setEnabled(false);
-        btTatCa1.setEnabled(false);
-        btXacNhan.setText("Sửa");
-        btXacNhan.setVisible(true);
-        btHuy.setVisible(true);
-    }//GEN-LAST:event_btSua1ActionPerformed
-
-    private void btXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanActionPerformed
-        // TODO add your handling code here:
-            Edit();
-        
-    }//GEN-LAST:event_btXacNhanActionPerformed
 
     private void btHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyActionPerformed
         // TODO add your handling code here:
@@ -788,6 +599,190 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             btHuy.setVisible(false);
         }
     }//GEN-LAST:event_btHuyActionPerformed
+
+    private void btXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanActionPerformed
+        // TODO add your handling code here:
+        Edit();
+
+    }//GEN-LAST:event_btXacNhanActionPerformed
+
+    private void tbDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDocGiaMouseClicked
+        int i = tbDocGia.getSelectedRow();
+        if (docgiabus.getList().size() > 0) {
+            DocGiaDTO docgia = new DocGiaDTO();
+            docgia = docgiabus.getList().get(i);
+            txMaDG.setText(docgia.getMaDocGia());
+            txHoDG.setText(docgia.getHoDocGia());
+            txTenDG.setText(docgia.getTenDocGia());
+            txNSDG.setText(docgia.getNgaysinh());
+            //            if(docgia.getGioiTinh()==1){
+                //               txGioiTinh.setText("Nam");
+                //           } else txGioiTinh.setText("Nữ");
+            boolean gioitinh = false;
+            if(rdNam.isSelected()){
+                gioitinh = true;
+            }
+            txDCDG.setText(docgia.getDiachi());
+            txDTDG.setText(docgia.getDienthoai());
+            txNNDG.setText(docgia.getNghenghiep());
+            for(int j=0;j<cbTDDG.getItemCount();j++)
+            if(cbTDDG.getItemAt(j).equals(docgia.getTrinhdo()))
+            cbTDDG.setSelectedIndex(j);
+        }
+    }//GEN-LAST:event_tbDocGiaMouseClicked
+
+    private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btDongActionPerformed
+
+    private void btTaoMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTaoMoi1ActionPerformed
+        // TODO add your handling code here:
+        if(tbDocGia.isEnabled())
+        txMaDG.setText("");
+        txHoDG.setText("");
+        txTenDG.setText("");
+        txNSDG.setText("");
+        txDCDG.setText("");
+        txDTDG.setText("");
+        txNNDG.setText("");
+        cbTDDG.setSelectedIndex(0);
+        boolean gioitinh = false;
+        if(rdNam.isSelected()){
+            gioitinh = true;
+        }
+    }//GEN-LAST:event_btTaoMoi1ActionPerformed
+
+    private void btTatCa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCa1ActionPerformed
+        // TODO add your handling code here:
+        if (docgiabus.getList().size()>0)
+        tbDocGia.setModel(modelDocGia);
+    }//GEN-LAST:event_btTatCa1ActionPerformed
+
+    private void btTim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTim1ActionPerformed
+        // TODO add your handling code here:
+        Search();
+    }//GEN-LAST:event_btTim1ActionPerformed
+
+    private void btSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSua1ActionPerformed
+        int i=tbDocGia.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn độc giả cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        EditOrSearch=1;
+        txMaDG.setEditable(false);
+        tbDocGia.setEnabled(false);
+        btThem.setEnabled(false);
+        btXoa1.setEnabled(false);
+        btTim1.setEnabled(false);
+        btTatCa1.setEnabled(false);
+        btXacNhan.setText("Sửa");
+        btXacNhan.setVisible(true);
+        btHuy.setVisible(true);
+    }//GEN-LAST:event_btSua1ActionPerformed
+
+    private void btXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoa1ActionPerformed
+        int i = tbDocGia.getSelectedRow();
+        if(docgiabus.getList().size()>0){
+            try {
+                docgiabus.Remove(docgiabus .getList().get(i).getMaDocGia());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelDocGia.removeRow(i);
+            tbDocGia.setModel(modelDocGia);
+
+            txMaDG.setText("");
+            txHoDG.setText("");
+            txTenDG.setText("");
+            txNSDG.setText("");
+            boolean gioitinh = false;
+            if(rdNam.isSelected()){
+                gioitinh = true;
+            }
+            txDTDG.setText("");
+            txDCDG.setText("");
+            txNNDG.setText("");
+            cbTDDG.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_btXoa1ActionPerformed
+
+    private void btThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemActionPerformed
+        if(!ValidateThemDocGia())
+        return;
+
+        DocGiaDTO docgia=new DocGiaDTO();
+        docgia.setMaDocGia(txMaDG.getText());
+        docgia.setHoDocGia(txHoDG.getText());
+        docgia.setTenDocGia(txTenDG.getText());
+        docgia.setNgaysinh(dateFormat.parse(txNSDG.getText()));
+        boolean gioitinh = false;
+        if(rdNam.isSelected()){
+            gioitinh = true;
+        }
+        docgia.setGioiTinh(gioitinh);
+        docgia.setDienthoai(txDTDG.getText());
+        docgia.setDiachi(txDCDG.getText());
+        docgia.setNghenghiep(txNNDG.getText());
+        docgia.setTrinhdo(cbTDDG.getSelectedItem().toString());
+
+        try {
+            docgiabus.Add(docgia);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(docgia.getMaDocGia());
+        row.add(docgia.getHoDocGia());
+        row.add(docgia.getTenDocGia());
+        row.add(docgia.getNgaysinh());
+        //        if(docgia.getGioiTinh()==1){
+            //               row.add("Nam");
+            //            } else row.add("Nữ");
+        //        boolean gioitinh = false;
+        if(rdNam.isSelected()){
+            gioitinh = true;
+        }
+        row.add(docgia.getDienthoai());
+        row.add(docgia.getDiachi());
+        row.add(docgia.getNghenghiep());
+        row.add(docgia.getTrinhdo());
+
+        modelDocGia.addRow(row);
+
+        tbDocGia.setModel(modelDocGia);
+
+    }//GEN-LAST:event_btThemActionPerformed
+
+    private void txNNDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNNDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txNNDGActionPerformed
+
+    private void txDTDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDTDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txDTDGActionPerformed
+
+    private void txDCDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDCDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txDCDGActionPerformed
+
+    private void txNSDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNSDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txNSDGActionPerformed
+
+    private void txTenDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTenDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txTenDGActionPerformed
+
+    private void txHoDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txHoDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txHoDGActionPerformed
+
+    private void txMaDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaDGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txMaDGActionPerformed
     public void List() throws Exception{
         if(docgiabus.getList()==null)
             docgiabus.listDocGia();
@@ -1036,12 +1031,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton btXacNhan;
     private javax.swing.JButton btXoa;
     private javax.swing.JButton btXoa1;
-<<<<<<< HEAD
-    private javax.swing.JButton btXuatEx;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTDDG;
-=======
->>>>>>> 539deb5b6a29feb0310d4bdea3f025d6a42a2297
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
