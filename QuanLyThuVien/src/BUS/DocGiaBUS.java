@@ -65,7 +65,7 @@ public class DocGiaBUS {
             dc=true;
         if(NgheNghiep.equals(""))
             nghenghiep=true;
-        if(TrinhDo.equals(""))
+        if(TrinhDo.equals("Chọn trình độ"))
             trinhdo=true;
         for(DocGiaDTO ms: ListDocGia){
             if(!MaDG.equals(""))
@@ -82,7 +82,7 @@ public class DocGiaBUS {
                 dc=(ms.getDiachi().contains(DiaChi)) ? true : false;
             if(!NgheNghiep.equals(""))
                 nghenghiep=(ms.getNghenghiep().contains(NgheNghiep)) ? true : false;
-            if(!TrinhDo.equals(""))
+            if(!TrinhDo.equals("Chọn trình độ"))
                 trinhdo=(ms.getTrinhdo().contains(TrinhDo)) ? true : false;
             if(GioiTinh!=-1)
                 gioitinh=(ms.getGioiTinh()==GioiTinh) ? true : false;
