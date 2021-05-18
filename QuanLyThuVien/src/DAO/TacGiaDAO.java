@@ -12,6 +12,7 @@ package DAO;
 import DTO.TacGiaDTO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TacGiaDAO {
     MyConnectUnit connect;
@@ -38,6 +39,24 @@ public class TacGiaDAO {
     
     public ArrayList<TacGiaDTO> list() throws Exception{
         return list(null);
+    }
+    
+    public void Insert(TacGiaDTO tacgia) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        map.put("MaTG", tacgia.getMaTacGia());
+        map.put("TenTG", tacgia.getTenTacGia());
+        this.connect.Insert("tacgia", map);
+    }
+    
+    public void Update(TacGiaDTO tacgia) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        map.put("MaTG", tacgia.getMaTacGia());
+        map.put("TenTG", tacgia.getTenTacGia());
+        this.connect.Update("tacgia", map, "MaTG = '" + tacgia.getMaTacGia() + "'");
+    }
+    
+    public void Delete(String MaTG) throws Exception{
+        this.connect.Delete("tacgia", "MaTG = '" + MaTG + "'" );    
     }
     
     public TacGiaDTO getByID(String id) throws Exception{

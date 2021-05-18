@@ -77,8 +77,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         tbDocGia = new javax.swing.JTable();
         btXacNhan = new javax.swing.JButton();
         btHuy = new javax.swing.JButton();
-        btNhapEx = new javax.swing.JButton();
-        btXuatEx = new javax.swing.JButton();
 
         btXoa.setBackground(new java.awt.Color(27, 26, 67));
         btXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -527,34 +525,15 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         btXacNhan.setVisible(false);
         btHuy.setVisible(false);
 
-        btNhapEx.setBackground(new java.awt.Color(27, 26, 67));
-        btNhapEx.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btNhapEx.setForeground(new java.awt.Color(255, 255, 255));
-        btNhapEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/import.png"))); // NOI18N
-        btNhapEx.setText("Nhập Excel");
-
-        btXuatEx.setBackground(new java.awt.Color(27, 26, 67));
-        btXuatEx.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btXuatEx.setForeground(new java.awt.Color(255, 255, 255));
-        btXuatEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
-        btXuatEx.setText("Xuất Excel");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(btNhapEx)
-                        .addGap(27, 27, 27)
-                        .addComponent(btXuatEx)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -564,11 +543,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btNhapEx)
-                    .addComponent(btXuatEx))
-                .addGap(29, 29, 29))
+                .addGap(76, 76, 76))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -788,8 +763,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         btXoa1.setEnabled(false);
         btTim1.setEnabled(false);
         btTatCa1.setEnabled(false);
-        btNhapEx.setEnabled(false);
-        btXuatEx.setEnabled(false);
         btXacNhan.setText("Sửa");
         btXacNhan.setVisible(true);
         btHuy.setVisible(true);
@@ -814,8 +787,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             btXoa1.setEnabled(true);
             btTim1.setEnabled(true);
             btTatCa1.setEnabled(true);
-            btNhapEx.setEnabled(true);
-            btXuatEx.setEnabled(true);
             btXacNhan.setVisible(false);
             btHuy.setVisible(false);
         }
@@ -826,8 +797,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             btXoa.setEnabled(true);
             btTim.setEnabled(true);
             btTatCa.setEnabled(true);
-            btNhapEx.setEnabled(true);
-            btXuatEx.setEnabled(true);
             btXacNhan.setVisible(false);
             btHuy.setVisible(false);
             btXacNhan.setVisible(false);
@@ -1046,7 +1015,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
-    private javax.swing.JButton btNhapEx;
     private javax.swing.JButton btSua1;
     private javax.swing.JButton btTD;
     private javax.swing.JButton btTaoMoi;
@@ -1059,7 +1027,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton btXacNhan;
     private javax.swing.JButton btXoa;
     private javax.swing.JButton btXoa1;
-    private javax.swing.JButton btXuatEx;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
