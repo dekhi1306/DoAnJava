@@ -924,13 +924,14 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
 
     private void btmasachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmasachActionPerformed
         // TODO add your handling code here:
-        MaSachSelector msselect=new  MaSachSelector();
+        QuanLyMuonTra qlmt=new  QuanLyMuonTra();
         try {
-            msselect.List();
+            qlmt.ListPhieuMuon();
+            qlmt.ListChiTiet();
         } catch (Exception ex) {
             Logger.getLogger(MaSachSelector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        msselect.setVisible(true);
+        qlmt.setVisible(true);
     }//GEN-LAST:event_btmasachActionPerformed
 
     private void btThemCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemCTActionPerformed
@@ -1176,6 +1177,24 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
     }
     public static  void setMaLoiPhat(String MaLoiPhat){
                 txmaloi.setText(MaLoiPhat);
+    }
+    private boolean ValidateThem(){
+        String mapp, mapm, tong;
+        mapp=txMaPP.getText();
+        mapm=txMaPM.getText();
+        tong=txTongTien.getText();
+        if(mapp.equals("") || mapm.equals("") || tong.equals("")){
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        
+        for(PhieuPhatDTO pp: phieuphatbus.getList()){
+            if(mapp.equals(pp.getMaPhieuPhat())){
+                JOptionPane.showMessageDialog(null, "Mã độc giả đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+        }     
+        return true;
     }
     /**
      * @param args the command line arguments
