@@ -20,7 +20,8 @@ public class PhieuPhatDAO {
         connect=DAO.getDAO();
     }
     public ArrayList<PhieuPhatDTO>list(String condition, String OderBY) throws Exception{
-        ResultSet result=this.connect.Select("phieuphat", condition, OderBY);
+        ResultSet result=this.connect.SelectSum();
+        
         ArrayList<PhieuPhatDTO> listphieuphat=new ArrayList<PhieuPhatDTO>();
         while(result.next()){
             PhieuPhatDTO phieuphat=new PhieuPhatDTO();

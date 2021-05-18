@@ -142,7 +142,24 @@ public class MyConnectUnit {
         //Trả danh sách ra ngoài
         return list;
     }
-    
+     public ResultSet SelectSum() throws Exception{
+        ResultSet rs=null;
+        /*
+        SELECT pp.MaPhieuPhat,pp.MaPhieuMuon,tam.TongTienPhat FROM 
+        (SELECT chitietphieuphat.MaPhieuPhat AS PhieuPhat ,SUM(loiphat.TienPhat) AS TongTienPhat 
+        FROM chitietphieuphat, loiphat 
+        WHERE chitietphieuphat.MaLoiPhat=loiphat.MaLoiPhat 
+        GROUP BY chitietphieuphat.MaPhieuPhat) AS tam, phieuphat AS pp WHERE tam.PhieuPhat = pp.MaPhieuPhat
+        */
+        String sql="SELECT pp.MaPhieuPhat,pp.MaPhieuMuon,tam.TongTienPhat FROM "
+                + "(SELECT chitietphieuphat.MaPhieuPhat AS PhieuPhat ,SUM(loiphat.TienPhat) AS TongTienPhat "
+                + "FROM chitietphieuphat, loiphat "
+                + "WHERE chitietphieuphat.MaLoiPhat=loiphat.MaLoiPhat "
+                + "GROUP BY chitietphieuphat.MaPhieuPhat) AS tam, phieuphat AS pp WHERE tam.PhieuPhat = pp.MaPhieuPhat";
+        rs=this.connect.excuteQuery(sql);
+
+        return rs;
+    }
     
 } 
 
