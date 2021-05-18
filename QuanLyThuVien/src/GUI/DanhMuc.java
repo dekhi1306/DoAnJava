@@ -6,10 +6,12 @@
 package GUI;
 
 import BUS.AccountBUS;
+import BUS.NhaCungCapBUS;
 import BUS.NhaXuatBanBUS;
 import BUS.TacGiaBUS;
 import BUS.TheLoaiBUS;
 import DTO.AccountDTO;
+import DTO.NhaCungCapDTO;
 import DTO.NhaXuatBanDTO;
 import DTO.TacGiaDTO;
 import DTO.TheLoaiDTO;
@@ -30,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Lộc
+ * @author Lộc & Vy
  */
 public class DanhMuc extends javax.swing.JFrame {
     
@@ -42,11 +44,14 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel searchNXB;
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
+    private DefaultTableModel modelNCC = new DefaultTableModel();
+    private DefaultTableModel searchNCC;
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
     private AccountBUS actbus=new AccountBUS();
+    private NhaCungCapBUS nccbus=new NhaCungCapBUS();
     
     /**
      * Creates new form DanhMuc
@@ -139,7 +144,7 @@ public class DanhMuc extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txTenNCC = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tbNhaCungCap = new javax.swing.JTable();
+        tbNCC = new javax.swing.JTable();
         btThemNCC = new javax.swing.JButton();
         btSuaNCC = new javax.swing.JButton();
         btXoaNCC = new javax.swing.JButton();
@@ -1107,9 +1112,9 @@ public class DanhMuc extends javax.swing.JFrame {
         txTenNCC.setBackground(new java.awt.Color(27, 26, 67));
         txTenNCC.setForeground(new java.awt.Color(255, 255, 255));
 
-        tbNhaCungCap.setBackground(new java.awt.Color(27, 26, 67));
-        tbNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
-        tbNhaCungCap.setModel(new javax.swing.table.DefaultTableModel(
+        tbNCC.setBackground(new java.awt.Color(27, 26, 67));
+        tbNCC.setForeground(new java.awt.Color(255, 255, 255));
+        tbNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -1129,9 +1134,14 @@ public class DanhMuc extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tbNhaCungCap.setGridColor(new java.awt.Color(255, 255, 255));
-        tbNhaCungCap.setRowHeight(18);
-        jScrollPane5.setViewportView(tbNhaCungCap);
+        tbNCC.setGridColor(new java.awt.Color(255, 255, 255));
+        tbNCC.setRowHeight(18);
+        tbNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNCCMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tbNCC);
 
         btThemNCC.setBackground(new java.awt.Color(27, 26, 67));
         btThemNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1153,6 +1163,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaNCC.setText("Sửa");
         btSuaNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaNCCActionPerformed(evt);
+            }
+        });
 
         btXoaNCC.setBackground(new java.awt.Color(27, 26, 67));
         btXoaNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1161,6 +1176,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaNCC.setText("Xoá");
         btXoaNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaNCCActionPerformed(evt);
+            }
+        });
 
         btTimNCC.setBackground(new java.awt.Color(27, 26, 67));
         btTimNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1169,6 +1189,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNCC.setText("Tìm");
         btTimNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNCCActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1192,21 +1217,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearNCC.setForeground(new java.awt.Color(255, 255, 255));
         btClearNCC.setText("Tạo mới");
+        btClearNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearNCCActionPerformed(evt);
+            }
+        });
 
         btAllNCC.setBackground(new java.awt.Color(165, 201, 63));
         btAllNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllNCC.setForeground(new java.awt.Color(255, 255, 255));
         btAllNCC.setText("Tất cả");
+        btAllNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllNCCActionPerformed(evt);
+            }
+        });
 
         btConfirmNCC.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmNCC.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmNCC.setText("Xác nhận");
+        btConfirmNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmNCCActionPerformed(evt);
+            }
+        });
 
         btCancelNCC.setBackground(new java.awt.Color(206, 81, 80));
         btCancelNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelNCC.setForeground(new java.awt.Color(255, 255, 255));
         btCancelNCC.setText("Huỷ");
+        btCancelNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelNCCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formNhaCungCapLayout = new javax.swing.GroupLayout(formNhaCungCap);
         formNhaCungCap.setLayout(formNhaCungCapLayout);
@@ -1327,6 +1372,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemLP.setText("Thêm");
         btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemLPActionPerformed(evt);
+            }
+        });
 
         btSuaLP.setBackground(new java.awt.Color(27, 26, 67));
         btSuaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1516,7 +1566,28 @@ public class DanhMuc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btThemNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNCCActionPerformed
-        // TODO add your handling code here:
+        position="nhacungcap";
+        if(!validateBtThem())
+        return;
+
+        NhaCungCapDTO ncc=new NhaCungCapDTO();
+
+        ncc.setMaNCC(txMaNCC.getText());
+        ncc.setTenNCC(txTenNCC.getText());
+
+        try {
+            nccbus.Add(ncc);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(ncc.getMaNCC());
+        row.add(ncc.getTenNCC());
+
+        modelNCC.addRow(row);
+
+        tbNCC.setModel(modelNCC);
     }//GEN-LAST:event_btThemNCCActionPerformed
 
     private void btCancelNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNXBActionPerformed
@@ -2143,6 +2214,134 @@ public class DanhMuc extends javax.swing.JFrame {
             tbTaiKhoan.setModel(modelAct);
     }//GEN-LAST:event_btAllTKActionPerformed
 
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btThemLPActionPerformed
+
+    private void btSuaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNCCActionPerformed
+        // TODO add your handling code here:
+        int i=tbNCC.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn nhà cung cấp cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaNCC.setEditable(false);
+        btConfirmNCC.setVisible(true);
+        btCancelNCC.setVisible(true);
+        btThemNCC.setEnabled(false);
+        btXoaNCC.setEnabled(false);
+        btTimNCC.setEnabled(false);
+        btAllNCC.setEnabled(false);
+        tbNCC.setEnabled(false);
+    }//GEN-LAST:event_btSuaNCCActionPerformed
+
+    private void btXoaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaNCCActionPerformed
+        // TODO add your handling code here:
+        int i = tbNCC.getSelectedRow();
+        if(nccbus.getList().size()>0){
+            try {
+                nccbus.Remove(nccbus.getList().get(i).getMaNCC());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNCC.removeRow(i);
+            tbNCC.setModel(modelNCC);
+
+            txMaNCC.setText("");
+            txTenNCC.setText("");
+        }
+    }//GEN-LAST:event_btXoaNCCActionPerformed
+
+    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
+        // TODO add your handling code here:
+        if(nccbus.getList().isEmpty()){
+            return;
+        }
+
+        String MaNCC, TenNCC;
+
+        MaNCC=txMaNCC.getText();
+        TenNCC=txTenNCC.getText();
+
+        ArrayList<NhaCungCapDTO> res=new ArrayList<NhaCungCapDTO>();
+        try {
+            res=nccbus.Search(MaNCC, TenNCC);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà cung cấp");
+            header.add("Tên nhà cung cấp");
+
+            searchNCC = new DefaultTableModel(header, 0);
+            for(NhaCungCapDTO ncc: res){
+                Vector row=new Vector();
+                row.add(ncc.getMaNCC());
+                row.add(ncc.getTenNCC());
+                searchNCC.addRow(row);
+            }
+            tbNCC.setModel(searchNCC);
+        }
+    }//GEN-LAST:event_btTimNCCActionPerformed
+
+    private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
+        if(tbNCC.isEnabled())
+        txMaNCC.setText("");
+        txTenNCC.setText("");
+    }//GEN-LAST:event_btClearNCCActionPerformed
+
+    private void btAllNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNCCActionPerformed
+        // TODO add your handling code here:
+        if (nccbus.getList().size()>0)
+        tbNCC.setModel(modelNCC);
+    }//GEN-LAST:event_btAllNCCActionPerformed
+
+    private void btConfirmNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmNCCActionPerformed
+       int i=tbNCC.getSelectedRow();
+        if(nccbus.getList().size()>0){
+            NhaCungCapDTO ncc=new NhaCungCapDTO();
+
+            ncc.setMaNCC(txMaNCC.getText());
+            ncc.setTenNCC(txTenNCC.getText());
+
+            try {
+                nccbus.Edit(ncc);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelNCC.setValueAt(ncc.getMaNCC(), i, 0);
+            modelNCC.setValueAt(ncc.getTenNCC(), i, 1);
+
+            tbNCC.setModel(modelNCC);
+        }
+    }//GEN-LAST:event_btConfirmNCCActionPerformed
+
+    private void btCancelNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNCCActionPerformed
+        txMaNCC.setEditable(true);
+        btConfirmNCC.setVisible(false);
+        btCancelNCC.setVisible(false);
+        btThemNCC.setEnabled(true);
+        btXoaNCC.setEnabled(true);
+        btTimNCC.setEnabled(true);
+        btAllNCC.setEnabled(true);
+        tbNCC.setEnabled(true);
+    }//GEN-LAST:event_btCancelNCCActionPerformed
+
+    private void tbNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNCCMouseClicked
+        int i = tbNCC.getSelectedRow();
+        if (nccbus.getList().size() > 0) {
+            NhaCungCapDTO ncc = new NhaCungCapDTO();
+            ncc = nccbus.getList().get(i);
+            txMaNCC.setText(ncc.getMaNCC());
+            txTenNCC.setText(ncc.getTenNCC());
+        }
+    }//GEN-LAST:event_tbNCCMouseClicked
+
 
 
     
@@ -2301,7 +2500,23 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbTaiKhoan.setModel(modelAct);
     }
-    
+    public void ListNCC() throws Exception{
+        if(nccbus.getList()==null)
+            nccbus.listNhaCungCap();
+        ArrayList<NhaCungCapDTO> listNCC = nccbus.getList();
+        Vector header=new Vector();
+        header.add("Mã nhà cung cấp");
+        header.add("Tên nhà cung cấp");
+        if (modelNCC.getRowCount() == 0) 
+                modelNCC = new DefaultTableModel(header, 0);
+        for(NhaCungCapDTO ncc: listNCC) {
+            Vector row=new Vector();
+            row.add(ncc.getMaNCC());
+            row.add(ncc.getTenNCC());
+            modelNCC.addRow(row);
+        }
+        tbNCC.setModel(modelNCC);
+    }
     /**
      * @param args the command line arguments
      */
@@ -2338,6 +2553,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
+                    danhmuc.ListNCC();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2433,7 +2649,7 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tbLoiPhat;
-    private javax.swing.JTable tbNhaCungCap;
+    private javax.swing.JTable tbNCC;
     private javax.swing.JTable tbNhaXuatBan;
     private javax.swing.JTable tbTacGia;
     private javax.swing.JTable tbTaiKhoan;
