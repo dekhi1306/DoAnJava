@@ -213,7 +213,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTheLoai.setGridColor(new java.awt.Color(255, 255, 255));
         tbTheLoai.setRowHeight(18);
-        tbTheLoai.setShowGrid(true);
         tbTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbTheLoaiMouseClicked(evt);
@@ -442,7 +441,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTacGia.setGridColor(new java.awt.Color(255, 255, 255));
         tbTacGia.setRowHeight(18);
-        tbTacGia.setShowGrid(true);
         jScrollPane2.setViewportView(tbTacGia);
 
         btThemTG.setBackground(new java.awt.Color(27, 26, 67));
@@ -626,7 +624,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbNhaXuatBan.setGridColor(new java.awt.Color(255, 255, 255));
         tbNhaXuatBan.setRowHeight(18);
-        tbNhaXuatBan.setShowGrid(true);
         jScrollPane3.setViewportView(tbNhaXuatBan);
 
         btThemNXB.setBackground(new java.awt.Color(27, 26, 67));
@@ -810,7 +807,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTaiKhoan.setGridColor(new java.awt.Color(255, 255, 255));
         tbTaiKhoan.setRowHeight(18);
-        tbTaiKhoan.setShowGrid(true);
         jScrollPane4.setViewportView(tbTaiKhoan);
 
         btThemTK.setBackground(new java.awt.Color(27, 26, 67));
@@ -994,7 +990,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbNhaCungCap.setGridColor(new java.awt.Color(255, 255, 255));
         tbNhaCungCap.setRowHeight(18);
-        tbNhaCungCap.setShowGrid(true);
         jScrollPane5.setViewportView(tbNhaCungCap);
 
         btThemNCC.setBackground(new java.awt.Color(27, 26, 67));
@@ -1004,6 +999,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemNCC.setText("Thêm");
         btThemNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemNCCActionPerformed(evt);
+            }
+        });
 
         btSuaNCC.setBackground(new java.awt.Color(27, 26, 67));
         btSuaNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1177,7 +1177,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
-        tbLoiPhat.setShowGrid(true);
         jScrollPane6.setViewportView(tbLoiPhat);
 
         btThemLP.setBackground(new java.awt.Color(27, 26, 67));
@@ -1541,6 +1540,10 @@ public class DanhMuc extends javax.swing.JFrame {
             tbTheLoai.setModel(searchTheLoai);
         }
     }//GEN-LAST:event_btTimTLActionPerformed
+
+    private void btThemNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNCCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btThemNCCActionPerformed
     
     private boolean validateBtThem(){
         switch(position){
