@@ -29,7 +29,7 @@ public class NhaCungCapDAO {
         while(result.next()){
             NhaCungCapDTO nhacungcap=new NhaCungCapDTO();
             nhacungcap.setMaNCC(result.getString("MaNCC"));
-            nhacungcap.setTenNCC(result.getString("TenNhaCungCap"));
+            nhacungcap.setTenNCC(result.getString("TenNCC"));
             listncc.add(nhacungcap);
         }
         return listncc;

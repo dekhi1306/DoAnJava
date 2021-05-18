@@ -399,6 +399,14 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btThongKeActionPerformed
 
     private void btQLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLNhanVienActionPerformed
+        QuanLyNhanVien QLNV=new QuanLyNhanVien();
+            try {     
+                 QLNV.List();
+             } catch (Exception ex) {
+                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            QLNV.setVisible(true);
+                                              
         // TODO add your handling code here:
     }//GEN-LAST:event_btQLNhanVienActionPerformed
 
