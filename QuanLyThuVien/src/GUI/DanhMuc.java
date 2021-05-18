@@ -9,6 +9,8 @@ import BUS.AccountBUS;
 import BUS.NhaXuatBanBUS;
 import BUS.TacGiaBUS;
 import BUS.TheLoaiBUS;
+import BUS.LoiPhatBUS;
+import DTO.LoiPhatDTO;
 import DTO.AccountDTO;
 import DTO.NhaXuatBanDTO;
 import DTO.TacGiaDTO;
@@ -42,12 +44,14 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel searchNXB;
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
+    private DefaultTableModel modelLP = new DefaultTableModel();
+    private DefaultTableModel searchLP;
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
     private AccountBUS actbus=new AccountBUS();
-    
+    private LoiPhatBUS loiphatbus=new LoiPhatBUS();
     /**
      * Creates new form DanhMuc
      */
@@ -1169,6 +1173,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNCC.setText("Tìm");
         btTimNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNCCActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1286,6 +1295,11 @@ public class DanhMuc extends javax.swing.JFrame {
 
         txMaLP.setBackground(new java.awt.Color(27, 26, 67));
         txMaLP.setForeground(new java.awt.Color(255, 255, 255));
+        txMaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txMaLPActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -1318,6 +1332,11 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
+        tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbLoiPhatMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(tbLoiPhat);
 
         btThemLP.setBackground(new java.awt.Color(27, 26, 67));
@@ -1327,6 +1346,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemLP.setText("Thêm");
         btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemLPActionPerformed(evt);
+            }
+        });
 
         btSuaLP.setBackground(new java.awt.Color(27, 26, 67));
         btSuaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1335,6 +1359,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaLP.setText("Sửa");
         btSuaLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaLPActionPerformed(evt);
+            }
+        });
 
         btXoaLP.setBackground(new java.awt.Color(27, 26, 67));
         btXoaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1343,6 +1372,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaLP.setText("Xoá");
         btXoaLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaLPActionPerformed(evt);
+            }
+        });
 
         btTimLP.setBackground(new java.awt.Color(27, 26, 67));
         btTimLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1351,6 +1385,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimLP.setText("Tìm");
         btTimLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimLPActionPerformed(evt);
+            }
+        });
 
         jPanel13.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1374,21 +1413,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearLP.setForeground(new java.awt.Color(255, 255, 255));
         btClearLP.setText("Tạo mới");
+        btClearLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearLPActionPerformed(evt);
+            }
+        });
 
         btAllLP.setBackground(new java.awt.Color(165, 201, 63));
         btAllLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllLP.setForeground(new java.awt.Color(255, 255, 255));
         btAllLP.setText("Tất cả");
+        btAllLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllLPActionPerformed(evt);
+            }
+        });
 
         btConfirmLP.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmLP.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmLP.setText("Xác nhận");
+        btConfirmLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmLPActionPerformed(evt);
+            }
+        });
 
         btCancelLP.setBackground(new java.awt.Color(206, 81, 80));
         btCancelLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelLP.setForeground(new java.awt.Color(255, 255, 255));
         btCancelLP.setText("Huỷ");
+        btCancelLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelLPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formLoiPhatLayout = new javax.swing.GroupLayout(formLoiPhat);
         formLoiPhat.setLayout(formLoiPhatLayout);
@@ -2143,6 +2202,150 @@ public class DanhMuc extends javax.swing.JFrame {
             tbTaiKhoan.setModel(modelAct);
     }//GEN-LAST:event_btAllTKActionPerformed
 
+    private void txMaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaLPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txMaLPActionPerformed
+
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+        // TODO add your handling code here:
+        position="loiphat";
+        if(!validateBtThem())
+        return;
+         LoiPhatDTO loiphat=new LoiPhatDTO();
+
+        loiphat.setMaLoiPhat(txMaLP.getText());
+        loiphat.setTenLoiPhat(txTenLP.getText());
+
+        try {
+            loiphatbus.Add(loiphat);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(loiphat.getMaLoiPhat());
+        row.add(loiphat.getTenLoiPhat());
+
+        modelLP.addRow(row);
+
+        tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_btThemLPActionPerformed
+
+    private void btSuaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaLPActionPerformed
+        // TODO add your handling code here:
+        int i=tbLoiPhat.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn lỗi cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaLP.setEnabled(false);
+        btConfirmLP.setVisible(true);
+        btCancelLP.setVisible(true);
+        btThemLP.setEnabled(false);
+        btXoaLP.setEnabled(false);
+        btTimLP.setEnabled(false);
+        btAllLP.setEnabled(false);
+        tbLoiPhat.setEnabled(false);
+        
+    }//GEN-LAST:event_btSuaLPActionPerformed
+
+    private void btXoaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaLPActionPerformed
+        // TODO add your handling code here:
+        int i = tbLoiPhat.getSelectedRow();
+        if(loiphatbus.getList().size()>0){
+            try {
+                loiphatbus.Remove(loiphatbus.getList().get(i).getMaLoiPhat());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNXB.removeRow(i);
+            tbLoiPhat.setModel(modelLP);
+
+            txMaLP.setText("");
+            txTenLP.setText("");
+        }
+    }//GEN-LAST:event_btXoaLPActionPerformed
+
+    private void btTimLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimLPActionPerformed
+        // TODO add your handling code here:
+        if(loiphatbus.getList().isEmpty())
+            return;
+        
+        String MaLP, TenLP;
+        MaLP=txMaLP.getText();
+        TenLP=txTenLP.getText();
+        
+        ArrayList<LoiPhatDTO> res=new ArrayList<LoiPhatDTO>();
+        res=loiphatbus.Search(MaLP, TenLP);
+        
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã lỗi phạt");
+            header.add("Tên lỗi phạt");
+            searchLP = new DefaultTableModel(header, 0);
+            for(LoiPhatDTO lp: res){
+                Vector row=new Vector();
+                row.add(lp.getMaLoiPhat());
+                row.add(lp.getTenLoiPhat());
+                searchLP.addRow(row);
+            }
+            tbLoiPhat.setModel(searchLP);
+        }
+    }//GEN-LAST:event_btTimLPActionPerformed
+
+    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimNCCActionPerformed
+
+    private void btConfirmLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmLPActionPerformed
+        // TODO add your handling code here:
+        int i=tbLoiPhat.getSelectedRow();
+        if(loiphatbus.getList().size()>0){
+           LoiPhatDTO loiphat=new LoiPhatDTO();
+
+            loiphat.setMaLoiPhat(txMaLP.getText());
+            loiphat.setTenLoiPhat(txTenLP.getText());
+            
+            try {
+                loiphatbus.Edit(loiphat);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelLP.setValueAt(loiphat.getMaLoiPhat(), i, 0);
+            modelLP.setValueAt(loiphat.getTenLoiPhat(), i, 1);
+
+            tbLoiPhat.setModel(modelLP);
+        }
+    }//GEN-LAST:event_btConfirmLPActionPerformed
+
+    private void btCancelLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelLPActionPerformed
+        // TODO add your handling code here:
+        txMaLP.setEditable(true);
+        btConfirmLP.setVisible(false);
+        btCancelLP.setVisible(false);
+        btThemLP.setEnabled(true);
+        btXoaLP.setEnabled(true);
+        btTimLP.setEnabled(true);
+        btAllLP.setEnabled(true);
+        tbLoiPhat.setEnabled(true);
+    }//GEN-LAST:event_btCancelLPActionPerformed
+
+    private void btClearLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearLPActionPerformed
+        // TODO add your handling code here:
+         if(tbLoiPhat.isEnabled())
+            txMaLP.setText("");
+        txTenLP.setText("");
+    }//GEN-LAST:event_btClearLPActionPerformed
+
+    private void btAllLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllLPActionPerformed
+        // TODO add your handling code here:
+          if(loiphatbus.getList().size()>0)
+            tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_btAllLPActionPerformed
+
 
 
     
@@ -2301,7 +2504,34 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbTaiKhoan.setModel(modelAct);
     }
-    
+    public void ListLoiPhat() throws Exception{
+        if(loiphatbus.getList()==null)
+            loiphatbus.listLoiPhat();
+        ArrayList<LoiPhatDTO> listLP = loiphatbus.getList();
+        Vector header=new Vector();
+        header.add("Mã lỗi phạt");
+        header.add("Tên lỗi phạt");
+        if (modelLP.getRowCount() == 0) 
+                modelLP = new DefaultTableModel(header, 0);
+        for(LoiPhatDTO lp: listLP) {
+            Vector row=new Vector();
+            row.add(lp.getMaLoiPhat());
+            row.add(lp.getTenLoiPhat());
+            modelLP.addRow(row);
+        }
+        tbLoiPhat.setModel(modelLP);
+    }
+    public void tbLoiPhatMouseClicked(java.awt.event.ActionEvent evt){
+        int i = tbLoiPhat.getSelectedRow();
+        if (loiphatbus.getList().size() > 0) {
+            LoiPhatDTO loiphat= new LoiPhatDTO();
+            loiphat = loiphatbus.getList().get(i);
+           
+            txMaLP.setText(loiphat.getMaLoiPhat());
+            txTenLP.setText(loiphat.getTenLoiPhat());
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -2338,6 +2568,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
+                    danhmuc.ListLoiPhat();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }

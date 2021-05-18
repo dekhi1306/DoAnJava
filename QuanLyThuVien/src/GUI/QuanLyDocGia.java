@@ -77,14 +77,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         tbDocGia = new javax.swing.JTable();
         btXacNhan = new javax.swing.JButton();
         btHuy = new javax.swing.JButton();
-<<<<<<< HEAD
         cbTDDG = new javax.swing.JComboBox<>();
         rdNam = new javax.swing.JRadioButton();
         rdNu = new javax.swing.JRadioButton();
-        btNhapEx = new javax.swing.JButton();
-        btXuatEx = new javax.swing.JButton();
-=======
->>>>>>> 539deb5b6a29feb0310d4bdea3f025d6a42a2297
 
         btXoa.setBackground(new java.awt.Color(27, 26, 67));
         btXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -595,7 +590,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         docgia.setMaDocGia(txMaDG.getText());
         docgia.setHoDocGia(txHoDG.getText());
         docgia.setTenDocGia(txTenDG.getText());
-        docgia.setNgaysinh(dateFormat.parse(txNSDG.getText()));
+      //  docgia.setNgaysinh(dateFormat.parse(txNSDG.getText()));
         boolean gioitinh = false;
         if(rdNam.isSelected()){
             gioitinh = true;
@@ -847,7 +842,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             dg.setDienthoai(txDTDG.getText());
             dg.setDiachi(txDCDG.getText());
             dg.setNghenghiep(txNNDG.getText());
-            dg.setTrinhdo(cbTDDG.getSelectedIndex(i));
+//            dg.setTrinhdo(cbTDDG.getSelectedIndex(i));
 
             try {
                 docgiabus.Edit(dg);
@@ -906,11 +901,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         Diachi=txDCDG.getText();
         Dienthoai=txDTDG.getText();
         Nghenghiep=txNNDG.getText();
-        Trinhdo=cbTDDG.getSelectedIndex();
+//        Trinhdo=cbTDDG.getSelectedIndex();
 
         ArrayList<DocGiaDTO> res=new ArrayList<DocGiaDTO>();
         try {
-            res=docgiabus.Search(MaDocGia, HoDocGia, TenDocGia, Ngaysinh, GioiTinh, Dienthoai, Diachi, Nghenghiep, Trinhdo);
+  //          res=docgiabus.Search(MaDocGia, HoDocGia, TenDocGia, Ngaysinh, GioiTinh, Dienthoai, Diachi, Nghenghiep, Trinhdo);
         } catch (Exception ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -963,12 +958,12 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         diachi=txDCDG.getText();
         dienthoai=txDTDG.getText();
         nghenghiep=txNNDG.getText();
-        boolean gioitinh;
+//        boolean gioitinh;
         if(rdNam.isSelected()){
-            gioitinh = true;
+//            gioitinh = true;
         }
-        trinhdo=cbTDDG.getSelectedIndex(0);
-        if(madocgia.equals("") || hodocgia.equals("") || tendocgia.equals("") || ngaysinh.equals("") || diachi.equals("") || dienthoai.equals("") || nghenghiep.equals("") || trinhdo.equals("")){
+     //   trinhdo=cbTDDG.getSelectedIndex(0);
+        if(madocgia.equals("") || hodocgia.equals("") || tendocgia.equals("") || ngaysinh.equals("") || diachi.equals("") || dienthoai.equals("") || nghenghiep.equals("") ){
             JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
@@ -1036,12 +1031,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton btXacNhan;
     private javax.swing.JButton btXoa;
     private javax.swing.JButton btXoa1;
-<<<<<<< HEAD
-    private javax.swing.JButton btXuatEx;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTDDG;
-=======
->>>>>>> 539deb5b6a29feb0310d4bdea3f025d6a42a2297
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1066,4 +1057,5 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JTextField txNSDG;
     private javax.swing.JTextField txTenDG;
     // End of variables declaration//GEN-END:variables
+
 }
