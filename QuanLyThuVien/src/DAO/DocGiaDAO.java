@@ -17,14 +17,15 @@ public class DocGiaDAO {
         ArrayList<DocGiaDTO> listDocGia=new ArrayList<DocGiaDTO>();
         while(result.next()){
             DocGiaDTO docgia=new DocGiaDTO();
-            docgia.setMaDocGia(result.getString("MaDocGia"));
-            docgia.setMaDocGia(result.getString("MaDocGia"));
-            docgia.setTenDocGia(result.getString("TenDocGia"));
-            docgia.setNgaysinh(result.getString("Ngaysinh"));
-            docgia.setDiachi(result.getString("Diachi"));
-            docgia.setDienthoai(result.getString("Dienthoai"));
-            docgia.setNghenghiep(result.getString("Nghenghiep"));
-            docgia.setTrinhdo(result.getString("Trinhdo"));
+            docgia.setMaDocGia(result.getString("MaDG"));
+            docgia.setHoDocGia(result.getString("HoLot"));
+            docgia.setTenDocGia(result.getString("Ten"));
+            docgia.setNgaysinh(result.getString("NgaySinh"));
+            docgia.setGioiTinh(result.getBoolean("GioiTinh"));
+            docgia.setDienthoai(result.getString("DienThoai"));
+            docgia.setDiachi(result.getString("DiaChi"));
+            docgia.setNghenghiep(result.getString("NgheNghiep"));
+            docgia.setTrinhdo(result.getString("TrinhDo"));
             listDocGia.add(docgia);
         }
         return listDocGia;
@@ -39,21 +40,21 @@ public class DocGiaDAO {
     }
     
     public DocGiaDTO getByMa(String ma) throws Exception{
-        ArrayList<DocGiaDTO> listDocGia=this.list("MaDocGia = " + "'" + ma + "'");
+        ArrayList<DocGiaDTO> listDocGia=this.list("MaDG = " + "'" + ma + "'");
         if(listDocGia.size()>0)
             return listDocGia.toArray(new DocGiaDTO[listDocGia.size()])[0];
         return null;
     }
     
     public DocGiaDTO getByHo(String ho) throws Exception{
-        ArrayList<DocGiaDTO> listDocGia=this.list("HoDocGia = " + "'" + ho + "'");
+        ArrayList<DocGiaDTO> listDocGia=this.list("HoLot = " + "'" + ho + "'");
         if(listDocGia.size()>0)
             return listDocGia.toArray(new DocGiaDTO[listDocGia.size()])[0];
         return null;
     }
     
     public DocGiaDTO getByTen(String ten) throws Exception{
-        ArrayList<DocGiaDTO> listDocGia=this.list("TenDG = " + "'" + ten + "'");
+        ArrayList<DocGiaDTO> listDocGia=this.list("Ten = " + "'" + ten + "'");
         if(listDocGia.size()>0)
             return listDocGia.toArray(new DocGiaDTO[listDocGia.size()])[0];
         return null;
@@ -62,14 +63,15 @@ public class DocGiaDAO {
     public void Insert(DocGiaDTO docgia) throws Exception{
         HashMap<String, Object> map=new HashMap<String, Object>();
         
-        map.put("MaDocGia", docgia.getMaDocGia());
-        map.put("HoDocGia", docgia.getHoDocGia());
-        map.put("TenDocGia", docgia.getTenDocGia());
-        map.put("Ngaysinh", docgia.getNgaysinh());
-        map.put("Diachi", docgia.getDiachi());
-        map.put("Dienthoai", docgia.getDienthoai());
-        map.put("Nghenghiep", docgia.getNghenghiep());
-        map.put("Trinhdo", docgia.getTrinhdo());
+        map.put("MaDG", docgia.getMaDocGia());
+        map.put("HoLot", docgia.getHoDocGia());
+        map.put("Ten", docgia.getTenDocGia());
+        map.put("NgaySinh", docgia.getNgaysinh());
+        map.put("GioiTinh", docgia.getGioiTinh());
+        map.put("DienThoai", docgia.getDienthoai());
+        map.put("DiaChi", docgia.getDiachi());
+        map.put("NgheNghiep", docgia.getNghenghiep());
+        map.put("TrinhDo", docgia.getTrinhdo());
  
         this.connect.Insert("docgia", map);
     }
@@ -77,20 +79,21 @@ public class DocGiaDAO {
     public void Update(DocGiaDTO docgia) throws Exception{
         HashMap<String, Object> map=new HashMap<String, Object>();
         
-        map.put("MaDocGia", docgia.getMaDocGia());
-        map.put("HoDocGia", docgia.getHoDocGia());
-        map.put("TenDocGia", docgia.getTenDocGia());
-        map.put("Ngaysinh", docgia.getNgaysinh());
-        map.put("Diachi", docgia.getDiachi());
-        map.put("Dienthoai", docgia.getDienthoai());
-        map.put("Nghenghiep", docgia.getNghenghiep());
-        map.put("Trinhdo", docgia.getTrinhdo());
+        map.put("MaDG", docgia.getMaDocGia());
+        map.put("HoLot", docgia.getHoDocGia());
+        map.put("Ten", docgia.getTenDocGia());     
+        map.put("NgaySinh", docgia.getNgaysinh());     
+        map.put("GioiTinh", docgia.getGioiTinh());
+        map.put("DienThoai", docgia.getDienthoai());
+        map.put("DiaChi", docgia.getDiachi());
+        map.put("NgheNghiep", docgia.getNghenghiep());
+        map.put("TrinhDo", docgia.getTrinhdo());
  
-        this.connect.Update("docgia", map, "MaDocGia = '" + docgia.getMaDocGia() + "'");
+        this.connect.Update("docgia", map, "MaDG = '" + docgia.getMaDocGia() + "'");
     }
     
     public void Delete(String MaDocGia) throws Exception{
-        this.connect.Delete("docgia", "MaDocGia = '" + MaDocGia + "'" );    
+        this.connect.Delete("docgia", "MaDG = '" + MaDocGia + "'" );    
     }
 }    
 

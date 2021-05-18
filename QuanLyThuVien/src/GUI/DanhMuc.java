@@ -36,6 +36,8 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
+    private DefaultTableModel modelTacGia = new DefaultTableModel();
+    private DefaultTableModel searchTacGia;
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
@@ -441,6 +443,15 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTacGia.setGridColor(new java.awt.Color(255, 255, 255));
         tbTacGia.setRowHeight(18);
+<<<<<<< HEAD
+=======
+        tbTacGia.setShowGrid(true);
+        tbTacGia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTacGiaMouseClicked(evt);
+            }
+        });
+>>>>>>> 97ec48109f6d6dec8b69799e7a5513fcd4259432
         jScrollPane2.setViewportView(tbTacGia);
 
         btThemTG.setBackground(new java.awt.Color(27, 26, 67));
@@ -450,6 +461,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemTG.setText("Thêm");
         btThemTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemTGActionPerformed(evt);
+            }
+        });
 
         btSuaTG.setBackground(new java.awt.Color(27, 26, 67));
         btSuaTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -458,6 +474,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaTG.setText("Sửa");
         btSuaTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaTGActionPerformed(evt);
+            }
+        });
 
         btXoaTG.setBackground(new java.awt.Color(27, 26, 67));
         btXoaTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -466,6 +487,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaTG.setText("Xoá");
         btXoaTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaTGActionPerformed(evt);
+            }
+        });
 
         btTimTG.setBackground(new java.awt.Color(27, 26, 67));
         btTimTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -474,6 +500,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimTG.setText("Tìm");
         btTimTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimTGActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -497,21 +528,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearTG.setForeground(new java.awt.Color(255, 255, 255));
         btClearTG.setText("Tạo mới");
+        btClearTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearTGActionPerformed(evt);
+            }
+        });
 
         btAllTG.setBackground(new java.awt.Color(165, 201, 63));
         btAllTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllTG.setForeground(new java.awt.Color(255, 255, 255));
         btAllTG.setText("Tất cả");
+        btAllTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllTGActionPerformed(evt);
+            }
+        });
 
         btConfirmTG.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmTG.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmTG.setText("Xác nhận");
+        btConfirmTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmTGActionPerformed(evt);
+            }
+        });
 
         btCancelTG.setBackground(new java.awt.Color(206, 81, 80));
         btCancelTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelTG.setForeground(new java.awt.Color(255, 255, 255));
         btCancelTG.setText("Huỷ");
+        btCancelTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelTGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formTacGiaLayout = new javax.swing.GroupLayout(formTacGia);
         formTacGia.setLayout(formTacGiaLayout);
@@ -1434,7 +1485,6 @@ public class DanhMuc extends javax.swing.JFrame {
             
             txMaTL.setText("");
             txTenTL.setText("");
-        
         }
     }//GEN-LAST:event_btXoaTLActionPerformed
 
@@ -1495,7 +1545,6 @@ public class DanhMuc extends javax.swing.JFrame {
 
             tbTheLoai.setModel(modelTheLoai);
         }
-  
     }//GEN-LAST:event_btConfirmTLActionPerformed
 
     private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
@@ -1541,9 +1590,166 @@ public class DanhMuc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btTimTLActionPerformed
 
+<<<<<<< HEAD
     private void btThemNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNCCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btThemNCCActionPerformed
+=======
+    private void btThemTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTGActionPerformed
+        // TODO add your handling code here:
+        position="tacgia";
+        if(!validateBtThem())
+            return;
+        
+        TacGiaDTO tacgia=new TacGiaDTO();
+        
+        tacgia.setMaTacGia(txMaTG.getText());
+        tacgia.setTenTacGia(txTenTG.getText());
+        
+        try {
+            tacgiabus.Add(tacgia);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Vector row=new Vector();
+        row.add(tacgia.getMaTacGia());
+        row.add(tacgia.getTenTacGia());
+        
+        modelTacGia.addRow(row);
+        
+        tbTacGia.setModel(modelTacGia);
+    }//GEN-LAST:event_btThemTGActionPerformed
+
+    private void tbTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTacGiaMouseClicked
+        // TODO add your handling code here:
+        int i = tbTacGia.getSelectedRow();
+        if (tacgiabus.getList().size() > 0) {
+            TacGiaDTO tacgia = new TacGiaDTO();
+            tacgia = tacgiabus.getList().get(i);
+            txMaTG.setText(tacgia.getMaTacGia());
+            txTenTG.setText(tacgia.getTenTacGia()); 
+        }
+    }//GEN-LAST:event_tbTacGiaMouseClicked
+
+    private void btXoaTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaTGActionPerformed
+        // TODO add your handling code here:
+        int i = tbTacGia.getSelectedRow();
+        if(tacgiabus.getList().size()>0){
+            try {
+                tacgiabus.Remove(tacgiabus.getList().get(i).getMaTacGia());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelTacGia.removeRow(i);
+            tbTacGia.setModel(modelTacGia);
+            
+            txMaTG.setText("");
+            txTenTG.setText("");
+        }
+    }//GEN-LAST:event_btXoaTGActionPerformed
+
+    private void btSuaTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaTGActionPerformed
+        // TODO add your handling code here:
+        int i=tbTacGia.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn tác giả cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaTG.setEditable(false);
+        btConfirmTG.setVisible(true);
+        btCancelTG.setVisible(true);
+        btThemTG.setEnabled(false);
+        btXoaTG.setEnabled(false);
+        btTimTG.setEnabled(false);
+        btAllTG.setEnabled(false);
+        tbTacGia.setEnabled(false);
+    }//GEN-LAST:event_btSuaTGActionPerformed
+
+    private void btConfirmTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTGActionPerformed
+        // TODO add your handling code here:
+        int i=tbTacGia.getSelectedRow();
+        if(tacgiabus.getList().size()>0){
+            TacGiaDTO tacgia=new TacGiaDTO();
+
+            tacgia.setMaTacGia(txMaTG.getText());
+            tacgia.setTenTacGia(txTenTG.getText());
+            
+            try {
+                tacgiabus.Edit(tacgia);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelTacGia.setValueAt(tacgia.getMaTacGia(), i, 0);
+            modelTacGia.setValueAt(tacgia.getTenTacGia(), i, 1);
+            
+            tbTacGia.setModel(modelTacGia);
+        }
+    }//GEN-LAST:event_btConfirmTGActionPerformed
+
+    private void btCancelTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTGActionPerformed
+        // TODO add your handling code here:
+        txMaTG.setEditable(true);
+        btConfirmTG.setVisible(false);
+        btCancelTG.setVisible(false);
+        btThemTG.setEnabled(true);
+        btXoaTG.setEnabled(true);
+        btTimTG.setEnabled(true);
+        btAllTG.setEnabled(true);
+        tbTacGia.setEnabled(true);
+    }//GEN-LAST:event_btCancelTGActionPerformed
+
+    private void btClearTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTGActionPerformed
+        // TODO add your handling code here:
+        if(tbTacGia.isEnabled())
+            txMaTG.setText("");
+        txTenTG.setText("");
+    }//GEN-LAST:event_btClearTGActionPerformed
+
+    private void btTimTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTGActionPerformed
+        // TODO add your handling code here:
+        if(tacgiabus.getList().isEmpty()){
+            return;
+        }
+
+        String MaTG, TenTG;
+
+
+        MaTG=txMaTG.getText();
+        TenTG=txTenTG.getText();
+        
+        ArrayList<TacGiaDTO> res=new ArrayList<TacGiaDTO>();
+        try {
+            res=tacgiabus.Search(MaTG, TenTG);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã tác giả");
+            header.add("Tên tác giả");
+            
+            searchTacGia = new DefaultTableModel(header, 0);
+            for(TacGiaDTO tg: res){
+                Vector row=new Vector();
+                row.add(tg.getMaTacGia());
+                row.add(tg.getTenTacGia());
+                searchTacGia.addRow(row);
+            }
+            tbTacGia.setModel(searchTacGia);
+        }
+    }//GEN-LAST:event_btTimTGActionPerformed
+
+    private void btAllTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTGActionPerformed
+        // TODO add your handling code here:
+        if (tacgiabus.getList().size()>0)
+            tbTacGia.setModel(modelTacGia);
+    }//GEN-LAST:event_btAllTGActionPerformed
+>>>>>>> 97ec48109f6d6dec8b69799e7a5513fcd4259432
     
     private boolean validateBtThem(){
         switch(position){
@@ -1647,6 +1853,24 @@ public class DanhMuc extends javax.swing.JFrame {
         tbTheLoai.setModel(modelTheLoai);
     }
     
+    public void ListTacGia() throws Exception{
+        if(tacgiabus.getList()==null)
+            tacgiabus.listTacGia();
+        ArrayList<TacGiaDTO> listTG = tacgiabus.getList();
+        Vector header=new Vector();
+        header.add("Mã tác giả");
+        header.add("Tên tác giả");
+        if (modelTacGia.getRowCount() == 0) 
+                modelTacGia = new DefaultTableModel(header, 0);
+        for(TacGiaDTO tacgia: listTG) {
+            Vector row=new Vector();
+            row.add(tacgia.getMaTacGia());
+            row.add(tacgia.getTenTacGia());
+            modelTacGia.addRow(row);
+        }
+        tbTacGia.setModel(modelTacGia);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1680,6 +1904,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 DanhMuc danhmuc=new DanhMuc();
                 try {
                     danhmuc.ListTheLoai();
+                    danhmuc.ListTacGia();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -10,23 +10,22 @@ public class DocGiaDTO {
     private String HoDocGia;
     private String TenDocGia;
     private String Ngaysinh;
-    private String Diachi;
+    private boolean GioiTinh;
     private String Dienthoai;
+    private String Diachi;
     private String Nghenghiep;
     private String Trinhdo;
     
     public DocGiaDTO(){
         
     }
-    public DocGiaDTO(String MaDocGia, String HoDocGia,String TenDocGia, String Ngaysinh, String Diachi, String Dienthoai, String Nghenghiep, String Trinhdo){
-        this.MaDocGia = MaDocGia;
-        this.HoDocGia = HoDocGia;
-        this.TenDocGia = TenDocGia;
-        this.Ngaysinh = Ngaysinh; 
-        this.Diachi = Diachi;
-        this.Dienthoai = Dienthoai;
-        this.Nghenghiep = Nghenghiep;
-        this.Trinhdo = Trinhdo; 
+
+    public boolean getGioiTinh() {
+        return GioiTinh;
+    }
+
+    public void setGioiTinh(boolean GioiTinh) {
+        this.GioiTinh = GioiTinh;
     }
 
     public String getMaDocGia() {

@@ -454,11 +454,11 @@ public class DanhSachQuyDinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i=table.getSelectedRow();
         if(i<0){
-            JOptionPane.showMessageDialog(null, "Chưa chọn thể loại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Chưa chọn lỗi phạt", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }   
+        }
         try{
-            //Danh.setTheLoai(loiphatbus.getList().get(i).getTenTheLoai());
+            QuanLyPhieuPhat.setMaLoiPhat(loiphatbus.getList().get(i).getMaLoiPhat());
         }
         catch (Exception ex){
             System.out.println(ex);
