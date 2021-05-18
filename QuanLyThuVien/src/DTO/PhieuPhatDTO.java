@@ -11,7 +11,7 @@ package DTO;
  */
 public class PhieuPhatDTO {
      private String MaPhieuMuon;
-    private String MaPieuPhat;
+    private String MaPhieuPhat;
     private int TongTien;
     
     public PhieuPhatDTO(){
@@ -26,12 +26,12 @@ public class PhieuPhatDTO {
         this.MaPhieuMuon = MaPhieuMuon;
     }
 
-    public String getMaPieuPhat() {
-        return MaPieuPhat;
+    public String getMaPhieuPhat() {
+        return MaPhieuPhat;
     }
 
-    public void setMaPieuPhat(String MaPieuPhat) {
-        this.MaPieuPhat = MaPieuPhat;
+    public void setMaPhieuPhat(String MaPieuPhat) {
+        this.MaPhieuPhat = MaPieuPhat;
     }
 
     public int getTongTien() {
