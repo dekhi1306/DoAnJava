@@ -1,6 +1,8 @@
 
 package DTO;
 
+import java.util.Date;
+
 /**
  *
  * @author ASUS
@@ -9,7 +11,7 @@ public class DocGiaDTO {
     private String MaDocGia;
     private String HoDocGia;
     private String TenDocGia;
-    private String Ngaysinh;
+    private Date Ngaysinh;
     private boolean GioiTinh;
     private String Dienthoai;
     private String Diachi;

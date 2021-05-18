@@ -6,10 +6,14 @@
 package GUI;
 
 import BUS.AccountBUS;
+import BUS.NhaCungCapBUS;
 import BUS.NhaXuatBanBUS;
 import BUS.TacGiaBUS;
 import BUS.TheLoaiBUS;
+import BUS.LoiPhatBUS;
+import DTO.LoiPhatDTO;
 import DTO.AccountDTO;
+import DTO.NhaCungCapDTO;
 import DTO.NhaXuatBanDTO;
 import DTO.TacGiaDTO;
 import DTO.TheLoaiDTO;
@@ -30,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Lộc
+ * @author Lộc & Vy
  */
 public class DanhMuc extends javax.swing.JFrame {
     
@@ -42,12 +46,24 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel searchNXB;
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
+<<<<<<< HEAD
+    private DefaultTableModel modelLP = new DefaultTableModel();
+    private DefaultTableModel searchLP;
+=======
+    private DefaultTableModel modelNCC = new DefaultTableModel();
+    private DefaultTableModel searchNCC;
+>>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
     private AccountBUS actbus=new AccountBUS();
+<<<<<<< HEAD
+    private LoiPhatBUS loiphatbus=new LoiPhatBUS();
+=======
+    private NhaCungCapBUS nccbus=new NhaCungCapBUS();
     
+>>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
     /**
      * Creates new form DanhMuc
      */
@@ -139,7 +155,7 @@ public class DanhMuc extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txTenNCC = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tbNhaCungCap = new javax.swing.JTable();
+        tbNCC = new javax.swing.JTable();
         btThemNCC = new javax.swing.JButton();
         btSuaNCC = new javax.swing.JButton();
         btXoaNCC = new javax.swing.JButton();
@@ -1107,9 +1123,9 @@ public class DanhMuc extends javax.swing.JFrame {
         txTenNCC.setBackground(new java.awt.Color(27, 26, 67));
         txTenNCC.setForeground(new java.awt.Color(255, 255, 255));
 
-        tbNhaCungCap.setBackground(new java.awt.Color(27, 26, 67));
-        tbNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
-        tbNhaCungCap.setModel(new javax.swing.table.DefaultTableModel(
+        tbNCC.setBackground(new java.awt.Color(27, 26, 67));
+        tbNCC.setForeground(new java.awt.Color(255, 255, 255));
+        tbNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -1129,9 +1145,14 @@ public class DanhMuc extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tbNhaCungCap.setGridColor(new java.awt.Color(255, 255, 255));
-        tbNhaCungCap.setRowHeight(18);
-        jScrollPane5.setViewportView(tbNhaCungCap);
+        tbNCC.setGridColor(new java.awt.Color(255, 255, 255));
+        tbNCC.setRowHeight(18);
+        tbNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNCCMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tbNCC);
 
         btThemNCC.setBackground(new java.awt.Color(27, 26, 67));
         btThemNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1153,6 +1174,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaNCC.setText("Sửa");
         btSuaNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaNCCActionPerformed(evt);
+            }
+        });
 
         btXoaNCC.setBackground(new java.awt.Color(27, 26, 67));
         btXoaNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1161,6 +1187,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaNCC.setText("Xoá");
         btXoaNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaNCCActionPerformed(evt);
+            }
+        });
 
         btTimNCC.setBackground(new java.awt.Color(27, 26, 67));
         btTimNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1169,6 +1200,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNCC.setText("Tìm");
         btTimNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNCCActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1192,21 +1228,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearNCC.setForeground(new java.awt.Color(255, 255, 255));
         btClearNCC.setText("Tạo mới");
+        btClearNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearNCCActionPerformed(evt);
+            }
+        });
 
         btAllNCC.setBackground(new java.awt.Color(165, 201, 63));
         btAllNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllNCC.setForeground(new java.awt.Color(255, 255, 255));
         btAllNCC.setText("Tất cả");
+        btAllNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllNCCActionPerformed(evt);
+            }
+        });
 
         btConfirmNCC.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmNCC.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmNCC.setText("Xác nhận");
+        btConfirmNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmNCCActionPerformed(evt);
+            }
+        });
 
         btCancelNCC.setBackground(new java.awt.Color(206, 81, 80));
         btCancelNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelNCC.setForeground(new java.awt.Color(255, 255, 255));
         btCancelNCC.setText("Huỷ");
+        btCancelNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelNCCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formNhaCungCapLayout = new javax.swing.GroupLayout(formNhaCungCap);
         formNhaCungCap.setLayout(formNhaCungCapLayout);
@@ -1286,6 +1342,11 @@ public class DanhMuc extends javax.swing.JFrame {
 
         txMaLP.setBackground(new java.awt.Color(27, 26, 67));
         txMaLP.setForeground(new java.awt.Color(255, 255, 255));
+        txMaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txMaLPActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -1318,6 +1379,11 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
+        tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbLoiPhatMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(tbLoiPhat);
 
         btThemLP.setBackground(new java.awt.Color(27, 26, 67));
@@ -1327,6 +1393,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemLP.setText("Thêm");
         btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemLPActionPerformed(evt);
+            }
+        });
 
         btSuaLP.setBackground(new java.awt.Color(27, 26, 67));
         btSuaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1335,6 +1406,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaLP.setText("Sửa");
         btSuaLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaLPActionPerformed(evt);
+            }
+        });
 
         btXoaLP.setBackground(new java.awt.Color(27, 26, 67));
         btXoaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1343,6 +1419,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaLP.setText("Xoá");
         btXoaLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaLPActionPerformed(evt);
+            }
+        });
 
         btTimLP.setBackground(new java.awt.Color(27, 26, 67));
         btTimLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1351,6 +1432,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimLP.setText("Tìm");
         btTimLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimLPActionPerformed(evt);
+            }
+        });
 
         jPanel13.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1374,21 +1460,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearLP.setForeground(new java.awt.Color(255, 255, 255));
         btClearLP.setText("Tạo mới");
+        btClearLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearLPActionPerformed(evt);
+            }
+        });
 
         btAllLP.setBackground(new java.awt.Color(165, 201, 63));
         btAllLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllLP.setForeground(new java.awt.Color(255, 255, 255));
         btAllLP.setText("Tất cả");
+        btAllLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllLPActionPerformed(evt);
+            }
+        });
 
         btConfirmLP.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmLP.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmLP.setText("Xác nhận");
+        btConfirmLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmLPActionPerformed(evt);
+            }
+        });
 
         btCancelLP.setBackground(new java.awt.Color(206, 81, 80));
         btCancelLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelLP.setForeground(new java.awt.Color(255, 255, 255));
         btCancelLP.setText("Huỷ");
+        btCancelLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelLPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formLoiPhatLayout = new javax.swing.GroupLayout(formLoiPhat);
         formLoiPhat.setLayout(formLoiPhatLayout);
@@ -1516,7 +1622,28 @@ public class DanhMuc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btThemNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNCCActionPerformed
-        // TODO add your handling code here:
+        position="nhacungcap";
+        if(!validateBtThem())
+        return;
+
+        NhaCungCapDTO ncc=new NhaCungCapDTO();
+
+        ncc.setMaNCC(txMaNCC.getText());
+        ncc.setTenNCC(txTenNCC.getText());
+
+        try {
+            nccbus.Add(ncc);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(ncc.getMaNCC());
+        row.add(ncc.getTenNCC());
+
+        modelNCC.addRow(row);
+
+        tbNCC.setModel(modelNCC);
     }//GEN-LAST:event_btThemNCCActionPerformed
 
     private void btCancelNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNXBActionPerformed
@@ -2143,6 +2270,280 @@ public class DanhMuc extends javax.swing.JFrame {
             tbTaiKhoan.setModel(modelAct);
     }//GEN-LAST:event_btAllTKActionPerformed
 
+<<<<<<< HEAD
+    private void txMaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaLPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txMaLPActionPerformed
+
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+        // TODO add your handling code here:
+        position="loiphat";
+        if(!validateBtThem())
+        return;
+         LoiPhatDTO loiphat=new LoiPhatDTO();
+
+        loiphat.setMaLoiPhat(txMaLP.getText());
+        loiphat.setTenLoiPhat(txTenLP.getText());
+
+        try {
+            loiphatbus.Add(loiphat);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(loiphat.getMaLoiPhat());
+        row.add(loiphat.getTenLoiPhat());
+
+        modelLP.addRow(row);
+
+        tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_btThemLPActionPerformed
+
+    private void btSuaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaLPActionPerformed
+        // TODO add your handling code here:
+        int i=tbLoiPhat.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn lỗi cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaLP.setEnabled(false);
+        btConfirmLP.setVisible(true);
+        btCancelLP.setVisible(true);
+        btThemLP.setEnabled(false);
+        btXoaLP.setEnabled(false);
+        btTimLP.setEnabled(false);
+        btAllLP.setEnabled(false);
+        tbLoiPhat.setEnabled(false);
+        
+    }//GEN-LAST:event_btSuaLPActionPerformed
+
+    private void btXoaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaLPActionPerformed
+        // TODO add your handling code here:
+        int i = tbLoiPhat.getSelectedRow();
+        if(loiphatbus.getList().size()>0){
+            try {
+                loiphatbus.Remove(loiphatbus.getList().get(i).getMaLoiPhat());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNXB.removeRow(i);
+            tbLoiPhat.setModel(modelLP);
+
+            txMaLP.setText("");
+            txTenLP.setText("");
+        }
+    }//GEN-LAST:event_btXoaLPActionPerformed
+
+    private void btTimLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimLPActionPerformed
+        // TODO add your handling code here:
+        if(loiphatbus.getList().isEmpty())
+            return;
+        
+        String MaLP, TenLP;
+        MaLP=txMaLP.getText();
+        TenLP=txTenLP.getText();
+        
+        ArrayList<LoiPhatDTO> res=new ArrayList<LoiPhatDTO>();
+        res=loiphatbus.Search(MaLP, TenLP);
+        
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã lỗi phạt");
+            header.add("Tên lỗi phạt");
+            searchLP = new DefaultTableModel(header, 0);
+            for(LoiPhatDTO lp: res){
+                Vector row=new Vector();
+                row.add(lp.getMaLoiPhat());
+                row.add(lp.getTenLoiPhat());
+                searchLP.addRow(row);
+            }
+            tbLoiPhat.setModel(searchLP);
+        }
+    }//GEN-LAST:event_btTimLPActionPerformed
+
+    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimNCCActionPerformed
+
+    private void btConfirmLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmLPActionPerformed
+        // TODO add your handling code here:
+        int i=tbLoiPhat.getSelectedRow();
+        if(loiphatbus.getList().size()>0){
+           LoiPhatDTO loiphat=new LoiPhatDTO();
+
+            loiphat.setMaLoiPhat(txMaLP.getText());
+            loiphat.setTenLoiPhat(txTenLP.getText());
+            
+            try {
+                loiphatbus.Edit(loiphat);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelLP.setValueAt(loiphat.getMaLoiPhat(), i, 0);
+            modelLP.setValueAt(loiphat.getTenLoiPhat(), i, 1);
+
+            tbLoiPhat.setModel(modelLP);
+        }
+    }//GEN-LAST:event_btConfirmLPActionPerformed
+
+    private void btCancelLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelLPActionPerformed
+        // TODO add your handling code here:
+        txMaLP.setEditable(true);
+        btConfirmLP.setVisible(false);
+        btCancelLP.setVisible(false);
+        btThemLP.setEnabled(true);
+        btXoaLP.setEnabled(true);
+        btTimLP.setEnabled(true);
+        btAllLP.setEnabled(true);
+        tbLoiPhat.setEnabled(true);
+    }//GEN-LAST:event_btCancelLPActionPerformed
+
+    private void btClearLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearLPActionPerformed
+        // TODO add your handling code here:
+         if(tbLoiPhat.isEnabled())
+            txMaLP.setText("");
+        txTenLP.setText("");
+    }//GEN-LAST:event_btClearLPActionPerformed
+
+    private void btAllLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllLPActionPerformed
+        // TODO add your handling code here:
+          if(loiphatbus.getList().size()>0)
+            tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_btAllLPActionPerformed
+=======
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btThemLPActionPerformed
+
+    private void btSuaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNCCActionPerformed
+        // TODO add your handling code here:
+        int i=tbNCC.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn nhà cung cấp cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaNCC.setEditable(false);
+        btConfirmNCC.setVisible(true);
+        btCancelNCC.setVisible(true);
+        btThemNCC.setEnabled(false);
+        btXoaNCC.setEnabled(false);
+        btTimNCC.setEnabled(false);
+        btAllNCC.setEnabled(false);
+        tbNCC.setEnabled(false);
+    }//GEN-LAST:event_btSuaNCCActionPerformed
+
+    private void btXoaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaNCCActionPerformed
+        // TODO add your handling code here:
+        int i = tbNCC.getSelectedRow();
+        if(nccbus.getList().size()>0){
+            try {
+                nccbus.Remove(nccbus.getList().get(i).getMaNCC());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNCC.removeRow(i);
+            tbNCC.setModel(modelNCC);
+
+            txMaNCC.setText("");
+            txTenNCC.setText("");
+        }
+    }//GEN-LAST:event_btXoaNCCActionPerformed
+
+    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
+        // TODO add your handling code here:
+        if(nccbus.getList().isEmpty()){
+            return;
+        }
+
+        String MaNCC, TenNCC;
+
+        MaNCC=txMaNCC.getText();
+        TenNCC=txTenNCC.getText();
+
+        ArrayList<NhaCungCapDTO> res=new ArrayList<NhaCungCapDTO>();
+        try {
+            res=nccbus.Search(MaNCC, TenNCC);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà cung cấp");
+            header.add("Tên nhà cung cấp");
+
+            searchNCC = new DefaultTableModel(header, 0);
+            for(NhaCungCapDTO ncc: res){
+                Vector row=new Vector();
+                row.add(ncc.getMaNCC());
+                row.add(ncc.getTenNCC());
+                searchNCC.addRow(row);
+            }
+            tbNCC.setModel(searchNCC);
+        }
+    }//GEN-LAST:event_btTimNCCActionPerformed
+
+    private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
+        if(tbNCC.isEnabled())
+        txMaNCC.setText("");
+        txTenNCC.setText("");
+    }//GEN-LAST:event_btClearNCCActionPerformed
+
+    private void btAllNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNCCActionPerformed
+        // TODO add your handling code here:
+        if (nccbus.getList().size()>0)
+        tbNCC.setModel(modelNCC);
+    }//GEN-LAST:event_btAllNCCActionPerformed
+
+    private void btConfirmNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmNCCActionPerformed
+       int i=tbNCC.getSelectedRow();
+        if(nccbus.getList().size()>0){
+            NhaCungCapDTO ncc=new NhaCungCapDTO();
+
+            ncc.setMaNCC(txMaNCC.getText());
+            ncc.setTenNCC(txTenNCC.getText());
+
+            try {
+                nccbus.Edit(ncc);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelNCC.setValueAt(ncc.getMaNCC(), i, 0);
+            modelNCC.setValueAt(ncc.getTenNCC(), i, 1);
+
+            tbNCC.setModel(modelNCC);
+        }
+    }//GEN-LAST:event_btConfirmNCCActionPerformed
+
+    private void btCancelNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNCCActionPerformed
+        txMaNCC.setEditable(true);
+        btConfirmNCC.setVisible(false);
+        btCancelNCC.setVisible(false);
+        btThemNCC.setEnabled(true);
+        btXoaNCC.setEnabled(true);
+        btTimNCC.setEnabled(true);
+        btAllNCC.setEnabled(true);
+        tbNCC.setEnabled(true);
+    }//GEN-LAST:event_btCancelNCCActionPerformed
+
+    private void tbNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNCCMouseClicked
+        int i = tbNCC.getSelectedRow();
+        if (nccbus.getList().size() > 0) {
+            NhaCungCapDTO ncc = new NhaCungCapDTO();
+            ncc = nccbus.getList().get(i);
+            txMaNCC.setText(ncc.getMaNCC());
+            txTenNCC.setText(ncc.getTenNCC());
+        }
+    }//GEN-LAST:event_tbNCCMouseClicked
+>>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
+
 
 
     
@@ -2301,7 +2702,53 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbTaiKhoan.setModel(modelAct);
     }
-    
+<<<<<<< HEAD
+    public void ListLoiPhat() throws Exception{
+        if(loiphatbus.getList()==null)
+            loiphatbus.listLoiPhat();
+        ArrayList<LoiPhatDTO> listLP = loiphatbus.getList();
+        Vector header=new Vector();
+        header.add("Mã lỗi phạt");
+        header.add("Tên lỗi phạt");
+        if (modelLP.getRowCount() == 0) 
+                modelLP = new DefaultTableModel(header, 0);
+        for(LoiPhatDTO lp: listLP) {
+            Vector row=new Vector();
+            row.add(lp.getMaLoiPhat());
+            row.add(lp.getTenLoiPhat());
+            modelLP.addRow(row);
+        }
+        tbLoiPhat.setModel(modelLP);
+    }
+    public void tbLoiPhatMouseClicked(java.awt.event.ActionEvent evt){
+        int i = tbLoiPhat.getSelectedRow();
+        if (loiphatbus.getList().size() > 0) {
+            LoiPhatDTO loiphat= new LoiPhatDTO();
+            loiphat = loiphatbus.getList().get(i);
+           
+            txMaLP.setText(loiphat.getMaLoiPhat());
+            txTenLP.setText(loiphat.getTenLoiPhat());
+            
+        }
+=======
+    public void ListNCC() throws Exception{
+        if(nccbus.getList()==null)
+            nccbus.listNhaCungCap();
+        ArrayList<NhaCungCapDTO> listNCC = nccbus.getList();
+        Vector header=new Vector();
+        header.add("Mã nhà cung cấp");
+        header.add("Tên nhà cung cấp");
+        if (modelNCC.getRowCount() == 0) 
+                modelNCC = new DefaultTableModel(header, 0);
+        for(NhaCungCapDTO ncc: listNCC) {
+            Vector row=new Vector();
+            row.add(ncc.getMaNCC());
+            row.add(ncc.getTenNCC());
+            modelNCC.addRow(row);
+        }
+        tbNCC.setModel(modelNCC);
+>>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
+    }
     /**
      * @param args the command line arguments
      */
@@ -2338,6 +2785,11 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
+<<<<<<< HEAD
+                    danhmuc.ListLoiPhat();
+=======
+                    danhmuc.ListNCC();
+>>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2433,7 +2885,7 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tbLoiPhat;
-    private javax.swing.JTable tbNhaCungCap;
+    private javax.swing.JTable tbNCC;
     private javax.swing.JTable tbNhaXuatBan;
     private javax.swing.JTable tbTacGia;
     private javax.swing.JTable tbTaiKhoan;

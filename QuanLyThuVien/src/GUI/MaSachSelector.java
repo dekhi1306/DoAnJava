@@ -400,8 +400,7 @@ public class MaSachSelector extends javax.swing.JFrame {
             return;
         }   
         try{
-            //QuanLyMuonTra.setMaSach(masachbus.getList().get(i).getMaSach());
-            QuanLyPhieuPhat.setMaSach(masachbus.getList().get(i).getMaSach());
+            QuanLyMuonTra.setMaSach(masachbus.getList().get(i).getMaSach());
         }
         catch (Exception ex){
             System.out.println(ex);
