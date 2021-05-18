@@ -12,6 +12,7 @@ package DAO;
 import DTO.AccountDTO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AccountDAO {
     MyConnectUnit connect;
@@ -40,5 +41,22 @@ public class AccountDAO {
         return list(null);
     }
     
+    public void Insert(AccountDTO act) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        map.put("username", act.getUsername());
+        map.put("password", act.getPassword());
+        this.connect.Insert("account", map);
+    }
+    
+    public void Update(AccountDTO act) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        map.put("username", act.getUsername());
+        map.put("password", act.getPassword());
+        this.connect.Update("account", map, "username = '" + act.getUsername() + "'");
+    }
+    
+    public void Delete(String username) throws Exception{
+        this.connect.Delete("account", "username = '" + username + "'" );    
+    }
     
 }

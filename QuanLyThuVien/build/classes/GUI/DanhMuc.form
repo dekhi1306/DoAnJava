@@ -90,7 +90,7 @@
                       <Component id="formLoiPhat" max="32767" attributes="0"/>
                       <Component id="formTaiKhoan" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1446,6 +1446,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbTaiKhoanMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1467,6 +1470,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btThemTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btSuaTK">
               <Properties>
@@ -1486,6 +1492,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSuaTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btXoaTK">
               <Properties>
@@ -1505,6 +1514,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btXoaTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btTimTK">
               <Properties>
@@ -1524,6 +1536,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btTimTKActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel9">
               <Properties>
@@ -1575,6 +1590,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#x1ea1;o m&#x1edb;i"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btClearTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btAllTK">
               <Properties>
@@ -1589,6 +1607,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#x1ea5;t c&#x1ea3;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAllTKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btConfirmTK">
               <Properties>
@@ -1603,6 +1624,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btConfirmTKActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btConfirmTK.setVisible(false);"/>
               </AuxValues>
@@ -1620,6 +1644,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hu&#x1ef7;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelTKActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btCancelTK.setVisible(false);"/>
               </AuxValues>
