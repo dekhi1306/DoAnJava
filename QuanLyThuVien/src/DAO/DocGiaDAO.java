@@ -21,7 +21,7 @@ public class DocGiaDAO {
             docgia.setHoDocGia(result.getString("HoLot"));
             docgia.setTenDocGia(result.getString("Ten"));
             docgia.setNgaysinh(result.getString("NgaySinh"));
-            docgia.setGioiTinh(result.getBoolean("GioiTinh"));
+            docgia.setGioiTinh(result.getInt("GioiTinh"));
             docgia.setDienthoai(result.getString("DienThoai"));
             docgia.setDiachi(result.getString("DiaChi"));
             docgia.setNghenghiep(result.getString("NgheNghiep"));
