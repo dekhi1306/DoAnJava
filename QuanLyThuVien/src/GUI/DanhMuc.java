@@ -36,11 +36,17 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
+    private DefaultTableModel modelTacGia = new DefaultTableModel();
+    private DefaultTableModel searchTacGia;
+    private DefaultTableModel modelNXB = new DefaultTableModel();
+    private DefaultTableModel searchNXB;
+    private DefaultTableModel modelAct = new DefaultTableModel();
+    private DefaultTableModel searchAct;
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
-    private AccountBUS accountbus=new AccountBUS();
+    private AccountBUS actbus=new AccountBUS();
     
     /**
      * Creates new form DanhMuc
@@ -213,7 +219,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTheLoai.setGridColor(new java.awt.Color(255, 255, 255));
         tbTheLoai.setRowHeight(18);
-        tbTheLoai.setShowGrid(true);
         tbTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbTheLoaiMouseClicked(evt);
@@ -442,7 +447,11 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTacGia.setGridColor(new java.awt.Color(255, 255, 255));
         tbTacGia.setRowHeight(18);
-        tbTacGia.setShowGrid(true);
+        tbTacGia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTacGiaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbTacGia);
 
         btThemTG.setBackground(new java.awt.Color(27, 26, 67));
@@ -452,6 +461,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemTG.setText("Thêm");
         btThemTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemTGActionPerformed(evt);
+            }
+        });
 
         btSuaTG.setBackground(new java.awt.Color(27, 26, 67));
         btSuaTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -460,6 +474,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaTG.setText("Sửa");
         btSuaTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaTGActionPerformed(evt);
+            }
+        });
 
         btXoaTG.setBackground(new java.awt.Color(27, 26, 67));
         btXoaTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -468,6 +487,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaTG.setText("Xoá");
         btXoaTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaTGActionPerformed(evt);
+            }
+        });
 
         btTimTG.setBackground(new java.awt.Color(27, 26, 67));
         btTimTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -476,6 +500,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimTG.setText("Tìm");
         btTimTG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimTG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimTGActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -499,21 +528,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearTG.setForeground(new java.awt.Color(255, 255, 255));
         btClearTG.setText("Tạo mới");
+        btClearTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearTGActionPerformed(evt);
+            }
+        });
 
         btAllTG.setBackground(new java.awt.Color(165, 201, 63));
         btAllTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllTG.setForeground(new java.awt.Color(255, 255, 255));
         btAllTG.setText("Tất cả");
+        btAllTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllTGActionPerformed(evt);
+            }
+        });
 
         btConfirmTG.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmTG.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmTG.setText("Xác nhận");
+        btConfirmTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmTGActionPerformed(evt);
+            }
+        });
 
         btCancelTG.setBackground(new java.awt.Color(206, 81, 80));
         btCancelTG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelTG.setForeground(new java.awt.Color(255, 255, 255));
         btCancelTG.setText("Huỷ");
+        btCancelTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelTGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formTacGiaLayout = new javax.swing.GroupLayout(formTacGia);
         formTacGia.setLayout(formTacGiaLayout);
@@ -626,7 +675,11 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbNhaXuatBan.setGridColor(new java.awt.Color(255, 255, 255));
         tbNhaXuatBan.setRowHeight(18);
-        tbNhaXuatBan.setShowGrid(true);
+        tbNhaXuatBan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNhaXuatBanMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbNhaXuatBan);
 
         btThemNXB.setBackground(new java.awt.Color(27, 26, 67));
@@ -636,6 +689,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemNXB.setText("Thêm");
         btThemNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemNXBActionPerformed(evt);
+            }
+        });
 
         btSuaNXB.setBackground(new java.awt.Color(27, 26, 67));
         btSuaNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -644,6 +702,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaNXB.setText("Sửa");
         btSuaNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaNXBActionPerformed(evt);
+            }
+        });
 
         btXoaNXB.setBackground(new java.awt.Color(27, 26, 67));
         btXoaNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -652,6 +715,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaNXB.setText("Xoá");
         btXoaNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaNXBActionPerformed(evt);
+            }
+        });
 
         btTimNXB.setBackground(new java.awt.Color(27, 26, 67));
         btTimNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -660,6 +728,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNXB.setText("Tìm");
         btTimNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNXBActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -683,21 +756,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearNXB.setForeground(new java.awt.Color(255, 255, 255));
         btClearNXB.setText("Tạo mới");
+        btClearNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearNXBActionPerformed(evt);
+            }
+        });
 
         btAllNXB.setBackground(new java.awt.Color(165, 201, 63));
         btAllNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllNXB.setForeground(new java.awt.Color(255, 255, 255));
         btAllNXB.setText("Tất cả");
+        btAllNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllNXBActionPerformed(evt);
+            }
+        });
 
         btConfirmNXB.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmNXB.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmNXB.setText("Xác nhận");
+        btConfirmNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmNXBActionPerformed(evt);
+            }
+        });
 
         btCancelNXB.setBackground(new java.awt.Color(206, 81, 80));
         btCancelNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelNXB.setForeground(new java.awt.Color(255, 255, 255));
         btCancelNXB.setText("Huỷ");
+        btCancelNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelNXBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formNhaXuatBanLayout = new javax.swing.GroupLayout(formNhaXuatBan);
         formNhaXuatBan.setLayout(formNhaXuatBanLayout);
@@ -810,7 +903,11 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbTaiKhoan.setGridColor(new java.awt.Color(255, 255, 255));
         tbTaiKhoan.setRowHeight(18);
-        tbTaiKhoan.setShowGrid(true);
+        tbTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTaiKhoanMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tbTaiKhoan);
 
         btThemTK.setBackground(new java.awt.Color(27, 26, 67));
@@ -820,6 +917,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemTK.setText("Thêm");
         btThemTK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemTK.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemTKActionPerformed(evt);
+            }
+        });
 
         btSuaTK.setBackground(new java.awt.Color(27, 26, 67));
         btSuaTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -828,6 +930,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaTK.setText("Sửa");
         btSuaTK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaTK.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaTKActionPerformed(evt);
+            }
+        });
 
         btXoaTK.setBackground(new java.awt.Color(27, 26, 67));
         btXoaTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -836,6 +943,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaTK.setText("Xoá");
         btXoaTK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaTK.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaTKActionPerformed(evt);
+            }
+        });
 
         btTimTK.setBackground(new java.awt.Color(27, 26, 67));
         btTimTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -844,6 +956,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimTK.setText("Tìm");
         btTimTK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimTK.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimTKActionPerformed(evt);
+            }
+        });
 
         jPanel9.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -867,21 +984,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearTK.setForeground(new java.awt.Color(255, 255, 255));
         btClearTK.setText("Tạo mới");
+        btClearTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearTKActionPerformed(evt);
+            }
+        });
 
         btAllTK.setBackground(new java.awt.Color(165, 201, 63));
         btAllTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllTK.setForeground(new java.awt.Color(255, 255, 255));
         btAllTK.setText("Tất cả");
+        btAllTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllTKActionPerformed(evt);
+            }
+        });
 
         btConfirmTK.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmTK.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmTK.setText("Xác nhận");
+        btConfirmTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmTKActionPerformed(evt);
+            }
+        });
 
         btCancelTK.setBackground(new java.awt.Color(206, 81, 80));
         btCancelTK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelTK.setForeground(new java.awt.Color(255, 255, 255));
         btCancelTK.setText("Huỷ");
+        btCancelTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelTKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formTaiKhoanLayout = new javax.swing.GroupLayout(formTaiKhoan);
         formTaiKhoan.setLayout(formTaiKhoanLayout);
@@ -994,7 +1131,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbNhaCungCap.setGridColor(new java.awt.Color(255, 255, 255));
         tbNhaCungCap.setRowHeight(18);
-        tbNhaCungCap.setShowGrid(true);
         jScrollPane5.setViewportView(tbNhaCungCap);
 
         btThemNCC.setBackground(new java.awt.Color(27, 26, 67));
@@ -1004,6 +1140,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemNCC.setText("Thêm");
         btThemNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemNCCActionPerformed(evt);
+            }
+        });
 
         btSuaNCC.setBackground(new java.awt.Color(27, 26, 67));
         btSuaNCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1177,7 +1318,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
-        tbLoiPhat.setShowGrid(true);
         jScrollPane6.setViewportView(tbLoiPhat);
 
         btThemLP.setBackground(new java.awt.Color(27, 26, 67));
@@ -1356,7 +1496,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     .addComponent(formNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(formLoiPhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(formTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGap(100, 100, 100))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1375,51 +1515,400 @@ public class DanhMuc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbTheLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTheLoaiMouseClicked
+    private void btThemNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNCCActionPerformed
         // TODO add your handling code here:
-        int i = tbTheLoai.getSelectedRow();
-        if (theloaibus.getList().size() > 0) {
-            TheLoaiDTO theloai = new TheLoaiDTO();
-            theloai = theloaibus.getList().get(i);
-           
-            txMaTL.setText(theloai.getMaTheLoai());
-            txTenTL.setText(theloai.getTenTheLoai());
-            
+    }//GEN-LAST:event_btThemNCCActionPerformed
+
+    private void btCancelNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNXBActionPerformed
+        // TODO add your handling code here:
+        txMaNXB.setEditable(true);
+        btConfirmNXB.setVisible(false);
+        btCancelNXB.setVisible(false);
+        btThemNXB.setEnabled(true);
+        btXoaNXB.setEnabled(true);
+        btTimNXB.setEnabled(true);
+        btAllNXB.setEnabled(true);
+        tbNhaXuatBan.setEnabled(true);
+    }//GEN-LAST:event_btCancelNXBActionPerformed
+
+    private void btConfirmNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmNXBActionPerformed
+        // TODO add your handling code here:
+        int i=tbNhaXuatBan.getSelectedRow();
+        if(nxbbus.getList().size()>0){
+            NhaXuatBanDTO nxb=new NhaXuatBanDTO();
+
+            nxb.setMaNXB(txMaNXB.getText());
+            nxb.setTenNXB(txTenNXB.getText());
+
+            try {
+                nxbbus.Edit(nxb);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelNXB.setValueAt(nxb.getMaNXB(), i, 0);
+            modelNXB.setValueAt(nxb.getTenNXB(), i, 1);
+
+            tbNhaXuatBan.setModel(modelNXB);
         }
-    }//GEN-LAST:event_tbTheLoaiMouseClicked
+    }//GEN-LAST:event_btConfirmNXBActionPerformed
+
+    private void btAllNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNXBActionPerformed
+        // TODO add your handling code here:
+        if (nxbbus.getList().size()>0)
+            tbNhaXuatBan.setModel(modelNXB);
+    }//GEN-LAST:event_btAllNXBActionPerformed
+
+    private void btClearNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNXBActionPerformed
+        // TODO add your handling code here:
+        if(tbNhaXuatBan.isEnabled())
+            txMaNXB.setText("");
+        txTenNXB.setText("");
+    }//GEN-LAST:event_btClearNXBActionPerformed
+
+    private void btTimNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNXBActionPerformed
+        // TODO add your handling code here:
+        if(nxbbus.getList().isEmpty()){
+            return;
+        }
+
+        String MaNXB, TenNXB;
+
+        MaNXB=txMaNXB.getText();
+        TenNXB=txTenNXB.getText();
+
+        ArrayList<NhaXuatBanDTO> res=new ArrayList<NhaXuatBanDTO>();
+        try {
+            res=nxbbus.Search(MaNXB, TenNXB);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà xuất bản");
+            header.add("Tên nhà xuất bản");
+
+            searchNXB = new DefaultTableModel(header, 0);
+            for(NhaXuatBanDTO nxb: res){
+                Vector row=new Vector();
+                row.add(nxb.getMaNXB());
+                row.add(nxb.getTenNXB());
+                searchNXB.addRow(row);
+            }
+            tbNhaXuatBan.setModel(searchNXB);
+        }
+    }//GEN-LAST:event_btTimNXBActionPerformed
+
+    private void btXoaNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaNXBActionPerformed
+        // TODO add your handling code here:
+        int i = tbNhaXuatBan.getSelectedRow();
+        if(nxbbus.getList().size()>0){
+            try {
+                nxbbus.Remove(nxbbus.getList().get(i).getMaNXB());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNXB.removeRow(i);
+            tbNhaXuatBan.setModel(modelNXB);
+
+            txMaNXB.setText("");
+            txTenNXB.setText("");
+        }
+    }//GEN-LAST:event_btXoaNXBActionPerformed
+
+    private void btSuaNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNXBActionPerformed
+        // TODO add your handling code here:
+        int i=tbNhaXuatBan.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn nhà xuất bản cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaNXB.setEditable(false);
+        btConfirmNXB.setVisible(true);
+        btCancelNXB.setVisible(true);
+        btThemNXB.setEnabled(false);
+        btXoaNXB.setEnabled(false);
+        btTimNXB.setEnabled(false);
+        btAllNXB.setEnabled(false);
+        tbNhaXuatBan.setEnabled(false);
+    }//GEN-LAST:event_btSuaNXBActionPerformed
+
+    private void btThemNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNXBActionPerformed
+        // TODO add your handling code here:
+        position="nhaxuatban";
+        if(!validateBtThem())
+        return;
+
+        NhaXuatBanDTO nxb=new NhaXuatBanDTO();
+
+        nxb.setMaNXB(txMaNXB.getText());
+        nxb.setTenNXB(txTenNXB.getText());
+
+        try {
+            nxbbus.Add(nxb);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(nxb.getMaNXB());
+        row.add(nxb.getTenNXB());
+
+        modelNXB.addRow(row);
+
+        tbNhaXuatBan.setModel(modelNXB);
+    }//GEN-LAST:event_btThemNXBActionPerformed
+
+    private void tbNhaXuatBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhaXuatBanMouseClicked
+        // TODO add your handling code here:
+        int i = tbNhaXuatBan.getSelectedRow();
+        if (nxbbus.getList().size() > 0) {
+            NhaXuatBanDTO nxb = new NhaXuatBanDTO();
+            nxb = nxbbus.getList().get(i);
+            txMaNXB.setText(nxb.getMaNXB());
+            txTenNXB.setText(nxb.getTenNXB());
+        }
+    }//GEN-LAST:event_tbNhaXuatBanMouseClicked
+
+    private void btCancelTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTGActionPerformed
+        // TODO add your handling code here:
+        txMaTG.setEditable(true);
+        btConfirmTG.setVisible(false);
+        btCancelTG.setVisible(false);
+        btThemTG.setEnabled(true);
+        btXoaTG.setEnabled(true);
+        btTimTG.setEnabled(true);
+        btAllTG.setEnabled(true);
+        tbTacGia.setEnabled(true);
+    }//GEN-LAST:event_btCancelTGActionPerformed
+
+    private void btConfirmTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTGActionPerformed
+        // TODO add your handling code here:
+        int i=tbTacGia.getSelectedRow();
+        if(tacgiabus.getList().size()>0){
+            TacGiaDTO tacgia=new TacGiaDTO();
+
+            tacgia.setMaTacGia(txMaTG.getText());
+            tacgia.setTenTacGia(txTenTG.getText());
+
+            try {
+                tacgiabus.Edit(tacgia);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelTacGia.setValueAt(tacgia.getMaTacGia(), i, 0);
+            modelTacGia.setValueAt(tacgia.getTenTacGia(), i, 1);
+
+            tbTacGia.setModel(modelTacGia);
+        }
+    }//GEN-LAST:event_btConfirmTGActionPerformed
+
+    private void btAllTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTGActionPerformed
+        // TODO add your handling code here:
+        if (tacgiabus.getList().size()>0)
+        tbTacGia.setModel(modelTacGia);
+    }//GEN-LAST:event_btAllTGActionPerformed
+
+    private void btClearTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTGActionPerformed
+        // TODO add your handling code here:
+        if(tbTacGia.isEnabled())
+        txMaTG.setText("");
+        txTenTG.setText("");
+    }//GEN-LAST:event_btClearTGActionPerformed
+
+    private void btTimTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTGActionPerformed
+        // TODO add your handling code here:
+        if(tacgiabus.getList().isEmpty()){
+            return;
+        }
+
+        String MaTG, TenTG;
+
+        MaTG=txMaTG.getText();
+        TenTG=txTenTG.getText();
+
+        ArrayList<TacGiaDTO> res=new ArrayList<TacGiaDTO>();
+        try {
+            res=tacgiabus.Search(MaTG, TenTG);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã tác giả");
+            header.add("Tên tác giả");
+
+            searchTacGia = new DefaultTableModel(header, 0);
+            for(TacGiaDTO tg: res){
+                Vector row=new Vector();
+                row.add(tg.getMaTacGia());
+                row.add(tg.getTenTacGia());
+                searchTacGia.addRow(row);
+            }
+            tbTacGia.setModel(searchTacGia);
+        }
+    }//GEN-LAST:event_btTimTGActionPerformed
+
+    private void btXoaTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaTGActionPerformed
+        // TODO add your handling code here:
+        int i = tbTacGia.getSelectedRow();
+        if(tacgiabus.getList().size()>0){
+            try {
+                tacgiabus.Remove(tacgiabus.getList().get(i).getMaTacGia());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelTacGia.removeRow(i);
+            tbTacGia.setModel(modelTacGia);
+
+            txMaTG.setText("");
+            txTenTG.setText("");
+        }
+    }//GEN-LAST:event_btXoaTGActionPerformed
+
+    private void btSuaTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaTGActionPerformed
+        // TODO add your handling code here:
+        int i=tbTacGia.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn tác giả cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaTG.setEditable(false);
+        btConfirmTG.setVisible(true);
+        btCancelTG.setVisible(true);
+        btThemTG.setEnabled(false);
+        btXoaTG.setEnabled(false);
+        btTimTG.setEnabled(false);
+        btAllTG.setEnabled(false);
+        tbTacGia.setEnabled(false);
+    }//GEN-LAST:event_btSuaTGActionPerformed
+
+    private void btThemTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTGActionPerformed
+        // TODO add your handling code here:
+        position="tacgia";
+        if(!validateBtThem())
+        return;
+
+        TacGiaDTO tacgia=new TacGiaDTO();
+
+        tacgia.setMaTacGia(txMaTG.getText());
+        tacgia.setTenTacGia(txTenTG.getText());
+
+        try {
+            tacgiabus.Add(tacgia);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(tacgia.getMaTacGia());
+        row.add(tacgia.getTenTacGia());
+
+        modelTacGia.addRow(row);
+
+        tbTacGia.setModel(modelTacGia);
+    }//GEN-LAST:event_btThemTGActionPerformed
+
+    private void tbTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTacGiaMouseClicked
+        // TODO add your handling code here:
+        int i = tbTacGia.getSelectedRow();
+        if (tacgiabus.getList().size() > 0) {
+            TacGiaDTO tacgia = new TacGiaDTO();
+            tacgia = tacgiabus.getList().get(i);
+            txMaTG.setText(tacgia.getMaTacGia());
+            txTenTG.setText(tacgia.getTenTacGia());
+        }
+    }//GEN-LAST:event_tbTacGiaMouseClicked
+
+    private void btCancelTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTLActionPerformed
+        // TODO add your handling code here:
+        txMaTL.setEditable(true);
+        btConfirmTL.setVisible(false);
+        btCancelTL.setVisible(false);
+        btThemTL.setEnabled(true);
+        btXoaTL.setEnabled(true);
+        btTimTL.setEnabled(true);
+        btAllTL.setEnabled(true);
+        tbTheLoai.setEnabled(true);
+    }//GEN-LAST:event_btCancelTLActionPerformed
+
+    private void btConfirmTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTLActionPerformed
+        // TODO add your handling code here:
+        int i=tbTheLoai.getSelectedRow();
+        if(theloaibus.getList().size()>0){
+            TheLoaiDTO theloai=new TheLoaiDTO();
+
+            theloai.setMaTheLoai(txMaTL.getText());
+            theloai.setTenTheLoai(txTenTL.getText());
+
+            try {
+                theloaibus.Edit(theloai);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelTheLoai.setValueAt(theloai.getMaTheLoai(), i, 0);
+            modelTheLoai.setValueAt(theloai.getTenTheLoai(), i, 1);
+
+            tbTheLoai.setModel(modelTheLoai);
+        }
+    }//GEN-LAST:event_btConfirmTLActionPerformed
+
+    private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
+        // TODO add your handling code here:
+        if (theloaibus.getList().size()>0)
+        tbTheLoai.setModel(modelTheLoai);
+    }//GEN-LAST:event_btAllTLActionPerformed
 
     private void btClearTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTLActionPerformed
         // TODO add your handling code here:
         if(tbTheLoai.isEnabled())
-            txMaTL.setText("");
+        txMaTL.setText("");
         txTenTL.setText("");
     }//GEN-LAST:event_btClearTLActionPerformed
 
-    private void btThemTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTLActionPerformed
+    private void btTimTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTLActionPerformed
         // TODO add your handling code here:
-        position="theloai";
-        if(!validateBtThem())
+        if(theloaibus.getList().isEmpty()){
             return;
-        
-        TheLoaiDTO theloai=new TheLoaiDTO();
-        
-        theloai.setMaTheLoai(txMaTL.getText());
-        theloai.setTenTheLoai(txTenTL.getText());
-        
+        }
+
+        String MaTL, TenTL;
+
+        MaTL=txMaTL.getText();
+        TenTL=txTenTL.getText();
+
+        ArrayList<TheLoaiDTO> res=new ArrayList<TheLoaiDTO>();
         try {
-            theloaibus.Add(theloai);
+            res=theloaibus.Search(MaTL, TenTL);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Vector row=new Vector();
-        row.add(theloai.getMaTheLoai());
-        row.add(theloai.getTenTheLoai());
-        
-        modelTheLoai.addRow(row);
-        
-        tbTheLoai.setModel(modelTheLoai);
-    }//GEN-LAST:event_btThemTLActionPerformed
+
+        if (res.size()==0)
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã thể loại");
+            header.add("Tên thể loại");
+
+            searchTheLoai = new DefaultTableModel(header, 0);
+            for(TheLoaiDTO tl: res){
+                Vector row=new Vector();
+                row.add(tl.getMaTheLoai());
+                row.add(tl.getTenTheLoai());
+                searchTheLoai.addRow(row);
+            }
+            tbTheLoai.setModel(searchTheLoai);
+        }
+    }//GEN-LAST:event_btTimTLActionPerformed
 
     private void btXoaTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaTLActionPerformed
         // TODO add your handling code here:
@@ -1432,10 +1921,9 @@ public class DanhMuc extends javax.swing.JFrame {
             }
             modelTheLoai.removeRow(i);
             tbTheLoai.setModel(modelTheLoai);
-            
+
             txMaTL.setText("");
             txTenTL.setText("");
-        
         }
     }//GEN-LAST:event_btXoaTLActionPerformed
 
@@ -1456,91 +1944,207 @@ public class DanhMuc extends javax.swing.JFrame {
         tbTheLoai.setEnabled(false);
     }//GEN-LAST:event_btSuaTLActionPerformed
 
-    private void btCancelTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTLActionPerformed
+    private void btThemTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTLActionPerformed
         // TODO add your handling code here:
-        txMaTL.setEditable(true);
-        btConfirmTL.setVisible(false);
-        btCancelTL.setVisible(false);
-        btThemTL.setEnabled(true);
-        btXoaTL.setEnabled(true);
-        btTimTL.setEnabled(true);
-        btAllTL.setEnabled(true);
-        tbTheLoai.setEnabled(true);
-    }//GEN-LAST:event_btCancelTLActionPerformed
+        position="theloai";
+        if(!validateBtThem())
+        return;
+
+        TheLoaiDTO theloai=new TheLoaiDTO();
+
+        theloai.setMaTheLoai(txMaTL.getText());
+        theloai.setTenTheLoai(txTenTL.getText());
+
+        try {
+            theloaibus.Add(theloai);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(theloai.getMaTheLoai());
+        row.add(theloai.getTenTheLoai());
+
+        modelTheLoai.addRow(row);
+
+        tbTheLoai.setModel(modelTheLoai);
+    }//GEN-LAST:event_btThemTLActionPerformed
+
+    private void tbTheLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTheLoaiMouseClicked
+        // TODO add your handling code here:
+        int i = tbTheLoai.getSelectedRow();
+        if (theloaibus.getList().size() > 0) {
+            TheLoaiDTO theloai = new TheLoaiDTO();
+            theloai = theloaibus.getList().get(i);
+
+            txMaTL.setText(theloai.getMaTheLoai());
+            txTenTL.setText(theloai.getTenTheLoai());
+
+        }
+    }//GEN-LAST:event_tbTheLoaiMouseClicked
 
     private void txMaTLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txMaTLKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-            txTenTL.requestFocus();
+        txTenTL.requestFocus();
     }//GEN-LAST:event_txMaTLKeyPressed
 
-    private void btConfirmTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTLActionPerformed
+    private void tbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTaiKhoanMouseClicked
         // TODO add your handling code here:
-        int i=tbTheLoai.getSelectedRow();
-        if(theloaibus.getList().size()>0){
-            TheLoaiDTO theloai=new TheLoaiDTO();
+        int i = tbTaiKhoan.getSelectedRow();
+        if (actbus.getList().size() > 0) {
+            AccountDTO act = new AccountDTO();
+            act = actbus.getList().get(i);
+            txUsername.setText(act.getUsername());
+            txPassword.setText(act.getPassword());
+        }
+    }//GEN-LAST:event_tbTaiKhoanMouseClicked
 
-            theloai.setMaTheLoai(txMaTL.getText());
-            theloai.setTenTheLoai(txTenTL.getText());
-            
+    private void btThemTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTKActionPerformed
+        // TODO add your handling code here:
+        position="taikhoan";
+        if(!validateBtThem())
+            return;
+
+        AccountDTO act=new AccountDTO();
+
+        act.setUsername(txUsername.getText());
+        act.setPassword(txPassword.getText());
+
+        try {
+            actbus.Add(act);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(act.getUsername());
+        row.add(act.getPassword());
+
+        modelAct.addRow(row);
+
+        tbTaiKhoan.setModel(modelAct);
+    }//GEN-LAST:event_btThemTKActionPerformed
+
+    private void btXoaTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaTKActionPerformed
+        // TODO add your handling code here:
+        int i = tbTaiKhoan.getSelectedRow();
+        if(actbus.getList().size()>0){
+            try {
+                actbus.Remove(actbus.getList().get(i).getUsername());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelAct.removeRow(i);
+            tbTaiKhoan.setModel(modelAct);
+
+            txUsername.setText("");
+            txPassword.setText("");
+        }
+    }//GEN-LAST:event_btXoaTKActionPerformed
+
+    private void btSuaTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaTKActionPerformed
+        // TODO add your handling code here:
+        int i=tbTaiKhoan.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn tài khoản cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txUsername.setEditable(false);
+        btConfirmTK.setVisible(true);
+        btCancelTK.setVisible(true);
+        btThemTK.setEnabled(false);
+        btXoaTK.setEnabled(false);
+        btTimTK.setEnabled(false);
+        btAllTK.setEnabled(false);
+        tbTaiKhoan.setEnabled(false);
+    }//GEN-LAST:event_btSuaTKActionPerformed
+
+    private void btConfirmTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmTKActionPerformed
+        // TODO add your handling code here:
+        int i=tbTaiKhoan.getSelectedRow();
+        if(actbus.getList().size()>0){
+            AccountDTO act=new AccountDTO();
+
+            act.setUsername(txUsername.getText());
+            act.setPassword(txPassword.getText());
 
             try {
-                theloaibus.Edit(theloai);
+                actbus.Edit(act);
             } catch (Exception ex) {
                 Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            modelTheLoai.setValueAt(theloai.getMaTheLoai(), i, 0);
-            modelTheLoai.setValueAt(theloai.getTenTheLoai(), i, 1);
-            
+            modelAct.setValueAt(act.getUsername(), i, 0);
+            modelAct.setValueAt(act.getPassword(), i, 1);
 
-            tbTheLoai.setModel(modelTheLoai);
+            tbTaiKhoan.setModel(modelAct);
         }
-  
-    }//GEN-LAST:event_btConfirmTLActionPerformed
+    }//GEN-LAST:event_btConfirmTKActionPerformed
 
-    private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
+    private void btCancelTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelTKActionPerformed
         // TODO add your handling code here:
-        if (theloaibus.getList().size()>0)
-            tbTheLoai.setModel(modelTheLoai);
-    }//GEN-LAST:event_btAllTLActionPerformed
+        txUsername.setEditable(true);
+        btConfirmTK.setVisible(false);
+        btCancelTK.setVisible(false);
+        btThemTK.setEnabled(true);
+        btXoaTK.setEnabled(true);
+        btTimTK.setEnabled(true);
+        btAllTK.setEnabled(true);
+        tbTaiKhoan.setEnabled(true);
+    }//GEN-LAST:event_btCancelTKActionPerformed
 
-    private void btTimTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTLActionPerformed
+    private void btClearTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTKActionPerformed
         // TODO add your handling code here:
-        if(theloaibus.getList().isEmpty()){
+        if(tbTaiKhoan.isEnabled())
+            txUsername.setText("");
+        txPassword.setText("");
+    }//GEN-LAST:event_btClearTKActionPerformed
+
+    private void btTimTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimTKActionPerformed
+        // TODO add your handling code here:
+        if(actbus.getList().isEmpty()){
             return;
         }
 
-        String MaTL, TenTL;
+        String username, password;
 
+        username=txUsername.getText();
+        password=txPassword.getText();
 
-        MaTL=txMaTL.getText();
-        TenTL=txTenTL.getText();
-        
-        ArrayList<TheLoaiDTO> res=new ArrayList<TheLoaiDTO>();
+        ArrayList<AccountDTO> res=new ArrayList<AccountDTO>();
         try {
-            res=theloaibus.Search(MaTL, TenTL);
+            res=actbus.Search(username, password);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (res.size()==0)
-            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         else{
             Vector header = new Vector();
-            header.add("Mã thể loại");
-            header.add("Tên thể loại");
-            
-            searchTheLoai = new DefaultTableModel(header, 0);
-            for(TheLoaiDTO tl: res){
+            header.add("Tên đăng nhập");
+            header.add("Mật khẩu");
+
+            searchAct = new DefaultTableModel(header, 0);
+            for(AccountDTO act: res){
                 Vector row=new Vector();
-                row.add(tl.getMaTheLoai());
-                row.add(tl.getTenTheLoai());
-                searchTheLoai.addRow(row);
+                row.add(act.getUsername());
+                row.add(act.getPassword());
+                searchAct.addRow(row);
             }
-            tbTheLoai.setModel(searchTheLoai);
+            tbTaiKhoan.setModel(searchAct);
         }
-    }//GEN-LAST:event_btTimTLActionPerformed
+    }//GEN-LAST:event_btTimTKActionPerformed
+
+    private void btAllTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTKActionPerformed
+        // TODO add your handling code here:
+        if(actbus.getList().size()>0)
+            tbTaiKhoan.setModel(modelAct);
+    }//GEN-LAST:event_btAllTKActionPerformed
+
+
+
     
     private boolean validateBtThem(){
         switch(position){
@@ -1597,7 +2201,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
-                for(AccountDTO account: accountbus.getList()){
+                for(AccountDTO account: actbus.getList()){
                     if(username.equals(account.getUsername())){
                         JOptionPane.showMessageDialog(null, "Tên đăng nhập đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                         return false;
@@ -1644,6 +2248,60 @@ public class DanhMuc extends javax.swing.JFrame {
         tbTheLoai.setModel(modelTheLoai);
     }
     
+    public void ListTacGia() throws Exception{
+        if(tacgiabus.getList()==null)
+            tacgiabus.listTacGia();
+        ArrayList<TacGiaDTO> listTG = tacgiabus.getList();
+        Vector header=new Vector();
+        header.add("Mã tác giả");
+        header.add("Tên tác giả");
+        if (modelTacGia.getRowCount() == 0) 
+                modelTacGia = new DefaultTableModel(header, 0);
+        for(TacGiaDTO tacgia: listTG) {
+            Vector row=new Vector();
+            row.add(tacgia.getMaTacGia());
+            row.add(tacgia.getTenTacGia());
+            modelTacGia.addRow(row);
+        }
+        tbTacGia.setModel(modelTacGia);
+    }
+    
+    public void ListNXB() throws Exception{
+        if(nxbbus.getList()==null)
+            nxbbus.listNXB();
+        ArrayList<NhaXuatBanDTO> listNXB = nxbbus.getList();
+        Vector header=new Vector();
+        header.add("Mã nhà xuất bản");
+        header.add("Tên nhà xuất bản");
+        if (modelNXB.getRowCount() == 0) 
+                modelNXB = new DefaultTableModel(header, 0);
+        for(NhaXuatBanDTO nxb: listNXB) {
+            Vector row=new Vector();
+            row.add(nxb.getMaNXB());
+            row.add(nxb.getTenNXB());
+            modelNXB.addRow(row);
+        }
+        tbNhaXuatBan.setModel(modelNXB);
+    }
+    
+    public void ListAccount() throws Exception{
+        if(actbus.getList()==null)
+            actbus.listAccount();
+        ArrayList<AccountDTO> listAct = actbus.getList();
+        Vector header=new Vector();
+        header.add("Tên đăng nhập");
+        header.add("Mật khẩu");
+        if (modelAct.getRowCount() == 0) 
+                modelAct = new DefaultTableModel(header, 0);
+        for(AccountDTO act: listAct) {
+            Vector row=new Vector();
+            row.add(act.getUsername());
+            row.add(act.getPassword());
+            modelAct.addRow(row);
+        }
+        tbTaiKhoan.setModel(modelAct);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1677,6 +2335,9 @@ public class DanhMuc extends javax.swing.JFrame {
                 DanhMuc danhmuc=new DanhMuc();
                 try {
                     danhmuc.ListTheLoai();
+                    danhmuc.ListTacGia();
+                    danhmuc.ListNXB();
+                    danhmuc.ListAccount();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }

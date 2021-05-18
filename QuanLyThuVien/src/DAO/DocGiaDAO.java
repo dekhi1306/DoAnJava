@@ -21,7 +21,7 @@ public class DocGiaDAO {
             docgia.setHoDocGia(result.getString("HoLot"));
             docgia.setTenDocGia(result.getString("Ten"));
             docgia.setNgaysinh(result.getString("NgaySinh"));
-            docgia.setGioiTinh(result.getInt("GioiTinh"));
+            docgia.setGioiTinh(result.getBoolean("GioiTinh"));
             docgia.setDienthoai(result.getString("DienThoai"));
             docgia.setDiachi(result.getString("DiaChi"));
             docgia.setNghenghiep(result.getString("NgheNghiep"));
@@ -81,11 +81,8 @@ public class DocGiaDAO {
         
         map.put("MaDG", docgia.getMaDocGia());
         map.put("HoLot", docgia.getHoDocGia());
-        //theloai=theloaidao.getByName(phieumuon.getTheLoai());
-        map.put("Ten", docgia.getTenDocGia());
-        //tacgia=tacgiadao.getByName(phieumuon.getTacGia());
-        map.put("NgaySinh", docgia.getNgaysinh());
-        //nhaxuatban=nxbdao.getByName(phieumuon.getNhaXuatBan());
+        map.put("Ten", docgia.getTenDocGia());     
+        map.put("NgaySinh", docgia.getNgaysinh());     
         map.put("GioiTinh", docgia.getGioiTinh());
         map.put("DienThoai", docgia.getDienthoai());
         map.put("DiaChi", docgia.getDiachi());
