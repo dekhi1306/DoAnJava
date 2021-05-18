@@ -38,6 +38,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel searchTheLoai;
     private DefaultTableModel modelTacGia = new DefaultTableModel();
     private DefaultTableModel searchTacGia;
+    private DefaultTableModel modelNXB = new DefaultTableModel();
+    private DefaultTableModel searchNXB;
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
@@ -674,6 +676,11 @@ public class DanhMuc extends javax.swing.JFrame {
         tbNhaXuatBan.setGridColor(new java.awt.Color(255, 255, 255));
         tbNhaXuatBan.setRowHeight(18);
         tbNhaXuatBan.setShowGrid(true);
+        tbNhaXuatBan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNhaXuatBanMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbNhaXuatBan);
 
         btThemNXB.setBackground(new java.awt.Color(27, 26, 67));
@@ -683,6 +690,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemNXB.setText("Thêm");
         btThemNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemNXBActionPerformed(evt);
+            }
+        });
 
         btSuaNXB.setBackground(new java.awt.Color(27, 26, 67));
         btSuaNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -691,6 +703,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btSuaNXB.setText("Sửa");
         btSuaNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSuaNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btSuaNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaNXBActionPerformed(evt);
+            }
+        });
 
         btXoaNXB.setBackground(new java.awt.Color(27, 26, 67));
         btXoaNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -699,6 +716,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btXoaNXB.setText("Xoá");
         btXoaNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoaNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btXoaNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaNXBActionPerformed(evt);
+            }
+        });
 
         btTimNXB.setBackground(new java.awt.Color(27, 26, 67));
         btTimNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -707,6 +729,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNXB.setText("Tìm");
         btTimNXB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNXB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNXBActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -730,21 +757,41 @@ public class DanhMuc extends javax.swing.JFrame {
         btClearNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btClearNXB.setForeground(new java.awt.Color(255, 255, 255));
         btClearNXB.setText("Tạo mới");
+        btClearNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearNXBActionPerformed(evt);
+            }
+        });
 
         btAllNXB.setBackground(new java.awt.Color(165, 201, 63));
         btAllNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAllNXB.setForeground(new java.awt.Color(255, 255, 255));
         btAllNXB.setText("Tất cả");
+        btAllNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAllNXBActionPerformed(evt);
+            }
+        });
 
         btConfirmNXB.setBackground(new java.awt.Color(165, 201, 63));
         btConfirmNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btConfirmNXB.setForeground(new java.awt.Color(255, 255, 255));
         btConfirmNXB.setText("Xác nhận");
+        btConfirmNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmNXBActionPerformed(evt);
+            }
+        });
 
         btCancelNXB.setBackground(new java.awt.Color(206, 81, 80));
         btCancelNXB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btCancelNXB.setForeground(new java.awt.Color(255, 255, 255));
         btCancelNXB.setText("Huỷ");
+        btCancelNXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelNXBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formNhaXuatBanLayout = new javax.swing.GroupLayout(formNhaXuatBan);
         formNhaXuatBan.setLayout(formNhaXuatBanLayout);
@@ -1741,6 +1788,161 @@ public class DanhMuc extends javax.swing.JFrame {
         if (tacgiabus.getList().size()>0)
             tbTacGia.setModel(modelTacGia);
     }//GEN-LAST:event_btAllTGActionPerformed
+
+    private void tbNhaXuatBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhaXuatBanMouseClicked
+        // TODO add your handling code here:
+        int i = tbNhaXuatBan.getSelectedRow();
+        if (nxbbus.getList().size() > 0) {
+            NhaXuatBanDTO nxb = new NhaXuatBanDTO();
+            nxb = nxbbus.getList().get(i);
+            txMaNXB.setText(nxb.getMaNXB());
+            txTenNXB.setText(nxb.getTenNXB()); 
+        }
+    }//GEN-LAST:event_tbNhaXuatBanMouseClicked
+
+    private void btThemNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemNXBActionPerformed
+        // TODO add your handling code here:
+        position="nhaxuatban";
+        if(!validateBtThem())
+            return;
+        
+        NhaXuatBanDTO nxb=new NhaXuatBanDTO();
+        
+        nxb.setMaNXB(txMaNXB.getText());
+        nxb.setTenNXB(txTenNXB.getText());
+        
+        try {
+            nxbbus.Add(nxb);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Vector row=new Vector();
+        row.add(nxb.getMaNXB());
+        row.add(nxb.getTenNXB());
+        
+        modelNXB.addRow(row);
+        
+        tbNhaXuatBan.setModel(modelNXB);
+    }//GEN-LAST:event_btThemNXBActionPerformed
+
+    private void btXoaNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaNXBActionPerformed
+        // TODO add your handling code here:
+        int i = tbNhaXuatBan.getSelectedRow();
+        if(nxbbus.getList().size()>0){
+            try {
+                nxbbus.Remove(nxbbus.getList().get(i).getMaNXB());
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            modelNXB.removeRow(i);
+            tbNhaXuatBan.setModel(modelNXB);
+            
+            txMaNXB.setText("");
+            txTenNXB.setText("");
+        }
+    }//GEN-LAST:event_btXoaNXBActionPerformed
+
+    private void btSuaNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNXBActionPerformed
+        // TODO add your handling code here:
+        int i=tbNhaXuatBan.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chọn nhà xuất bản cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        txMaNXB.setEditable(false);
+        btConfirmNXB.setVisible(true);
+        btCancelNXB.setVisible(true);
+        btThemNXB.setEnabled(false);
+        btXoaNXB.setEnabled(false);
+        btTimNXB.setEnabled(false);
+        btAllNXB.setEnabled(false);
+        tbNhaXuatBan.setEnabled(false);
+    }//GEN-LAST:event_btSuaNXBActionPerformed
+
+    private void btCancelNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNXBActionPerformed
+        // TODO add your handling code here:
+        txMaNXB.setEditable(true);
+        btConfirmNXB.setVisible(false);
+        btCancelNXB.setVisible(false);
+        btThemNXB.setEnabled(true);
+        btXoaNXB.setEnabled(true);
+        btTimNXB.setEnabled(true);
+        btAllNXB.setEnabled(true);
+        tbNhaXuatBan.setEnabled(true);
+    }//GEN-LAST:event_btCancelNXBActionPerformed
+
+    private void btConfirmNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmNXBActionPerformed
+        // TODO add your handling code here:
+        int i=tbNhaXuatBan.getSelectedRow();
+        if(nxbbus.getList().size()>0){
+            NhaXuatBanDTO nxb=new NhaXuatBanDTO();
+
+            nxb.setMaNXB(txMaNXB.getText());
+            nxb.setTenNXB(txTenNXB.getText());
+            
+            try {
+                nxbbus.Edit(nxb);
+            } catch (Exception ex) {
+                Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            modelNXB.setValueAt(nxb.getMaNXB(), i, 0);
+            modelNXB.setValueAt(nxb.getTenNXB(), i, 1);
+            
+            tbNhaXuatBan.setModel(modelNXB);
+        }
+    }//GEN-LAST:event_btConfirmNXBActionPerformed
+
+    private void btClearNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNXBActionPerformed
+        // TODO add your handling code here:
+        if(tbNhaXuatBan.isEnabled())
+            txMaNXB.setText("");
+        txTenNXB.setText("");
+    }//GEN-LAST:event_btClearNXBActionPerformed
+
+    private void btTimNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNXBActionPerformed
+        // TODO add your handling code here:
+        if(nxbbus.getList().isEmpty()){
+            return;
+        }
+
+        String MaNXB, TenNXB;
+
+
+        MaNXB=txMaNXB.getText();
+        TenNXB=txTenNXB.getText();
+        
+        ArrayList<NhaXuatBanDTO> res=new ArrayList<NhaXuatBanDTO>();
+        try {
+            res=nxbbus.Search(MaNXB, TenNXB);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (res.size()==0)
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà xuất bản");
+            header.add("Tên nhà xuất bản");
+            
+            searchNXB = new DefaultTableModel(header, 0);
+            for(NhaXuatBanDTO nxb: res){
+                Vector row=new Vector();
+                row.add(nxb.getMaNXB());
+                row.add(nxb.getTenNXB());
+                searchNXB.addRow(row);
+            }
+            tbNhaXuatBan.setModel(searchNXB);
+        }
+    }//GEN-LAST:event_btTimNXBActionPerformed
+
+    private void btAllNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNXBActionPerformed
+        // TODO add your handling code here:
+        if (nxbbus.getList().size()>0)
+            tbNhaXuatBan.setModel(modelNXB);
+    }//GEN-LAST:event_btAllNXBActionPerformed
     
     private boolean validateBtThem(){
         switch(position){
@@ -1862,6 +2064,24 @@ public class DanhMuc extends javax.swing.JFrame {
         tbTacGia.setModel(modelTacGia);
     }
     
+    public void ListNXB() throws Exception{
+        if(nxbbus.getList()==null)
+            nxbbus.listNXB();
+        ArrayList<NhaXuatBanDTO> listNXB = nxbbus.getList();
+        Vector header=new Vector();
+        header.add("Mã nhà xuất bản");
+        header.add("Tên nhà xuất bản");
+        if (modelNXB.getRowCount() == 0) 
+                modelNXB = new DefaultTableModel(header, 0);
+        for(NhaXuatBanDTO nxb: listNXB) {
+            Vector row=new Vector();
+            row.add(nxb.getMaNXB());
+            row.add(nxb.getTenNXB());
+            modelNXB.addRow(row);
+        }
+        tbNhaXuatBan.setModel(modelNXB);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1896,6 +2116,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 try {
                     danhmuc.ListTheLoai();
                     danhmuc.ListTacGia();
+                    danhmuc.ListNXB();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
