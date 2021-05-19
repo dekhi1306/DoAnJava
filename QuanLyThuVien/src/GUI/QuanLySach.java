@@ -760,6 +760,7 @@ public class QuanLySach extends javax.swing.JFrame {
         txNamXuatBan.setText("");
         txSoLuong.setText("");
         txDonGia.setText("");
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTaoMoiActionPerformed
 
     private void txMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaSachActionPerformed
@@ -961,6 +962,7 @@ public class QuanLySach extends javax.swing.JFrame {
         }
         else{
             Search();
+            EditOrSearch=0;
         }
     }//GEN-LAST:event_btXacNhanActionPerformed
 
