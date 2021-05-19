@@ -129,13 +129,13 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
-                          <Component id="txMa" alignment="3" pref="30" max="32767" attributes="0"/>
+                          <Component id="txMa" alignment="3" max="32767" attributes="0"/>
                           <Component id="btTim" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                          <Component id="txTen" alignment="3" pref="33" max="32767" attributes="0"/>
+                          <Component id="txTen" alignment="3" max="32767" attributes="0"/>
                           <Component id="btChon" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>

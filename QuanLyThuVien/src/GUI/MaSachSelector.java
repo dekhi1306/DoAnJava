@@ -405,6 +405,12 @@ public class MaSachSelector extends javax.swing.JFrame {
         catch (Exception ex){
             System.out.println(ex);
         }
+        try{
+            QuanLyPhieuNhap.setMaSach(masachbus.getList().get(i).getMaSach());
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }
         this.dispose();
     }//GEN-LAST:event_btChonActionPerformed
 
