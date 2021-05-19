@@ -44,9 +44,11 @@ public class DocGiaBUS {
         }
     }
     
-   public ArrayList<DocGiaDTO> Search(String MaDG, String HoLot, String Ten, String NgaySinh, int GioiTinh, String DienThoai, String DiaChi, String NgheNghiep, String TrinhDo){
+   public ArrayList<DocGiaDTO> Search(String MaDG, String HoLot, String Ten, String NgaySinh, String NgaySinh2, int GioiTinh, String DienThoai, String DiaChi, String NgheNghiep, String TrinhDo){
         ArrayList<DocGiaDTO> res=new ArrayList<DocGiaDTO>();
-        boolean madg=false, holot=false,ten=false,ngaysinh=false,dienthoai=false, gioitinh=false,dc=false,nghenghiep=false,trinhdo=false;
+        boolean madg=false, holot=false, ten=false, fromDate=false, toDate=false, ngaysinh=false, dienthoai=false, gioitinh=false, dc=false, nghenghiep=false, trinhdo=false;
+        int fromD=0, fromM=0, fromY=0, toD=0, toM=0, toY=0, day=0, month=0, year=0;
+        String[] dateInput1, dateInput2, date;
         if(MaDG.equals(""))
             madg=true;
         if(HoLot.equals(""))
@@ -54,7 +56,21 @@ public class DocGiaBUS {
         if(Ten.equals(""))
             ten=true;
         if(NgaySinh.equals(""))
-            ngaysinh=true;
+            fromDate=true;
+        else{
+            dateInput1=NgaySinh.split("-");
+            fromD=Integer.parseInt(dateInput1[0]);
+            fromM=Integer.parseInt(dateInput1[1]);
+            fromY=Integer.parseInt(dateInput1[2]); 
+        }
+        if(NgaySinh2.equals(""))
+            toDate=true;
+        else{
+            dateInput2=NgaySinh2.split("-");
+            toD=Integer.parseInt(dateInput2[0]);
+            toM=Integer.parseInt(dateInput2[1]);
+            toY=Integer.parseInt(dateInput2[2]);
+        }
         if(DienThoai.equals(""))
             dienthoai=true;
         if(GioiTinh==-1)
@@ -72,8 +88,6 @@ public class DocGiaBUS {
                 holot=(ms.getHoLot().contains(HoLot)) ? true : false;
             if(!Ten.equals(""))
                 ten=(ms.getTen().contains(Ten)) ? true : false;
-            if(!NgaySinh.equals(""))
-                ngaysinh=(ms.getNgaySinh().contains(NgaySinh)) ? true : false;
             if(!DienThoai.equals(""))
                 dienthoai=(ms.getDienThoai().contains(DienThoai)) ? true : false;
             if(!DiaChi.equals(""))
@@ -84,7 +98,15 @@ public class DocGiaBUS {
                 trinhdo=(ms.getTrinhDo().equals(TrinhDo)) ? true : false;
             if(GioiTinh!=-1)
                 gioitinh=(ms.getGioiTinh()==GioiTinh) ? true : false;
-            
+            date=(ms.getNgaySinh()).split("-");
+            day=Integer.parseInt(date[0]);
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(!NgaySinh.equals(""))
+                fromDate=(day>=fromD && month>=fromM && year>=fromY) ? true : false;
+            if(!NgaySinh2.equals(""))
+                toDate=(day<=toD && month<=toM && year<=toY) ? true : false;
+            ngaysinh=(fromDate && toDate);
             if(madg&& holot && ten && ngaysinh && gioitinh && dienthoai  && dc && nghenghiep && trinhdo)
                 res.add(ms);
         }
