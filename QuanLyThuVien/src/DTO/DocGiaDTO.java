@@ -1,8 +1,6 @@
 
 package DTO;
 
-import java.util.Date;
-
 /**
  *
  * @author ASUS
@@ -11,8 +9,8 @@ public class DocGiaDTO {
     private String MaDocGia;
     private String HoDocGia;
     private String TenDocGia;
-    private Date Ngaysinh;
-    private boolean GioiTinh;
+    private String Ngaysinh;
+    private int GioiTinh;
     private String Dienthoai;
     private String Diachi;
     private String Nghenghiep;
@@ -22,11 +20,11 @@ public class DocGiaDTO {
         
     }
 
-    public boolean getGioiTinh() {
+    public int getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(boolean GioiTinh) {
+    public void setGioiTinh(int GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
 
