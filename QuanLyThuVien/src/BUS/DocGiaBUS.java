@@ -5,7 +5,7 @@ import DTO.DocGiaDTO;
 import java.util.ArrayList;
 
 public class DocGiaBUS {
-    private ArrayList<DocGiaDTO>ListDocGia;
+    private ArrayList<DocGiaDTO> ListDocGia;
     
     public DocGiaBUS(){
         
@@ -44,11 +44,9 @@ public class DocGiaBUS {
         }
     }
     
-   public ArrayList<DocGiaDTO> Search(String MaDG, String HoLot, String Ten, String NgaySinh,int GioiTinh,String DienThoai, String DiaChi,String NgheNghiep, String TrinhDo){
+   public ArrayList<DocGiaDTO> Search(String MaDG, String HoLot, String Ten, String NgaySinh, int GioiTinh, String DienThoai, String DiaChi, String NgheNghiep, String TrinhDo){
         ArrayList<DocGiaDTO> res=new ArrayList<DocGiaDTO>();
-        boolean madg=false, holot=false,ten=false,ngaysinh=false,dienthoai=false,
-                gioitinh=false,dc=false,nghenghiep=false,trinhdo=false;
-        String gt;
+        boolean madg=false, holot=false,ten=false,ngaysinh=false,dienthoai=false, gioitinh=false,dc=false,nghenghiep=false,trinhdo=false;
         if(MaDG.equals(""))
             madg=true;
         if(HoLot.equals(""))
@@ -71,19 +69,19 @@ public class DocGiaBUS {
             if(!MaDG.equals(""))
                 madg=(ms.getMaDocGia().contains(MaDG)) ? true : false;
             if(!HoLot.equals(""))
-                holot=(ms.getHoDocGia().contains(HoLot)) ? true : false;
+                holot=(ms.getHoLot().contains(HoLot)) ? true : false;
             if(!Ten.equals(""))
-                ten=(ms.getTenDocGia().contains(Ten)) ? true : false;
+                ten=(ms.getTen().contains(Ten)) ? true : false;
             if(!NgaySinh.equals(""))
-                ngaysinh=(ms.getNgaysinh().contains(NgaySinh)) ? true : false;
+                ngaysinh=(ms.getNgaySinh().contains(NgaySinh)) ? true : false;
             if(!DienThoai.equals(""))
-                dienthoai=(ms.getDienthoai().contains(DienThoai)) ? true : false;
+                dienthoai=(ms.getDienThoai().contains(DienThoai)) ? true : false;
             if(!DiaChi.equals(""))
-                dc=(ms.getDiachi().contains(DiaChi)) ? true : false;
+                dc=(ms.getDiaChi().contains(DiaChi)) ? true : false;
             if(!NgheNghiep.equals(""))
-                nghenghiep=(ms.getNghenghiep().contains(NgheNghiep)) ? true : false;
+                nghenghiep=(ms.getNgheNghiep().contains(NgheNghiep)) ? true : false;
             if(!TrinhDo.equals("Chọn trình độ"))
-                trinhdo=(ms.getTrinhdo().contains(TrinhDo)) ? true : false;
+                trinhdo=(ms.getTrinhDo().equals(TrinhDo)) ? true : false;
             if(GioiTinh!=-1)
                 gioitinh=(ms.getGioiTinh()==GioiTinh) ? true : false;
             

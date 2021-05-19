@@ -7,25 +7,29 @@ package DTO;
  */
 public class DocGiaDTO {
     private String MaDocGia;
-    private String HoDocGia;
-    private String TenDocGia;
-    private String Ngaysinh;
+    private String HoLot;
+    private String Ten;
+    private String NgaySinh;
     private int GioiTinh;
-    private String Dienthoai;
-    private String Diachi;
-    private String Nghenghiep;
-    private String Trinhdo;
+    private String DienThoai;
+    private String DiaChi;
+    private String NgheNghiep;
+    private String TrinhDo;
     
     public DocGiaDTO(){
         
     }
 
-    public int getGioiTinh() {
-        return GioiTinh;
-    }
-
-    public void setGioiTinh(int GioiTinh) {
+    public DocGiaDTO(String MaDocGia, String HoLot, String Ten, String NgaySinh, int GioiTinh, String DienThoai, String DiaChi, String NgheNghiep, String TrinhDo) {
+        this.MaDocGia = MaDocGia;
+        this.HoLot = HoLot;
+        this.Ten = Ten;
+        this.NgaySinh = NgaySinh;
         this.GioiTinh = GioiTinh;
+        this.DienThoai = DienThoai;
+        this.DiaChi = DiaChi;
+        this.NgheNghiep = NgheNghiep;
+        this.TrinhDo = TrinhDo;
     }
 
     public String getMaDocGia() {
@@ -36,60 +40,69 @@ public class DocGiaDTO {
         this.MaDocGia = MaDocGia;
     }
 
-    public String getHoDocGia() {
-        return HoDocGia;
+    public String getHoLot() {
+        return HoLot;
     }
 
-    public void setHoDocGia(String HoDocGia) {
-        this.HoDocGia = HoDocGia;
+    public void setHoLot(String HoLot) {
+        this.HoLot = HoLot;
     }
 
-    public String getTenDocGia() {
-        return TenDocGia;
+    public String getTen() {
+        return Ten;
     }
 
-    public void setTenDocGia(String TenDocGia) {
-        this.TenDocGia = TenDocGia;
+    public void setTen(String Ten) {
+        this.Ten = Ten;
     }
 
-    public String getNgaysinh() {
-        return Ngaysinh;
+    public String getNgaySinh() {
+        return NgaySinh;
     }
 
-    public void setNgaysinh(String Ngaysinh) {
-        this.Ngaysinh = Ngaysinh;
+    public void setNgaySinh(String NgaySinh) {
+        this.NgaySinh = NgaySinh;
     }
 
-    public String getDiachi() {
-        return Diachi;
+    public int getGioiTinh() {
+        return GioiTinh;
     }
 
-    public void setDiachi(String Diachi) {
-        this.Diachi = Diachi;
+    public void setGioiTinh(int GioiTinh) {
+        this.GioiTinh = GioiTinh;
     }
 
-    public String getDienthoai() {
-        return Dienthoai;
+    public String getDienThoai() {
+        return DienThoai;
     }
 
-    public void setDienthoai(String Dienthoai) {
-        this.Dienthoai = Dienthoai;
+    public void setDienThoai(String DienThoai) {
+        this.DienThoai = DienThoai;
     }
 
-    public String getNghenghiep() {
-        return Nghenghiep;
+    public String getDiaChi() {
+        return DiaChi;
     }
 
-    public void setNghenghiep(String Nghenghiep) {
-        this.Nghenghiep = Nghenghiep;
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
     }
 
-    public String getTrinhdo() {
-        return Trinhdo;
+    public String getNgheNghiep() {
+        return NgheNghiep;
     }
 
-    public void setTrinhdo(String Trinhdo) {
-        this.Trinhdo = Trinhdo;
+    public void setNgheNghiep(String NgheNghiep) {
+        this.NgheNghiep = NgheNghiep;
     }
+
+    public String getTrinhDo() {
+        return TrinhDo;
+    }
+
+    public void setTrinhDo(String TrinhDo) {
+        this.TrinhDo = TrinhDo;
+    }
+    
     
 }
