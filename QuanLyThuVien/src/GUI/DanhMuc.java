@@ -2474,32 +2474,7 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btTimNCCActionPerformed
-
-    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        position="loiphat";
-        if(!validateBtThem())
-        return;
-         LoiPhatDTO loiphat=new LoiPhatDTO();
-
-        loiphat.setMaLoiPhat(txMaLP.getText());
-        loiphat.setTenLoiPhat(txTenLP.getText());
-
-        try {
-            loiphatbus.Add(loiphat);
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Vector row=new Vector();
-        row.add(loiphat.getMaLoiPhat());
-        row.add(loiphat.getTenLoiPhat());
-
-        modelLP.addRow(row);
-
-        tbLoiPhat.setModel(modelLP);
-    }                                                                           
-    
+                                                                         
     private boolean validateBtThem(){
         switch(position){
             case "theloai":
