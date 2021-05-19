@@ -39,9 +39,9 @@ public class PhieuNhapHangBUS {
             }
         }
     }
-    public ArrayList<PhieuNhapHangDTO> Search(String MaPhieuNhapHang, String MaNhanVien, String MaNCC, String NgayPhieuNhap, int TongTien, int TongTienMax) {
+    public ArrayList<PhieuNhapHangDTO> Search(String MaPhieuNhapHang, String MaNCC, String MaNhanVien, String NgayPhieuNhap, int TongTien) {
         ArrayList<PhieuNhapHangDTO> res=new ArrayList<PhieuNhapHangDTO>();
-        boolean mapm=false, manv=false, mancc=false, ngayphieunhap=false, tongtien=false, tongtienmax=false;
+        boolean mapm=false, manv=false, mancc=false, ngayphieunhap=false, tongtien=false;
         if(MaPhieuNhapHang.equals(""))
             mapm=true;
         if(MaNhanVien.equals(""))
@@ -52,8 +52,6 @@ public class PhieuNhapHangBUS {
              ngayphieunhap=true;
         if(TongTien==-1)
             tongtien=true;
-        if(TongTienMax==-1)
-            tongtienmax=true;
         
         for(PhieuNhapHangDTO phieunhaphang: listPhieuNhapHang){
             if(!MaPhieuNhapHang.equals(""))
@@ -65,11 +63,9 @@ public class PhieuNhapHangBUS {
             if(!NgayPhieuNhap.equals(""))
                 ngayphieunhap=(phieunhaphang.getNgayPH().contains(NgayPhieuNhap)) ? true : false;
             if(TongTien!=-1)
-                tongtien=(phieunhaphang.getTongtien()>=TongTien) ? true : false;
-            if(TongTienMax!=-1)
-                tongtienmax=(phieunhaphang.getTongtien()<=TongTienMax) ? true : false;
+                tongtien=(phieunhaphang.getTongtien()<=TongTien) ? true : false;
             
-            if(mapm && mancc && manv && ngayphieunhap && tongtien && tongtienmax)
+            if(mapm && mancc && manv && ngayphieunhap && tongtien)
                 res.add(phieunhaphang);
         }
         return res;

@@ -2221,6 +2221,15 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+<<<<<<< HEAD
+=======
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbLoiPhatMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mouseClicked(java.awt.event.MouseEvent evt) {&#xa;                tbLoiPhatMouseClicked(evt);&#xa;            }&#xa;        });"/>
+                  </AuxValues>
+>>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
                 </Component>
               </SubComponents>
             </Container>
@@ -2242,9 +2251,12 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+<<<<<<< HEAD
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt1ThemLPActionPerformed"/>
               </Events>
+=======
+>>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
             </Component>
             <Component class="javax.swing.JButton" name="btSuaLP">
               <Properties>
