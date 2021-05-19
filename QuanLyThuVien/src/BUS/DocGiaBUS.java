@@ -102,10 +102,50 @@ public class DocGiaBUS {
             day=Integer.parseInt(date[0]);
             month=Integer.parseInt(date[1]);
             year=Integer.parseInt(date[2]);
-            if(!NgaySinh.equals(""))
-                fromDate=(day>=fromD && month>=fromM && year>=fromY) ? true : false;
-            if(!NgaySinh2.equals(""))
-                toDate=(day<=toD && month<=toM && year<=toY) ? true : false;
+            if(!NgaySinh.equals("")){
+                if(year<fromY)
+                    fromDate=false;
+                else{
+                    if(year>fromY)
+                        fromDate=true;
+                    else{
+                        if(month<fromM)
+                            fromDate=false;
+                        else{
+                            if(month>fromM)
+                                fromDate=true;
+                            else{
+                                if(day<fromD)
+                                    fromDate=false;
+                                else
+                                    fromDate=true;
+                            }
+                        }
+                    }
+                }
+            }     
+            if(!NgaySinh2.equals("")){
+                if(year>toY)
+                    toDate=false;
+                else{
+                    if(year<toY)
+                        toDate=true;
+                    else{
+                        if(month>toM)
+                            toDate=false;
+                        else{
+                            if(month<toM)
+                                toDate=true;
+                            else{
+                                if(day>toD)
+                                    toDate=false;
+                                else
+                                    toDate=true;
+                            }
+                        }
+                    }
+                }
+            }
             ngaysinh=(fromDate && toDate);
             if(madg&& holot && ten && ngaysinh && gioitinh && dienthoai  && dc && nghenghiep && trinhdo)
                 res.add(ms);

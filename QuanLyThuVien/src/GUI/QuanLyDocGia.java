@@ -585,6 +585,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         }
         else{       
             Search();
+            EditOrSearch=0;
         }
     }//GEN-LAST:event_btXacNhanActionPerformed
 
@@ -641,7 +642,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void btTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCaActionPerformed
         // TODO add your handling code here:
         if (docgiabus.getList().size()>0)
-        tbDocGia.setModel(modelDocGia);
+            tbDocGia.setModel(modelDocGia);
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTatCaActionPerformed
 
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
