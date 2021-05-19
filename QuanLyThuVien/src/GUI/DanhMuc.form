@@ -1923,6 +1923,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btTimNCCActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel11">
               <Properties>
@@ -2092,21 +2095,11 @@
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="btAllLP" min="-2" pref="109" max="-2" attributes="0"/>
                                   </Group>
-<<<<<<< HEAD
                                   <Group type="102" attributes="0">
                                       <Component id="btConfirmLP" min="-2" pref="109" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btCancelLP" min="-2" pref="109" max="-2" attributes="0"/>
                                   </Group>
-=======
-                              </Group>
-                              <EmptySpace min="27" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btTimLP" max="32767" attributes="0"/>
-                                  <Component id="bt1ThemLP" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btSuaLP" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btXoaLP" alignment="1" max="32767" attributes="0"/>
->>>>>>> 4fb84017ed56f662d58cfb770b2af262c3c45695
                               </Group>
                           </Group>
                       </Group>
@@ -2119,7 +2112,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="bt1ThemLP" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="btThemLP" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -2252,19 +2245,16 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
-<<<<<<< HEAD
-=======
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbLoiPhatMouseClicked"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mouseClicked(java.awt.event.MouseEvent evt) {&#xa;                tbLoiPhatMouseClicked(evt);&#xa;            }&#xa;        });"/>
                   </AuxValues>
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="bt1ThemLP">
+            <Component class="javax.swing.JButton" name="btThemLP">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="43" green="1a" red="1b" type="rgb"/>
@@ -2282,12 +2272,6 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
-<<<<<<< HEAD
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt1ThemLPActionPerformed"/>
-              </Events>
-=======
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
             </Component>
             <Component class="javax.swing.JButton" name="btSuaLP">
               <Properties>

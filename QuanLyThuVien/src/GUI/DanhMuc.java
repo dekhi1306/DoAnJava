@@ -31,8 +31,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  *
@@ -59,41 +57,12 @@ public class DanhMuc extends javax.swing.JFrame {
     private AccountBUS actbus=new AccountBUS();
     private LoiPhatBUS loiphatbus=new LoiPhatBUS();
     private NhaCungCapBUS nccbus=new NhaCungCapBUS();
-<<<<<<< HEAD
-=======
    
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
     /**
      * Creates new form DanhMuc
      */
     public DanhMuc() {
         initComponents();
-        tbLoiPhat.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent me) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent me) {
-                onclick();
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent me) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent me) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent me) {
-
-            }
-        });
     }
 
     /**
@@ -198,7 +167,7 @@ public class DanhMuc extends javax.swing.JFrame {
         txTenLP = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbLoiPhat = new javax.swing.JTable();
-        bt1ThemLP = new javax.swing.JButton();
+        btThemLP = new javax.swing.JButton();
         btSuaLP = new javax.swing.JButton();
         btXoaLP = new javax.swing.JButton();
         btTimLP = new javax.swing.JButton();
@@ -1227,6 +1196,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNCC.setText("Tìm");
         btTimNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btTimNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimNCCActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1401,22 +1375,6 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
-<<<<<<< HEAD
-        jScrollPane6.setViewportView(tbLoiPhat);
-
-        bt1ThemLP.setBackground(new java.awt.Color(27, 26, 67));
-        bt1ThemLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        bt1ThemLP.setForeground(new java.awt.Color(255, 255, 255));
-        bt1ThemLP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/add.png"))); // NOI18N
-        bt1ThemLP.setText("Thêm");
-        bt1ThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bt1ThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        bt1ThemLP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt1ThemLPActionPerformed(evt);
-            }
-        });
-=======
         tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbLoiPhatMouseClicked(evt);
@@ -1436,7 +1394,6 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemLP.setText("Thêm");
         btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
         btSuaLP.setBackground(new java.awt.Color(27, 26, 67));
         btSuaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1578,30 +1535,19 @@ public class DanhMuc extends javax.swing.JFrame {
                             .addGroup(formLoiPhatLayout.createSequentialGroup()
                                 .addComponent(btClearLP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-<<<<<<< HEAD
                                 .addComponent(btAllLP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(formLoiPhatLayout.createSequentialGroup()
                                 .addComponent(btConfirmLP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btCancelLP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(30, Short.MAX_VALUE))
-=======
-                                .addComponent(btAllLP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btTimLP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt1ThemLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btSuaLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btXoaLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(24, 29, Short.MAX_VALUE))
->>>>>>> 4fb84017ed56f662d58cfb770b2af262c3c45695
         );
         formLoiPhatLayout.setVerticalGroup(
             formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formLoiPhatLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bt1ThemLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btThemLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2253,16 +2199,12 @@ public class DanhMuc extends javax.swing.JFrame {
             modelAct.removeRow(i);
             tbTaiKhoan.setModel(modelAct);
 
-<<<<<<< HEAD
-    private void txMaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaLPActionPerformed
-=======
             txUsername.setText("");
             txPassword.setText("");
         }
     }//GEN-LAST:event_btXoaTKActionPerformed
 
     private void btSuaTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaTKActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
         // TODO add your handling code here:
         int i=tbTaiKhoan.getSelectedRow();
         if(i<0){
@@ -2279,11 +2221,7 @@ public class DanhMuc extends javax.swing.JFrame {
         tbTaiKhoan.setEnabled(false);
     }//GEN-LAST:event_btSuaTKActionPerformed
 
-<<<<<<< HEAD
-    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {                                         
-=======
     private void btThemTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemTKActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
         // TODO add your handling code here:
         position="taikhoan";
         if(!validateBtThem())
@@ -2306,13 +2244,8 @@ public class DanhMuc extends javax.swing.JFrame {
 
         modelAct.addRow(row);
 
-<<<<<<< HEAD
-        tbLoiPhat.setModel(modelLP);
-    }                                        
-=======
         tbTaiKhoan.setModel(modelAct);
     }//GEN-LAST:event_btThemTKActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
     private void tbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTaiKhoanMouseClicked
         // TODO add your handling code here:
@@ -2323,18 +2256,6 @@ public class DanhMuc extends javax.swing.JFrame {
             txUsername.setText(act.getUsername());
             txPassword.setText(act.getPassword());
         }
-<<<<<<< HEAD
-        txMaLP.setEnabled(false);
-        btConfirmLP.setVisible(true);
-        btCancelLP.setVisible(true);
-        bt1ThemLP.setEnabled(false);
-        btXoaLP.setEnabled(false);
-        btTimLP.setEnabled(false);
-        btAllLP.setEnabled(false);
-        tbLoiPhat.setEnabled(false);
-        
-    }//GEN-LAST:event_btSuaLPActionPerformed
-=======
     }//GEN-LAST:event_tbTaiKhoanMouseClicked
 
     private void btCancelNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelNCCActionPerformed
@@ -2355,18 +2276,12 @@ public class DanhMuc extends javax.swing.JFrame {
 
             ncc.setMaNCC(txMaNCC.getText());
             ncc.setTenNCC(txTenNCC.getText());
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
             try {
                 nccbus.Edit(ncc);
             } catch (Exception ex) {
                 Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
             }
-<<<<<<< HEAD
-            modelLP.removeRow(i);
-            tbLoiPhat.setModel(modelLP);
-=======
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
             modelNCC.setValueAt(ncc.getMaNCC(), i, 0);
             modelNCC.setValueAt(ncc.getTenNCC(), i, 1);
@@ -2375,17 +2290,11 @@ public class DanhMuc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btConfirmNCCActionPerformed
 
-<<<<<<< HEAD
-    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
-=======
     private void btAllNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNCCActionPerformed
         // TODO add your handling code here:
         if (nccbus.getList().size()>0)
         tbNCC.setModel(modelNCC);
     }//GEN-LAST:event_btAllNCCActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
     private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
         if(tbNCC.isEnabled())
@@ -2408,36 +2317,7 @@ public class DanhMuc extends javax.swing.JFrame {
             txMaNCC.setText("");
             txTenNCC.setText("");
         }
-<<<<<<< HEAD
-    }//GEN-LAST:event_btConfirmLPActionPerformed
-
-    private void btCancelLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelLPActionPerformed
-        // TODO add your handling code here:
-        txMaLP.setEditable(true);
-        btConfirmLP.setVisible(false);
-        btCancelLP.setVisible(false);
-        bt1ThemLP.setEnabled(true);
-        btXoaLP.setEnabled(true);
-        btTimLP.setEnabled(true);
-        btAllLP.setEnabled(true);
-        tbLoiPhat.setEnabled(true);
-    }//GEN-LAST:event_btCancelLPActionPerformed
-
-    private void btClearLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearLPActionPerformed
-        // TODO add your handling code here:
-         if(tbLoiPhat.isEnabled())
-            txMaLP.setText("");
-        txTenLP.setText("");
-    }//GEN-LAST:event_btClearLPActionPerformed
-
-    private void btAllLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllLPActionPerformed
-        // TODO add your handling code here:
-          if(loiphatbus.getList().size()>0)
-            tbLoiPhat.setModel(modelLP);
-    }//GEN-LAST:event_btAllLPActionPerformed
-=======
     }//GEN-LAST:event_btXoaNCCActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
     private void btSuaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNCCActionPerformed
         // TODO add your handling code here:
@@ -2525,13 +2405,6 @@ public class DanhMuc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btConfirmLPActionPerformed
 
-<<<<<<< HEAD
-    private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
-        if(tbNCC.isEnabled())
-        txMaNCC.setText("");
-        txTenNCC.setText("");
-    }//GEN-LAST:event_btClearNCCActionPerformed
-=======
     private void btAllLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllLPActionPerformed
         // TODO add your handling code here:
         if(loiphatbus.getList().size()>0)
@@ -2573,7 +2446,6 @@ public class DanhMuc extends javax.swing.JFrame {
             tbLoiPhat.setModel(searchLP);
         }
     }//GEN-LAST:event_btTimLPActionPerformed
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
     private void btXoaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaLPActionPerformed
         // TODO add your handling code here:
@@ -2599,33 +2471,6 @@ public class DanhMuc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Chọn lỗi cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-<<<<<<< HEAD
-    }//GEN-LAST:event_tbNCCMouseClicked
-
-    private void bt1ThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt1ThemLPActionPerformed
-        // TODO add your handling code here:
-        LoiPhatDTO loiphat=new LoiPhatDTO();
-
-        loiphat.setMaLoiPhat(txMaLP.getText());
-        loiphat.setTenLoiPhat(txTenLP.getText());
-
-        try {
-            loiphatbus.Add(loiphat);
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Vector row=new Vector();
-        row.add(loiphat.getMaLoiPhat());
-        row.add(loiphat.getTenLoiPhat());
-        row.add(loiphat.getTienPhat());
-
-        modelLP.addRow(row);
-
-        tbLoiPhat.setModel(modelLP);
-    }//GEN-LAST:event_bt1ThemLPActionPerformed
-    
-=======
         txMaLP.setEnabled(false);
         btConfirmLP.setVisible(true);
         btCancelLP.setVisible(true);
@@ -2634,7 +2479,6 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimLP.setEnabled(false);
         btAllLP.setEnabled(false);
         tbLoiPhat.setEnabled(false);
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
 
     }//GEN-LAST:event_btSuaLPActionPerformed
 
@@ -2823,43 +2667,25 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbLoiPhat.setModel(modelLP);
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
     public void ListNCC() throws Exception{
         if(nccbus.getList()==null)
             nccbus.listNhaCungCap();
         ArrayList<NhaCungCapDTO> listNCC = nccbus.getList();
         Vector header=new Vector();
-        header.add("Mã  nhà cung cấp");
+        header.add("Mã nhà cung cấp");
         header.add("Tên nhà cung cấp");
         if (modelNCC.getRowCount() == 0) 
                 modelNCC = new DefaultTableModel(header, 0);
-        for(NhaCungCapDTO lp: listNCC) {
+        for(NhaCungCapDTO ncc: listNCC) {
             Vector row=new Vector();
-            row.add(lp.getMaNCC());
-            row.add(lp.getTenNCC());
+            row.add(ncc.getMaNCC());
+            row.add(ncc.getTenNCC());
             modelNCC.addRow(row);
         }
         tbNCC.setModel(modelNCC);
     }
-<<<<<<< HEAD
-    public void onclick(){
-        int i = tbLoiPhat.getSelectedRow();
-        if (loiphatbus.getList().size() > 0) {
-            LoiPhatDTO loiphat= new LoiPhatDTO();
-            loiphat = loiphatbus.getList().get(i);
-           
-            txMaLP.setText(loiphat.getMaLoiPhat());
-            txTenLP.setText(loiphat.getTenLoiPhat());
-            
-        }
 
-    
-=======
-
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
     /**
      * @param args the command line arguments
      */
@@ -2886,6 +2712,7 @@ public class DanhMuc extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DanhMuc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2896,16 +2723,11 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
-<<<<<<< HEAD
-                    danhmuc.ListLoiPhat();
-                    danhmuc.ListNCC();
-=======
 
                     danhmuc.ListLoiPhat();
 
                     danhmuc.ListNCC();
 
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2915,7 +2737,6 @@ public class DanhMuc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt1ThemLP;
     private javax.swing.JButton btAllLP;
     private javax.swing.JButton btAllNCC;
     private javax.swing.JButton btAllNXB;
@@ -2946,6 +2767,7 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JButton btSuaTG;
     private javax.swing.JButton btSuaTK;
     private javax.swing.JButton btSuaTL;
+    private javax.swing.JButton btThemLP;
     private javax.swing.JButton btThemNCC;
     private javax.swing.JButton btThemNXB;
     private javax.swing.JButton btThemTG;
