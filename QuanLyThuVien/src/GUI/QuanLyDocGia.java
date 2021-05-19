@@ -574,8 +574,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             btHuy.setVisible(false);
             btXacNhan.setVisible(false);
             btHuy.setVisible(false);
-            EditOrSearch=1;
         }
+        EditOrSearch=-1;
     }//GEN-LAST:event_btHuyActionPerformed
 
     private void btXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanActionPerformed
