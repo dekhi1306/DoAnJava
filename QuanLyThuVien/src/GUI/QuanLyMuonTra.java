@@ -49,6 +49,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private DefaultTableModel modelPhieuMuon = new DefaultTableModel();
     private DefaultTableModel modelChitiet = new DefaultTableModel();
     private DefaultTableModel resOfSearch;
+    private String position;
     private int EditOrSearch;
     private PhieuMuonBUS phieumuonbus=new PhieuMuonBUS();
     private ChiTietPhieuMuonBUS chitietbus=new ChiTietPhieuMuonBUS();
@@ -918,7 +919,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         // if(!ValidateThemPhieuMuon())
             //return;
-       
+       position="phieumuon";
+        if(!validateBtThem())
+            return;
         PhieuMuonDTO phieumuon=new PhieuMuonDTO();
         
         phieumuon.setMaPhieuMuon(tfMaPhieuMuon.getText());
@@ -1063,6 +1066,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void btThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThem1ActionPerformed
         // TODO add your handling code here:
+        position="chitietphieumuon";
+        if(!validateBtThem())
+            return;
         ChiTietPhieuMuonDTO ctphieumuon=new ChiTietPhieuMuonDTO();
         
         ctphieumuon.setMaPhieuMuon(tfMaPmChiTiet.getText());
@@ -1381,6 +1387,40 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
             tbChitiet.setModel(resOfSearch);
         }
+    }
+    private boolean validateBtThem(){
+        switch(position){
+            case "phieumuon":
+                String MaPM, MaDG,MaNV,NM,NHT;
+                MaPM=tfMaPhieuMuon.getText();
+                MaDG=tfMaDocGia.getText();
+                MaNV=tfMaNhanVien.getText();
+                NM=tfNgayMuon.getText();
+                NHT=tfNgayHenTra.getText();
+                if(MaPM.equals("") || MaDG.equals("") || MaNV.equals("") || NM.equals("") || NHT.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                for(PhieuMuonDTO phieumuon: phieumuonbus.getList()){
+                    if(MaPM.equals(phieumuon.getMaPhieuMuon())){
+                        JOptionPane.showMessageDialog(null, "Mã phiếu mượn đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                }
+                break;
+            case "chitietphieumuon":
+                String MaPhieuMuon, MaSach,SL;
+                MaPhieuMuon=tfMaPmChiTiet.getText();
+                MaSach=tfMaSach.getText();
+                SL=tfSoLuong.getText();
+                if(MaPhieuMuon.equals("") || MaSach.equals("") || SL.equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                break;
+            
+        }
+        return true;
     }
       public static  void setMaSach(String MaSach){
                 tfMaSach.setText(MaSach);

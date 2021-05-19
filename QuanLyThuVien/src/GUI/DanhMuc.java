@@ -31,6 +31,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -46,29 +48,48 @@ public class DanhMuc extends javax.swing.JFrame {
     private DefaultTableModel searchNXB;
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
-<<<<<<< HEAD
     private DefaultTableModel modelLP = new DefaultTableModel();
     private DefaultTableModel searchLP;
-=======
     private DefaultTableModel modelNCC = new DefaultTableModel();
     private DefaultTableModel searchNCC;
->>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
     private AccountBUS actbus=new AccountBUS();
-<<<<<<< HEAD
     private LoiPhatBUS loiphatbus=new LoiPhatBUS();
-=======
     private NhaCungCapBUS nccbus=new NhaCungCapBUS();
-    
->>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
     /**
      * Creates new form DanhMuc
      */
     public DanhMuc() {
         initComponents();
+        tbLoiPhat.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                onclick();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+
+            }
+        });
     }
 
     /**
@@ -173,7 +194,7 @@ public class DanhMuc extends javax.swing.JFrame {
         txTenLP = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbLoiPhat = new javax.swing.JTable();
-        btThemLP = new javax.swing.JButton();
+        bt1ThemLP = new javax.swing.JButton();
         btSuaLP = new javax.swing.JButton();
         btXoaLP = new javax.swing.JButton();
         btTimLP = new javax.swing.JButton();
@@ -1200,11 +1221,6 @@ public class DanhMuc extends javax.swing.JFrame {
         btTimNCC.setText("Tìm");
         btTimNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTimNCC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btTimNCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btTimNCCActionPerformed(evt);
-            }
-        });
 
         jPanel11.setBackground(new java.awt.Color(20, 20, 50));
 
@@ -1379,23 +1395,18 @@ public class DanhMuc extends javax.swing.JFrame {
         });
         tbLoiPhat.setGridColor(new java.awt.Color(255, 255, 255));
         tbLoiPhat.setRowHeight(18);
-        tbLoiPhat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbLoiPhatMouseClicked(evt);
-            }
-        });
         jScrollPane6.setViewportView(tbLoiPhat);
 
-        btThemLP.setBackground(new java.awt.Color(27, 26, 67));
-        btThemLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btThemLP.setForeground(new java.awt.Color(255, 255, 255));
-        btThemLP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/add.png"))); // NOI18N
-        btThemLP.setText("Thêm");
-        btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btThemLP.addActionListener(new java.awt.event.ActionListener() {
+        bt1ThemLP.setBackground(new java.awt.Color(27, 26, 67));
+        bt1ThemLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bt1ThemLP.setForeground(new java.awt.Color(255, 255, 255));
+        bt1ThemLP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/add.png"))); // NOI18N
+        bt1ThemLP.setText("Thêm");
+        bt1ThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bt1ThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        bt1ThemLP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btThemLPActionPerformed(evt);
+                bt1ThemLPActionPerformed(evt);
             }
         });
 
@@ -1528,7 +1539,7 @@ public class DanhMuc extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btTimLP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btThemLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt1ThemLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btSuaLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btXoaLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(24, 29, Short.MAX_VALUE))
@@ -1538,7 +1549,7 @@ public class DanhMuc extends javax.swing.JFrame {
             .addGroup(formLoiPhatLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btThemLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt1ThemLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2270,12 +2281,11 @@ public class DanhMuc extends javax.swing.JFrame {
             tbTaiKhoan.setModel(modelAct);
     }//GEN-LAST:event_btAllTKActionPerformed
 
-<<<<<<< HEAD
     private void txMaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaLPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txMaLPActionPerformed
 
-    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         position="loiphat";
         if(!validateBtThem())
@@ -2298,7 +2308,7 @@ public class DanhMuc extends javax.swing.JFrame {
         modelLP.addRow(row);
 
         tbLoiPhat.setModel(modelLP);
-    }//GEN-LAST:event_btThemLPActionPerformed
+    }                                        
 
     private void btSuaLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaLPActionPerformed
         // TODO add your handling code here:
@@ -2310,7 +2320,7 @@ public class DanhMuc extends javax.swing.JFrame {
         txMaLP.setEnabled(false);
         btConfirmLP.setVisible(true);
         btCancelLP.setVisible(true);
-        btThemLP.setEnabled(false);
+        bt1ThemLP.setEnabled(false);
         btXoaLP.setEnabled(false);
         btTimLP.setEnabled(false);
         btAllLP.setEnabled(false);
@@ -2327,7 +2337,7 @@ public class DanhMuc extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
             }
-            modelNXB.removeRow(i);
+            modelLP.removeRow(i);
             tbLoiPhat.setModel(modelLP);
 
             txMaLP.setText("");
@@ -2364,9 +2374,9 @@ public class DanhMuc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btTimLPActionPerformed
 
-    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
+    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_btTimNCCActionPerformed
+    }                                        
 
     private void btConfirmLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmLPActionPerformed
         // TODO add your handling code here:
@@ -2395,7 +2405,7 @@ public class DanhMuc extends javax.swing.JFrame {
         txMaLP.setEditable(true);
         btConfirmLP.setVisible(false);
         btCancelLP.setVisible(false);
-        btThemLP.setEnabled(true);
+        bt1ThemLP.setEnabled(true);
         btXoaLP.setEnabled(true);
         btTimLP.setEnabled(true);
         btAllLP.setEnabled(true);
@@ -2414,10 +2424,6 @@ public class DanhMuc extends javax.swing.JFrame {
           if(loiphatbus.getList().size()>0)
             tbLoiPhat.setModel(modelLP);
     }//GEN-LAST:event_btAllLPActionPerformed
-=======
-    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btThemLPActionPerformed
 
     private void btSuaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaNCCActionPerformed
         // TODO add your handling code here:
@@ -2452,42 +2458,6 @@ public class DanhMuc extends javax.swing.JFrame {
             txTenNCC.setText("");
         }
     }//GEN-LAST:event_btXoaNCCActionPerformed
-
-    private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
-        // TODO add your handling code here:
-        if(nccbus.getList().isEmpty()){
-            return;
-        }
-
-        String MaNCC, TenNCC;
-
-        MaNCC=txMaNCC.getText();
-        TenNCC=txTenNCC.getText();
-
-        ArrayList<NhaCungCapDTO> res=new ArrayList<NhaCungCapDTO>();
-        try {
-            res=nccbus.Search(MaNCC, TenNCC);
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        else{
-            Vector header = new Vector();
-            header.add("Mã nhà cung cấp");
-            header.add("Tên nhà cung cấp");
-
-            searchNCC = new DefaultTableModel(header, 0);
-            for(NhaCungCapDTO ncc: res){
-                Vector row=new Vector();
-                row.add(ncc.getMaNCC());
-                row.add(ncc.getTenNCC());
-                searchNCC.addRow(row);
-            }
-            tbNCC.setModel(searchNCC);
-        }
-    }//GEN-LAST:event_btTimNCCActionPerformed
 
     private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
         if(tbNCC.isEnabled())
@@ -2542,7 +2512,30 @@ public class DanhMuc extends javax.swing.JFrame {
             txTenNCC.setText(ncc.getTenNCC());
         }
     }//GEN-LAST:event_tbNCCMouseClicked
->>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
+
+    private void bt1ThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt1ThemLPActionPerformed
+        // TODO add your handling code here:
+        LoiPhatDTO loiphat=new LoiPhatDTO();
+
+        loiphat.setMaLoiPhat(txMaLP.getText());
+        loiphat.setTenLoiPhat(txTenLP.getText());
+
+        try {
+            loiphatbus.Add(loiphat);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(loiphat.getMaLoiPhat());
+        row.add(loiphat.getTenLoiPhat());
+        row.add(loiphat.getTienPhat());
+
+        modelLP.addRow(row);
+
+        tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_bt1ThemLPActionPerformed
+    
 
 
 
@@ -2702,7 +2695,7 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbTaiKhoan.setModel(modelAct);
     }
-<<<<<<< HEAD
+
     public void ListLoiPhat() throws Exception{
         if(loiphatbus.getList()==null)
             loiphatbus.listLoiPhat();
@@ -2720,7 +2713,24 @@ public class DanhMuc extends javax.swing.JFrame {
         }
         tbLoiPhat.setModel(modelLP);
     }
-    public void tbLoiPhatMouseClicked(java.awt.event.ActionEvent evt){
+    public void ListNCC() throws Exception{
+        if(nccbus.getList()==null)
+            nccbus.listNhaCungCap();
+        ArrayList<NhaCungCapDTO> listNCC = nccbus.getList();
+        Vector header=new Vector();
+        header.add("Mã  nhà cung cấp");
+        header.add("Tên nhà cung cấp");
+        if (modelNCC.getRowCount() == 0) 
+                modelNCC = new DefaultTableModel(header, 0);
+        for(NhaCungCapDTO lp: listNCC) {
+            Vector row=new Vector();
+            row.add(lp.getMaNCC());
+            row.add(lp.getTenNCC());
+            modelNCC.addRow(row);
+        }
+        tbNCC.setModel(modelNCC);
+    }
+    public void onclick(){
         int i = tbLoiPhat.getSelectedRow();
         if (loiphatbus.getList().size() > 0) {
             LoiPhatDTO loiphat= new LoiPhatDTO();
@@ -2730,25 +2740,8 @@ public class DanhMuc extends javax.swing.JFrame {
             txTenLP.setText(loiphat.getTenLoiPhat());
             
         }
-=======
-    public void ListNCC() throws Exception{
-        if(nccbus.getList()==null)
-            nccbus.listNhaCungCap();
-        ArrayList<NhaCungCapDTO> listNCC = nccbus.getList();
-        Vector header=new Vector();
-        header.add("Mã nhà cung cấp");
-        header.add("Tên nhà cung cấp");
-        if (modelNCC.getRowCount() == 0) 
-                modelNCC = new DefaultTableModel(header, 0);
-        for(NhaCungCapDTO ncc: listNCC) {
-            Vector row=new Vector();
-            row.add(ncc.getMaNCC());
-            row.add(ncc.getTenNCC());
-            modelNCC.addRow(row);
-        }
-        tbNCC.setModel(modelNCC);
->>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
-    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -2785,11 +2778,8 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
-<<<<<<< HEAD
                     danhmuc.ListLoiPhat();
-=======
                     danhmuc.ListNCC();
->>>>>>> 5ddaa1d888cf2fc9c2ce2516957be6ec396cf069
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2799,6 +2789,7 @@ public class DanhMuc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt1ThemLP;
     private javax.swing.JButton btAllLP;
     private javax.swing.JButton btAllNCC;
     private javax.swing.JButton btAllNXB;
@@ -2829,7 +2820,6 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JButton btSuaTG;
     private javax.swing.JButton btSuaTK;
     private javax.swing.JButton btSuaTL;
-    private javax.swing.JButton btThemLP;
     private javax.swing.JButton btThemNCC;
     private javax.swing.JButton btThemNXB;
     private javax.swing.JButton btThemTG;
