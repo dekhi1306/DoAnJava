@@ -63,7 +63,6 @@ public class PhieuPhatDAO {
  
         this.connect.Update("phieuphat", map, "MaPhieuPhat = '" + phieuphat.getMaPhieuPhat() + "'");
     }
-    
     public void Delete(String MaPhieuPhat) throws Exception{
         this.connect.Delete("phieuphat", "MaPhieuPhat = '" + MaPhieuPhat + "'" );    
     }

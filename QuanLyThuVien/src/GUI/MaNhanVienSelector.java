@@ -491,8 +491,12 @@ public class MaNhanVienSelector extends javax.swing.JFrame {
         }
         try{
             QuanLyNhanVien.setManv(manvbus.getList().get(i).getManv());
-            
-            
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }
+         try{
+            QuanLyPhieuNhap.setMaNV(manvbus.getList().get(i).getManv());
         }
         catch (Exception ex){
             System.out.println(ex);

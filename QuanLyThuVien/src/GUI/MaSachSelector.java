@@ -104,7 +104,7 @@ public class MaSachSelector extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tên thể loại:");
+        jLabel3.setText("Tên sách:");
 
         txMa.setBackground(new java.awt.Color(27, 26, 67));
         txMa.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +121,7 @@ public class MaSachSelector extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Mã thể loại:");
+        jLabel2.setText("Mã sách:");
 
         txTen.setBackground(new java.awt.Color(27, 26, 67));
         txTen.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,13 +246,13 @@ public class MaSachSelector extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txMa, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(btTim, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(txMa)
+                    .addComponent(btTim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txTen, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btChon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(txTen)
+                    .addComponent(btChon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btDong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +274,7 @@ public class MaSachSelector extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Mã thể loại", "Tên thể loại"
+                "Mã sách", "Tên sách"
             }
         ) {
             Class[] types = new Class [] {
@@ -401,6 +401,12 @@ public class MaSachSelector extends javax.swing.JFrame {
         }   
         try{
             QuanLyMuonTra.setMaSach(masachbus.getList().get(i).getMaSach());
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }
+        try{
+            QuanLyPhieuNhap.setMaSach(masachbus.getList().get(i).getMaSach());
         }
         catch (Exception ex){
             System.out.println(ex);

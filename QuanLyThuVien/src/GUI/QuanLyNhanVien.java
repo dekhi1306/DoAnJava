@@ -74,7 +74,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         btHuy = new javax.swing.JButton();
         btDong = new javax.swing.JButton();
         txHoLot = new javax.swing.JTextField();
-        btMNVSel = new javax.swing.JButton();
         txTen = new javax.swing.JTextField();
         txSodt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -259,17 +258,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             }
         });
 
-        btMNVSel.setBackground(new java.awt.Color(27, 26, 67));
-        btMNVSel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btMNVSel.setForeground(new java.awt.Color(255, 255, 255));
-        btMNVSel.setText("...");
-        btMNVSel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btMNVSel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMNVSelActionPerformed(evt);
-            }
-        });
-
         txTen.setEditable(true);
         txTen.setBackground(new java.awt.Color(27, 26, 67));
         txTen.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,12 +288,10 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                         .addGap(101, 101, 101)
                         .addComponent(btHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(txMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btMNVSel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,12 +330,8 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 20, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btMNVSel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(txMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -639,17 +621,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txHoLotActionPerformed
 
-    private void btMNVSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMNVSelActionPerformed
-        // TODO add your handling code here:
-        MaNhanVienSelector MaNhanVienSel = new MaNhanVienSelector();
-        try {
-            MaNhanVienSel.List();
-        } catch (Exception ex) {
-            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        MaNhanVienSel.setVisible(true);
-    }//GEN-LAST:event_btMNVSelActionPerformed
-
     private void txTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txTenActionPerformed
@@ -842,7 +813,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
-    private javax.swing.JButton btMNVSel;
     private javax.swing.JButton btNhapEx;
     private javax.swing.JButton btSua;
     private javax.swing.JButton btTaoMoi;

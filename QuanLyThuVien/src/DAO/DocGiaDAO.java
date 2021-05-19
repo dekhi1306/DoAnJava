@@ -17,6 +17,7 @@ public class DocGiaDAO {
         while(result.next()){
             DocGiaDTO docgia=new DocGiaDTO();
             docgia.setMaDocGia(result.getString("MaDG"));
+<<<<<<< HEAD
             docgia.setHoLot(result.getString("HoLot"));
             docgia.setTen(result.getString("Ten"));
             docgia.setNgaySinh(result.getString("NgaySinh"));
@@ -25,6 +26,16 @@ public class DocGiaDAO {
             docgia.setDiaChi(result.getString("DiaChi"));
             docgia.setNgheNghiep(result.getString("NgheNghiep"));
             docgia.setTrinhDo(result.getString("TrinhDo"));
+=======
+            docgia.setHoDocGia(result.getString("HoLot"));
+            docgia.setTenDocGia(result.getString("Ten"));
+            docgia.setNgaysinh(result.getString("NgaySinh"));
+            docgia.setGioiTinh(result.getInt("GioiTinh"));
+            docgia.setDienthoai(result.getString("DienThoai"));
+            docgia.setDiachi(result.getString("DiaChi"));
+            docgia.setNghenghiep(result.getString("NgheNghiep"));
+            docgia.setTrinhdo(result.getString("TrinhDo"));
+>>>>>>> 4fb84017ed56f662d58cfb770b2af262c3c45695
             listDocGia.add(docgia);
         }
         return listDocGia;

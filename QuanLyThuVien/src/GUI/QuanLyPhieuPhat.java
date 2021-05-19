@@ -793,6 +793,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
             return;
         }
         txMaPP.setEditable(false);
+        txTongTien.setEditable(false);
         btxacnhan.setVisible(true);
         btHuy.setVisible(true);
         btThem.setEnabled(false);
@@ -805,6 +806,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
     private void btHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyActionPerformed
         // TODO add your handling code here:
         txMaPP.setEditable(true);
+        txTongTien.setEditable(true);
         btxacnhan.setVisible(false);
         btHuy.setVisible(false);
         btThem.setEnabled(true);
@@ -960,6 +962,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         modelChitiet.addRow(row);
         
         tbchitietpp.setModel(modelChitiet);
+        
     }//GEN-LAST:event_btThemCTActionPerformed
 
     private void btSuaCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaCTActionPerformed
