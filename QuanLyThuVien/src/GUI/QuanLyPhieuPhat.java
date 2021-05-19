@@ -962,6 +962,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         modelChitiet.addRow(row);
         
         tbchitietpp.setModel(modelChitiet);
+        
     }//GEN-LAST:event_btThemCTActionPerformed
 
     private void btSuaCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuaCTActionPerformed
