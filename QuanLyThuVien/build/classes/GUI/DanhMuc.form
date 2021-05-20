@@ -2075,7 +2075,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel19" min="-2" pref="90" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txTenLP1" min="-2" pref="152" max="-2" attributes="0"/>
+                                          <Component id="txTienPhat" min="-2" pref="152" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="27" max="32767" attributes="0"/>
@@ -2130,7 +2130,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel19" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="txTenLP1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txTienPhat" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btTimLP" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -2272,6 +2272,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btThemLPActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btSuaLP">
               <Properties>
@@ -2461,7 +2464,7 @@
                 <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n ph&#x1ea1;t:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txTenLP1">
+            <Component class="javax.swing.JTextField" name="txTienPhat">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="43" green="1a" red="1b" type="rgb"/>
