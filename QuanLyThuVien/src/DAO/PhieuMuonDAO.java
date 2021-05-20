@@ -29,6 +29,7 @@ public class PhieuMuonDAO {
             phieumuon.setMaNhanVien(result.getString("MaNhanVien"));
             phieumuon.setNgayMuon(result.getString("NgayMuon"));
             phieumuon.setNgayHenTra(result.getString("NgayHenTra"));
+            phieumuon.setTinhTrang(result.getInt("TinhTrang"));
             listPhieuMuon.add(phieumuon);
         }
         return listPhieuMuon;
@@ -53,6 +54,7 @@ public class PhieuMuonDAO {
         map.put("MaNhanVien", phieumuon.getMaNhanVien());
         map.put("NgayMuon", phieumuon.getNgayMuon());
         map.put("NgayHenTra", phieumuon.getNgayHenTra());
+        map.put("TinhTrang", phieumuon.getTinhTrang());
  
         this.connect.Insert("phieumuon"+ "", map);
     }
@@ -68,6 +70,7 @@ public class PhieuMuonDAO {
         map.put("NgayMuon", phieumuon.getNgayMuon());
         //nhaxuatban=nxbdao.getByName(phieumuon.getNhaXuatBan());
         map.put("NgayHenTra", phieumuon.getNgayHenTra());
+        map.put("TinhTrang", phieumuon.getTinhTrang());
  
         this.connect.Update("phieumuon", map, "MaPhieuMuon = '" + phieumuon.getMaPhieuMuon() + "'");
     }

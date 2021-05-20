@@ -93,6 +93,10 @@ public class SachDTO {
         return soLuong;
     }
 
+    public int getSoluong() {
+        return soLuong;
+    }
+    
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }

@@ -41,9 +41,9 @@ public class PhieuMuonBUS {
             }
         }
     }
-    public ArrayList<PhieuMuonDTO> Search(String MaPhieuMuon, String MaDocGia, String MaNhanVien, String NgayMuon, String NgayHenTra) {
+    public ArrayList<PhieuMuonDTO> Search(String MaPhieuMuon, String MaDocGia, String MaNhanVien, String NgayMuon, String NgayHenTra, int TinhTrang) {
         ArrayList<PhieuMuonDTO> res=new ArrayList<PhieuMuonDTO>();
-        boolean mapm=false, madg=false, manv=false, ngaymuon=false, ngayhentra=false;
+        boolean mapm=false, madg=false, manv=false, ngaymuon=false, ngayhentra=false, tt=false;
         if(MaPhieuMuon.equals(""))
             mapm=true;
         if(MaDocGia.equals(""))
@@ -54,6 +54,8 @@ public class PhieuMuonBUS {
              ngaymuon=true;
         if(NgayHenTra.equals(""))
             ngayhentra=true;
+        if(TinhTrang==-1)
+            tt=true;
         
         for(PhieuMuonDTO phieumuon: listPhieuMuon){
             if(!MaPhieuMuon.equals(""))
@@ -66,8 +68,10 @@ public class PhieuMuonBUS {
                 ngaymuon=(phieumuon.getNgayMuon().contains(NgayMuon)) ? true : false;
             if(!NgayHenTra.equals(""))
                 ngayhentra=(phieumuon.getNgayHenTra().contains(NgayHenTra)) ? true : false;
+            if(TinhTrang!=-1)
+                tt=(phieumuon.getTinhTrang() ==TinhTrang) ? true : false;
             
-            if(mapm && madg && manv && ngaymuon && ngayhentra)
+            if(mapm && madg && manv && ngaymuon && ngayhentra && tt)
                 res.add(phieumuon);
         }
         return res;

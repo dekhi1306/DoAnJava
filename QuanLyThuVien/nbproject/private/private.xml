@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/GUI/ThongKe.java</file>
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/BUS/ThongKeBUS.java</file>
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/DAO/TheLoaiDAO.java</file>
@@ -10,6 +11,24 @@
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/DAO/MyConnectUnit.java</file>
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/DAO/ThongKeDAO.java</file>
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/BUS/TheLoaiBUS.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/BUS/ChiTietPhieuPhatBUS.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/BUS/ChiTietPhieuMuonBUS.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLyPhieuPhat.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLySach.java</file>
+=======
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/CTPhieuNhapBUS.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyPhieuNhap.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/MainMenu.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DAO/CTPhieuNhapDAO.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/ChiTietPhieuMuonBUS.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DTO/CTPhieuNhapDTO.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DTO/SachDTO.java</file>
+>>>>>>> bbde3b827fe4c0d8735ea580178844f34f7b8737
+>>>>>>> 42adaa7a55b1b9d629cc5ade75b338a5c5574ff8
         </group>
     </open-files>
 </project-private>

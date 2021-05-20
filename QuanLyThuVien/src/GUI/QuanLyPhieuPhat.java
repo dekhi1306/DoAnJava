@@ -948,7 +948,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         ctphieuphat.setMaLoiPhat(txmaloi.getText());
         
         try {
-            chitietbus.Add(ctphieuphat);
+            chitietbus.Add(ctphieuphat,txMactpp.getText());
         } catch (Exception ex) {
             Logger.getLogger(QuanLyPhieuPhat.class.getName()).log(Level.SEVERE, null, ex);
         }

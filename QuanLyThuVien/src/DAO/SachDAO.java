@@ -107,6 +107,14 @@ public class SachDAO {
  
         this.connect.Update("sach", map, "MaSach = '" + sach.getMaSach() + "'");
     }
+    public void UpdateSL(SachDTO sach) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        
+        map.put("MaSach", sach.getMaSach());
+        map.put("SoLuong", sach.getSoLuong());
+ 
+        this.connect.Update("sach", map, "MaSach = '" + sach.getMaSach() + "'");
+    }
     
     public void Delete(String MaSach) throws Exception{
         this.connect.Delete("sach", "MaSach = '" + MaSach + "'" );    
