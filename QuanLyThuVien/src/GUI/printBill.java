@@ -28,7 +28,7 @@ import java.util.ArrayList;
  *
  * @author Asus
  */
-public class printBill {
+public class printBill{
 
     private String file = "./report/test.pdf";
     private ArrayList<ct_HoaDonDTO> cthd = new ArrayList<ct_HoaDonDTO>();
