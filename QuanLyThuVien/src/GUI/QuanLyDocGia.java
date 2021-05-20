@@ -907,8 +907,10 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (listSearch.size()==0)
+        if (listSearch.size()==0){
             JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbDocGia.setModel(modelDocGia);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã Đọc Giả");

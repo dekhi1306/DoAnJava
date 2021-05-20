@@ -1690,6 +1690,7 @@ public class DanhMuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (nxbbus.getList().size()>0)
             tbNhaXuatBan.setModel(modelNXB);
+        modeNXB=-1;
     }//GEN-LAST:event_btAllNXBActionPerformed
 
     private void btClearNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNXBActionPerformed
@@ -1704,28 +1705,32 @@ public class DanhMuc extends javax.swing.JFrame {
         if(nxbbus.getList().isEmpty()){
             return;
         }
-
+        
+        modeNXB=0;
+        
         String MaNXB, TenNXB;
 
         MaNXB=txMaNXB.getText();
         TenNXB=txTenNXB.getText();
 
-        ArrayList<NhaXuatBanDTO> res=new ArrayList<NhaXuatBanDTO>();
+        listSearchNXB=new ArrayList<NhaXuatBanDTO>();
         try {
-            res=nxbbus.Search(MaNXB, TenNXB);
+            listSearchNXB=nxbbus.Search(MaNXB, TenNXB);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchNXB.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbNhaXuatBan.setModel(modelNXB);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã nhà xuất bản");
             header.add("Tên nhà xuất bản");
 
             searchNXB = new DefaultTableModel(header, 0);
-            for(NhaXuatBanDTO nxb: res){
+            for(NhaXuatBanDTO nxb: listSearchNXB){
                 Vector row=new Vector();
                 row.add(nxb.getMaNXB());
                 row.add(nxb.getTenNXB());
@@ -1800,7 +1805,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbNhaXuatBan.getSelectedRow();
         if (nxbbus.getList().size() > 0) {
             NhaXuatBanDTO nxb = new NhaXuatBanDTO();
-            nxb = nxbbus.getList().get(i);
+            
+            if(modeNXB!=0)
+                nxb = nxbbus.getList().get(i);
+            else{
+                if(listSearchNXB.size()>0)
+                    nxb = listSearchNXB.get(i);
+                else 
+                    nxb = nxbbus.getList().get(i);
+            }
+                
             txMaNXB.setText(nxb.getMaNXB());
             txTenNXB.setText(nxb.getTenNXB());
         }
@@ -1874,8 +1888,10 @@ public class DanhMuc extends javax.swing.JFrame {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (listSearchTG.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchTG.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTacGia.setModel(modelTacGia);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã tác giả");
@@ -2039,8 +2055,10 @@ public class DanhMuc extends javax.swing.JFrame {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (listSearchTL.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchTL.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTheLoai.setModel(modelTheLoai);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã thể loại");

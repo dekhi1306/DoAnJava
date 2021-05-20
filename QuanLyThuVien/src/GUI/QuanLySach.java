@@ -1409,8 +1409,10 @@ public class QuanLySach extends javax.swing.JFrame {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (listSearch.size()==0)
+        if (listSearch.size()==0){
             JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbSach.setModel(modelSach);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã sách");
