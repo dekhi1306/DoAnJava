@@ -1011,7 +1011,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         }
         
-        if(dienthoai.matches("\\D")){
+        if(dienthoai.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Số điện thoại phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
