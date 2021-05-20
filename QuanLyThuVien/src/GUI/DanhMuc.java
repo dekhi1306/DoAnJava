@@ -1494,7 +1494,7 @@ public class DanhMuc extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Tên lỗi phạt:");
+        jLabel19.setText("Tiền phạt:");
 
         txTenLP1.setBackground(new java.awt.Color(27, 26, 67));
         txTenLP1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1509,7 +1509,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLoiPhatLayout.createSequentialGroup()
-                            .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(formLoiPhatLayout.createSequentialGroup()
                                     .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1522,7 +1522,7 @@ public class DanhMuc extends javax.swing.JFrame {
                                 .addGroup(formLoiPhatLayout.createSequentialGroup()
                                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txTenLP1)))
+                                    .addComponent(txTenLP1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btThemLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2293,12 +2293,12 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNCCActionPerformed
         // TODO add your handling code here:
         if (nccbus.getList().size()>0)
-        tbNCC.setModel(modelNCC);
+            tbNCC.setModel(modelNCC);
     }//GEN-LAST:event_btAllNCCActionPerformed
 
     private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
         if(tbNCC.isEnabled())
-        txMaNCC.setText("");
+            txMaNCC.setText("");
         txTenNCC.setText("");
     }//GEN-LAST:event_btClearNCCActionPerformed
 

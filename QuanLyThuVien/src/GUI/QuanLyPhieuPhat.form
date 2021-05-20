@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-      <Point value="[43, 10]"/>
+      <Point value="[150, 160]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -625,7 +625,7 @@
                                   <Component id="btTimCT" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="-3" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -635,7 +635,6 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btClearCT" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btAllCT" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
