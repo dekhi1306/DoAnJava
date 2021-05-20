@@ -197,6 +197,7 @@ public class DanhMuc extends javax.swing.JFrame {
         btCancelLP = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         txTienPhat = new javax.swing.JTextField();
+        btDong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(43, 10));
@@ -1591,7 +1592,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btClearLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAllLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btConfirmLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCancelLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1602,6 +1603,17 @@ public class DanhMuc extends javax.swing.JFrame {
 
         btConfirmLP.setVisible(false);
         btCancelLP.setVisible(false);
+
+        btDong.setBackground(new java.awt.Color(206, 81, 80));
+        btDong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDong.setForeground(new java.awt.Color(255, 255, 255));
+        btDong.setText("Đóng");
+        btDong.setToolTipText("");
+        btDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1623,6 +1635,10 @@ public class DanhMuc extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(formLoiPhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1638,7 +1654,9 @@ public class DanhMuc extends javax.swing.JFrame {
                     .addComponent(formNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(formLoiPhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(formTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100))
+                .addGap(35, 35, 35)
+                .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2677,6 +2695,11 @@ public class DanhMuc extends javax.swing.JFrame {
 
         tbLoiPhat.setModel(modelLP);
     }//GEN-LAST:event_btThemLPActionPerformed
+
+    private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btDongActionPerformed
                                                                          
     private boolean validateBtThem(){
         switch(position){
@@ -2961,6 +2984,7 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JButton btConfirmTG;
     private javax.swing.JButton btConfirmTK;
     private javax.swing.JButton btConfirmTL;
+    private javax.swing.JButton btDong;
     private javax.swing.JButton btSuaLP;
     private javax.swing.JButton btSuaNCC;
     private javax.swing.JButton btSuaNXB;
