@@ -20,7 +20,7 @@ public class PhieuPhatDAO {
         connect=DAO.getDAO();
     }
     public ArrayList<PhieuPhatDTO>list(String condition, String OderBY) throws Exception{
-        ResultSet result=this.connect.SelectSum();
+        ResultSet result=this.connect.Select("phieuphat", condition, OderBY);
         
         ArrayList<PhieuPhatDTO> listphieuphat=new ArrayList<PhieuPhatDTO>();
         while(result.next()){
@@ -62,6 +62,12 @@ public class PhieuPhatDAO {
         map.put("TongTienPhat", phieuphat.getTongTien());
  
         this.connect.Update("phieuphat", map, "MaPhieuPhat = '" + phieuphat.getMaPhieuPhat() + "'");
+    }
+    public void UpdateTongTien(PhieuPhatDTO phieuphat) throws Exception{
+        HashMap<String, Object> map=new HashMap<String, Object>();
+        map.put("TongTienPhat", phieuphat.getTongTien());
+ 
+        this.connect.Update("phieuphat", map, "MaPhieuPhat = '" + phieuphat.getMaPhieuPhat()+ "'");
     }
     public void Delete(String MaPhieuPhat) throws Exception{
         this.connect.Delete("phieuphat", "MaPhieuPhat = '" + MaPhieuPhat + "'" );    

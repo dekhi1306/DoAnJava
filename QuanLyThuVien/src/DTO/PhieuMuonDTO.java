@@ -16,20 +16,25 @@ public class PhieuMuonDTO {
     private String MaNhanVien;
     private String NgayMuon;
     private String NgayHenTra;
+    private int TinhTrang;
 
-    public PhieuMuonDTO(String MaPhieuMuon, String MaDocGia, String MaNhanVien, String NgayMuon, String NgayHenTra) {
+    public PhieuMuonDTO(String MaPhieuMuon, String MaDocGia, String MaNhanVien, String NgayMuon, String NgayHenTra, int TinhTrang) {
         this.MaPhieuMuon = MaPhieuMuon;
         this.MaDocGia = MaDocGia;
         this.MaNhanVien = MaNhanVien;
         this.NgayMuon = NgayMuon;
         this.NgayHenTra = NgayHenTra;
+        this.TinhTrang = TinhTrang;
     }
     public PhieuMuonDTO() {
-        this.MaPhieuMuon = null;
-        this.MaDocGia = null;
-        this.MaNhanVien = null;
-        this.NgayMuon = null;
-        this.NgayHenTra = null;
+    }
+
+    public int getTinhTrang() {
+        return TinhTrang;
+    }
+
+    public void setTinhTrang(int TinhTrang) {
+        this.TinhTrang = TinhTrang;
     }
 
     public String getMaPhieuMuon() {

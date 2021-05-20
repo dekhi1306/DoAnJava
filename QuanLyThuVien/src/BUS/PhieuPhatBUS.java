@@ -29,6 +29,17 @@ public class PhieuPhatBUS {
         phieumuondao.Insert(phieuphat);
     }
     public void Edit(PhieuPhatDTO phieuphat) throws Exception {
+        
+        for(int i=0;i<listPhieuPhat.size();i++) {
+            if(listPhieuPhat.get(i).getMaPhieuPhat().equals(phieuphat.getMaPhieuPhat())) {
+                listPhieuPhat.set(i, phieuphat);
+                PhieuPhatDAO phieuphatdao = new PhieuPhatDAO();
+                phieuphatdao.Update(phieuphat);
+                return;
+            }
+        }
+    }
+    public void EditTongTien(PhieuPhatDTO phieuphat) throws Exception {
         for(int i=0;i<listPhieuPhat.size();i++) {
             if(listPhieuPhat.get(i).getMaPhieuPhat().equals(phieuphat.getMaPhieuPhat())) {
                 listPhieuPhat.set(i, phieuphat);

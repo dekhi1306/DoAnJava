@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/BUS/LoiPhatBUS.java</file>
-            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/DanhSachQuyDinh.java</file>
-            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/DAO/NhaXuatBanDAO.java</file>
-            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/DanhMuc.java</file>
-=======
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyPhieuNhap.java</file>
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/CTPhieuNhapBUS.java</file>
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DTO/PhieuNhapHangDTO.java</file>
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/PhieuMuonBUS.java</file>
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DTO/CTPhieuNhapDTO.java</file>
-            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/MaNhaCungCapSelector.java</file>
->>>>>>> 9ebee6daaa179c62c039055a8cfdf16d7d12c47f
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/BUS/PhieuMuonBUS.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/DAO/PhieuMuonDAO.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/BUS/SachBUS.java</file>
         </group>
     </open-files>
 </project-private>

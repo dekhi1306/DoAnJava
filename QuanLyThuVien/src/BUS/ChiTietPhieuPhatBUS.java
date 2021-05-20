@@ -10,10 +10,15 @@ package BUS;
  * @author 01042001
  */
 import DAO.ChiTietPhieuPhatDAO;
+import DAO.PhieuPhatDAO;
 import DTO.ChiTietPhieuPhatDTO;
+import DTO.LoiPhatDTO;
+import BUS.LoiPhatBUS;
+import DTO.PhieuPhatDTO;
 import java.util.ArrayList;
 public class ChiTietPhieuPhatBUS {
     private ArrayList<ChiTietPhieuPhatDTO> listChiTiet;
+    private LoiPhatBUS loiphatbus=new LoiPhatBUS();
     public ChiTietPhieuPhatBUS(){
         
     }
@@ -25,10 +30,28 @@ public class ChiTietPhieuPhatBUS {
     public ArrayList<ChiTietPhieuPhatDTO> getList(){
         return listChiTiet;
     }
-    public void Add(ChiTietPhieuPhatDTO chitietphieuphat) throws Exception{
+    public void Add(ChiTietPhieuPhatDTO chitietphieuphat, String MaCTPP) throws Exception{
+       
         listChiTiet.add(chitietphieuphat);
         ChiTietPhieuPhatDAO ctphieumuondao=new ChiTietPhieuPhatDAO();
         ctphieumuondao.Insert(chitietphieuphat);
+        
+        int tongtienphieuphat=0;
+        ArrayList<LoiPhatDTO> listLoiPhat= new ArrayList<LoiPhatDTO> ();
+        for(int i=0;i<listChiTiet.size();i++) {
+            if(listChiTiet.get(i).getMaPhieuPhat().equals(MaCTPP)) {
+                for(LoiPhatDTO loiphat: listLoiPhat) {
+                    if(listChiTiet.get(i).getMaLoiPhat().equals(loiphat.getMaLoiPhat())){
+                         tongtienphieuphat+=loiphat.getTienPhat();
+                    }
+                }
+            }
+        }
+        PhieuPhatDTO phieuphat=new PhieuPhatDTO();  
+            phieuphat.setMaPhieuPhat(MaCTPP);
+            phieuphat.setTongTien( tongtienphieuphat);
+        PhieuPhatDAO  phieuphatdao=new PhieuPhatDAO();
+        phieuphatdao.UpdateTongTien(phieuphat);
     }
     public void Edit(ChiTietPhieuPhatDTO ctpm) throws Exception {
         for(int i=0;i<listChiTiet.size();i++) {
