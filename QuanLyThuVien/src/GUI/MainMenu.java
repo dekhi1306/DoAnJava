@@ -421,13 +421,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btQLNhanVienActionPerformed
 
     private void btDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDanhMucActionPerformed
-<<<<<<< HEAD
-            DanhMuc DM=new DanhMuc();
-=======
-
-        // TODO add your handling code here
+          // TODO add your handling code here
          DanhMuc DM=new DanhMuc();
->>>>>>> bbde3b827fe4c0d8735ea580178844f34f7b8737
             try {     
                  DM.ListTheLoai();
                  DM.ListTacGia();
@@ -435,10 +430,7 @@ public class MainMenu extends javax.swing.JFrame {
                  DM.ListAccount();
                  DM.ListLoiPhat();
                  DM.ListNCC();
-<<<<<<< HEAD
-=======
 
->>>>>>> bbde3b827fe4c0d8735ea580178844f34f7b8737
              } catch (Exception ex) {
                  Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
              }
@@ -453,12 +445,11 @@ public class MainMenu extends javax.swing.JFrame {
                  Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
              }
             QLPP.setVisible(true);
-<<<<<<< HEAD
-=======
+
                                               
         // TODO add your handling code here:
 
->>>>>>> bbde3b827fe4c0d8735ea580178844f34f7b8737
+
     }//GEN-LAST:event_btQLPhieuPhatActionPerformed
     
     /**
