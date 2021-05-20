@@ -10,12 +10,17 @@ package BUS;
  * @author 01042001
  */
 import DAO.ChiTietPhieuMuonDAO;
+import DAO.SachDAO;
 import DTO.ChiTietPhieuMuonDTO;
 import DTO.SachDTO;
 import DTO.PhieuMuonDTO;
+import DTO.SachDTO;
+import BUS.SachBUS;
+
 import java.util.ArrayList;
 public class ChiTietPhieuMuonBUS {
-     private ArrayList<ChiTietPhieuMuonDTO> listChiTiet;
+    private ArrayList<ChiTietPhieuMuonDTO> listChiTiet;
+    private SachBUS sachbus=new SachBUS();
     public ChiTietPhieuMuonBUS(){
         
     }
@@ -27,10 +32,24 @@ public class ChiTietPhieuMuonBUS {
     public ArrayList<ChiTietPhieuMuonDTO> getList(){
         return listChiTiet;
     }
-    public void Add(ChiTietPhieuMuonDTO chitietphieumuon) throws Exception{
+    public void Add(ChiTietPhieuMuonDTO chitietphieumuon, String MaSach) throws Exception{
         listChiTiet.add(chitietphieumuon);
         ChiTietPhieuMuonDAO ctphieumuondao=new ChiTietPhieuMuonDAO();
         ctphieumuondao.Insert(chitietphieumuon);
+        ArrayList<SachDTO> listSach;
+         if(sachbus.getList()==null)
+             sachbus.listSach();
+         listSach=sachbus.getList();
+        int slsach=0;
+            for(int j=0;j<listSach.size();j++)
+                if(MaSach.equals(listSach.get(j).getMaSach())){
+                    slsach=listSach.get(j).getSoLuong()-chitietphieumuon.getSoLuong();
+                }
+        SachDTO sach=new SachDTO();
+        sach.setMaSach(MaSach);
+        sach.setSoLuong(slsach);
+        SachDAO sachdao=new SachDAO();
+        sachdao.UpdateSL(sach);
     }
     public void Edit(ChiTietPhieuMuonDTO ctpm) throws Exception {
         for(int i=0;i<listChiTiet.size();i++) {

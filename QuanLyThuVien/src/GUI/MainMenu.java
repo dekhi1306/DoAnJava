@@ -392,6 +392,14 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btQLNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLNhapHangActionPerformed
         // TODO add your handling code here:
+        QuanLyPhieuNhap QLPN = new QuanLyPhieuNhap();
+                try {
+                    QLPN.ListPN();
+                    QLPN.ListChiTiet();
+                } catch (Exception ex) {
+                    Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                QLPN.setVisible(true);
     }//GEN-LAST:event_btQLNhapHangActionPerformed
 
     private void btThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThongKeActionPerformed
@@ -412,10 +420,30 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDanhMucActionPerformed
         // TODO add your handling code here:
+        DanhMuc DM=new DanhMuc();
+            try {     
+                 DM.ListAccount();
+                 DM.ListLoiPhat();
+                 DM.ListNCC();
+                 DM.ListNXB();
+                 DM.ListTacGia();
+                 DM.ListTheLoai();
+             } catch (Exception ex) {
+                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            DM.setVisible(true);
     }//GEN-LAST:event_btDanhMucActionPerformed
 
     private void btQLPhieuPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLPhieuPhatActionPerformed
         // TODO add your handling code here:
+        QuanLyPhieuPhat QLPP=new QuanLyPhieuPhat();
+            try {     
+                 QLPP.ListPhieuPhat();
+                 QLPP.ListCTPhieuPhat();
+             } catch (Exception ex) {
+                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            QLPP.setVisible(true);
     }//GEN-LAST:event_btQLPhieuPhatActionPerformed
     
     /**

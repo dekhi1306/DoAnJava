@@ -1108,7 +1108,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         ctphieumuon.setSoLuong(Integer.parseInt(tfSoLuong.getText()));
         
         try {
-            chitietbus.Add(ctphieumuon);
+            chitietbus.Add(ctphieumuon,tfMaSach.getText());
         } catch (Exception ex) {
             Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
         }
