@@ -433,7 +433,16 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btDanhMucActionPerformed
 
     private void btQLPhieuPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLPhieuPhatActionPerformed
+         QuanLyPhieuPhat QLPP=new QuanLyPhieuPhat();
+            try {     
+                 QLPP.ListPhieuPhat();
+             } catch (Exception ex) {
+                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            QLPP.setVisible(true);
+                                              
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btQLPhieuPhatActionPerformed
     
     /**
