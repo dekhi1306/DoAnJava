@@ -391,10 +391,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btQLMuonTraActionPerformed
 
     private void btQLNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLNhapHangActionPerformed
-<<<<<<< HEAD
+
         // TODO add your handling code here:
-=======
->>>>>>> 1ad8ec2b6774ac609950b55f53558edb82f25006
+
         QuanLyPhieuNhap QLPN = new QuanLyPhieuNhap();
                 try {
                     QLPN.ListPN();
@@ -422,18 +421,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btQLNhanVienActionPerformed
 
     private void btDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDanhMucActionPerformed
-<<<<<<< HEAD
-        // TODO add your handling code here:
-        DanhMuc DM=new DanhMuc();
-            try {     
-                 DM.ListAccount();
-                 DM.ListLoiPhat();
-                 DM.ListNCC();
-                 DM.ListNXB();
-                 DM.ListTacGia();
-                 DM.ListTheLoai();
-=======
-         DanhMuc DM=new DanhMuc();
+            DanhMuc DM=new DanhMuc();
             try {     
                  DM.ListTheLoai();
                  DM.ListTacGia();
@@ -441,7 +429,6 @@ public class MainMenu extends javax.swing.JFrame {
                  DM.ListAccount();
                  DM.ListLoiPhat();
                  DM.ListNCC();
->>>>>>> 1ad8ec2b6774ac609950b55f53558edb82f25006
              } catch (Exception ex) {
                  Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
              }
@@ -456,20 +443,6 @@ public class MainMenu extends javax.swing.JFrame {
                  Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
              }
             QLPP.setVisible(true);
-                                              
-        // TODO add your handling code here:
-<<<<<<< HEAD
-        QuanLyPhieuPhat QLPP=new QuanLyPhieuPhat();
-            try {     
-                 QLPP.ListPhieuPhat();
-                 QLPP.ListCTPhieuPhat();
-             } catch (Exception ex) {
-                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            QLPP.setVisible(true);
-=======
-
->>>>>>> 1ad8ec2b6774ac609950b55f53558edb82f25006
     }//GEN-LAST:event_btQLPhieuPhatActionPerformed
     
     /**

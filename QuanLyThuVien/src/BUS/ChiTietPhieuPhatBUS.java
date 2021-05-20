@@ -36,20 +36,24 @@ public class ChiTietPhieuPhatBUS {
         ChiTietPhieuPhatDAO ctphieumuondao=new ChiTietPhieuPhatDAO();
         ctphieumuondao.Insert(chitietphieuphat);
         
+        ArrayList<LoiPhatDTO> listLP;
+        if(loiphatbus.getList()==null)
+             loiphatbus.listLoiPhat();
+         listLP=loiphatbus.getList();
         int tongtienphieuphat=0;
-        ArrayList<LoiPhatDTO> listLoiPhat= new ArrayList<LoiPhatDTO> ();
         for(int i=0;i<listChiTiet.size();i++) {
-            if(listChiTiet.get(i).getMaPhieuPhat().equals(MaCTPP)) {
-                for(LoiPhatDTO loiphat: listLoiPhat) {
-                    if(listChiTiet.get(i).getMaLoiPhat().equals(loiphat.getMaLoiPhat())){
-                         tongtienphieuphat+=loiphat.getTienPhat();
+            if(MaCTPP.equals(listChiTiet.get(i).getMaPhieuPhat())) {
+                for(int j=0;j<listLP.size();j++) {
+                    if(listChiTiet.get(i).getMaLoiPhat().equals(listLP.get(j).getMaLoiPhat())){
+                         tongtienphieuphat+=listLP.get(j).getTienPhat();
                     }
                 }
             }
         }
+         System.out.println(tongtienphieuphat);
         PhieuPhatDTO phieuphat=new PhieuPhatDTO();  
             phieuphat.setMaPhieuPhat(MaCTPP);
-            phieuphat.setTongTien( tongtienphieuphat);
+            phieuphat.setTongTien(tongtienphieuphat);
         PhieuPhatDAO  phieuphatdao=new PhieuPhatDAO();
         phieuphatdao.UpdateTongTien(phieuphat);
     }
