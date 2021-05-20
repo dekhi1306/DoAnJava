@@ -40,32 +40,32 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
-    private ArrayList<TheLoaiDTO> listSearchTL;
+    private ArrayList<TheLoaiDTO> listSearchTL=null;
     private int modeTL=-1;
     
     private DefaultTableModel modelTacGia = new DefaultTableModel();
     private DefaultTableModel searchTacGia;
-    private ArrayList<TacGiaDTO> listSearchTG;
-    private int modelTG=-1;
+    private ArrayList<TacGiaDTO> listSearchTG=null;
+    private int modeTG=-1;
     
     private DefaultTableModel modelNXB = new DefaultTableModel();
     private DefaultTableModel searchNXB;
-    private ArrayList<NhaXuatBanDTO> listSearchNXB;
+    private ArrayList<NhaXuatBanDTO> listSearchNXB=null;
     private int modeNXB=-1;
     
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
-    private ArrayList<AccountDTO> listSearchAct;
+    private ArrayList<AccountDTO> listSearchAct=null;
     private int modeAct=-1;
     
     private DefaultTableModel modelLP = new DefaultTableModel();
     private DefaultTableModel searchLP;
-    private ArrayList<LoiPhatDTO> listSearchLP;
+    private ArrayList<LoiPhatDTO> listSearchLP=null;
     private int modeLP=-1;
     
     private DefaultTableModel modelNCC = new DefaultTableModel();
     private DefaultTableModel searchNCC;
-    private ArrayList<NhaCungCapDTO> listSearchNCC;
+    private ArrayList<NhaCungCapDTO> listSearchNCC=null;
     private int modeNCC=-1;
     
     private String position;
@@ -1843,7 +1843,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTGActionPerformed
         // TODO add your handling code here:
         if (tacgiabus.getList().size()>0)
-        tbTacGia.setModel(modelTacGia);
+            tbTacGia.setModel(modelTacGia);
+        modeTG=-1;
     }//GEN-LAST:event_btAllTGActionPerformed
 
     private void btClearTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTGActionPerformed
@@ -1858,20 +1859,22 @@ public class DanhMuc extends javax.swing.JFrame {
         if(tacgiabus.getList().isEmpty()){
             return;
         }
+        
+        modeTG=0;
 
         String MaTG, TenTG;
 
         MaTG=txMaTG.getText();
         TenTG=txTenTG.getText();
 
-        ArrayList<TacGiaDTO> res=new ArrayList<TacGiaDTO>();
+        listSearchTG=new ArrayList<TacGiaDTO>();
         try {
-            res=tacgiabus.Search(MaTG, TenTG);
+            listSearchTG=tacgiabus.Search(MaTG, TenTG);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
+        if (listSearchTG.size()==0)
         JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         else{
             Vector header = new Vector();
@@ -1879,7 +1882,7 @@ public class DanhMuc extends javax.swing.JFrame {
             header.add("Tên tác giả");
 
             searchTacGia = new DefaultTableModel(header, 0);
-            for(TacGiaDTO tg: res){
+            for(TacGiaDTO tg: listSearchTG){
                 Vector row=new Vector();
                 row.add(tg.getMaTacGia());
                 row.add(tg.getTenTacGia());
@@ -1954,7 +1957,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTacGia.getSelectedRow();
         if (tacgiabus.getList().size() > 0) {
             TacGiaDTO tacgia = new TacGiaDTO();
-            tacgia = tacgiabus.getList().get(i);
+            
+            if(modeTG!=0)
+                tacgia = tacgiabus.getList().get(i);
+            else{
+                if(listSearchTG.size()>0)
+                    tacgia = listSearchTG.get(i);
+                else 
+                    tacgia = tacgiabus.getList().get(i);
+            }
+                
             txMaTG.setText(tacgia.getMaTacGia());
             txTenTG.setText(tacgia.getTenTacGia());
         }
@@ -1997,7 +2009,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
         // TODO add your handling code here:
         if (theloaibus.getList().size()>0)
-        tbTheLoai.setModel(modelTheLoai);
+            tbTheLoai.setModel(modelTheLoai);
+        modeTL=-1;
     }//GEN-LAST:event_btAllTLActionPerformed
 
     private void btClearTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTLActionPerformed
@@ -2012,20 +2025,21 @@ public class DanhMuc extends javax.swing.JFrame {
         if(theloaibus.getList().isEmpty()){
             return;
         }
-
+        modeTL=0;
+        
         String MaTL, TenTL;
 
         MaTL=txMaTL.getText();
         TenTL=txTenTL.getText();
 
-        ArrayList<TheLoaiDTO> res=new ArrayList<TheLoaiDTO>();
+        listSearchTL=new ArrayList<TheLoaiDTO>();
         try {
-            res=theloaibus.Search(MaTL, TenTL);
+            listSearchTL=theloaibus.Search(MaTL, TenTL);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
+        if (listSearchTL.size()==0)
         JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         else{
             Vector header = new Vector();
@@ -2033,7 +2047,7 @@ public class DanhMuc extends javax.swing.JFrame {
             header.add("Tên thể loại");
 
             searchTheLoai = new DefaultTableModel(header, 0);
-            for(TheLoaiDTO tl: res){
+            for(TheLoaiDTO tl: listSearchTL){
                 Vector row=new Vector();
                 row.add(tl.getMaTheLoai());
                 row.add(tl.getTenTheLoai());
@@ -2108,8 +2122,15 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTheLoai.getSelectedRow();
         if (theloaibus.getList().size() > 0) {
             TheLoaiDTO theloai = new TheLoaiDTO();
-            theloai = theloaibus.getList().get(i);
-
+            if(modeTL!=0)
+                theloai = theloaibus.getList().get(i);
+            else{
+                if(listSearchTL.size()>0)
+                    theloai = listSearchTL.get(i);
+                else
+                    theloai = theloaibus.getList().get(i);
+            }
+                
             txMaTL.setText(theloai.getMaTheLoai());
             txTenTL.setText(theloai.getTenTheLoai());
 

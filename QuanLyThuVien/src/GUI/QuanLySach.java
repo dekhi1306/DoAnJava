@@ -791,8 +791,10 @@ public class QuanLySach extends javax.swing.JFrame {
             if(EditOrSearch!=0)
                 sach = sachbus.getList().get(i);
             else{
-                if(listSearch!=null)
+                if(listSearch.size()>0)
                     sach = listSearch.get(i);
+                else
+                    sach = sachbus.getList().get(i);
             }
             Integer namXB, soLuong, donGia;
             String str_namXB, str_soLuong, str_donGia;
@@ -921,6 +923,7 @@ public class QuanLySach extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (sachbus.getList().size()>0)
             tbSach.setModel(modelSach);
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTatCaActionPerformed
 
     private void btHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyActionPerformed

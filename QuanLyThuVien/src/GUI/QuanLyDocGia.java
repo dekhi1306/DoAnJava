@@ -596,8 +596,10 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             if(EditOrSearch!=0)
                 docgia = docgiabus.getList().get(i);
             else{
-                if(listSearch!=null)
+                if(listSearch.size()>0)
                     docgia= listSearch.get(i);
+                else
+                    docgia = docgiabus.getList().get(i);
             }
             txMaDG.setText(docgia.getMaDocGia());
             txHoDG.setText(docgia.getHoLot());
