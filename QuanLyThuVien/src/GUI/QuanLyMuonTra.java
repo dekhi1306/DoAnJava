@@ -150,6 +150,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btChon3 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         cbTinhTrang = new javax.swing.JComboBox<>();
+        btChon5 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbPhieuMuon = new javax.swing.JTable();
@@ -389,8 +390,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btChon3.setBackground(new java.awt.Color(27, 26, 67));
         btChon3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btChon3.setForeground(new java.awt.Color(255, 255, 255));
-        btChon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/select.png"))); // NOI18N
-        btChon3.setText("Chọn");
+        btChon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
+        btChon3.setText("In phiếu");
         btChon3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btChon3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,6 +406,18 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         cbTinhTrang.setBackground(new java.awt.Color(27, 26, 67));
         cbTinhTrang.setForeground(new java.awt.Color(255, 255, 255));
         cbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa trả", "Đã trả" }));
+
+        btChon5.setBackground(new java.awt.Color(27, 26, 67));
+        btChon5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btChon5.setForeground(new java.awt.Color(255, 255, 255));
+        btChon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/select.png"))); // NOI18N
+        btChon5.setText("Chọn");
+        btChon5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btChon5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btChon5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -429,26 +442,34 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         .addComponent(btTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNgayHenTra)
-                            .addComponent(jLabel6)
-                            .addComponent(tfNgayMuon)
-                            .addComponent(jLabel10)
-                            .addComponent(cbTinhTrang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btChon3, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfNgayHenTra)
+                                    .addComponent(jLabel6)
+                                    .addComponent(tfNgayMuon)
+                                    .addComponent(jLabel10)
+                                    .addComponent(cbTinhTrang, 0, 200, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btChon5)
+                                .addGap(18, 18, 18)
+                                .addComponent(btChon3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btTim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(btSua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btXoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btThem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(175, 175, 175)
@@ -501,7 +522,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     .addComponent(btTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btChon3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btChon3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btChon5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btXacNhan)
@@ -1212,6 +1234,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btChon4ActionPerformed
 
+    private void btChon5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChon5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChon5ActionPerformed
+
     public void ListPhieuMuon() throws Exception{
         if(phieumuonbus.getList()==null)
              phieumuonbus.listPhieuMuon();
@@ -1529,6 +1555,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JButton btAll;
     private javax.swing.JButton btChon3;
     private javax.swing.JButton btChon4;
+    private javax.swing.JButton btChon5;
     private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
     private javax.swing.JButton btMaDocGia;
