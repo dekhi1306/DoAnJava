@@ -1059,6 +1059,8 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         }*/
         tfMS.setText("");
         tfSoLuong.setText("");
+        tfDG.setText("");
+        tfThanhTien.setText("");
     }//GEN-LAST:event_btTaoMoi1ActionPerformed
 
     private void btSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSua1ActionPerformed

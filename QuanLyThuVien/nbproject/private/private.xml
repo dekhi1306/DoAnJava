@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+=======
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyPhieuPhat.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyDocGia.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyPhieuNhap.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/CTPhieuNhapBUS.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/BUS/ChiTietPhieuPhatBUS.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/printBill.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+            <file>file:/E:/Desktop/new/DoAnJava/QuanLyThuVien/src/DTO/CTPhieuNhapDTO.java</file>
+>>>>>>> 5413068b3ef7983d571d25c2957382614995e92f
         </group>
     </open-files>
 </project-private>
