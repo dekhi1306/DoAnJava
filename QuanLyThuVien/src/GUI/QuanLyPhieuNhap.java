@@ -45,6 +45,9 @@ import java.util.logging.Logger;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
+
 public class QuanLyPhieuNhap extends javax.swing.JFrame {
     private DefaultTableModel modelPN = new DefaultTableModel();
     private DefaultTableModel modelChitiet = new DefaultTableModel();
@@ -86,7 +89,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
 
             }
         });
-         tbChitiet.addMouseListener(new MouseListener() {
+          tbChitiet.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
 
@@ -1062,7 +1065,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = tbChitiet.getSelectedRow();
         if (i < 0) {
-            JOptionPane.showMessageDialog(null, "Chọn chi tiết phiếu mượn cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Chọn chi tiết phiếu nhập cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return;
         } else EditCt();
     }//GEN-LAST:event_btSua1ActionPerformed
@@ -1228,8 +1231,8 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
             tfMaPNChiTiet.setText(chitiet.getPhieunhap());
             tfMS.setText(chitiet.getSach());
             tfSoLuong.setText(String.valueOf(chitiet.getSoluong()));
-            tfSoLuong.setText(String.valueOf(chitiet.getDongia()));
-            tfSoLuong.setText(String.valueOf(chitiet.getThanhtien()));
+            tfDG.setText(String.valueOf(chitiet.getDongia()));
+            tfThanhTien.setText(String.valueOf(chitiet.getThanhtien()));
         }
     }
     private void Edit(){
