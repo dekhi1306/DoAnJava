@@ -2198,7 +2198,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTKActionPerformed
         // TODO add your handling code here:
         if(actbus.getList().size()>0)
-        tbTaiKhoan.setModel(modelAct);
+            tbTaiKhoan.setModel(modelAct);
+        modeAct=-1;
     }//GEN-LAST:event_btAllTKActionPerformed
 
     private void btClearTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTKActionPerformed
@@ -2213,28 +2214,32 @@ public class DanhMuc extends javax.swing.JFrame {
         if(actbus.getList().isEmpty()){
             return;
         }
+        
+        modeAct=0;
 
         String username, password;
 
         username=txUsername.getText();
         password=txPassword.getText();
 
-        ArrayList<AccountDTO> res=new ArrayList<AccountDTO>();
+        listSearchAct=new ArrayList<AccountDTO>();
         try {
-            res=actbus.Search(username, password);
+            listSearchAct=actbus.Search(username, password);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchAct.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTaiKhoan.setModel(modelAct);
+        }
         else{
             Vector header = new Vector();
             header.add("Tên đăng nhập");
             header.add("Mật khẩu");
 
             searchAct = new DefaultTableModel(header, 0);
-            for(AccountDTO act: res){
+            for(AccountDTO act: listSearchAct){
                 Vector row=new Vector();
                 row.add(act.getUsername());
                 row.add(act.getPassword());
@@ -2309,7 +2314,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTaiKhoan.getSelectedRow();
         if (actbus.getList().size() > 0) {
             AccountDTO act = new AccountDTO();
-            act = actbus.getList().get(i);
+            
+            if(modeAct!=0)
+                act = actbus.getList().get(i);
+            else{
+                if(listSearchAct.size()>0)
+                    act = listSearchAct.get(i);
+                else 
+                    act = actbus.getList().get(i);
+            }
+            
             txUsername.setText(act.getUsername());
             txPassword.setText(act.getPassword());
         }
@@ -2351,6 +2365,7 @@ public class DanhMuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (nccbus.getList().size()>0)
             tbNCC.setModel(modelNCC);
+        modeNCC=-1;
     }//GEN-LAST:event_btAllNCCActionPerformed
 
     private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
@@ -2422,7 +2437,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbNCC.getSelectedRow();
         if (nccbus.getList().size() > 0) {
             NhaCungCapDTO ncc = new NhaCungCapDTO();
-            ncc = nccbus.getList().get(i);
+            
+            if(modeNCC!=0)
+                ncc = nccbus.getList().get(i);
+            else{
+                if(listSearchNCC.size()>0)
+                    ncc = listSearchNCC.get(i);
+                else 
+                    ncc = nccbus.getList().get(i);
+            }
+            
             txMaNCC.setText(ncc.getMaNCC());
             txTenNCC.setText(ncc.getTenNCC());
         }
@@ -2549,6 +2573,42 @@ public class DanhMuc extends javax.swing.JFrame {
 
     private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
         // TODO add your handling code here:
+        if(nccbus.getList().isEmpty()){
+            return;
+        }
+        
+        modeNCC=0;
+
+        String MaNCC, TenNCC;
+
+        MaNCC=txMaNCC.getText();
+        TenNCC=txTenNCC.getText();
+
+        listSearchNCC=new ArrayList<NhaCungCapDTO>();
+        try {
+            listSearchNCC=nccbus.Search(MaNCC, TenNCC);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (listSearchNCC.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbNCC.setModel(modelNCC);
+        }
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà cung cấp");
+            header.add("Tên nhà cung cấp");
+
+            searchNCC = new DefaultTableModel(header, 0);
+            for(NhaCungCapDTO ncc: listSearchNCC){
+                Vector row=new Vector();
+                row.add(ncc.getMaNCC());
+                row.add(ncc.getTenNCC());
+                searchNCC.addRow(row);
+            }
+            tbNCC.setModel(searchNCC);
+        }
     }//GEN-LAST:event_btTimNCCActionPerformed
                                                                          
     private boolean validateBtThem(){
@@ -2620,6 +2680,12 @@ public class DanhMuc extends javax.swing.JFrame {
                 if(MaNCC.equals("") || TenNCC.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
+                }
+                for(NhaCungCapDTO ncc: nccbus.getList()){
+                    if(MaNCC.equals(ncc.getMaNCC())){
+                        JOptionPane.showMessageDialog(null, "Mã nhà cung cấp đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
                 }
                 break;
             case "loiphat":
