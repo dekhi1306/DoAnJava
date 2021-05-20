@@ -40,16 +40,34 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
+    private ArrayList<TheLoaiDTO> listSearchTL;
+    private int modeTL=-1;
+    
     private DefaultTableModel modelTacGia = new DefaultTableModel();
     private DefaultTableModel searchTacGia;
+    private ArrayList<TacGiaDTO> listSearchTG;
+    private int modelTG=-1;
+    
     private DefaultTableModel modelNXB = new DefaultTableModel();
     private DefaultTableModel searchNXB;
+    private ArrayList<NhaXuatBanDTO> listSearchNXB;
+    private int modeNXB=-1;
+    
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
+    private ArrayList<AccountDTO> listSearchAct;
+    private int modeAct=-1;
+    
     private DefaultTableModel modelLP = new DefaultTableModel();
     private DefaultTableModel searchLP;
+    private ArrayList<LoiPhatDTO> listSearchLP;
+    private int modeLP=-1;
+    
     private DefaultTableModel modelNCC = new DefaultTableModel();
     private DefaultTableModel searchNCC;
+    private ArrayList<NhaCungCapDTO> listSearchNCC;
+    private int modeNCC=-1;
+    
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
