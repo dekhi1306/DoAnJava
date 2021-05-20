@@ -48,7 +48,7 @@ public class LoiPhatBUS {
            malp=true;
         if(TenLoiPhat.equals(""))
              tenlp=true;
-       if(TienPhat==-1)
+        if(TienPhat==-1)
             tienphat=true;
         
         for(LoiPhatDTO loiphat: listLoiPhat){
@@ -57,32 +57,14 @@ public class LoiPhatBUS {
             if(!TenLoiPhat.equals(""))
                 tenlp=(loiphat.getTenLoiPhat().contains(TenLoiPhat)) ? true : false;
             if(TienPhat!=-1)
-                tienphat=(loiphat.getTienPhat() ==TienPhat) ? true : false;
+                tienphat=(loiphat.getTienPhat()==TienPhat) ? true : false;
             
             if(malp && tenlp && tienphat )
                 res.add(loiphat);
         }
         return res;
     }
-    public ArrayList<LoiPhatDTO> Search(String MaLoiPhat, String TenLoiPhat) {
-        ArrayList<LoiPhatDTO> res=new ArrayList<LoiPhatDTO>();
-        boolean malp=false, tenlp=false, tienphat=false;
-        if(MaLoiPhat.equals(""))
-           malp=true;
-        if(TenLoiPhat.equals(""))
-             tenlp=true;
-        
-        for(LoiPhatDTO loiphat: listLoiPhat){
-            if(!MaLoiPhat.equals(""))
-                malp=(loiphat.getMaLoiPhat().contains(MaLoiPhat)) ? true : false;
-            if(!TenLoiPhat.equals(""))
-                tenlp=(loiphat.getTenLoiPhat().contains(TenLoiPhat)) ? true : false;
-            
-            if(malp && tenlp )
-                res.add(loiphat);
-        }
-        return res;
-    }
+ 
     public void Remove(String MaLoiPhat) throws Exception {
         for(LoiPhatDTO loiphat: listLoiPhat) {
             if(loiphat.getMaLoiPhat().equals(MaLoiPhat)) {

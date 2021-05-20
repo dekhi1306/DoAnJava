@@ -57,7 +57,8 @@ public class QuanLySach extends javax.swing.JFrame {
     
     private DefaultTableModel modelSach = new DefaultTableModel();
     private DefaultTableModel resOfSearch;
-    private int EditOrSearch=1;
+    private ArrayList<SachDTO> listSearch=null;
+    private int EditOrSearch=-1;
     private SachBUS sachbus=new SachBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
     private NhaXuatBanBUS nxbbus=new NhaXuatBanBUS();
@@ -759,6 +760,7 @@ public class QuanLySach extends javax.swing.JFrame {
         txNamXuatBan.setText("");
         txSoLuong.setText("");
         txDonGia.setText("");
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTaoMoiActionPerformed
 
     private void txMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaSachActionPerformed
@@ -786,7 +788,14 @@ public class QuanLySach extends javax.swing.JFrame {
         int i = tbSach.getSelectedRow();
         if (sachbus.getList().size() > 0) {
             SachDTO sach = new SachDTO();
-            sach = sachbus.getList().get(i);
+            if(EditOrSearch!=0)
+                sach = sachbus.getList().get(i);
+            else{
+                if(listSearch.size()>0)
+                    sach = listSearch.get(i);
+                else
+                    sach = sachbus.getList().get(i);
+            }
             Integer namXB, soLuong, donGia;
             String str_namXB, str_soLuong, str_donGia;
             
@@ -914,6 +923,7 @@ public class QuanLySach extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (sachbus.getList().size()>0)
             tbSach.setModel(modelSach);
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTatCaActionPerformed
 
     private void btHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyActionPerformed
@@ -940,6 +950,7 @@ public class QuanLySach extends javax.swing.JFrame {
             btXacNhan.setVisible(false);
             btHuy.setVisible(false); 
         }
+        EditOrSearch=-1;
     }//GEN-LAST:event_btHuyActionPerformed
 
     private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
@@ -952,8 +963,9 @@ public class QuanLySach extends javax.swing.JFrame {
         if(EditOrSearch==1){       
             Edit();
         }
-        else{       
+        else{
             Search();
+            EditOrSearch=0;
         }
     }//GEN-LAST:event_btXacNhanActionPerformed
 
@@ -1390,15 +1402,17 @@ public class QuanLySach extends javax.swing.JFrame {
         else
             DonGiaMax=Integer.parseInt(txDonGiaMax.getText());
 
-        ArrayList<SachDTO> res=new ArrayList<SachDTO>();
+        listSearch=new ArrayList<SachDTO>();
         try {
-            res=sachbus.Search(MaSach, TenSach, TheLoai, TacGia, NhaXuatBan, NamXuatBan, NamXuatBanMax, SoLuong, SoLuongMax, DonGia, DonGiaMax);
+            listSearch=sachbus.Search(MaSach, TenSach, TheLoai, TacGia, NhaXuatBan, NamXuatBan, NamXuatBanMax, SoLuong, SoLuongMax, DonGia, DonGiaMax);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
+        if (listSearch.size()==0){
             JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbSach.setModel(modelSach);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã sách");
@@ -1410,7 +1424,7 @@ public class QuanLySach extends javax.swing.JFrame {
             header.add("Số lượng");
             header.add("Đơn giá");
             resOfSearch = new DefaultTableModel(header, 0);
-            for(SachDTO s: res){
+            for(SachDTO s: listSearch){
                 Vector row=new Vector();
                 row.add(s.getMaSach());
                 row.add(s.getTenSach());
@@ -1461,17 +1475,17 @@ public class QuanLySach extends javax.swing.JFrame {
             }
         }
         
-        if(namxuatban.matches("\\D")){
+        if(namxuatban.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Năm xuất bản phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
         
-        if(soluong.matches("\\D")){
+        if(soluong.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Số lượng phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
         
-        if(dongia.matches("\\D")){
+        if(dongia.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Đơn giá phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }

@@ -44,7 +44,7 @@ public class NhaCungCapDAO {
     }
     
     public NhaCungCapDTO getByID(String id) throws Exception{
-        ArrayList<NhaCungCapDTO> listncc=this.list("MaNhaCungCap = " + "'" + id + "'");
+        ArrayList<NhaCungCapDTO> listncc=this.list("MaNCC = " + "'" + id + "'");
         if(listncc.size()>0)
             return listncc.toArray(new NhaCungCapDTO[listncc.size()])[0];
         return null;
@@ -65,15 +65,15 @@ public class NhaCungCapDAO {
         map.put("MaNCC", nhacungcap.getMaNCC());
         map.put("TenNCC", nhacungcap.getTenNCC());
  
-        this.connect.Update("nhacungcap", map, "MaNhaCungCap = '" + nhacungcap.getMaNCC() + "'");
+        this.connect.Update("nhacungcap", map, "MaNCC = '" + nhacungcap.getMaNCC() + "'");
     }
     
     public void Delete(String MaNhaCungCap) throws Exception{
-        this.connect.Delete("nhacungcap", "MaNhaCungCap = '" + MaNhaCungCap + "'" );    
+        this.connect.Delete("nhacungcap", "MaNCC = '" + MaNhaCungCap + "'" );    
     }
 
     public NhaCungCapDTO getByName(String ncc) throws Exception {
-        ArrayList<NhaCungCapDTO> listncc=this.list("Ten = " + "'" + ncc + "'");
+        ArrayList<NhaCungCapDTO> listncc=this.list("TenNCC = " + "'" + ncc + "'");
         if(listncc.size()>0)
             return listncc.toArray(new NhaCungCapDTO[listncc.size()])[0];
         return null;

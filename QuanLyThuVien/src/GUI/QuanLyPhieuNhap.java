@@ -173,7 +173,8 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbChitiet = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(150, 0));
 
         jPanel1.setBackground(new java.awt.Color(30, 29, 65));
 
@@ -824,7 +825,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 724, Short.MAX_VALUE)
         );
 
         jPanel4.getAccessibleContext().setAccessibleName("");

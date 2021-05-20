@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 18, 2021 lúc 03:28 PM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 7.3.27
+-- Thời gian đã tạo: Th5 20, 2021 lúc 08:01 AM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -103,6 +103,17 @@ CREATE TABLE `docgia` (
   `TrinhDo` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `docgia`
+--
+
+INSERT INTO `docgia` (`MaDG`, `HoLot`, `Ten`, `NgaySinh`, `GioiTinh`, `DienThoai`, `DiaChi`, `NgheNghiep`, `TrinhDo`) VALUES
+('a', 'a', 'a', '28-02-2000', 1, '00', 'a', '4', 'Cao học'),
+('DG-1', 'Truong Huynh', 'Loc', '13-06-2001', 1, '0937', '15', 'sinh vien', 'Đại học'),
+('DG-2', 'Dam Mai', 'Tram', '01-01-2001', 0, '0999', '14', 'sinh vien', 'Đại học'),
+('DG-3', 'Truong Mai Nhat', 'Tan', '02-02-2001', 1, '0877', '15', 'sinh vien', 'Trung học'),
+('DG-4', 'Pham Nguyen Thao', 'Vy', '03-03-2001', 0, '0999', '14', 'sinh vien', 'Tiểu học');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +125,15 @@ CREATE TABLE `loiphat` (
   `TenLoiPhat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `TienPhat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loiphat`
+--
+
+INSERT INTO `loiphat` (`MaLoiPhat`, `TenLoiPhat`, `TienPhat`) VALUES
+('a', 'a', 2),
+('b', 'b', 2),
+('LP1', 'Rách sách', 100);
 
 -- --------------------------------------------------------
 
@@ -132,7 +152,7 @@ CREATE TABLE `nhacungcap` (
 
 INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`) VALUES
 ('A', 'AMAK'),
-('I', 'IMP'),
+('I', 'TMP'),
 ('T', 'Trẻ');
 
 -- --------------------------------------------------------
@@ -187,19 +207,20 @@ CREATE TABLE `phieumuon` (
   `MaDocGia` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `MaNhanVien` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `NgayMuon` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `NgayHenTra` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `NgayHenTra` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TinhTrang` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_nopad_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `phieumuon`
 --
 
-INSERT INTO `phieumuon` (`MaPhieuMuon`, `MaDocGia`, `MaNhanVien`, `NgayMuon`, `NgayHenTra`) VALUES
-('PM1', 'DG1', 'NV1', '24/04/2021', '01/05/2021'),
-('PM2', 'DG2', 'NV2', '01/04/2021', '12/04/2021'),
-('PM3', 'DG4', 'NV2', '30/04/2021', '04/05/2021'),
-('PM4', 'DG6', 'NV3', '25/03/2021', '01/04/2001'),
-('PM5', 'DG20', 'NV2', '05/05/2021', '11/05/2021');
+INSERT INTO `phieumuon` (`MaPhieuMuon`, `MaDocGia`, `MaNhanVien`, `NgayMuon`, `NgayHenTra`, `TinhTrang`) VALUES
+('PM1', 'DG1', 'NV1', '24/04/2021', '01/05/2021', 0),
+('PM2', 'DG2', 'NV2', '01/04/2021', '12/04/2021', 0),
+('PM3', 'DG4', 'NV2', '30/04/2021', '04/05/2021', 0),
+('PM4', 'DG6', 'NV3', '25/03/2021', '01/04/2001', 0),
+('PM5', 'DG20', 'NV2', '05/05/2021', '11/05/2021', 0);
 
 -- --------------------------------------------------------
 

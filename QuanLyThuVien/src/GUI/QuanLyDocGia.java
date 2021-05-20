@@ -26,7 +26,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
     private DefaultTableModel modelDocGia = new DefaultTableModel();
     private DefaultTableModel resOfSearch;
-    private ArrayList<DocGiaDTO> listSearch;
+    private ArrayList<DocGiaDTO> listSearch=null;
     private int EditOrSearch=1;
     private DocGiaBUS docgiabus=new DocGiaBUS();
     /**
@@ -575,6 +575,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             btXacNhan.setVisible(false);
             btHuy.setVisible(false);
         }
+        EditOrSearch=-1;
     }//GEN-LAST:event_btHuyActionPerformed
 
     private void btXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanActionPerformed
@@ -584,6 +585,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         }
         else{       
             Search();
+            EditOrSearch=0;
         }
     }//GEN-LAST:event_btXacNhanActionPerformed
 
@@ -593,8 +595,12 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             DocGiaDTO docgia = new DocGiaDTO();
             if(EditOrSearch!=0)
                 docgia = docgiabus.getList().get(i);
-            else
-                docgia= listSearch.get(i);
+            else{
+                if(listSearch.size()>0)
+                    docgia= listSearch.get(i);
+                else
+                    docgia = docgiabus.getList().get(i);
+            }
             txMaDG.setText(docgia.getMaDocGia());
             txHoDG.setText(docgia.getHoLot());
             txTenDG.setText(docgia.getTen());
@@ -625,6 +631,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         txHoDG.setText("");
         txTenDG.setText("");
         txNSDG.setText("");
+        if(EditOrSearch==0)
+            txNSDG2.setText("");
         cbGioiTinh.setSelectedIndex(0);
         txDCDG.setText("");
         txDTDG.setText("");
@@ -636,7 +644,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void btTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTatCaActionPerformed
         // TODO add your handling code here:
         if (docgiabus.getList().size()>0)
-        tbDocGia.setModel(modelDocGia);
+            tbDocGia.setModel(modelDocGia);
+        EditOrSearch=-1;
     }//GEN-LAST:event_btTatCaActionPerformed
 
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
@@ -848,13 +857,33 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         if(docgiabus.getList().isEmpty()){
             return;
         }
-
-        String MaDocGia, HoDocGia, TenDocGia, Ngaysinh, NgaySinh2, Diachi, Dienthoai, Nghenghiep, Trinhdo;
+        String MaDocGia, HoDocGia, TenDocGia, Ngaysinh, Ngaysinh2, Diachi, Dienthoai, Nghenghiep, Trinhdo;
         int GioiTinh = 0;
         MaDocGia=txMaDG.getText();
         HoDocGia=txHoDG.getText();
         TenDocGia=txTenDG.getText();
-        Ngaysinh=txNSDG.getText();
+        Ngaysinh=txNSDG.getText().toString();
+        Ngaysinh2=txNSDG2.getText().toString();
+        if(!Ngaysinh.equals("")){
+            if(ValidateDate(Ngaysinh)==1){
+                JOptionPane.showMessageDialog(null, "Ngày sinh phải ở định dạng dd-mm-yyyy", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            else if(ValidateDate(Ngaysinh)==2) {
+                JOptionPane.showMessageDialog(null, "Ngày sinh không hợp lệ");
+                return;
+            }
+        }
+        if(!Ngaysinh2.equals("")){
+            if(ValidateDate(Ngaysinh2)==1){
+                JOptionPane.showMessageDialog(null, "Ngày sinh phải ở định dạng dd-mm-yyyy", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            else if(ValidateDate(Ngaysinh2)==2) {
+                JOptionPane.showMessageDialog(null, "Ngày sinh không hợp lệ");
+                return;
+            }
+        }
         switch(cbGioiTinh.getSelectedIndex()){
             case 0:
                 GioiTinh=-1;
@@ -873,13 +902,15 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
         listSearch=new ArrayList<DocGiaDTO>();
         try {
-            listSearch=docgiabus.Search(MaDocGia, HoDocGia, TenDocGia, Ngaysinh, GioiTinh, Dienthoai, Diachi, Nghenghiep, Trinhdo);
+            listSearch=docgiabus.Search(MaDocGia, HoDocGia, TenDocGia, Ngaysinh, Ngaysinh2, GioiTinh, Dienthoai, Diachi, Nghenghiep, Trinhdo);
         } catch (Exception ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (listSearch.size()==0)
+        if (listSearch.size()==0){
             JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbDocGia.setModel(modelDocGia);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã Đọc Giả");
@@ -918,7 +949,10 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         return false;
     }
     
-    private boolean ValidateDate(String dateInput){
+    private int ValidateDate(String dateInput){
+        if(!dateInput.matches("^\\d{2}-\\d{2}-\\d{4}$"))
+            return 1;
+        
         String[] date;
         date=dateInput.split("-");
         int day, month, year;
@@ -927,28 +961,28 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         year=Integer.parseInt(date[2]);
         
         if(month<1 || month>12)
-            return false;
+            return 2;
         
         if(month==2){
             if(isLeapYear(year)){
                 if(day<1||day>29)
-                    return false;
+                    return 2;
             }
             else{
                 if(day<1||day>28)
-                    return false;     
+                    return 2;     
             }
         }
         if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
             if(day<1||day>31){
-                return false;
+                return 2;
             }
         }
         if(month==4||month==6||month==9||month==11){
             if(day<1||day>30)
-                return false;
+                return 2;
         }
-        return true;
+        return 0;
     }
     
     private boolean Validate(){
@@ -977,17 +1011,17 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         }
         
-        if(dienthoai.matches("\\D")){
+        if(dienthoai.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Số điện thoại phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
         
-        if(!ngaysinh.matches("^\\d{2}-\\d{2}-\\d{4}$")){
+ 
+        if(ValidateDate(ngaysinh)==1){
             JOptionPane.showMessageDialog(null, "Ngày sinh phải ở định dạng dd-mm-yyyy", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
-        
-        if(!ValidateDate(ngaysinh)){
+        else if(ValidateDate(ngaysinh)==2) {
             JOptionPane.showMessageDialog(null, "Ngày sinh không hợp lệ");
             return false;
         }

@@ -40,16 +40,34 @@ public class DanhMuc extends javax.swing.JFrame {
     
     private DefaultTableModel modelTheLoai = new DefaultTableModel();
     private DefaultTableModel searchTheLoai;
+    private ArrayList<TheLoaiDTO> listSearchTL=null;
+    private int modeTL=-1;
+    
     private DefaultTableModel modelTacGia = new DefaultTableModel();
     private DefaultTableModel searchTacGia;
+    private ArrayList<TacGiaDTO> listSearchTG=null;
+    private int modeTG=-1;
+    
     private DefaultTableModel modelNXB = new DefaultTableModel();
     private DefaultTableModel searchNXB;
+    private ArrayList<NhaXuatBanDTO> listSearchNXB=null;
+    private int modeNXB=-1;
+    
     private DefaultTableModel modelAct = new DefaultTableModel();
     private DefaultTableModel searchAct;
+    private ArrayList<AccountDTO> listSearchAct=null;
+    private int modeAct=-1;
+    
     private DefaultTableModel modelLP = new DefaultTableModel();
     private DefaultTableModel searchLP;
+    private ArrayList<LoiPhatDTO> listSearchLP=null;
+    private int modeLP=-1;
+    
     private DefaultTableModel modelNCC = new DefaultTableModel();
     private DefaultTableModel searchNCC;
+    private ArrayList<NhaCungCapDTO> listSearchNCC=null;
+    private int modeNCC=-1;
+    
     private String position;
     private TheLoaiBUS theloaibus=new TheLoaiBUS();
     private TacGiaBUS tacgiabus=new TacGiaBUS();
@@ -178,7 +196,7 @@ public class DanhMuc extends javax.swing.JFrame {
         btConfirmLP = new javax.swing.JButton();
         btCancelLP = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        txTenLP1 = new javax.swing.JTextField();
+        txTienPhat = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(43, 10));
@@ -1394,6 +1412,11 @@ public class DanhMuc extends javax.swing.JFrame {
         btThemLP.setText("Thêm");
         btThemLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThemLP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btThemLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemLPActionPerformed(evt);
+            }
+        });
 
         btSuaLP.setBackground(new java.awt.Color(27, 26, 67));
         btSuaLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1494,10 +1517,10 @@ public class DanhMuc extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Tên lỗi phạt:");
+        jLabel19.setText("Tiền phạt:");
 
-        txTenLP1.setBackground(new java.awt.Color(27, 26, 67));
-        txTenLP1.setForeground(new java.awt.Color(255, 255, 255));
+        txTienPhat.setBackground(new java.awt.Color(27, 26, 67));
+        txTienPhat.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout formLoiPhatLayout = new javax.swing.GroupLayout(formLoiPhat);
         formLoiPhat.setLayout(formLoiPhatLayout);
@@ -1509,7 +1532,7 @@ public class DanhMuc extends javax.swing.JFrame {
                     .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLoiPhatLayout.createSequentialGroup()
-                            .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(formLoiPhatLayout.createSequentialGroup()
                                     .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1522,7 +1545,7 @@ public class DanhMuc extends javax.swing.JFrame {
                                 .addGroup(formLoiPhatLayout.createSequentialGroup()
                                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txTenLP1)))
+                                    .addComponent(txTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btThemLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1562,7 +1585,7 @@ public class DanhMuc extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txTenLP1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btTimLP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formLoiPhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1672,6 +1695,7 @@ public class DanhMuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (nxbbus.getList().size()>0)
             tbNhaXuatBan.setModel(modelNXB);
+        modeNXB=-1;
     }//GEN-LAST:event_btAllNXBActionPerformed
 
     private void btClearNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNXBActionPerformed
@@ -1686,28 +1710,32 @@ public class DanhMuc extends javax.swing.JFrame {
         if(nxbbus.getList().isEmpty()){
             return;
         }
-
+        
+        modeNXB=0;
+        
         String MaNXB, TenNXB;
 
         MaNXB=txMaNXB.getText();
         TenNXB=txTenNXB.getText();
 
-        ArrayList<NhaXuatBanDTO> res=new ArrayList<NhaXuatBanDTO>();
+        listSearchNXB=new ArrayList<NhaXuatBanDTO>();
         try {
-            res=nxbbus.Search(MaNXB, TenNXB);
+            listSearchNXB=nxbbus.Search(MaNXB, TenNXB);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchNXB.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbNhaXuatBan.setModel(modelNXB);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã nhà xuất bản");
             header.add("Tên nhà xuất bản");
 
             searchNXB = new DefaultTableModel(header, 0);
-            for(NhaXuatBanDTO nxb: res){
+            for(NhaXuatBanDTO nxb: listSearchNXB){
                 Vector row=new Vector();
                 row.add(nxb.getMaNXB());
                 row.add(nxb.getTenNXB());
@@ -1782,7 +1810,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbNhaXuatBan.getSelectedRow();
         if (nxbbus.getList().size() > 0) {
             NhaXuatBanDTO nxb = new NhaXuatBanDTO();
-            nxb = nxbbus.getList().get(i);
+            
+            if(modeNXB!=0)
+                nxb = nxbbus.getList().get(i);
+            else{
+                if(listSearchNXB.size()>0)
+                    nxb = listSearchNXB.get(i);
+                else 
+                    nxb = nxbbus.getList().get(i);
+            }
+                
             txMaNXB.setText(nxb.getMaNXB());
             txTenNXB.setText(nxb.getTenNXB());
         }
@@ -1825,7 +1862,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTGActionPerformed
         // TODO add your handling code here:
         if (tacgiabus.getList().size()>0)
-        tbTacGia.setModel(modelTacGia);
+            tbTacGia.setModel(modelTacGia);
+        modeTG=-1;
     }//GEN-LAST:event_btAllTGActionPerformed
 
     private void btClearTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTGActionPerformed
@@ -1840,28 +1878,32 @@ public class DanhMuc extends javax.swing.JFrame {
         if(tacgiabus.getList().isEmpty()){
             return;
         }
+        
+        modeTG=0;
 
         String MaTG, TenTG;
 
         MaTG=txMaTG.getText();
         TenTG=txTenTG.getText();
 
-        ArrayList<TacGiaDTO> res=new ArrayList<TacGiaDTO>();
+        listSearchTG=new ArrayList<TacGiaDTO>();
         try {
-            res=tacgiabus.Search(MaTG, TenTG);
+            listSearchTG=tacgiabus.Search(MaTG, TenTG);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchTG.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTacGia.setModel(modelTacGia);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã tác giả");
             header.add("Tên tác giả");
 
             searchTacGia = new DefaultTableModel(header, 0);
-            for(TacGiaDTO tg: res){
+            for(TacGiaDTO tg: listSearchTG){
                 Vector row=new Vector();
                 row.add(tg.getMaTacGia());
                 row.add(tg.getTenTacGia());
@@ -1936,7 +1978,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTacGia.getSelectedRow();
         if (tacgiabus.getList().size() > 0) {
             TacGiaDTO tacgia = new TacGiaDTO();
-            tacgia = tacgiabus.getList().get(i);
+            
+            if(modeTG!=0)
+                tacgia = tacgiabus.getList().get(i);
+            else{
+                if(listSearchTG.size()>0)
+                    tacgia = listSearchTG.get(i);
+                else 
+                    tacgia = tacgiabus.getList().get(i);
+            }
+                
             txMaTG.setText(tacgia.getMaTacGia());
             txTenTG.setText(tacgia.getTenTacGia());
         }
@@ -1979,7 +2030,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTLActionPerformed
         // TODO add your handling code here:
         if (theloaibus.getList().size()>0)
-        tbTheLoai.setModel(modelTheLoai);
+            tbTheLoai.setModel(modelTheLoai);
+        modeTL=-1;
     }//GEN-LAST:event_btAllTLActionPerformed
 
     private void btClearTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTLActionPerformed
@@ -1994,28 +2046,31 @@ public class DanhMuc extends javax.swing.JFrame {
         if(theloaibus.getList().isEmpty()){
             return;
         }
-
+        modeTL=0;
+        
         String MaTL, TenTL;
 
         MaTL=txMaTL.getText();
         TenTL=txTenTL.getText();
 
-        ArrayList<TheLoaiDTO> res=new ArrayList<TheLoaiDTO>();
+        listSearchTL=new ArrayList<TheLoaiDTO>();
         try {
-            res=theloaibus.Search(MaTL, TenTL);
+            listSearchTL=theloaibus.Search(MaTL, TenTL);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchTL.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTheLoai.setModel(modelTheLoai);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã thể loại");
             header.add("Tên thể loại");
 
             searchTheLoai = new DefaultTableModel(header, 0);
-            for(TheLoaiDTO tl: res){
+            for(TheLoaiDTO tl: listSearchTL){
                 Vector row=new Vector();
                 row.add(tl.getMaTheLoai());
                 row.add(tl.getTenTheLoai());
@@ -2090,8 +2145,15 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTheLoai.getSelectedRow();
         if (theloaibus.getList().size() > 0) {
             TheLoaiDTO theloai = new TheLoaiDTO();
-            theloai = theloaibus.getList().get(i);
-
+            if(modeTL!=0)
+                theloai = theloaibus.getList().get(i);
+            else{
+                if(listSearchTL.size()>0)
+                    theloai = listSearchTL.get(i);
+                else
+                    theloai = theloaibus.getList().get(i);
+            }
+                
             txMaTL.setText(theloai.getMaTheLoai());
             txTenTL.setText(theloai.getTenTheLoai());
 
@@ -2141,7 +2203,8 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllTKActionPerformed
         // TODO add your handling code here:
         if(actbus.getList().size()>0)
-        tbTaiKhoan.setModel(modelAct);
+            tbTaiKhoan.setModel(modelAct);
+        modeAct=-1;
     }//GEN-LAST:event_btAllTKActionPerformed
 
     private void btClearTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearTKActionPerformed
@@ -2156,28 +2219,32 @@ public class DanhMuc extends javax.swing.JFrame {
         if(actbus.getList().isEmpty()){
             return;
         }
+        
+        modeAct=0;
 
         String username, password;
 
         username=txUsername.getText();
         password=txPassword.getText();
 
-        ArrayList<AccountDTO> res=new ArrayList<AccountDTO>();
+        listSearchAct=new ArrayList<AccountDTO>();
         try {
-            res=actbus.Search(username, password);
+            listSearchAct=actbus.Search(username, password);
         } catch (Exception ex) {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchAct.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbTaiKhoan.setModel(modelAct);
+        }
         else{
             Vector header = new Vector();
             header.add("Tên đăng nhập");
             header.add("Mật khẩu");
 
             searchAct = new DefaultTableModel(header, 0);
-            for(AccountDTO act: res){
+            for(AccountDTO act: listSearchAct){
                 Vector row=new Vector();
                 row.add(act.getUsername());
                 row.add(act.getPassword());
@@ -2252,7 +2319,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbTaiKhoan.getSelectedRow();
         if (actbus.getList().size() > 0) {
             AccountDTO act = new AccountDTO();
-            act = actbus.getList().get(i);
+            
+            if(modeAct!=0)
+                act = actbus.getList().get(i);
+            else{
+                if(listSearchAct.size()>0)
+                    act = listSearchAct.get(i);
+                else 
+                    act = actbus.getList().get(i);
+            }
+            
             txUsername.setText(act.getUsername());
             txPassword.setText(act.getPassword());
         }
@@ -2293,12 +2369,13 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllNCCActionPerformed
         // TODO add your handling code here:
         if (nccbus.getList().size()>0)
-        tbNCC.setModel(modelNCC);
+            tbNCC.setModel(modelNCC);
+        modeNCC=-1;
     }//GEN-LAST:event_btAllNCCActionPerformed
 
     private void btClearNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearNCCActionPerformed
         if(tbNCC.isEnabled())
-        txMaNCC.setText("");
+            txMaNCC.setText("");
         txTenNCC.setText("");
     }//GEN-LAST:event_btClearNCCActionPerformed
 
@@ -2365,7 +2442,16 @@ public class DanhMuc extends javax.swing.JFrame {
         int i = tbNCC.getSelectedRow();
         if (nccbus.getList().size() > 0) {
             NhaCungCapDTO ncc = new NhaCungCapDTO();
-            ncc = nccbus.getList().get(i);
+            
+            if(modeNCC!=0)
+                ncc = nccbus.getList().get(i);
+            else{
+                if(listSearchNCC.size()>0)
+                    ncc = listSearchNCC.get(i);
+                else 
+                    ncc = nccbus.getList().get(i);
+            }
+            
             txMaNCC.setText(ncc.getMaNCC());
             txTenNCC.setText(ncc.getTenNCC());
         }
@@ -2391,6 +2477,7 @@ public class DanhMuc extends javax.swing.JFrame {
 
             loiphat.setMaLoiPhat(txMaLP.getText());
             loiphat.setTenLoiPhat(txTenLP.getText());
+            loiphat.setTienPhat(Integer.parseInt(txTienPhat.getText()));
 
             try {
                 loiphatbus.Edit(loiphat);
@@ -2400,7 +2487,8 @@ public class DanhMuc extends javax.swing.JFrame {
 
             modelLP.setValueAt(loiphat.getMaLoiPhat(), i, 0);
             modelLP.setValueAt(loiphat.getTenLoiPhat(), i, 1);
-
+            modelLP.setValueAt(loiphat.getTienPhat(), i, 2);
+            
             tbLoiPhat.setModel(modelLP);
         }
     }//GEN-LAST:event_btConfirmLPActionPerformed
@@ -2408,39 +2496,53 @@ public class DanhMuc extends javax.swing.JFrame {
     private void btAllLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllLPActionPerformed
         // TODO add your handling code here:
         if(loiphatbus.getList().size()>0)
-        tbLoiPhat.setModel(modelLP);
+            tbLoiPhat.setModel(modelLP);
+        modeLP=-1;
     }//GEN-LAST:event_btAllLPActionPerformed
 
     private void btClearLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearLPActionPerformed
         // TODO add your handling code here:
         if(tbLoiPhat.isEnabled())
-        txMaLP.setText("");
+            txMaLP.setText("");
         txTenLP.setText("");
+        txTienPhat.setText("");
     }//GEN-LAST:event_btClearLPActionPerformed
 
     private void btTimLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimLPActionPerformed
         // TODO add your handling code here:
         if(loiphatbus.getList().isEmpty())
-        return;
-
+            return;
+        
+        modeLP=0;
+        
         String MaLP, TenLP;
+        int TienPhat;
         MaLP=txMaLP.getText();
         TenLP=txTenLP.getText();
+        if(txTienPhat.getText().equals(""))
+            TienPhat=-1;
+        else
+            TienPhat=Integer.parseInt(txTienPhat.getText());
+        
+        listSearchLP=new ArrayList<LoiPhatDTO>();
+        
+        listSearchLP=loiphatbus.Search(MaLP, TenLP, TienPhat);
 
-        ArrayList<LoiPhatDTO> res=new ArrayList<LoiPhatDTO>();
-        res=loiphatbus.Search(MaLP, TenLP);
-
-        if (res.size()==0)
-        JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if (listSearchLP.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbLoiPhat.setModel(modelLP);
+        }
         else{
             Vector header = new Vector();
             header.add("Mã lỗi phạt");
             header.add("Tên lỗi phạt");
+            header.add("Tiền phạt");
             searchLP = new DefaultTableModel(header, 0);
-            for(LoiPhatDTO lp: res){
+            for(LoiPhatDTO lp: listSearchLP){
                 Vector row=new Vector();
                 row.add(lp.getMaLoiPhat());
                 row.add(lp.getTenLoiPhat());
+                row.add(lp.getTienPhat());
                 searchLP.addRow(row);
             }
             tbLoiPhat.setModel(searchLP);
@@ -2456,11 +2558,12 @@ public class DanhMuc extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
             }
-            modelNXB.removeRow(i);
+            modelLP.removeRow(i);
             tbLoiPhat.setModel(modelLP);
 
             txMaLP.setText("");
             txTenLP.setText("");
+            txTienPhat.setText("");
         }
     }//GEN-LAST:event_btXoaLPActionPerformed
 
@@ -2471,7 +2574,7 @@ public class DanhMuc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Chọn lỗi cần chỉnh sửa", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        txMaLP.setEnabled(false);
+        txMaLP.setEditable(false);
         btConfirmLP.setVisible(true);
         btCancelLP.setVisible(true);
         btThemLP.setEnabled(false);
@@ -2488,11 +2591,92 @@ public class DanhMuc extends javax.swing.JFrame {
 
     private void tbLoiPhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLoiPhatMouseClicked
         // TODO add your handling code here:
+        int i = tbLoiPhat.getSelectedRow();
+        if (loiphatbus.getList().size() > 0) {
+            LoiPhatDTO lp = new LoiPhatDTO();
+            
+            if(modeLP!=0)
+                lp = loiphatbus.getList().get(i);
+            else{
+                if(listSearchLP.size()>0)
+                    lp = listSearchLP.get(i);
+                else 
+                    lp = loiphatbus.getList().get(i);
+            }
+            
+            txMaLP.setText(lp.getMaLoiPhat());
+            txTenLP.setText(lp.getTenLoiPhat());
+            txTienPhat.setText(Integer.toString(lp.getTienPhat()));
+        }
     }//GEN-LAST:event_tbLoiPhatMouseClicked
 
     private void btTimNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimNCCActionPerformed
         // TODO add your handling code here:
+        if(nccbus.getList().isEmpty()){
+            return;
+        }
+        
+        modeNCC=0;
+
+        String MaNCC, TenNCC;
+
+        MaNCC=txMaNCC.getText();
+        TenNCC=txTenNCC.getText();
+
+        listSearchNCC=new ArrayList<NhaCungCapDTO>();
+        try {
+            listSearchNCC=nccbus.Search(MaNCC, TenNCC);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (listSearchNCC.size()==0){
+            JOptionPane.showMessageDialog(null, "Không tìm thấy kết quả nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            tbNCC.setModel(modelNCC);
+        }
+        else{
+            Vector header = new Vector();
+            header.add("Mã nhà cung cấp");
+            header.add("Tên nhà cung cấp");
+
+            searchNCC = new DefaultTableModel(header, 0);
+            for(NhaCungCapDTO ncc: listSearchNCC){
+                Vector row=new Vector();
+                row.add(ncc.getMaNCC());
+                row.add(ncc.getTenNCC());
+                searchNCC.addRow(row);
+            }
+            tbNCC.setModel(searchNCC);
+        }
     }//GEN-LAST:event_btTimNCCActionPerformed
+
+    private void btThemLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemLPActionPerformed
+        // TODO add your handling code here:
+        position="loiphat";
+        if(!validateBtThem())
+            return;
+
+        LoiPhatDTO lp=new LoiPhatDTO();
+
+        lp.setMaLoiPhat(txMaLP.getText());
+        lp.setTenLoiPhat(txTenLP.getText());
+        lp.setTienPhat(Integer.parseInt(txTienPhat.getText()));
+        
+        try {
+            loiphatbus.Add(lp);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Vector row=new Vector();
+        row.add(lp.getMaLoiPhat());
+        row.add(lp.getTenLoiPhat());
+        row.add(lp.getTienPhat());
+        
+        modelLP.addRow(row);
+
+        tbLoiPhat.setModel(modelLP);
+    }//GEN-LAST:event_btThemLPActionPerformed
                                                                          
     private boolean validateBtThem(){
         switch(position){
@@ -2564,13 +2748,30 @@ public class DanhMuc extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
+                for(NhaCungCapDTO ncc: nccbus.getList()){
+                    if(MaNCC.equals(ncc.getMaNCC())){
+                        JOptionPane.showMessageDialog(null, "Mã nhà cung cấp đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                }
                 break;
             case "loiphat":
-                String MaLP, TenLP;
+                String MaLP, TenLP, TienPhat;
                 MaLP=txMaLP.getText();
                 TenLP=txTenLP.getText();
-                if(MaLP.equals("") || TenLP.equals("")){
+                TienPhat=txTienPhat.getText();
+                if(MaLP.equals("") || TenLP.equals("") || TienPhat.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                    return false;
+                }
+                for(LoiPhatDTO lp: loiphatbus.getList()){
+                    if(MaLP.equals(lp.getMaLoiPhat())){
+                        JOptionPane.showMessageDialog(null, "Mã lỗi phạt đã tồn tại", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                    }
+                }
+                if(!TienPhat.matches("^\\d+")){
+                    JOptionPane.showMessageDialog(null, "Tiền phạt phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
                 break;
@@ -2657,12 +2858,14 @@ public class DanhMuc extends javax.swing.JFrame {
         Vector header=new Vector();
         header.add("Mã lỗi phạt");
         header.add("Tên lỗi phạt");
+        header.add("Tiền phạt");
         if (modelLP.getRowCount() == 0) 
                 modelLP = new DefaultTableModel(header, 0);
         for(LoiPhatDTO lp: listLP) {
             Vector row=new Vector();
             row.add(lp.getMaLoiPhat());
             row.add(lp.getTenLoiPhat());
+            row.add(lp.getTienPhat());
             modelLP.addRow(row);
         }
         tbLoiPhat.setModel(modelLP);
@@ -2723,11 +2926,8 @@ public class DanhMuc extends javax.swing.JFrame {
                     danhmuc.ListTacGia();
                     danhmuc.ListNXB();
                     danhmuc.ListAccount();
-
-                    danhmuc.ListLoiPhat();
-
                     danhmuc.ListNCC();
-
+                    danhmuc.ListLoiPhat();
                 } catch (Exception ex) {
                     Logger.getLogger(DanhMuc.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2836,11 +3036,11 @@ public class DanhMuc extends javax.swing.JFrame {
     private javax.swing.JTextField txMaTL;
     private javax.swing.JTextField txPassword;
     private javax.swing.JTextField txTenLP;
-    private javax.swing.JTextField txTenLP1;
     private javax.swing.JTextField txTenNCC;
     private javax.swing.JTextField txTenNXB;
     private javax.swing.JTextField txTenTG;
     private javax.swing.JTextField txTenTL;
+    private javax.swing.JTextField txTienPhat;
     private javax.swing.JTextField txUsername;
     // End of variables declaration//GEN-END:variables
     class RoundedPanel extends JPanel
