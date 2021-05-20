@@ -1109,7 +1109,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
 
 
         try {
-            chitietbus.Add(ctphieunhap);
+            chitietbus.Add(ctphieunhap,tfMS.getText());
         } catch (Exception ex) {
             Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
         }
