@@ -49,6 +49,12 @@ public class MyConnectUnit {
         return this.Select(TableName, null);
     }
     
+    public ResultSet SelectTK(String query) throws Exception{
+        ResultSet rs=null;
+        rs=this.connect.excuteQuery(query);
+        return rs;
+    }
+    
     //Hàm thêm điều kiện vào query
     private void AddCondition(StringBuilder query, String Condition){
         //Kiểm tra nếu condition khác null
