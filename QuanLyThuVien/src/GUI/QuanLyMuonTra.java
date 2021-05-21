@@ -1212,7 +1212,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
           String NgayMuon=tfNgayMuon.getText();
           String NgayHT=tfNgayHenTra.getText();
           int TinhTrang=cbTinhTrang.getSelectedIndex();
-          PhieuMuonDTO pm=new PhieuMuonDTO(NgayMuon, MaDG, MaNV, NgayMuon, NgayHT, TinhTrang);
+          PhieuMuonDTO pm=new PhieuMuonDTO(Mapm, MaDG, MaNV, NgayMuon, NgayHT, TinhTrang);
         try {
             chitietbus.listChiTietPhieuMuon(Mapm);
         } catch (Exception ex) {

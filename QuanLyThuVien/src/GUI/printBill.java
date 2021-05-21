@@ -57,7 +57,7 @@ public class printBill{
             Paragraph header = new Paragraph("Phieu Muon Sach", new Font(bf, 35));
             header.setAlignment(1);
             bill.add(header);
-            Paragraph info = new Paragraph("                Phieu Muon : " + pm.getMaPhieuMuon() + "   Ngay muon : " + pm.getNgayMuon(), new Font(bf, 15));
+            Paragraph info = new Paragraph("             Ma Phieu Muon : " + pm.getMaPhieuMuon() + "   Ngay muon : " + pm.getNgayMuon(), new Font(bf, 15));
             bill.add(info);
             Paragraph l = new Paragraph(line);
             l.setAlignment(1);
