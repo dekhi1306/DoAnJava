@@ -122,7 +122,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new RoundedPanel(10, new Color(68, 187, 236));
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -175,7 +175,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         tbChitiet = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(150, 50));
+        setTitle("QUẢN LÝ MƯỢN TRẢ");
+        setLocation(new java.awt.Point(60, 60));
 
         jPanel1.setBackground(new java.awt.Color(30, 29, 65));
 
@@ -184,15 +185,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản Lý Mượn Trả");
+        jLabel1.setText("QUẢN LÝ MƯỢN TRẢ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1349, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,6 +291,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btThem.setBackground(new java.awt.Color(27, 26, 67));
         btThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btThem.setForeground(new java.awt.Color(255, 255, 255));
+        btThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/add.png"))); // NOI18N
         btThem.setText("Thêm");
         btThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -302,6 +304,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXoa.setBackground(new java.awt.Color(27, 26, 67));
         btXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/minus.png"))); // NOI18N
         btXoa.setText("Xoá");
         btXoa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -314,6 +317,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btSua.setBackground(new java.awt.Color(27, 26, 67));
         btSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btSua.setForeground(new java.awt.Color(255, 255, 255));
+        btSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/edit.png"))); // NOI18N
         btSua.setText("Sửa");
         btSua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -326,6 +330,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btTim.setBackground(new java.awt.Color(27, 26, 67));
         btTim.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btTim.setForeground(new java.awt.Color(255, 255, 255));
+        btTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/search.png"))); // NOI18N
         btTim.setText("Tìm kiếm");
         btTim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btTim.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -403,7 +408,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Tình Trạng:");
 
-        cbTinhTrang.setBackground(new java.awt.Color(27, 26, 67));
         cbTinhTrang.setForeground(new java.awt.Color(255, 255, 255));
         cbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa trả", "Đã trả" }));
 
@@ -465,7 +469,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addComponent(btinbill)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btTim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(btTim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btSua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btXoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btThem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -608,7 +612,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(30, 29, 65));
 
         jPanel7.setBackground(new java.awt.Color(30, 29, 65));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi Tiết ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CHI TIẾT PHIẾU MƯỢN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -659,6 +663,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btThem1.setBackground(new java.awt.Color(27, 26, 67));
         btThem1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btThem1.setForeground(new java.awt.Color(255, 255, 255));
+        btThem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/add.png"))); // NOI18N
         btThem1.setText("Thêm");
         btThem1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btThem1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -671,6 +676,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXoa1.setBackground(new java.awt.Color(27, 26, 67));
         btXoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btXoa1.setForeground(new java.awt.Color(255, 255, 255));
+        btXoa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/minus.png"))); // NOI18N
         btXoa1.setText("Xoá");
         btXoa1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btXoa1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -683,6 +689,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btSua1.setBackground(new java.awt.Color(27, 26, 67));
         btSua1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btSua1.setForeground(new java.awt.Color(255, 255, 255));
+        btSua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/edit.png"))); // NOI18N
         btSua1.setText("Sửa");
         btSua1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSua1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -706,6 +713,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btTimCt.setBackground(new java.awt.Color(27, 26, 67));
         btTimCt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btTimCt.setForeground(new java.awt.Color(255, 255, 255));
+        btTimCt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/search.png"))); // NOI18N
         btTimCt.setText("Tìm");
         btTimCt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -713,10 +721,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
 
-        btAll.setBackground(new java.awt.Color(27, 26, 67));
+        btAll.setBackground(new java.awt.Color(165, 201, 63));
         btAll.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btAll.setForeground(new java.awt.Color(255, 255, 255));
-        btAll.setText("All");
+        btAll.setText("Tất cả");
         btAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAllActionPerformed(evt);
@@ -771,7 +779,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btTimCt, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                                     .addComponent(btAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(btTaoMoi1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(btTaoMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92)))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -794,7 +804,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btTaoMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -803,10 +815,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btChon4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addComponent(btTaoMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(30, 29, 65));
@@ -849,13 +859,16 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -882,14 +895,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1623,4 +1636,47 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JTextField tfNgayMuon;
     private javax.swing.JTextField tfSoLuong;
     // End of variables declaration//GEN-END:variables
+    class RoundedPanel extends JPanel
+    {
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+            
+        }
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //Draws the rounded panel with borders.
+            if (backgroundColor != null) {
+                graphics.setColor(backgroundColor);
+            } else {
+                graphics.setColor(getBackground());
+            }
+            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.setColor(getForeground());
+//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+//             
+        }
+    }
 }

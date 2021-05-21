@@ -124,9 +124,10 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         txmaloi = new javax.swing.JTextField();
         btmasach = new javax.swing.JButton();
         btmalp = new javax.swing.JButton();
+        btDong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(150, 160));
+        setLocation(new java.awt.Point(150, 150));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(30, 29, 65));
@@ -644,7 +645,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
                         .addGroup(formTacGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btTimCT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 15, Short.MAX_VALUE))
+                        .addGap(0, 11, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formTacGiaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(formTacGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -655,13 +656,24 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
                     .addComponent(btAllCT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHuyCT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btxacnhanct, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         btxacnhanct.setVisible(false);
         btHuyCT.setVisible(false);
+
+        btDong.setBackground(new java.awt.Color(206, 81, 80));
+        btDong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDong.setForeground(new java.awt.Color(255, 255, 255));
+        btDong.setText("Đóng");
+        btDong.setToolTipText("");
+        btDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -673,6 +685,10 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
                 .addGap(18, 27, Short.MAX_VALUE)
                 .addComponent(formTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(546, 546, 546)
+                .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,7 +697,9 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(formTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formTheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -692,7 +710,9 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1097,6 +1117,11 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
         txmasach.setText("");
         txmaloi.setText("");
     }//GEN-LAST:event_btClearCTActionPerformed
+
+    private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btDongActionPerformed
     
     private boolean validateBtThem(){
         switch(position){
@@ -1246,6 +1271,7 @@ public class QuanLyPhieuPhat extends javax.swing.JFrame {
     private javax.swing.JButton btAllCT;
     private javax.swing.JButton btClear;
     private javax.swing.JButton btClearCT;
+    private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
     private javax.swing.JButton btHuyCT;
     private javax.swing.JButton btSua;
