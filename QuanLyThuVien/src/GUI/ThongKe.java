@@ -34,8 +34,8 @@ public class ThongKe extends javax.swing.JFrame {
     private DefaultTableModel modelPM = new DefaultTableModel();
     private DefaultTableModel modelPP = new DefaultTableModel();
     private ArrayList<CTPhieuNhapDTO> listPN=new ArrayList<>();
-    private ArrayList<ChiTietPhieuMuonDTO> listPM=new ArrayList<>();
-    private ArrayList<ChiTietPhieuPhatDTO> listPP=new ArrayList<>();
+    private ArrayList<Object> listPM=new ArrayList<>();
+    private ArrayList<Vector> listPP=new ArrayList<>();
     /**
      * Creates new form quanLySach
      */
@@ -79,10 +79,10 @@ public class ThongKe extends javax.swing.JFrame {
         lbSachDM = new javax.swing.JLabel();
         lbSachCT = new javax.swing.JLabel();
         lbSachDT = new javax.swing.JLabel();
-        txSoLP = new javax.swing.JLabel();
-        txSoLP1 = new javax.swing.JLabel();
-        txSoLP2 = new javax.swing.JLabel();
-        txSoLP3 = new javax.swing.JLabel();
+        lbSoLP = new javax.swing.JLabel();
+        lbTienPhat = new javax.swing.JLabel();
+        lbSoSN = new javax.swing.JLabel();
+        lbTienChi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("THỐNG KÊ");
@@ -406,25 +406,25 @@ public class ThongKe extends javax.swing.JFrame {
         lbSachDT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbSachDT.setText("Số sách đã trả:");
 
-        txSoLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txSoLP.setForeground(new java.awt.Color(255, 255, 255));
-        txSoLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txSoLP.setText("Tổng số lỗi phạt:");
+        lbSoLP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbSoLP.setForeground(new java.awt.Color(255, 255, 255));
+        lbSoLP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbSoLP.setText("Tổng số lỗi phạt:");
 
-        txSoLP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txSoLP1.setForeground(new java.awt.Color(255, 255, 255));
-        txSoLP1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txSoLP1.setText("Tổng tiền phạt:");
+        lbTienPhat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbTienPhat.setForeground(new java.awt.Color(255, 255, 255));
+        lbTienPhat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbTienPhat.setText("Tổng tiền phạt:");
 
-        txSoLP2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txSoLP2.setForeground(new java.awt.Color(255, 255, 255));
-        txSoLP2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txSoLP2.setText("Tổng số sách nhập:");
+        lbSoSN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbSoSN.setForeground(new java.awt.Color(255, 255, 255));
+        lbSoSN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbSoSN.setText("Tổng số sách nhập:");
 
-        txSoLP3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txSoLP3.setForeground(new java.awt.Color(255, 255, 255));
-        txSoLP3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txSoLP3.setText("Tổng tiền chi:");
+        lbTienChi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbTienChi.setForeground(new java.awt.Color(255, 255, 255));
+        lbTienChi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbTienChi.setText("Tổng tiền chi:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -445,12 +445,12 @@ public class ThongKe extends javax.swing.JFrame {
                                     .addComponent(lbSachDM))
                                 .addGap(80, 80, 80)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txSoLP)
+                                    .addComponent(lbSoLP)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txSoLP1)
-                                    .addComponent(txSoLP2)
-                                    .addComponent(txSoLP3))))
+                                    .addComponent(lbTienPhat)
+                                    .addComponent(lbSoSN)
+                                    .addComponent(lbTienChi))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbSachCT)
@@ -467,9 +467,9 @@ public class ThongKe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txSoLP2)
+                        .addComponent(lbSoSN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txSoLP3)))
+                        .addComponent(lbTienChi)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,11 +477,11 @@ public class ThongKe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbSachDM)
-                    .addComponent(txSoLP))
+                    .addComponent(lbSoLP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbSachCT)
-                    .addComponent(txSoLP1))
+                    .addComponent(lbTienPhat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbSachDT)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -521,6 +521,25 @@ public class ThongKe extends javax.swing.JFrame {
         cbThang.setEnabled(true);
         cbQuy.setEnabled(true);
         txNam.setEnabled(true);
+        Vector header=new Vector();
+        header.add("Mã sách");
+        header.add("Số lượng");
+        header.add("Đơn giá");
+        header.add("Thành tiền");
+        modelPN = new DefaultTableModel(header, 0);
+        header=new Vector();
+        header.add("Mã sách");
+        header.add("Số lượng");
+        modelPM = new DefaultTableModel(header, 0);
+        header=new Vector();
+        header.add("Mã lỗi phạt");
+        header.add("Số lượng");
+        header.add("Tiền phạt");
+        header.add("Thành tiền");
+        modelPP = new DefaultTableModel(header, 0);
+        tbPhieuNhap.setModel(modelPN);
+        tbPhieuMuon.setModel(modelPM);
+        tbPhieuPhat.setModel(modelPP);
     }//GEN-LAST:event_btTaoMoiActionPerformed
 
     private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
@@ -558,8 +577,10 @@ public class ThongKe extends javax.swing.JFrame {
                     }
                 }
                 try {
-                ThongKeBUS thongkebus=new ThongKeBUS();
-                listPN=thongkebus.listNH(tu, den);
+                    ThongKeBUS thongkebus=new ThongKeBUS();
+                    listPN=thongkebus.listNH(tu, den);
+                    listPM=thongkebus.listPM(tu, den);
+                    listPP=thongkebus.listPP(tu, den);
                 } catch (Exception ex) {
                 Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
                 }   
@@ -780,22 +801,67 @@ public class ThongKe extends javax.swing.JFrame {
     }
     
     private void outModel(){
+        int tongSachNhap=0, tongTienChi=0, sachDaMuon=0, sachDaTra=0, sachChuaTra=0;
+        Integer tongLoiPhat=0, tongTienPhat=0;
         Vector header=new Vector();
         header.add("Mã sách");
         header.add("Số lượng");
         header.add("Đơn giá");
         header.add("Thành tiền");
-        if (modelPN.getRowCount() == 0) 
-                modelPN = new DefaultTableModel(header, 0);
+        modelPN = new DefaultTableModel(header, 0);
         for(CTPhieuNhapDTO ct: listPN) {
             Vector row=new Vector();
             row.add(ct.getSach());
             row.add(ct.getSoluong());
+            tongSachNhap+=ct.getSoluong();
             row.add(ct.getDongia());
             row.add(ct.getThanhtien());
+            tongTienChi+=ct.getThanhtien();
             modelPN.addRow(row);
         }
         tbPhieuNhap.setModel(modelPN);
+        lbSoSN.setText("Tổng số sách nhập: " + tongSachNhap);
+        lbTienChi.setText("Tổng tiền chi: " + tongTienChi);
+        
+        header=new Vector();
+        header.add("Mã sách");
+        header.add("Số lượng");
+        modelPM = new DefaultTableModel(header, 0);
+        for(int i=0;i<listPM.size()-1;i++) {
+            Vector row=new Vector();
+            ChiTietPhieuMuonDTO ct=new ChiTietPhieuMuonDTO();
+            ct=(ChiTietPhieuMuonDTO) listPM.get(i);
+            row.add(ct.getMaPhieuMuon());
+            row.add(ct.getSoLuong());
+            sachDaMuon+=ct.getSoLuong();
+            modelPM.addRow(row);
+        }
+        sachDaTra=(int) listPM.get(listPM.size()-1);
+        sachChuaTra=sachDaMuon-sachDaTra;
+        tbPhieuMuon.setModel(modelPM);
+        lbSachDM.setText("Số sách đã mượn: " + sachDaMuon);
+        lbSachDT.setText("Số sách đã trả: " + sachDaTra);
+        lbSachCT.setText("Số sách chưa trả: " + sachChuaTra);
+        
+        header=new Vector();
+        header.add("Mã lỗi phạt");
+        header.add("Số lượng");
+        header.add("Tiền phạt");
+        header.add("Thành tiền");
+        modelPP = new DefaultTableModel(header, 0);
+        for(Vector r: listPP) {
+            Vector row=new Vector();
+            row.add(r.get(0));
+            row.add(r.get(1));
+            tongLoiPhat+=Integer.parseInt(r.get(1).toString());
+            row.add(r.get(2));
+            row.add(r.get(3));
+            tongTienPhat+=Integer.parseInt(r.get(3).toString());
+            modelPP.addRow(row);
+        }
+        tbPhieuPhat.setModel(modelPP);
+        lbSoLP.setText("Tổng số lỗi phạt: " + tongLoiPhat);
+        lbTienPhat.setText("Tổng tiền phạt: " + tongTienPhat);
     }
     
     /**
@@ -857,6 +923,10 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JLabel lbSachCT;
     private javax.swing.JLabel lbSachDM;
     private javax.swing.JLabel lbSachDT;
+    private javax.swing.JLabel lbSoLP;
+    private javax.swing.JLabel lbSoSN;
+    private javax.swing.JLabel lbTienChi;
+    private javax.swing.JLabel lbTienPhat;
     private javax.swing.JRadioButton raNam;
     private javax.swing.JRadioButton raQuy;
     private javax.swing.JRadioButton raThang;
@@ -865,10 +935,6 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JTable tbPhieuPhat;
     private javax.swing.JTextField txDen;
     private javax.swing.JTextField txNam;
-    private javax.swing.JLabel txSoLP;
-    private javax.swing.JLabel txSoLP1;
-    private javax.swing.JLabel txSoLP2;
-    private javax.swing.JLabel txSoLP3;
     private javax.swing.JTextField txTu;
     // End of variables declaration//GEN-END:variables
     class RoundedPanel extends JPanel {
