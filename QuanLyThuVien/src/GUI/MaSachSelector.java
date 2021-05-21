@@ -96,8 +96,8 @@ public class MaSachSelector extends javax.swing.JFrame {
         btDong = new javax.swing.JButton();
         btTatCa = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Danh Sách Mã Sạc");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Danh Sách Mã Sách");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(30, 29, 65));

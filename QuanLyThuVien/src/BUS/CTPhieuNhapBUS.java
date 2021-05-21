@@ -31,24 +31,10 @@ public class CTPhieuNhapBUS {
     public ArrayList<CTPhieuNhapDTO> getList(){
         return listChiTiet;
     }
-    public void Add(CTPhieuNhapDTO chitietphieunhap, String MaSach) throws Exception{
+    public void Add(CTPhieuNhapDTO chitietphieunhap) throws Exception{
         listChiTiet.add(chitietphieunhap);
         CTPhieuNhapDAO ctphieunhapdao=new CTPhieuNhapDAO();
         ctphieunhapdao.Insert(chitietphieunhap);
-        ArrayList<SachDTO> listSach;
-         if(sachbus.getList()==null)
-             sachbus.listSach();
-         listSach=sachbus.getList();
-        int slsach=0;
-            for(int j=0;j<listSach.size();j++)
-                if(MaSach.equals(listSach.get(j).getMaSach())){
-                    slsach=listSach.get(j).getSoluong()+chitietphieunhap.getSoluong();
-                }
-        SachDTO sach=new SachDTO();
-        sach.setMaSach(MaSach);
-        sach.setSoLuong(slsach);
-        SachDAO sachdao=new SachDAO();
-        sachdao.UpdateSL(sach);
     }
     public void Edit(CTPhieuNhapDTO ctpn) throws Exception {
         for(int i=0;i<listChiTiet.size();i++) {

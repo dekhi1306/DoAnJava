@@ -1112,7 +1112,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         CTPhieuNhapDTO ctphieunhap=new CTPhieuNhapDTO();
         
         int dongia, soluong, thanhtien;
-        dongia=Integer.parseInt(tfSoLuong.getText());
+        dongia=Integer.parseInt(tfDG.getText());
         soluong=Integer.parseInt(tfSoLuong.getText());
         thanhtien=soluong*dongia;
         
@@ -1124,10 +1124,15 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
 
 
         try {
-            chitietbus.Add(ctphieunhap,tfMS.getText());
+            chitietbus.Add(ctphieunhap);
         } catch (Exception ex) {
             Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        int tongtienold=0, tongtiennew=0;
+        tongtienold=(int) modelPN.getValueAt(tbPN.getSelectedRow(), 4);
+        tongtiennew=tongtienold+thanhtien;
+        modelPN.setValueAt(tongtiennew, tbPN.getSelectedRow(), 4);
 
         Vector row=new Vector();
         row.add(ctphieunhap.getPhieunhap());
