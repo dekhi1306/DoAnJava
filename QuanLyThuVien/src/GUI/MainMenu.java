@@ -406,6 +406,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThongKeActionPerformed
         // TODO add your handling code here:
+        ThongKe thongke=new ThongKe();
+        thongke.setVisible(true);
     }//GEN-LAST:event_btThongKeActionPerformed
 
     private void btQLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQLNhanVienActionPerformed
