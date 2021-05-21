@@ -1470,17 +1470,17 @@ public class QuanLySach extends javax.swing.JFrame {
             }
         }
         
-        if(namxuatban.matches("^\\d+")){
+        if(!namxuatban.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Năm xuất bản phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
         
-        if(soluong.matches("^\\d+")){
+        if(!soluong.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Số lượng phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
         
-        if(dongia.matches("^\\d+")){
+        if(!dongia.matches("^\\d+")){
             JOptionPane.showMessageDialog(null, "Đơn giá phải ở định dạng số", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
