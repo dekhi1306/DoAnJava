@@ -845,7 +845,7 @@ public class ThongKe extends javax.swing.JFrame {
         }
         tbPhieuNhap.setModel(modelPN);
         lbSoSN.setText("Tổng số sách nhập: " + tongSachNhap);
-        lbTienChi.setText("Tổng tiền chi: " + tongTienChi);
+        lbTienChi.setText("Tổng tiền chi: " + tongTienChi + " VNĐ");
         
         header=new Vector();
         header.add("Mã sách");
@@ -885,7 +885,7 @@ public class ThongKe extends javax.swing.JFrame {
         }
         tbPhieuPhat.setModel(modelPP);
         lbSoLP.setText("Tổng số lỗi phạt: " + tongLoiPhat);
-        lbTienPhat.setText("Tổng tiền phạt: " + tongTienPhat);
+        lbTienPhat.setText("Tổng tiền phạt: " + tongTienPhat + " VNĐ");
     }
     
     /**
