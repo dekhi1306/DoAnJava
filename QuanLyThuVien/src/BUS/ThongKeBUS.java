@@ -115,6 +115,74 @@ public class ThongKeBUS {
         return listRes;
     }
     
+    public ArrayList<CTPhieuNhapDTO> listNHThang(int thang, int nam) throws Exception{
+        ArrayList<CTPhieuNhapDTO> listRes = new ArrayList<CTPhieuNhapDTO>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int month=0, year=0;
+        String[] date;
+        for(PhieuNhapHangDTO pn: listPN){
+            date=(pn.getNgayPH()).split("-");
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month==thang && year==nam)
+                listMa.add(pn.getMaPNH());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listNH(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<CTPhieuNhapDTO> listNHQuy(int quy, int nam) throws Exception{
+        ArrayList<CTPhieuNhapDTO> listRes = new ArrayList<CTPhieuNhapDTO>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int from=0, to=0, month=0, year=0;
+        String[] date;
+        switch(quy){
+            case 1:
+                from=1;
+                to=3;
+                break;
+            case 2:
+                from=4;
+                to=6;
+                break;
+            case 3:
+                from=7;
+                to=9;
+                break;
+            case 4:
+                from=10;
+                to=12;
+                break;
+        }
+        for(PhieuNhapHangDTO pn: listPN){
+            date=(pn.getNgayPH()).split("-");
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month>=from && month<=to && year==nam)
+                listMa.add(pn.getMaPNH());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listNH(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<CTPhieuNhapDTO> listNH(int nam) throws Exception{
+        ArrayList<CTPhieuNhapDTO> listRes = new ArrayList<CTPhieuNhapDTO>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int year=0;
+        String[] date;
+        for(PhieuNhapHangDTO pn: listPN){
+            date=(pn.getNgayPH()).split("-");
+            year=Integer.parseInt(date[2]);
+            if(year==nam)
+                listMa.add(pn.getMaPNH());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listNH(listMa);
+        return listRes;
+    }
+    
     public ArrayList<Object> listPM(String from, String to) throws Exception{
         ArrayList<Object> listRes = new ArrayList<>();
         ArrayList<PhieuMuonDTO> listMa = new ArrayList<PhieuMuonDTO>();
@@ -195,6 +263,74 @@ public class ThongKeBUS {
         return listRes;
     }
     
+    public ArrayList<Object> listPMThang(int thang, int nam) throws Exception{
+        ArrayList<Object> listRes = new ArrayList<>();
+        ArrayList<PhieuMuonDTO> listMa = new ArrayList<PhieuMuonDTO>();
+        int month=0, year=0;
+        String[] date;
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon().split("-"));
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month==thang && year==nam)
+                listMa.add(pm);
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPM(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<Object> listPMQuy(int quy, int nam) throws Exception{
+        ArrayList<Object> listRes = new ArrayList<>();
+        ArrayList<PhieuMuonDTO> listMa = new ArrayList<PhieuMuonDTO>();
+        int from=0, to=0, month=0, year=0;
+        String[] date;
+        switch(quy){
+            case 1:
+                from=1;
+                to=3;
+                break;
+            case 2:
+                from=4;
+                to=6;
+                break;
+            case 3:
+                from=7;
+                to=9;
+                break;
+            case 4:
+                from=10;
+                to=12;
+                break;
+        }
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon().split("-"));
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month>=from && month<=to && year==nam)
+                listMa.add(pm);
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPM(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<Object> listPM(int nam) throws Exception{
+        ArrayList<Object> listRes = new ArrayList<>();
+        ArrayList<PhieuMuonDTO> listMa = new ArrayList<PhieuMuonDTO>();
+        int year=0;
+        String[] date;
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon().split("-"));
+            year=Integer.parseInt(date[2]);
+            if(year==nam)
+                listMa.add(pm);
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPM(listMa);
+        return listRes;
+    }
+    
     public ArrayList<Vector> listPP(String from, String to) throws Exception{
         ArrayList<Vector> listRes = new ArrayList<>();
         ArrayList<String> listMa = new ArrayList<String>();
@@ -268,6 +404,74 @@ public class ThongKeBUS {
             }
             corDate=(fromDate && toDate);
             if(corDate)
+                listMa.add(pm.getMaPhieuMuon());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPP(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<Vector> listPPThang(int thang, int nam) throws Exception{
+        ArrayList<Vector> listRes = new ArrayList<>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int month=0, year=0;
+        String[] date;
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon()).split("-");
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month==thang && year==nam)
+                listMa.add(pm.getMaPhieuMuon());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPP(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<Vector> listPPQuy(int quy, int nam) throws Exception{
+        ArrayList<Vector> listRes = new ArrayList<>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int from=0, to=0, month=0, year=0;
+        String[] date;
+        switch(quy){
+            case 1:
+                from=1;
+                to=3;
+                break;
+            case 2:
+                from=4;
+                to=6;
+                break;
+            case 3:
+                from=7;
+                to=9;
+                break;
+            case 4:
+                from=10;
+                to=12;
+                break;
+        }
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon()).split("-");
+            month=Integer.parseInt(date[1]);
+            year=Integer.parseInt(date[2]);
+            if(month>=from && month<=to && year==nam)
+                listMa.add(pm.getMaPhieuMuon());
+        }
+        ThongKeDAO thongkedao=new ThongKeDAO();
+        listRes=thongkedao.listPP(listMa);
+        return listRes;
+    }
+    
+    public ArrayList<Vector> listPP(int nam) throws Exception{
+        ArrayList<Vector> listRes = new ArrayList<>();
+        ArrayList<String> listMa = new ArrayList<String>();
+        int year=0;
+        String[] date;
+        for(PhieuMuonDTO pm: listPM){
+            date=(pm.getNgayMuon()).split("-");
+            year=Integer.parseInt(date[2]);
+            if(year==nam)
                 listMa.add(pm.getMaPhieuMuon());
         }
         ThongKeDAO thongkedao=new ThongKeDAO();
