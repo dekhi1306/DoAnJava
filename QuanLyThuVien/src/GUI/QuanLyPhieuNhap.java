@@ -51,7 +51,9 @@ import javax.swing.JOptionPane;
 public class QuanLyPhieuNhap extends javax.swing.JFrame {
     private DefaultTableModel modelPN = new DefaultTableModel();
     private DefaultTableModel modelChitiet = new DefaultTableModel();
+    private DefaultTableModel modelMainSub;
     private DefaultTableModel resOfSearch;
+    private ArrayList<CTPhieuNhapDTO> listCT=new ArrayList<>();
     private String position;
     private int EditOrSearch;
     private PhieuNhapHangBUS phieunhapbus=new PhieuNhapHangBUS();
@@ -582,7 +584,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfMS, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btMaSach))
+                            .addComponent(btMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -611,7 +613,9 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tfMaPNChiTiet.setEditable(false);
         tfDG.setEditable(false);
+        tfThanhTien.setEditable(false);
 
         tfTongTien.setBackground(new java.awt.Color(27, 26, 67));
         tfTongTien.setForeground(new java.awt.Color(255, 255, 255));
@@ -721,6 +725,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
 
         btXacNhan.setVisible(false);
         btHuy.setVisible(false);
+        tfTongTien.setEditable(false);
 
         jPanel5.setBackground(new java.awt.Color(30, 29, 65));
 
@@ -925,7 +930,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         phieunhap.setNcc(tfMaNCC.getText());
         phieunhap.setNv(tfMaNhanVien.getText());
         phieunhap.setNgayPH(tfNN.getText());
-        phieunhap.setTongtien(Integer.parseInt(tfTongTien.getText()));
+        phieunhap.setTongtien(0);
 
         try {
             phieunhapbus.Add(phieunhap);
@@ -1105,12 +1110,17 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         if(!validateBtThem())
             return;
         CTPhieuNhapDTO ctphieunhap=new CTPhieuNhapDTO();
-
+        
+        int dongia, soluong, thanhtien;
+        dongia=Integer.parseInt(tfSoLuong.getText());
+        soluong=Integer.parseInt(tfSoLuong.getText());
+        thanhtien=soluong*dongia;
+        
         ctphieunhap.setPhieunhap(tfMaPNChiTiet.getText());
         ctphieunhap.setSach(tfMS.getText());
         ctphieunhap.setSoluong(Integer.parseInt(tfSoLuong.getText()));
         ctphieunhap.setDongia(Integer.parseInt(tfDG.getText()));
-        ctphieunhap.setThanhtien(Integer.parseInt(tfThanhTien.getText()));
+        ctphieunhap.setThanhtien(thanhtien);
 
 
         try {
@@ -1225,6 +1235,31 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
            tfNN.setText(ctphieunhap.getNgayPH());
            tfTongTien.setText (String.valueOf(ctphieunhap.getTongtien()));
            tfMaPNChiTiet.setText(ctphieunhap.getMaPNH());
+           
+           listCT.clear();
+           for(CTPhieuNhapDTO ct: chitietbus.getList()){
+               if(ct.getPhieunhap().equals(ctphieunhap.getMaPNH()))
+                   listCT.add(ct);
+           }
+           
+           Vector header=new Vector();
+           header.add("Mã phiếu nhập");
+           header.add("Tên sách");
+           header.add("Số lượng");
+           header.add("Đơn giá");
+           header.add("Thành tiền");
+           modelMainSub=new DefaultTableModel(header, 0);
+           for(CTPhieuNhapDTO ct: listCT){
+               Vector row=new Vector();
+               row.add(ct.getPhieunhap());
+               row.add(ct.getSach());
+               row.add(ct.getSoluong());
+               row.add(ct.getDongia());
+               row.add(ct.getThanhtien());
+               modelMainSub.addRow(row);
+           }
+           tbChitiet.setModel(modelMainSub);
+   
         }
     }
     private void Onclickct() {
@@ -1407,8 +1442,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
                 NCC=tfMaNCC.getText();
                 MaNV=tfMaNhanVien.getText();
                 NPN=tfNN.getText();
-                TongTien=tfTongTien.getText();
-                if(MaPN.equals("") || MaNV.equals("") || NCC.equals("") || NPN.equals("") || TongTien.equals("")){
+                if(MaPN.equals("") || MaNV.equals("") || NCC.equals("") || NPN.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
@@ -1425,8 +1459,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
                 MaSach=tfMS.getText();
                 SL=tfSoLuong.getText();
                 DonGia=tfDG.getText();
-                ThanhTien=tfThanhTien.getText();
-                if(MaPhieuNhap.equals("") || MaSach.equals("") || SL.equals("") || DonGia.equals("") || ThanhTien.equals("")){
+                if(MaPhieuNhap.equals("") || MaSach.equals("") || SL.equals("") || DonGia.equals("")){
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
                     return false;
                 }
