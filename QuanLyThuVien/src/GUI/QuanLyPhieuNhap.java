@@ -611,6 +611,8 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tfDG.setEditable(false);
+
         tfTongTien.setBackground(new java.awt.Color(27, 26, 67));
         tfTongTien.setForeground(new java.awt.Color(255, 255, 255));
         tfTongTien.addActionListener(new java.awt.event.ActionListener() {
@@ -1441,6 +1443,10 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
     }
       public static  void setMaNCC(String MaNV){
                 tfMaNCC.setText(MaNV);
+    }
+      
+    public static void setDonGia(int dongia){
+        tfDG.setText(String.valueOf(dongia));
     }
     /**
      * @param args the command line arguments
