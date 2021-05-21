@@ -11,6 +11,6 @@ package DAO;
  */
 public class DAO {
     public static MyConnectUnit getDAO(){
-        return new MyConnectUnit("localhost", "root", "", "quanlytv?useUnicode=yes&characterEncoding=UTF8");
+        return new MyConnectUnit("localhost", "root", "", "quanlythuvien?useUnicode=yes&characterEncoding=UTF8");
     }
 }

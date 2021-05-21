@@ -54,6 +54,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
     private DefaultTableModel modelMainSub;
     private DefaultTableModel resOfSearch;
     private ArrayList<CTPhieuNhapDTO> listCT=new ArrayList<>();
+    private int mode=0;
     private String position;
     private int EditOrSearch;
     private PhieuNhapHangBUS phieunhapbus=new PhieuNhapHangBUS();
@@ -1050,6 +1051,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (chitietbus.getList().size()>0)
         tbChitiet.setModel(modelChitiet);
+        mode=0;
     }//GEN-LAST:event_btAllActionPerformed
 
     private void btTimCtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimCtActionPerformed
@@ -1231,6 +1233,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
     private void Onclick() {
         int i = tbPN.getSelectedRow();
         if (phieunhapbus.getList().size() > 0) {
+            mode=1;
             PhieuNhapHangDTO ctphieunhap = new PhieuNhapHangDTO();
             ctphieunhap = phieunhapbus.getList().get(i);
             
@@ -1271,7 +1274,10 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         int ict = tbChitiet.getSelectedRow();
         if(chitietbus.getList().size()>0){
             CTPhieuNhapDTO chitiet =new CTPhieuNhapDTO();
-            chitiet = chitietbus.getList().get(ict);
+            if(mode!=1)
+                chitiet = chitietbus.getList().get(ict);
+            else
+                chitiet = listCT.get(ict);
             
             tfMaPNChiTiet.setText(chitiet.getPhieunhap());
             tfMS.setText(chitiet.getSach());

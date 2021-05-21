@@ -150,7 +150,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btinbill = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         cbTinhTrang = new javax.swing.JComboBox<>();
-        btChon5 = new javax.swing.JButton();
+        btChonMPM = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbPhieuMuon = new javax.swing.JTable();
@@ -407,15 +407,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         cbTinhTrang.setForeground(new java.awt.Color(255, 255, 255));
         cbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa trả", "Đã trả" }));
 
-        btChon5.setBackground(new java.awt.Color(27, 26, 67));
-        btChon5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btChon5.setForeground(new java.awt.Color(255, 255, 255));
-        btChon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/select.png"))); // NOI18N
-        btChon5.setText("Chọn");
-        btChon5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btChon5.addActionListener(new java.awt.event.ActionListener() {
+        btChonMPM.setBackground(new java.awt.Color(27, 26, 67));
+        btChonMPM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btChonMPM.setForeground(new java.awt.Color(255, 255, 255));
+        btChonMPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/select.png"))); // NOI18N
+        btChonMPM.setText("Chọn");
+        btChonMPM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btChonMPM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btChon5ActionPerformed(evt);
+                btChonMPMActionPerformed(evt);
             }
         });
 
@@ -460,7 +460,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btChon5)
+                                .addComponent(btChonMPM)
                                 .addGap(18, 18, 18)
                                 .addComponent(btinbill)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
@@ -523,7 +523,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btinbill, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btChon5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btChonMPM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btXacNhan)
@@ -1240,9 +1240,21 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btChon4ActionPerformed
 
-    private void btChon5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChon5ActionPerformed
+    private void btChonMPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChonMPMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btChon5ActionPerformed
+        int i=tbPhieuMuon.getSelectedRow();
+        if(i<0){
+            JOptionPane.showMessageDialog(null, "Chưa chọn mã phiếu mượn", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }   
+        try{
+            QuanLyPhieuPhat.setMaPhieuMuon(phieumuonbus.getList().get(i).getMaPhieuMuon());
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_btChonMPMActionPerformed
 
     public void ListPhieuMuon() throws Exception{
         if(phieumuonbus.getList()==null)
@@ -1560,7 +1572,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAll;
     private javax.swing.JButton btChon4;
-    private javax.swing.JButton btChon5;
+    private javax.swing.JButton btChonMPM;
     private javax.swing.JButton btDong;
     private javax.swing.JButton btHuy;
     private javax.swing.JButton btMaDocGia;

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -53,9 +54,17 @@ public class CTPhieuNhapDAO {
         HashMap<String, Object> map=new HashMap<String, Object>();
         HashMap<String, Object> giaTriPN=new HashMap<String, Object>();
         HashMap<String, Object> giaTriSach=new HashMap<String, Object>();
-        int tongtienold=0, tongtiennew=0, soluongold=0, soluongnew=0;
+        int tongtienold=0, tongtiennew=0, soluongold=0, soluongnew=0, slNhapOld=0, slNhapNew=0, ttNhapOld=0, ttNhapNew=0;
         PhieuNhapHangDAO phieunhap=new PhieuNhapHangDAO();
         SachDAO sach=new SachDAO();
+
+        map.put("MaPN", ctphieunhap.getPhieunhap());
+        map.put("MaSach", ctphieunhap.getSach());
+        map.put("SoLuong", ctphieunhap.getSoluong());
+        map.put("DonGia", ctphieunhap.getDongia());
+        map.put("ThanhTien", ctphieunhap.getThanhtien());
+
+        this.connect.Insert("ctphieunhap"+ "", map);
         
         ResultSet result = this.connect.SelectTK("SELECT TongTien FROM phieunhaphang WHERE MaPN='"+ctphieunhap.getPhieunhap()+"'");
         while(result.next()){
@@ -71,15 +80,9 @@ public class CTPhieuNhapDAO {
         soluongnew=soluongold + ctphieunhap.getSoluong();
         giaTriSach.put("SoLuong", soluongnew);
         
-        map.put("MaPN", ctphieunhap.getPhieunhap());
-        map.put("MaSach", ctphieunhap.getSach());
-        map.put("SoLuong", ctphieunhap.getSoluong());
-        map.put("DonGia", ctphieunhap.getDongia());
-        map.put("ThanhTien", ctphieunhap.getThanhtien());
- 
-        this.connect.Insert("ctphieunhap"+ "", map);
         this.connect.Update("phieunhaphang", giaTriPN, "MaPN='"+ctphieunhap.getPhieunhap()+"'");
         this.connect.Update("sach", giaTriSach, "MaSach='"+ctphieunhap.getSach()+"'");
+        
     }
      public void Update(CTPhieuNhapDTO ctphieunhap) throws Exception{
         HashMap<String, Object> map=new HashMap<String, Object>();
@@ -100,8 +103,8 @@ public class CTPhieuNhapDAO {
     public static void main(String[] args) throws Exception{
         CTPhieuNhapDAO ct=new CTPhieuNhapDAO();
         CTPhieuNhapDTO ctpn=new CTPhieuNhapDTO();
-        ctpn.setPhieunhap("1");
-        ctpn.setSach("MS-2");
+        ctpn.setPhieunhap("PN15");
+        ctpn.setSach("MS-15");
         ctpn.setSoluong(2);
         ctpn.setDongia(80000);
         ctpn.setThanhtien(160000);
