@@ -147,7 +147,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         btXacNhan = new javax.swing.JButton();
         btHuy = new javax.swing.JButton();
         btDong = new javax.swing.JButton();
-        btChon3 = new javax.swing.JButton();
+        btinbill = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         cbTinhTrang = new javax.swing.JComboBox<>();
         btChon5 = new javax.swing.JButton();
@@ -387,15 +387,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
 
-        btChon3.setBackground(new java.awt.Color(27, 26, 67));
-        btChon3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btChon3.setForeground(new java.awt.Color(255, 255, 255));
-        btChon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
-        btChon3.setText("In phiếu");
-        btChon3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btChon3.addActionListener(new java.awt.event.ActionListener() {
+        btinbill.setBackground(new java.awt.Color(27, 26, 67));
+        btinbill.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btinbill.setForeground(new java.awt.Color(255, 255, 255));
+        btinbill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/export.png"))); // NOI18N
+        btinbill.setText("In phiếu");
+        btinbill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btinbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btChon3ActionPerformed(evt);
+                btinbillActionPerformed(evt);
             }
         });
 
@@ -462,7 +462,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btChon5)
                                 .addGap(18, 18, 18)
-                                .addComponent(btChon3)
+                                .addComponent(btinbill)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btTim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
@@ -522,7 +522,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     .addComponent(btTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btChon3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btinbill, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btChon5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -582,7 +582,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +596,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,7 +753,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btMaSach))
                                     .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                                 .addComponent(btSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(btChon4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -848,7 +849,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -865,7 +866,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(43, 43, 43))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -881,17 +882,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1202,22 +1200,30 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btDongActionPerformed
 
-    private void btChon3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChon3ActionPerformed
+    private void btinbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinbillActionPerformed
         // TODO add your handling code here:
-        int i=tbPhieuMuon.getSelectedRow();
-        if(i<0){
-            JOptionPane.showMessageDialog(null, "Chưa chọn mã hóa đơn", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
-            return;
+               if (tfMaPhieuMuon.equals("")){
+                   JOptionPane.showMessageDialog(null, "Chưa chọn mã phiếu mượn", "Chú ý!", JOptionPane.INFORMATION_MESSAGE);
+                   return;
+           }
+          String Mapm=tfMaPhieuMuon.getText();
+          String MaDG=tfMaDocGia.getText();
+          String MaNV=tfMaNhanVien.getText();
+          String NgayMuon=tfNgayMuon.getText();
+          String NgayHT=tfNgayHenTra.getText();
+          int TinhTrang=cbTinhTrang.getSelectedIndex();
+          PhieuMuonDTO pm=new PhieuMuonDTO(NgayMuon, MaDG, MaNV, NgayMuon, NgayHT, TinhTrang);
+        try {
+            chitietbus.listChiTietPhieuMuon(Mapm);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try{
-            QuanLyPhieuPhat.setMaPhieuMuon(phieumuonbus.getList().get(i).getMaPhieuMuon());
-        }
-        catch (Exception ex){
-            System.out.println(ex);
-        }
-        this.dispose();
-    }//GEN-LAST:event_btChon3ActionPerformed
-
+        ArrayList<ChiTietPhieuMuonDTO> ctpm =(ArrayList<ChiTietPhieuMuonDTO>) chitietbus.getList();
+        
+        String file="./report/bill" +Mapm + ".pdf";
+        printBill bill=new printBill(pm, ctpm,file);
+    }//GEN-LAST:event_btinbillActionPerformed
+    
     private void btChon4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChon4ActionPerformed
         // TODO add your handling code here:
          int i=tbChitiet.getSelectedRow();
@@ -1553,7 +1559,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAll;
-    private javax.swing.JButton btChon3;
     private javax.swing.JButton btChon4;
     private javax.swing.JButton btChon5;
     private javax.swing.JButton btDong;
@@ -1573,6 +1578,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JButton btXacNhan;
     private javax.swing.JButton btXoa;
     private javax.swing.JButton btXoa1;
+    private javax.swing.JButton btinbill;
     private javax.swing.JComboBox<String> cbTinhTrang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

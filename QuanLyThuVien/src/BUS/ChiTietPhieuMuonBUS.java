@@ -29,6 +29,11 @@ public class ChiTietPhieuMuonBUS {
         listChiTiet=new ArrayList<ChiTietPhieuMuonDTO>();
         listChiTiet=chitiet.list();   
     }
+    public void listChiTietPhieuMuon(String MaPhieuMuon)throws Exception{
+        ChiTietPhieuMuonDAO chitiet=new ChiTietPhieuMuonDAO();
+        listChiTiet=new ArrayList<ChiTietPhieuMuonDTO>();
+        listChiTiet=chitiet.listctpm(MaPhieuMuon);   
+    }
     public ArrayList<ChiTietPhieuMuonDTO> getList(){
         return listChiTiet;
     }

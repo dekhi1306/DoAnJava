@@ -156,6 +156,7 @@ public class MyConnectUnit {
         FROM chitietphieuphat, loiphat 
         WHERE chitietphieuphat.MaLoiPhat=loiphat.MaLoiPhat 
         GROUP BY chitietphieuphat.MaPhieuPhat) AS tam, phieuphat AS pp WHERE tam.PhieuPhat = pp.MaPhieuPhat
+        SELECT DISTINCT ct.MaPhieuMuon,ct.MaSach,ct.SoLuong FROM chitietphieumuon as ct, phieumuon as pm WHERE ct.MaPhieuMuon='PM2'
         */
         String sql="SELECT pp.MaPhieuPhat,pp.MaPhieuMuon,tam.TongTienPhat FROM "
                 + "(SELECT chitietphieuphat.MaPhieuPhat AS PhieuPhat ,SUM(loiphat.TienPhat) AS TongTienPhat "
@@ -166,6 +167,18 @@ public class MyConnectUnit {
 
         return rs;
     }
+     public ResultSet SelectCt(String MaPhieuMuon) throws Exception{
+         ResultSet rs=null;
+        /*
+        SELECT DISTINCT ct.MaPhieuMuon,ct.MaSach,ct.SoLuong FROM chitietphieumuon as ct, phieumuon as pm WHERE ct.MaPhieuMuon='PM2'
+        */
+        String sql="SELECT DISTINCT ct.MaPhieuMuon,ct.MaSach,ct.SoLuong "
+                + "FROM chitietphieumuon as ct, phieumuon as pm "
+                + "WHERE ct.MaPhieuMuon='"+MaPhieuMuon+"'";
+        rs=this.connect.excuteQuery(sql);
+
+        return rs;
+     }
     
 } 
 

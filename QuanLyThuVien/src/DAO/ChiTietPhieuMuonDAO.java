@@ -35,6 +35,19 @@ public class ChiTietPhieuMuonDAO {
         return listchitietctphieumuon;
                 
     }
+    public ArrayList<ChiTietPhieuMuonDTO> listctpm(String MaPM) throws Exception {
+        ResultSet result = this.connect.SelectCt(MaPM);
+        ArrayList<ChiTietPhieuMuonDTO> listchitietctphieumuon = new ArrayList<ChiTietPhieuMuonDTO>();
+        while (result.next()) {
+               ChiTietPhieuMuonDTO chitiet=new ChiTietPhieuMuonDTO();
+               chitiet.setMaPhieuMuon(result.getString("MaPhieuMuon"));
+               chitiet.setMaSach(result.getString("MaSach"));
+               chitiet.setSoLuong(result.getInt("SoLuong"));
+               listchitietctphieumuon.add(chitiet);
+        }
+        return listchitietctphieumuon;
+                
+    }
     public ArrayList<ChiTietPhieuMuonDTO> list(String condition) throws Exception{
         return list(condition, null);
     }
