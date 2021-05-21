@@ -410,6 +410,7 @@ public class ThongKe extends javax.swing.JFrame {
         lbSoSN.setForeground(new java.awt.Color(255, 255, 255));
         lbSoSN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbSoSN.setText("Tổng số sách nhập:");
+        lbSoSN.setToolTipText("");
 
         lbTienChi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbTienChi.setForeground(new java.awt.Color(255, 255, 255));
@@ -530,6 +531,13 @@ public class ThongKe extends javax.swing.JFrame {
         tbPhieuNhap.setModel(modelPN);
         tbPhieuMuon.setModel(modelPM);
         tbPhieuPhat.setModel(modelPP);
+        lbSoSN.setText("Tổng số sách nhập:");
+        lbTienChi.setText("Tổng tiền chi:");
+        lbSachDM.setText("Số sách đã mượn:");
+        lbSachCT.setText("Số sách chưa trả:");
+        lbSachDT.setText("Số sách đã trả:");
+        lbSoLP.setText("Tổng số lỗi phạt:");
+        lbTienPhat.setText("Tổng tiền phạt:");
     }//GEN-LAST:event_btTaoMoiActionPerformed
 
     private void btDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDongActionPerformed
@@ -581,18 +589,44 @@ public class ThongKe extends javax.swing.JFrame {
                 int thang, nam;
                 thang=Integer.parseInt(cbThang.getSelectedItem().toString());
                 nam=Integer.parseInt(txNam.getText());
-                
+                try {
+                    ThongKeBUS thongkebus=new ThongKeBUS();
+                    listPN=thongkebus.listNHThang(thang, nam);
+                    listPM=thongkebus.listPMThang(thang, nam);
+                    listPP=thongkebus.listPPThang(thang, nam);
+                } catch (Exception ex) {
+                    Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                outModel();
                 break;
             }
             case 3:{
                 int quy, nam;
                 quy=Integer.parseInt(cbQuy.getSelectedItem().toString());
                 nam=Integer.parseInt(txNam.getText());
+                try {
+                ThongKeBUS thongkebus=new ThongKeBUS();
+                listPN=thongkebus.listNHQuy(quy, nam);
+                listPM=thongkebus.listPMQuy(quy, nam);
+                listPP=thongkebus.listPPQuy(quy, nam);
+                } catch (Exception ex) {
+                    Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                outModel();
                 break;
             }
             case 4:{
                 int nam;
                 nam=Integer.parseInt(txNam.getText());
+                try {
+                ThongKeBUS thongkebus=new ThongKeBUS();
+                listPN=thongkebus.listNH(nam);
+                listPM=thongkebus.listPM(nam);
+                listPP=thongkebus.listPP(nam);
+                } catch (Exception ex) {
+                    Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                outModel();
                 break;
             }
         }
