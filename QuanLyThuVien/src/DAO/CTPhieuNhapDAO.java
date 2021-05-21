@@ -54,7 +54,7 @@ public class CTPhieuNhapDAO {
         HashMap<String, Object> map=new HashMap<String, Object>();
         HashMap<String, Object> giaTriPN=new HashMap<String, Object>();
         HashMap<String, Object> giaTriSach=new HashMap<String, Object>();
-        int tongtienold=0, tongtiennew=0, soluongold=0, soluongnew=0, slNhapOld=0, slNhapNew=0, ttNhapOld=0, ttNhapNew=0;
+        int tongtienold=0, tongtiennew=0, soluongold=0, soluongnew=0;
         PhieuNhapHangDAO phieunhap=new PhieuNhapHangDAO();
         SachDAO sach=new SachDAO();
 
@@ -97,7 +97,27 @@ public class CTPhieuNhapDAO {
     }
 
     public void Delete(String MaPhieuNhapHang, String MaSach, int SoLuong, int DonGia, int ThanhTien) throws Exception {
-         this.connect.Delete("ctphieunhap", "MaPN = '" + MaPhieuNhapHang+"'AND MaSach = '" + MaSach+ "' AND SoLuong = '" + SoLuong+"'AND DonGia = '" + DonGia+ "'AND ThanhTien = '" + ThanhTien+"'" );    
+        this.connect.Delete("ctphieunhap", "MaPN = '" + MaPhieuNhapHang+"'AND MaSach = '" + MaSach+ "' AND SoLuong = '" + SoLuong+"'AND DonGia = '" + DonGia+ "'AND ThanhTien = '" + ThanhTien+"'" );    
+        HashMap<String, Object> giaTriPN=new HashMap<String, Object>();
+        HashMap<String, Object> giaTriSach=new HashMap<String, Object>();
+        int tongtienold=0, tongtiennew=0, soluongold=0, soluongnew=0;
+        
+        ResultSet result = this.connect.SelectTK("SELECT TongTien FROM phieunhaphang WHERE MaPN='"+MaPhieuNhapHang+"'");
+        while(result.next()){
+            tongtienold+=result.getInt("TongTien");
+        }
+        tongtiennew=tongtienold - ThanhTien;
+        giaTriPN.put("TongTien", tongtiennew);
+        
+        result = this.connect.SelectTK("SELECT SoLuong FROM sach WHERE MaSach='"+MaSach+"'");
+        while(result.next()){
+            soluongold+=result.getInt("SoLuong");
+        }
+        soluongnew=soluongold - SoLuong;
+        giaTriSach.put("SoLuong", soluongnew);
+        
+        this.connect.Update("phieunhaphang", giaTriPN, "MaPN='"+MaPhieuNhapHang+"'");
+        this.connect.Update("sach", giaTriSach, "MaSach='"+MaSach+"'");
     }
     
     public static void main(String[] args) throws Exception{

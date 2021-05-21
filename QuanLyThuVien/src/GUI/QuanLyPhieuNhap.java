@@ -1086,14 +1086,17 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = tbChitiet.getSelectedRow();
         if(chitietbus.getList().size()>0){
+            CTPhieuNhapDTO ct=new CTPhieuNhapDTO();
+            if(mode==0){
+                ct=chitietbus.getList().get(i);
+            }
+            else{
+                ct=listCT.get(i);
+            }
             try {
-                chitietbus.Remove(chitietbus.getList().get(i).getPhieunhap(),
-                    chitietbus.getList().get(i).getSach(),
-                    chitietbus.getList().get(i).getSoluong(), 
-                chitietbus.getList().get(i).getDongia(), 
-                chitietbus.getList().get(i).getThanhtien());
+                chitietbus.Remove(ct.getPhieunhap(), ct.getSach(), ct.getSoluong(), ct.getDongia(), ct.getThanhtien());
             } catch (Exception ex) {
-                Logger.getLogger(QuanLyMuonTra.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuanLyPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
             }
             modelChitiet.removeRow(i);
             tbChitiet.setModel(modelChitiet);
@@ -1103,6 +1106,22 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
             tfSoLuong.setText("");
             tfDG.setText("");
             tfThanhTien.setText("");
+            
+            int tongtienold=0, tongtiennew=0;
+            tongtienold=(int) modelPN.getValueAt(tbPN.getSelectedRow(), 4);
+            tongtiennew=tongtienold-ct.getThanhtien();
+            modelPN.setValueAt(tongtiennew, tbPN.getSelectedRow(), 4);
+
+            Vector row=new Vector();
+            row.add(ct.getPhieunhap());
+            row.add(ct.getSach());
+            row.add(ct.getSoluong());
+            row.add(ct.getDongia());
+            row.add(ct.getThanhtien());
+            
+            modelChitiet.removeRow(i);
+
+            tbChitiet.setModel(modelChitiet);
         }
     }//GEN-LAST:event_btXoa1ActionPerformed
 
