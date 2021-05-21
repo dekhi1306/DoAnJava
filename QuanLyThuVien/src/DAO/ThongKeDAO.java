@@ -35,8 +35,8 @@ public class ThongKeDAO {
         
         if(MaPN.size()>0){
             for(String ma: MaPN){
-                mapn.append(ma);
-                mapn.append(",");
+                mapn.append("'"+ma);
+                mapn.append("',");
             }
 
             mapn=mapn.delete(mapn.length()-1, mapn.length());
