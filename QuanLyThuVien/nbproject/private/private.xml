@@ -12,7 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/DAIHOC/nam2/HKII/LapTrinhJava/UngDungQLTV/DoAnJava/QuanLyThuVien/src/DAO/DAO.java</file>
+=======
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/MainMenu.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/printBill.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLyMuonTra.java</file>
+            <file>file:/C:/Users/01042001/Desktop/DoAnJava/QuanLyThuVien/src/GUI/QuanLySach.java</file>
+>>>>>>> 053407da22692d5716c65f598c87a7169a267e4c
         </group>
     </open-files>
 </project-private>
